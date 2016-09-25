@@ -1,0 +1,252 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{ST2131 Probability Tutorial 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+T16}
+\maketitle
+
+\begin{problem}{1.i}
+\end{problem}
+\begin{align*}
+	P(\text{2 day, original price}) &= \binom{2}{1} p(1-p) \\
+	&= 2 p(1-p) \\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.ii}
+\end{problem}
+\begin{align*}
+	P(\text{3 day, 1 unit increase}) &= \binom{3}{1} p^2(1-p)\\
+	&= 3 p^2(1-p)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.iii}
+\end{problem}
+\begin{align*}
+	P(\text{day 1 increase$|$3 day, 1 unit increase}) &= 
+		\frac{P(\text{day 1 increase$\cap$3 day, 1 unit increase})}
+		{P(\text{3 day, 1 unit increase})} \\
+	&= \frac{p(\binom{2}{1}p(1-p)} {3 p^2(1-p)} \\
+	&= \frac{2p^2(1-p)} {3 p^2(1-p)} \\
+	&= \frac{2} {3}
+\end{align*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{align*}
+	P(AB) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(A) P(B)
+	\intertext{$\therefore A$ and $B$ are independent.}
+	P(AC) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(A) P(C)
+	\intertext{$\therefore A$ and $C$ are independent.}
+	P(BC) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(B) P(C)
+	\intertext{$\therefore B$ and $C$ are independent. However,}
+	P(ABC) &= 1/4 \\
+	P(A) P(B) P(C) &= 1/2 (1/2) (2/4) \\
+	&= 1/8 \ne P(ABC)
+	\intertext{$\therefore A, B$ and $C$ are not independent.}
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{gather*}
+	\intertext{$A$ is independent.}
+	\Rightarrow P(AA) = P(A) P(A) \\
+	P(A) = P(A)^2 \\
+	P(A) = 1 \lor P(A) = 0
+\end{gather*} 
+\filbreak
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Let $A_i$ denote the probability that the first head occurs on the 
+		$i$th toss of the coin. Then}
+	\sum_{i=1}^{\infty} \left[ a_1 \prod_{j=1}^{i-1} (1-a_j) \right] 
+		= \sum_{i=1}^{\infty} P(A_i) = P\left(\bigcup_{i=1}^{\infty}A_i\right) \\
+	P\left(\bigcup_{i=1}^{\infty}A\right) 
+		+ P\left( \left[ \bigcup_{i=1}^{\infty}A_i \right]^C \right) = 1 \\
+	P\left( \left[ \bigcup_{i=1}^{\infty}A_i \right]^C \right) 
+		= \prod_{i=1}^{\infty} (1-a_i) \\
+	\therefore \sum_{i=1}^{\infty} \left[ a_1 \prod_{j=1}^{i-1} (1-a_j) \right] 
+		+ \prod_{i=1}^{\infty} (1-a_i) = 1\\
+\end{gather*}  
+\end{proof}  
+\filbreak
+
+\begin{problem}{5.i}
+\end{problem}
+\begin{align*}
+	P(AB) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(A) P(B)
+	\intertext{$\therefore A$ and $B$ are independent.}
+	P(AC) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(A) P(C)
+	\intertext{$\therefore A$ and $C$ are independent.}
+	P(BC) &= 1/4 \\
+	&= (1/2) (1/2) \\
+	&= P(B) P(C)
+	\intertext{$\therefore B$ and $C$ are independent.}
+\end{align*}  
+\filbreak
+
+\begin{problem}{5.ii}
+\end{problem}
+\begin{align*}
+	P(C|AB) &= \frac{P(C\cap(AB))} {P(AB)} \\
+	&= \frac{1/16}{1/4} \\
+	&= 1/4
+\end{align*}  
+\filbreak
+
+\begin{problem}{5.ii}
+\end{problem}
+\begin{align*}
+	P(ABC) &= 1/4 \\
+	P(A) P(B) P(C) &= 1/64 \ne P(ABC) \\
+	\intertext{$\therefore$ The three events are not independent.}
+\end{align*}  
+\filbreak
+
+\begin{problem}{6.i}
+\end{problem}
+\begin{gather*}
+	\intertext{(i) is not true in general as having 2 pairs of independent events 
+		does not imply the independece of the ensemble.}
+	\text{$A$ is independent of $B$} \Rightarrow P(AB) = P(A) P(B) \\
+	\text{$A$ is independent of $C$} \Rightarrow P(AC) = P(A) P(C) \\
+	\begin{align*}
+		P(A(B \cup C)) &= P(AB \cup AC) &\\
+		&= P(AB) + P(BC) - P(ABC) \\
+		&= P(A)P(B) + P(B)P(C) - P(A \cap BC) \\
+		&= P(A)(P(B) + P(C)) - 0 \\
+		&= P(A)(P(B) + P(C) - P(BC)) \\
+		&= P(A)(P(B) \cup P(C))
+	\end{align*}
+	\intertext{(ii) is true.}
+	\begin{align*}
+	P(CAB) &= P(ABC) &\\
+	&= P(A)P(BC) \\
+	&= P(A)P(B)P(C) \\
+	&= P(AB)P(C) \\
+	\intertext{(iii) is true.}
+	\end{align*}
+\end{gather*}  
+\filbreak
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Let $Q_n$ denote the probability that $n$ trials result in an odd number 
+		of successes.}
+	Q_n = 1 - P_n
+	\intertext{Conditioning on the first outcome,}
+	P_n = p(Q_{n-1}) + (1-p)P_{n-1} \\
+	P_n = p(1 - P_{n-1}) + (1-p)P_{n-1} \\
+	\intertext{Let $s_n$ denote the proposition that $P_n = f(n) = \frac{1+(1-2p)^n}{2}$. 
+		When $n = 1$,}
+	P_1 = 1-p \\
+	f(n) = \frac{1+1-2p} {2} = 1-p
+	\intertext{Therefore, $s_1$ is true. For some $k+1 \in \mathbb{N}$, assuming that 
+		$s_k$ is true,}
+	\begin{align*}
+		P_{k+1} &= p(1-P_{k}) + (1-p)P_{k} &\\
+		&= p\left(1-\frac{1+(1-2p)^k}{2} \right) + (1-p) \frac{1+(1-2p)^k}{2} \\
+		&= \frac{p-p(1-2p)^k)}{2} + \frac{1-p+(1-p)(1-2p)^k}{2} \\
+		&= \frac{1+(1-2p)(1-2p)^k)}{2} \\
+		&= \frac{1+(1-2p)^{k+1}}{2} 
+	\end{align*}
+	\intertext{As $s_1$ is true and $s_k$ is true $\Rightarrow s_{k+1}$ is true, 
+		$s_n$ is true for all $n \in \mathbb{N}$.}
+\end{gather*}  
+\end{proof}  
+\filbreak
+
+\begin{problem}{8}
+\end{problem}
+\begin{align*}
+	S_X &= \{4, 2, 1, 0, -1, -2\} \\
+	P(X=4) &= (4/14)(3/13) \\
+	&= 6/91 \\
+	P(X=2) &= (4/14)(2/13) + (2/14)(4/13) \\
+	&= 8/91 \\ 
+	P(X=1) &= (4/14)(8/13) + (8/14)(4/13) \\
+	&= 32/91 \\ 
+	P(X=0) &= (2/14)(1/13)\\
+	&= 1/91 \\ 
+	P(X=-1) &= (2/14)(8/13) + (8/14)(2/13)\\
+	&= 16/91 \\ 
+	P(X=-2) &= (8/14)(7/13) \\
+	&= 28/91
+\end{align*}  
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{align*}
+	S_X &= \{ -n, -n+2, \ldots, n-2, n\} \\
+	P(x=k) &= \frac{\binom{n}{(1/2)(n-|k|)}}{2^n}
+\end{align*}  
+\filbreak
+
+\begin{problem}{10}
+\end{problem}
+\begin{align*}
+	P(X=4) &= 4!/120 \\
+	&= 24/120 \\
+	P(X=3) &= 3!/120 \\
+	&= 6/120\\
+	P(X=2) &= \binom{3}{2}(2)/120 \\
+	&= 6/120\\
+	P(X=1) &= \binom{4}{2}(2)/120 \\
+	&= 24/120\\
+	P(X=0) &= \binom{5}{2}(3!)/120 \\
+	&= 60/120\\
+\end{align*}  
+\filbreak
+
+\begin{problem}{11.a}
+\end{problem}
+\begin{align*}
+	P(X=1) &= 0 \\
+	P(X=2) &= 11/12 - 1/2 \\
+	&= 5/12 \\
+	P(X=3) &= 1/12 \\
+\end{align*}  
+\filbreak
+
+\begin{problem}{11.b}
+\end{problem}
+\begin{align*}
+	P(1/2 < X < 3/2) &= P(X < 3) - P(X \le 1/2) \\
+	&= 11/12 - 1/8 \\
+	&= 19/24 
+\end{align*}  
+\filbreak
+
+\end{document}

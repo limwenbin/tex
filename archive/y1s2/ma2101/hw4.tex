@@ -1,0 +1,667 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\AtBeginDocument{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 5pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt 
+ \belowdisplayshortskip=4pt plus 5pt minus 4pt
+}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2101 Linear Algebra II Homework 4}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\section*{Section 4.3}
+
+\begin{problem}{10}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{For $M \in \text{M}_{n \times n} (C)$, $k \in \mathbb{N}$,}
+	M^k = O \\
+	\text{det}(M^k) = \text{det}(O) \\
+	[\text{det}(M)]^k = 0 \\
+	\Rightarrow \text{det}(M)= 0
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Let $p_n$ denote the proposition that for $n \in \mathbb{N}$,
+		$M \in \text{M}_{n \times n}(C)$, $\text{det}(\overline M) = 
+		\overline{\text{det}(M)}$. When $n=1$,}
+	\text{det}(\overline M) = \overline{m_{11}} = \overline{\text{det}(M)}
+	\intertext{Suppose for some $k \in \mathbb{N}$, $p_k$ is true. i.e.}
+	\forall M \in \text{M}_{k \times k}(C),\ 
+	\text{det}(\overline M) = \overline{\text{det}(M)}
+	\intertext{When $n=k+1$, $M' \in \text{M}_{k+1 \times k+1}(C)$, 
+		$\bar M'_{ij} \in \text{M}_{k \times k}(C)$,}
+	\text{det}(M') = \sum_{j=1}^{n+1} (-1)^{1+j} M'_{1j} \cdot \text{det}(\bar M'_{ij}) \\
+	\begin{align*}
+		\overline{\text{det}(M')} &= \sum_{j=1}^{n+1} 
+			(-1)^{1+j} \overline{M'_{1j}} \cdot \overline{\text{det}(\bar M'_{ij})} &\\
+		&= \sum_{j=1}^{n+1} 
+			(-1)^{1+j} \overline{M'_{1j}} \cdot \text{det}(\bar{\overline{M'_{ij}}}) 
+			\ (\text{by IH})\\
+		&= \text{det}(\overline{M'}) 
+	\end{align*}
+	\intertext{Therefore, $p_{k+1}$ is true. As $p_1$ is true and $p_k$ is true 
+		$\Rightarrow p_{k+1}$ is true, $p_n$ is true $\forall n \in \mathbb{N}$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	Q \text{ is unitary } \Rightarrow QQ^* = I \\
+	\text{det}(QQ^*) = \text{det}(I) \\
+	\text{det}(Q) \cdot \text{det}(\overline{Q^t}) = 1 \\
+	\intertext{By (a),}
+	\text{det}(Q) \cdot \overline{\text{det}(Q^t)} = 1 \\
+	\text{det}(Q) \cdot \overline{\text{det}(Q)} = 1 
+	\intertext{As $|z|^2 = z \overline z$,}
+	|\text{det}(Q)|^2 = 1 \\
+	\Rightarrow |\text{det}(Q)| = 1
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{24}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{det}(A+tI) 
+		= \left| \begin{array}{cccccc}
+			t & 0 & 0 & \ldots & 0 & a_0\\
+			-1 & t & 0 & \ldots & 0 & a_1\\
+			\vdots & \vdots & \vdots & & \vdots & \vdots\\
+			0 & 0 & 0 & \ldots & -1 & a_{n-1} + t\\
+		\end{array} \right| \\
+	\intertext{Supposing $t\ne0$, adding $\frac{1}{t}$ times of each row to the next,}
+	\text{det}(A+tI) = 
+		\left| \begin{array}{cccccc}
+			t & 0 & 0 & \ldots & 0 & a_0\\
+			0 & t & 0 & \ldots & 0 & a_1 + a_0t^{-1}\\
+			\vdots & \vdots & \vdots & & \vdots & \vdots\\
+			0 & 0 & 0 & \ldots & 0 & \sum_{i=0}^{n-1} a_{i}t^{1-n+i} + t\\
+		\end{array} \right| \\
+	\intertext{As the matrix is upper-triangular,}
+	\text{det}(A+tI) = t^{n-1} \left( \sum_{i=0}^{n-1} a_{i}t^{1-n+i} + t \right)
+		= \sum_{i=0}^{n-1} a_{i}t^{i} + t^n
+	\intertext{Let $f(t) = \sum_{i=0}^{n-1} a_{i}t^{i} + t^n$. 
+		To address the case when $t=0$, by cofactor expansion of the first row,}	
+	\begin{align*}
+		\text{det}(A+0I) &= (-1)^{1+n}(a_0)[\text{det}(-I_{n-1})] &\\
+		&= (-1)^{1+n}(a_0)(-1)^{n-1} \\
+		&= (-1)^{2n}(a_0)\\
+		&= a_0 = f(0) 
+	\end{align*}
+	\\
+	\therefore \text{det}(A+tI) = \sum_{i=0}^{n-1} a_{i}t^{i} + t^n
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 5.1}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{align*}
+	\text{det}(A - \lambda I) &= (1-\lambda) (2-\lambda) - (2)(3) \\
+	&= \lambda^2 -3\lambda -4 \\
+	&= (\lambda-4)(\lambda+1) \\
+	\lambda_1 = 4&,\ \lambda_2 = -1 \tag{i}\\
+	\text{det}(A - \lambda I) &= (1-\lambda) (2-\lambda) - (2)(3)
+\end{align*}
+\begin{align*}
+	\shortintertext{(ii):}
+	\begin{split}
+		B_1X &= (A - 4I)X \\
+		&= \left( \begin{array}{cc}
+			-3 & 2\\
+			3 & -2\\
+		\end{array} \right) 
+		\left( \begin{array}{c}
+			x_1\\
+			x_2\\
+		\end{array} \right) \\
+		&= \left( \begin{array}{c}
+			-3x_1 + 2x_2\\
+			3x_1 -2x_2\\
+		\end{array} \right) = 0 \\
+		\therefore N(B_1) &= \left\{ t\left( \begin{array}{c}
+			2\\
+			3\\
+		\end{array} \right) : t \in F \right\} \\
+	\end{split}
+	\begin{split}
+		B_2X &= (A + I)X \\
+		&= \left( \begin{array}{cc}
+			2 & 2\\
+			3 & 3\\
+		\end{array} \right) 
+		\left( \begin{array}{c}
+			x_1\\
+			x_2\\
+		\end{array} \right) \\
+		&= \left( \begin{array}{c}
+			2x_1 + 2x_2\\
+			3x_1 + 3x_2\\
+		\end{array} \right) = 0 \\
+		\therefore N(B_2) &= \left\{ t\left( \begin{array}{c}
+			1\\
+			-1\\
+		\end{array} \right) : t \in F \right\} \\
+	\end{split}
+\end{align*}
+\begin{align*}
+	v_1 = \left( \begin{array}{c}
+		2\\
+		3\\
+	\end{array} \right) &,\ 
+	v_2 = \left( \begin{array}{c}
+		1\\
+		-1\\
+	\end{array} \right) \\
+	v_1 \ne cv_2 \text{ for $c \in F$} 
+		&\Rightarrow \{ v_1, v_2 \} \text{ is a basis for $F^2$} \tag{iii}\\
+	Q = \left( \begin{array}{cc}
+		2 & 1\\
+		3 & -1\\
+	\end{array} \right) &,\ 
+	D = \left( \begin{array}{cc}
+		4 & 0\\
+		0 & -1\\
+	\end{array} \right) \tag{iv}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{To prove: $T$ is invertible $\Leftrightarrow$ 0 is not an eigenvalue of $T$}
+	\shortintertext{$(\Rightarrow):$}
+	\text{$T$ is invertible} \Leftrightarrow N(T) = \{0\}\\
+	\intertext{Suppose, for contradiction, that 0 is an eigenvalue of $T$. i.e. 
+		For some $v \in V$,}
+	T(v) = 0 \cdot v = 0
+	\Rightarrow v \in N(T) \\
+	\Rightarrow \text{$T$ is not invertible}
+	\intertext{Thus yielding a contradiction that $T$ is not invertible.}
+	\therefore \text{$T$ is invertible $\Rightarrow$ 0 is not an eigenvalue of $T$}
+	\shortintertext{$(\Leftarrow):$}
+	\text{0 is not an eigenvalue of $T$} \\
+	\Rightarrow \forall v \in V, T(v) \ne 0 \cdot v = 0 \\
+	\shortintertext{i.e.}
+	N(T) = \{0\} \Rightarrow \text{$T$ is invertible} \\
+	\therefore \text{$T$ is invertible 
+		$\Leftrightarrow$ 0 is not an eigenvalue of $T$}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{8.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\because (T^{-1})^{-1} = T,\ (\lambda^{-1})^{-1} = \lambda
+	\intertext{It would suffice to prove that: $\lambda$ is an eigenvalue of $T 
+		\Rightarrow \lambda^{-1}$ is an eigenvalue of $T^{-1}$.}
+	\text{$\lambda$ is an eigenvalue of $T$} \\
+	\Rightarrow T(v_0) = \lambda v_0,\ v_0 \in V \\
+	T^{-1}(T(v_0)) = T^{-1}(\lambda v_0) \\
+	v_0 = \lambda T^{-1}(v_0) \\
+	T^{-1}(v_0) = \lambda^{-1} v_0\\
+	\Rightarrow \text{$\lambda^{-1}$ is an eigenvalue of $T^{-1}$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{11.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	A \text{ is similiar to }\lambda I 
+		\Rightarrow \exists Q \text{ s.t } A = Q(\lambda I)Q^{-1} \\
+	A = \lambda QIQ^{-1} \\
+	A = \lambda IQQ^{-1} \\
+	A = \lambda I
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{11.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Let $B$ be a diagonalizable matrix with only one eigenvalue $\lambda_0$. i.e}
+	\exists Q \text{ s.t } D = Q^{-1} BQ\\
+	\text{where } D = \lambda_0 I
+	\intertext{Then,}
+	B = Q(\lambda_0 I)Q^{-1} \\
+	B = \lambda_0 QQ^{-1}I \\
+	B = \lambda_0 I \\
+	\therefore \text{$B$ is a scalar matrix}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{17.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\lambda \text{ is an eigenvalue of $T$} \Rightarrow T(B) = \lambda B \\
+	B^t = \lambda B \tag{1}\\
+	\lambda^{-1} B^t = B \\
+	\intertext{Applying $T$ to both sides of (1),}
+	T(B^t) = T(\lambda B) \\
+	B = \lambda T(B) \\
+	\lambda B^t = B \\
+	\lambda B^t = \lambda^{-1} B^t \\
+	\lambda^2 = 1 \\
+	\therefore \lambda = \pm 1
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{17.b}
+\end{problem}
+\begin{gather*}
+	\intertext{Let $M_1$ and $M_2$ be the sets of eigenvectors corresponding to 
+		eigenvalues 1 and -1 respectively. For $A \in M_1$,}
+	T(A) = A \\
+	A^t = A \\
+	\text{$A$ is a symmetric matrix}
+	\intertext{For $B \in M_2$,}
+	T(B) = -B \\
+	B^t = -B \\
+	\text{$B$ is a skew-symmetric matrix}
+\end{gather*}
+\filbreak
+
+\begin{problem}{17.c}
+\end{problem}
+\begin{gather*}
+	\intertext{Let $\beta_{M_1}$ be a basis for the set of symmetric $2\times2$ matrices. 
+		i.e.}
+	\beta_{M_1} = \left\{
+		\left( \begin{array}{cc}
+			1 & 0 \\
+			0 & 0 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 0 \\
+			0 & 1 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			1 & 0 \\
+		\end{array} \right)
+	\right\}
+	\intertext{Let $\beta_{M_2}$ be a basis for the set of symmetric $2\times2$ matrices. 
+		i.e.}
+	\beta_{M_2} = \left\{
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			-1 & 0 \\
+		\end{array} \right)
+	\right\}
+	\shortintertext{Then,}
+	\beta = \left(
+		\left( \begin{array}{cc}
+			1 & 0 \\
+			0 & 0 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 0 \\
+			0 & 1 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			1 & 0 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			-1 & 0 \\
+		\end{array} \right)
+	\right)
+	\intertext{is an ordered basis for $M_{2 \times 2}(R)$ such that:}
+	[T]_\beta = 
+		\left( \begin{array}{cccc}
+			1 & 0 & 0 & 0\\
+			0 & 1 & 0 & 0\\
+			0 & 0 & 1 & 0\\
+			0 & 0 & 0 & -1\\
+		\end{array} \right)
+\end{gather*}
+\filbreak
+
+\begin{problem}{17.d}
+\end{problem}
+\begin{gather*}
+	\intertext{In general, let $K_1$ and $K_2$ be the set of symmetric and 
+		skew-symmetric $n\times n$ matrices respectively and let $\beta_{K_1}, 
+		\beta_{K_2}$ be their bases.}
+	|K_1| = n + \frac{n^2-n}{2} = \frac{n^2 + n}{2} \\
+	\intertext{Let $X_{i} \in M_{n \times n}(R)$ be the matrix with 1 at the $ii$th 
+		entry and zero elsewhere.}
+	\intertext{Let $Y_{ij} \in M_{n \times n}(R)$ be the matrix with 1 at the $ij$th 
+		entry, $ji$th entry and zero elsewhere.}
+	\intertext{Let $Z_{ij} \in M_{n \times n}(R)$ be the matrix with 1 at the $ij$th 
+		entry, $-1$ at the $ji$th entry and zero elsewhere.}
+	\beta_{K_1} = \{ X_{k} : 1 \le k \le n \} \cup 
+		\{ Y_{ij} : 1 \le i < n,\ i < j \le n \} \\
+	\beta_{K_2} = \{ Z_{ij} : 1 \le i < n,\ i < j \le n \}
+	\shortintertext{Then,}
+	\beta = (X_1, \ldots, X_n, Y_{1,2}, \ldots, Y_{n-1,n}, Z_{1,2}, \ldots Z_{n-1,n})
+	\intertext{is an ordered basis for $M_{n \times n}(R)$ such that:}
+	[T]_\beta = (t_{ij}) =
+		\begin{cases}
+			1, & i=j, i \le \frac{n^2+n}{2}\\
+			-1, & i=j, i > \frac{n^2+n}{2}\\
+			0, & \text{otherwise}
+		\end{cases}
+\end{gather*}
+\filbreak
+
+\begin{problem}{22.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	T(x) = \lambda x \\
+	T^0(x) = x = \lambda^0 x \\
+	T^2(x) = T(\lambda x) =  \lambda T(x) = \lambda^2 x
+	\intertext{In general,}
+	T^n(x) = \lambda^n x
+	\intertext{Supposing $g$ has order $k$, for scalars $(a_i)$,} 
+	\begin{align*}
+		g(T)(x) &= \sum_{i=0}^{k} a_i T^i (x) &\\ 
+		&= \sum_{i=0}^{k} a_i \lambda^i x = x\sum_{i=0}^{k} a_i \lambda^i \\ 
+		&= x g(\lambda)
+	\end{align*}
+	\intertext{Therefore, $g(\lambda)$ is an eigenvalue of $g(T)$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{22.b}
+\end{problem}
+\begin{gather*}
+	\intertext{For square matrices $A \in M_{n \times n}(F)$, polynomial $g$ over $F$, 
+		letting $A^0 = I_n$,}
+	\text{$\lambda$ is an eigenvalue of $A$} \Rightarrow 
+		\text{$g(\lambda)$ is an eigenvalue of $g(A)$}
+\end{gather*}
+\begin{proof}
+\begin{gather*}
+	Ax = \lambda x \\
+	A^0(x) = Ix = \lambda^0 x \\
+	A^2(x) = A(\lambda x) =  \lambda Ax = \lambda^2 x
+	\intertext{In general,}
+	A^n(x) = \lambda^n x
+	\intertext{Supposing $g$ has order $k$, for scalars $(c_i)$,} 
+	\begin{align*}
+		g(A)(x) &= \sum_{i=0}^{k} c_i A^i x = x\sum_{i=0}^{k} c_i \lambda^i &\\
+		&= x g(\lambda)
+	\end{align*}
+	\intertext{Therefore, $g(\lambda)$ is an eigenvalue of $g(A)$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{22.c}
+\end{problem}
+\begin{gather*}
+	g(A) = \left( \begin{array}{cc}
+		14 & 10\\
+		15 & 19\\
+	\end{array} \right) \\
+	g(4) = 29 \\
+	\begin{align*}
+		\text{det}(A-29I) &= \left| \begin{array}{cc}
+			14 & -19\\
+			-14 & 19\\
+		\end{array} \right| &\\
+		&= 0
+	\end{align*}
+	\\
+	\therefore \text{29 is an eigenvalue of $g(A)$}
+\end{gather*}
+\filbreak
+
+\section*{Section 5.2}
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{gather*}
+	\intertext{From 5.1 Exercise 17.a,}
+	\lambda_1 = 1,\ \lambda_2 = -1 \\
+	E_{\lambda_1} = \text{span} \left\{
+		\left( \begin{array}{cc}
+			1 & 0 \\
+			0 & 0 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 0 \\
+			0 & 1 \\
+		\end{array} \right),\ 
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			1 & 0 \\
+		\end{array} \right)
+	\right\} = \text{span}\{v_{1,1}, v_{1,2}, v_{1,3}\} \\
+	E_{\lambda_2} = \text{span} \left\{
+		\left( \begin{array}{cc}
+			0 & 1 \\
+			-1 & 0 \\
+		\end{array} \right\}
+	\right) = \text{span}\{v_{2,1}\} \\
+	|E_{\lambda_1}| + |E_{\lambda_2}| = 4 = \text{dim}(M_{2 \times 2}(R) \\
+	\beta = (v_{1,1}, v_{1,2}, v_{1,3}, v_{2,1}) 
+		\text{ is an ordered basis for $V$ such that:}\\
+	[T]_\beta = 
+		\left( \begin{array}{cccc}
+			1 & 0 & 0 & 0\\
+			0 & 1 & 0 & 0\\
+			0 & 0 & 1 & 0\\
+			0 & 0 & 0 & -1\\
+		\end{array} \right)
+\end{gather*}
+\filbreak
+
+\begin{problem}{7}
+\end{problem}
+\begin{align*}
+	\text{det}(A-\lambda I) &= (1-\lambda)(3-\lambda) -2(4) \\
+	&= \lambda^2 -4\lambda -5\\
+	&= (\lambda + 1)(\lambda -5) \\
+	\lambda_1 = -1&,\ \lambda_2 = 5
+\end{align*}
+\begin{align*}
+	\begin{split}
+		B_1X &= (A + I)X \\
+		&= \left( \begin{array}{cc}
+			2 & 4\\
+			2 & 4\\
+		\end{array} \right) 
+		\left( \begin{array}{c}
+			x_1\\
+			x_2\\
+		\end{array} \right) \\
+		&= \left( \begin{array}{c}
+			2x_1 + 4x_2\\
+			2x_1 + 4x_2\\
+		\end{array} \right) = 0 \\
+		v_{1,1} &= \left( \begin{array}{c}
+			2\\
+			-1\\
+		\end{array} \right) \\
+	\end{split}
+	\begin{split}
+		B_2X &= (A - 5I)X \\
+		&= \left( \begin{array}{cc}
+			-4 & 4\\
+			2 & -2\\
+		\end{array} \right) 
+		\left( \begin{array}{c}
+			x_1\\
+			x_2\\
+		\end{array} \right) \\
+		&= \left( \begin{array}{c}
+			-4x_1 + 4x_2\\
+			2x_1 - 2x_2\\
+		\end{array} \right) = 0 \\
+		v_{1,1} &= \left( \begin{array}{c}
+			1\\
+			1\\
+		\end{array} \right)
+	\end{split}
+\end{align*}
+\begin{gather*}
+	A = Q^{-1} D Q \\
+	A^n = Q^{-1} D^n Q \\
+	A^n = 
+	\left( \begin{array}{cc}
+		1/3 & -1/3\\
+		1/3 & 2/3\\
+	\end{array} \right)
+	\left( \begin{array}{cc}
+		(-1)^n & 0\\
+		0 & 5^n\\
+	\end{array} \right)
+	\left( \begin{array}{cc}
+		2 & 1\\
+		-1 & 1\\
+	\end{array} \right)
+\end{gather*}
+\filbreak
+
+\begin{problem}{12.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Let the eigenspace corresponding to $\lambda$ for $T$ be $E_\lambda$, that of 
+		$T^{-1}$ corresponding to $\lambda^{-1}$ be $E_{\lambda^{-1}}$. 
+		For any $v \in E_\lambda$,}
+	T(v) = \lambda v
+	\intertext{Taking $T^{-1}$ on both sides,}
+	v = T^{-1}(\lambda v) \\
+	v = \lambda T^{-1}(v) \\
+	\lambda^{-1} v = T^{-1}(v) \\
+	\Rightarrow v \in E_{\lambda^{-1}} \\
+	\therefore E_{\lambda}\subseteq E_{\lambda^{-1}}
+	\intertext{For any $v' \in E_\lambda$,}
+	T^{-1}(v') = \lambda^{-1} v'
+	\intertext{Taking $T$ on both sides,}
+	v' = T(\lambda^{-1} v') \\
+	v' = \lambda^{-1} T(v') \\
+	\lambda v' = T(v') \\
+	\Rightarrow v' \in E_{\lambda} \\
+	\therefore E_{\lambda^{-1}} \subseteq E_{\lambda}
+	\Rightarrow E_{\lambda^{-1}} = E_{\lambda}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{12.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{$T$ is diagonalizable} \Rightarrow \exists \beta \text{ s.t. $[T]_\beta$ is 
+		diagonal} \\
+	[T]_\beta = \left( \begin{array}{ccc}
+		t_{1} & \ldots & 0\\
+		\vdots & \ddots & 0\\
+		0 & \ldots & t_{n}\\
+	\end{array} \right)
+	\intertext{Then, $[T^{-1}]_\beta$ is given by:}
+	[T^{-1}]_\beta = \left( \begin{array}{ccc}
+		1/t_{1} & \ldots & 0\\
+		\vdots & \ddots & 0\\
+		0 & \ldots & 1/t_{n}\\
+	\end{array} \right) \\
+	\text{s.t }[T^{-1}]_\beta [T]_\beta = \left( \begin{array}{ccc}
+		t_{1}/t_{1} & \ldots & 0\\
+		\vdots & \ddots & 0\\
+		0 & \ldots & t_{n}/t_{n}\\
+	\end{array} \right) = I_n \\
+	\text{where $[T^{-1}]_\beta$ is diagonal} \\
+	\Rightarrow \text{$T^{-1}$ is diagonalizable}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{From 5.1 Exercise 3.a,}
+	A = \left( \begin{array}{cc}
+		1 & 2\\
+		3 & 2\\
+	\end{array} \right)
+	\intertext{Both $A$ and $A^{-1}$ both have the eigenvalue $\lambda_0 = 4$.}
+	E_{\lambda_0} = \text{span}\{(2,3)^t\}
+	\intertext{To find $E'_{\lambda_0}$,}
+	A^t - \lambda_0 I = \left( \begin{array}{cc}
+		-3 & 3\\
+		2 & -2\\
+	\end{array} \right) \\
+	E_{\lambda_0} = \text{span}\{(1,1)^t\} \ne \text{span}\{(2,3)^t\}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\begin{align*}
+		\text{rank}(A-\lambda I) &= \text{rank}((A-\lambda I)^t) &\\
+		&= \text{rank}((A^t-\lambda I^t) &\\
+		&= \text{rank}(A^t-\lambda I)
+	\end{align*}
+	\\
+	\Rightarrow \text{nullity}(A-\lambda I) = \text{nullity}(A^t-\lambda I) \\
+	\therefore \text{dim}(E_{\lambda}) = \text{dim}(E'_{\lambda}) 
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13.c}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{$A$ is diagonalizable} \Leftrightarrow \exists Q \text{ s.t. } A = QDQ^{-1} 
+		\text{ where $D$ is diagonal}
+	\intertext{Taking transpose on both sides,}
+	A^t = (QDQ^{-1})^t \\
+	A^t = (Q^{-1})^tD^tQ^t\\
+	A^t = (Q^t)^{-1}DQ^t\\
+	A^t = BDB^{-1} \text{ where $B = (Q^t)^{-1}$}\\
+	\Rightarrow \text{$A^t$ is diagonalizable}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\end{document}

@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1102R Calculus Tutorial 4}
+\author{Lim Wen Bin}
+\maketitle
+ 
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+\lim_{x \to 1}\frac{\sin(x-1)}{x^2 + x - 2} &= \lim_{x \to 1}\frac{\sin (x-1)}{(x+2)(x-1)} \\
+&= \lim_{\theta \to 0}\frac{\sin \theta}{(\theta+2)(\theta)} && \text{(sub $\theta = x - 1$, $x \to 1 \Rightarrow \theta \to 0$)}\\
+&= 1 \times \lim_{\theta \to 0}\frac{1}{\theta + 3}\\
+&= \frac{1}{3}
+\end{align*}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+ x &\to 0 \Rightarrow ax, bx \to 0 \Rightarrow \theta_0, \theta_1 \to 0 \\ 
+\lim_{x \to 1}\frac{\sin(ax)}{\sin(bx)} &= \lim_{\theta_0 \to 0}\lim_{\theta_1 \to 0}\frac{\sin \theta_0}{\sin \theta_1}\\
+&= \lim_{\theta_0 \to 0}\lim_{\theta_1 \to 0}\frac{\theta_0 \sin \theta_0}{\theta_0}\cdot \frac{\theta_1}{\theta_1 \sin \theta_1} \\
+&= \frac{\theta_0}{\theta_1} \\
+&= \frac{ax}{bx} \\
+&= \frac{a}{b}
+\end{align*}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{align*}
+f'(x) &= \cos (\sin (\sin x)) \frac{d}{dx} \sin (\sin x) \\
+&= \cos (\sin (\sin x))\cos (\sin x) \frac{d}{dx} \sin x \\
+&= \cos (\sin (\sin x))\cos (\sin x) \cos x
+\end{align*}
+
+\begin{problem}{3}
+\end{problem}
+\begin{align*}
+\frac{dy}{dx} &= \frac{d}{dx} \sin (\cos x) \\
+&= \cos (\cos x) (-\sin x) \\
+\frac{d^2 y}{d x^2} &= -\sin x \sin (\cos x) \sin x - \cos x \cos (\cos x) \\
+&= -\sin^2 x \sin (\cos x) - \cos x \cos (\cos x)
+\end{align*}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{align*}
+\tan (x - y) &= \frac{y}{1+x^2} \\
+\sec^2 (x-y) (1 - \frac{dy}{dx}) &= \frac{dy}{dx} \cdot \frac{1}{1 + x^2} + \frac{2xy}{(1 + x^2)^2} \\
+\frac{dy}{dx} &= (\sec^2 (x-y) - \frac{2xy}{(1 + x^2)^2})(\frac{1}{1 + x^2} - \sec^2 (x-y))
+\end{align*}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 \\
+\frac{2x}{a^2} + \frac{dy}{dx} \frac{2y}{b^2} &= 0 \\
+\frac{dy}{dx} &= -\frac{2xb^2}{2ya^2} \\
+&= -\frac{xb^2}{ya^2} \\
+\intertext{At ($x_0, y_0$),}
+\frac{dy}{dx} &= -\frac{x_0 b^2}{y_0 a^2} \\
+\intertext{Equation of tangent line:}
+y - y_0 &= -\frac{x_0 b^2}{y_0 a^2} (x - x_0) \\
+\frac{(y - y_0)y_0}{b^2} &= -\frac{x_0 (x - x_0)}{a^2} \\
+\frac{y y_0}{b^2} + \frac{x_0 x}{a^2} &= \frac{y_0 ^2}{b^2} + \frac{x_0 ^2}{a^2} \\
+\frac{x_0 x}{a^2} + \frac{y y_0}{b^2} &= 1
+\end{align*}
+\end{proof}
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let $f(x) = x^r +(1-x)^r$.}
+\intertext{$\because r \in \mathbb{Q}$, f is continuous on [0,1].}
+f'(x) &= rx^{r-1} - r (1-x)^{r-1} \\
+&= r[x^{r-1} - (1-x)^{r-1}] \\
+f(0) &= 1 \\
+f(1) &= 1
+\intertext{By MVT, $\exists c \in [0, 1]$ s.t. $f'(c) = 0$. At c,}
+c^{r-1} &= (1-c)^{r-1} \\
+c &= 1-c \\
+& = \frac{1}{2}
+\intertext{$\because f(x) > 0 \forall x \in [0, 1] \land f'(x) = 0 \Leftrightarrow x = c$,}
+\intertext{f has a local minimum at $\frac{1}{2}$.}
+\therefore \frac{1}{2^r} +(1-\frac{1}{2})^r \le x^r +(1-x)^r & \le 1 \\
+\frac{2}{2^r} \le x^r +(1-x)^r & \le 1 \\
+\frac{1}{2^{r-1}} \le x^r +(1-x)^r & \le 1
+\end{align*}
+\end{proof}
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+\begin{align*}
+f(x) &= x^3 + bx^2 + cx +d \\
+f'(x) &= 3x^2 + 2bx + c \\
+\intertext{For f to have local extreme values, f'(x) = 0} 
+b^2 < 3c &\Rightarrow (2b)^2 - 4(3)(c) < 0
+\intertext{$\therefore f'$ has no real roots $\Rightarrow$ f has no local extreme values}
+\end{align*}
+\end{proof}
+
+\end{document}

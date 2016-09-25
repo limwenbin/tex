@@ -1,0 +1,429 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1104 Multivariable Calculus Tutorial 1}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{align*}
+a &= \left( \begin{array}{c}
+	3\\
+	-2\\
+	1\\
+\end{array} \right) \\
+b &= \left( \begin{array}{c}
+	2\\
+	3\\
+	-4\\
+\end{array} \right) \\
+\text{comp}_a b &= \frac{a \cdot b}{||a||} \\
+&= -\frac{4}{\sqrt{14}} \\
+\text{proj}_a b &= \text{proj}_a b \cdot \frac{a}{||a||} \\
+&= -\frac{4}{\sqrt{14}} 
+\cdot 
+\frac{1}{\sqrt{14}}
+\left( \begin{array}{c}
+	3\\
+	-2\\
+	1\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	-1/2\\
+	6/7\\
+	-4/7\\
+\end{array} \right) \\
+\theta &= \cos^{-1} \frac{a \cdot b}{||a||||b||}\\
+&= 101.5 ^\circ
+\end{align*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{align*}
+x &= \text{proj}_a b \\
+&= \frac{a \cdot b}{a \cdot a} a \\
+&= \frac{9}{6} a \\
+&= 
+\left( \begin{array}{c}
+	3\\
+	-3/2\\
+	3/2\\
+\end{array} \right) \\
+x + y &= b\\
+y &= b - x \\
+&= 
+\left( \begin{array}{c}
+	3\\
+	-1\\
+	2\\
+\end{array} \right) 
+-
+\left( \begin{array}{c}
+	3\\
+	-3/2\\
+	3/2\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	0\\
+	1/2\\
+	1/2\\
+\end{array} \right) \\
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{comp}_c (a+b) &= \frac{(a+b) \cdot c}{||c||} \\
+&= \frac{a \cdot c  + b \cdot c}{||c||} \\
+&= \frac{a \cdot c}{||c||}  + \frac{b \cdot c}{||c||} \\
+&= \text{comp}_c a + \text{comp}_c b
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4}
+\end{problem}
+\begin{align*}
+\vec{AD} &= \vec{OD} - \vec{OA} \\
+&= 
+\left( \begin{array}{c}
+	5\\
+	0\\
+	6\\
+\end{array} \right)
+-
+\left( \begin{array}{c}
+	5\\
+	2\\
+	0\\
+\end{array} \right)\\
+&=
+\left( \begin{array}{c}
+	0\\
+	-2\\
+	6\\
+\end{array} \right)\\
+\vec{AB} &= \vec{OB} - \vec{OA} \\
+&= 
+\left( \begin{array}{c}
+	2\\
+	6\\
+	1\\
+\end{array} \right)
+-
+\left( \begin{array}{c}
+	5\\
+	2\\
+	0\\
+\end{array} \right)\\
+&=
+\left( \begin{array}{c}
+	-3\\
+	4\\
+	1\\
+\end{array} \right)\\
+\vec{AB} \times \vec{AD}
+&= 
+\left( \begin{array}{c}
+	-3\\
+	4\\
+	1\\
+\end{array} \right) 
+\times
+\left( \begin{array}{c}
+	0\\
+	-2\\
+	6\\
+\end{array} \right)\\
+&=
+\left( \begin{array}{c}
+	24 + 2\\
+	0 + 18\\
+	6\\
+\end{array} \right)\\
+&=
+\left( \begin{array}{c}
+	26\\
+	18\\
+	6\\
+\end{array} \right)\\
+\text{Area} &= 
+\left\lVert
+\left( \begin{array}{c}
+	26\\
+	18\\
+	6\\
+\end{array} \right)
+\right\rVert \\
+&= \sqrt{26^2 + 18^2 + 6^2} \\
+&= 32.2 
+\end{align*}
+\filbreak
+
+\begin{problem}{5}
+\end{problem}
+\begin{align*}
+\vec{QR} &= \vec{OR} - \vec{OQ} \\
+&= 
+\left( \begin{array}{c}
+	3\\
+	1\\
+	1\\
+\end{array} \right)
+-
+\left( \begin{array}{c}
+	0\\
+	1\\
+	2\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	3\\
+	0\\
+	-1\\
+\end{array} \right) \\
+\vec{PQ} &= \vec{OQ} - \vec{OP} \\
+&= 
+\left( \begin{array}{c}
+	1\\
+	2\\
+	0\\
+\end{array} \right)
+-
+\left( \begin{array}{c}
+	0\\
+	1\\
+	2\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	1\\
+	1\\
+	-2\\
+\end{array} \right) \\
+\text{Distance} &= 
+\left\lVert
+\left( \begin{array}{c}
+	1\\
+	1\\
+	-2\\
+\end{array} \right)
+\times
+\left( \begin{array}{c}
+	3\\
+	0\\
+	-1\\
+\end{array} \right)
+\right\rVert \\
+&= 
+\left\lVert
+\left( \begin{array}{c}
+	-1\\
+	-5\\
+	-3\\
+\end{array} \right)
+\right\rVert \\
+&= \sqrt{1 + 25 + 9} \\
+&= \sqrt{35} \\
+\text{Distance} &= \frac{\sqrt{35}}{\sqrt{10}} \\
+&= \sqrt{7/2}
+\end{align*}
+\filbreak
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let $A, B, C, D$ be the vertices of the rhombus. Let $\vec{AB} = (x, y)^T$. Then,}
+\vec{AC} &= \vec{AB} + \vec{BC} \\
+&=
+\left( \begin{array}{c}
+	x\\
+	y\\
+\end{array} \right)
++
+\left( \begin{array}{c}
+	x\\
+	-y\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	2x\\
+	0\\
+\end{array} \right) \\
+\vec{BD} &= \vec{BA} + \vec{AD} \\
+&=
+\left( \begin{array}{c}
+	-x\\
+	-y\\
+\end{array} \right)
++
+\left( \begin{array}{c}
+	x\\
+	-y\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	0\\
+	-2y\\
+\end{array} \right) \\
+\vec{AC} \cdot \vec{BD} &= 0\\
+\intertext{$\therefore$ the diagonals of rhombu are $\bot$.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{7}
+\end{problem}
+\begin{align*}
+(v + w) \cdot (v + w) &= \lVert v \rVert ^2 + \lVert w \rVert ^2 + 2 v \cdot w\\
+&= 2\lVert v + w \rVert ^2 + 2 v \cdot w\\
+&= 2 (v + w) \cdot (v + w) + 2 v \cdot w\\
+\label{7}
+v \cdot w &= -\frac{1}{2} (v + w) \cdot (v + w) \tag{1}
+\intertext{Let $\theta$ be the angle between $v$ and $w$.}
+\lVert v + w \rVert &= \lVert v \rVert + \lVert w \rVert \\
+\cos\theta &= \frac{v \cdot w}{\lVert v \rVert \lVert w \rVert}\\
+\cos\theta &= \frac{v \cdot w}{\lVert v + w \rVert ^2}\\
+\cos\theta &= \frac{v \cdot w}{(v+w)\cdot(v+w)} \\
+&= -\frac{1}{2} \qquad \text{(by \eqref{7})}\\\theta &= \frac{2\pi}{3}
+\end{align*}
+\filbreak
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{Let } a &=
+\left( \begin{array}{c}
+	\sqrt{y + z}\\
+	\sqrt{x + z}\\
+	\sqrt{x + y}\\
+\end{array} \right) \text{, where } (y + z), (x + z), (x + y) \ge 0, \\
+\text{and }
+b &= 
+\left( \begin{array}{c}
+	1\\
+	1\\
+	1\\
+\end{array} \right) 
+\shortintertext{Then, by triangle inequality,}
+a \cdot b &\le \lVert a \rVert \lVert b \rVert \\
+\sqrt{y + z} +\sqrt{x + z} + \sqrt{x + y} &\le \sqrt{2(x+y+z)}\sqrt{3} \\
+\sqrt{y + z} +\sqrt{x + z} + \sqrt{x + y} &\le \sqrt{x+y+z}\sqrt{6} \\
+\sqrt{\frac{y + z}{x+y+z}} + \sqrt{\frac{x + z}{x+y+z}} 
++ \sqrt{\frac{x + y}{x+y+z}} &\le \sqrt{6} \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\lVert a \rVert &= \lVert (a-b)+b \rVert \\
+&\le \lVert (a-b)\rVert +\lVert b \rVert \quad \text{(by triangle inequality)}\\
+\lVert a \rVert - \lVert b \rVert &\le \lVert (a-b)\rVert \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{10}
+\end{problem}
+\begin{proof}
+\begin{align*}
+a \cdot b &= 1 - 1\\
+&= 0 \Rightarrow a \bot b \\
+\shortintertext{Furthermore,}
+c &= 
+\left( \begin{array}{c}
+	0\\
+	2\\
+	2\\
+\end{array} \right) \\
+&=
+\left( \begin{array}{c}
+	-1\\
+	1\\
+	0\\
+\end{array} \right) 
+-
+\left( \begin{array}{c}
+	-1\\
+	-1\\
+	-2\\
+\end{array} \right) \\
+&= a - b
+\intertext{$\therefore$ $c$ is the hypotenuse to right angled triangle with 
+	sides $a$ and $b$.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{11.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\vec{EQ} &= \alpha \vec{AQ} \qquad \text{(they are collinear)} \\
+&= \alpha (\frac{1}{2} (2a - 4b)) \\
+&= \alpha (a - 2b)
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{11.b}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\vec{DE} &= \beta \vec{DB} \qquad \text{(they are collinear)} \\
+&= \beta (2a + 2b)
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{11.c}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\vec{DQ} &= \vec{DE} + \vec{EQ} \\
+a &= \beta (2a + 2b) + \alpha (a - 2b) \\
+\label{11.c}
+2\beta + \alpha &= 1 \tag{1} \\
+2\beta - 2\alpha &= 0 \tag{2}
+\shortintertext{Solving (1) and (2), }
+\alpha = \beta &= 1/3 \\
+\therefore \vec{DE} &= \frac{1}{3}\vec{DB}
+\shortintertext{Similiarly,}
+\vec{PB} &= \vec{PF} + \vec{FB} \\
+a &= \gamma ((-2a) + 2b) + \delta (2a + b) \\
+-2\gamma + 2\delta &= 1 \tag{3} \\
+2\gamma + \delta &= 0 \tag{4}
+\shortintertext{Solving (3) and (4), }
+\gamma = \delta &= 1/3 \\
+\vec{PB} &= \frac{1}{3}\vec{DB} 
+\intertext{$\therefore$ $AP$ and $AQ$ trisect diagonal $BD$ at points 
+	E and F.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\end{document}

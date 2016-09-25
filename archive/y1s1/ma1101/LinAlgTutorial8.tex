@@ -1,0 +1,321 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Linear Algebra Tutorial 8}
+\author{Lim Wen Bin}
+\maketitle
+ 
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+\intertext{Let $S = \{s_0, s_1, s_2, s_3\}$, $T = \{t_0, t_1, t_2, t_3\}$ and $V = \{v_0, v_1, v_2, v_3\}$ be a orthogonal basis for $S$,}
+v_0 &= (0, 1, 0, 1)\\
+t_0 &= (0, 1/\sqrt{2}, 0, 1/\sqrt{2}) \\
+v_1 &= s_1 - \frac{s_1 \cdot v_0}{v_0 \cdot v_0}v_0\\
+&= (-4, 0, 3, 0) - (0, 0, 0, 0)\\
+&= (-4, 0, 3, 0) \\
+t_1 &= (-4/5, 0, 3/5, 0)\\ 
+v_2 &= s_2 - \frac{s_2 \cdot v_0}{v_0 \cdot v_0}v_0 - \frac{s_2 \cdot v_1}{v_1 \cdot v_1}v_1 \\
+&= (3, -1, 4, -1) - (0, -1, 0 , -1) - (0, 0, 0, 0)\\
+&= (3, 0, 4, 0)\\
+t_2 &= (3/5, 0, 4/5, 0)\\
+v_3 &=  s_3 - \frac{s_3 \cdot v_0}{v_0 \cdot v_0}v_0 - \frac{s_3 \cdot v_1}{v_1 \cdot v_1}v_1 - \frac{s_3 \cdot v_2}{v_2 \cdot v_2}v_2 \\
+&= (0, 0, 0, 2) - (0, 1, 0, 1) - (0 , 0, 0, 0)- (0 , 0, 0, 0)\\
+&= (0, -1, 0, 1)\\
+t_3 &= (0, -1/\sqrt{2}, 0, 1/\sqrt{2}) \\
+\end{align*}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{cccc}
+0 & -4/5 & 3/5 & 0 \\
+1/\sqrt{2} & 0 & 0 & -1/\sqrt{2}\\ 
+0 & 3/5 & 4/5 & 0\\
+1/\sqrt{2} & 0 & 0 & 1/\sqrt{2} \\
+\end{array}
+\right)
+\left( \begin{array}{c}
+u_0\\ 
+u_1\\ 
+u_2\\ 
+u_3\\ 
+\end{array}
+\right) &= 
+\left( \begin{array}{c}
+w\\ 
+x\\ 
+y\\ 
+z\\ 
+\end{array}
+\right)\\
+\left( \begin{array}{c}
+u_0\\ 
+u_1\\ 
+u_2\\ 
+u_3\\ 
+\end{array}
+\right) &=
+\left( \begin{array}{cccc}
+0 & -4/5 & 3/5 & 0 \\
+1/\sqrt{2} & 0 & 0 & -1/\sqrt{2}\\ 
+0 & 3/5 & 4/5 & 0\\
+1/\sqrt{2} & 0 & 0 & 1/\sqrt{2} \\
+\end{array}
+\right)^T
+\left( \begin{array}{c}
+w\\ 
+x\\ 
+y\\ 
+z\\ 
+\end{array}
+\right)\\
+&= \left( \begin{array}{c}
+x/\sqrt{2} + z/\sqrt{2}\\ 
+-4w/5 + 3y/5\\ 
+3w/5 + 4y/5\\ 
+-x/\sqrt{2} + z/\sqrt{2}\\ 
+\end{array}
+\right)
+\end{align*}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+\text{$W$ is a subspace of $\mathbb{R}$} &\Rightarrow W = \text{span}\{v_1, v_2, \ldots, v_k\} \\
+\text{$u$ is orthogonal to $W$} &\Leftrightarrow \text{$u.v_i = 0$ for $i = 1, 2, \ldots, k$}\\
+\text{Let }A &= \left( \begin {array}{c} v_1 \\ v_ 2 \\ \vdots \\ v_4 \end{array} \right)\\
+\forall u \in W^\bot, \quad Au &= 0
+\intertext{$\because u$ is a solution to a homogeneous linear system, $W^\bot$ is a subspace of $\mathbb{R}^n$.}
+\end{align*}
+
+\begin{problem}{2.b.i}
+\end{problem}
+\begin{align*}
+(a, a + b, b, b + c, c) &= a(1, 1, 0, 0, 0) + b(0, 1, 1, 1, 0,) + c(0, 0, 0, 1, 1)\\
+W &= \text{span}\{(1, 1, 0, 0, 0), (0, 1, 1, 1, 0,), (0, 0, 0, 1, 1)\} \\
+A &= \left( \begin{array}{ccccc}
+1 & 1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right)\\
+W^\bot &= \{u | Au = 0 \}\\
+\text{rref}(A) &= 
+\left( \begin{array}{ccccc}
+1 & 0 & -1 & 0 & 1 \\
+0 & 1 & 1 & 0 & -1 \\
+0 & 0 & 0 & 1 & 1
+\end{array}
+\right)\\
+W^\bot &= \{ (d-e, e-d, d, -e, e)| d, e \in \mathbb{R}\}
+\end{align*}
+
+\begin{problem}{2.b.ii}
+\end{problem}
+\begin{align*}
+S &= \{ (1/\sqrt{2}, 1/\sqrt{2}, 0, 0, 0), \\
+& \qquad (-1/\sqrt{10}, 1/\sqrt{10}, \sqrt{2/5}, \sqrt{2/5}, 0), \\
+& \qquad(1/2\sqrt{10}, -1/2\sqrt{10}, -1/\sqrt{10}, 3/2\sqrt{10}, \sqrt{5/2}/2)\}\\
+T &= \{ (1\sqrt{3}, -1\sqrt{3}, 1\sqrt{3}, 0, 0), (-1/2\sqrt{6}, 1/2\sqrt{6}, -\sqrt{3/2}/2, 1\sqrt{6}, \sqrt{3/2}/2)\}\\
+\intertext{Yes $S \cup U$ is a orthonormal basis for $\mathbb{R}^5$ as dim$(T) = 2$ and dim$(S) = 3$ and $S \bot U$. Solution: prove that $v_i \cdot v_j = 0$ for $i \ne j$ and $v_i \cdot v_j = 1$ for $i = j$}
+\end{align*}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{ccc}
+1 & 0 & 1 \\
+2 & 1 & 0 \\
+0 & 1 & -2 \\
+1 & 2 & -3 
+\end{array} \right)
+&\xrightarrow{G.E.}
+\left( \begin{array}{ccc}
+1 & 0 & 1 \\
+0 & 1 & -2 \\
+0 & 0 & 0 \\
+0 & 0 & 0 
+\end{array} \right)\\
+\text{basis for $V$} & = \{(1, 0, 1), (0, 1, -2)\}
+\end{align*}
+
+\begin{problem}{3.b.i}
+\end{problem}
+\begin{align*}
+\intertext{Let $S = \{s_1, s_2\}$ be an orthonormal basis for $V$.}
+s_1 &= (1/\sqrt{2}, 0 ,1/\sqrt{2})\\
+v_2 - \frac{v_2 \cdot s_1} {s_1 \cdot s_1} s_1 &= (0, 1, -2) + (1, 0, 1)\\
+&= (1, 1, -1)\\
+s_2 &= (1/\sqrt{3}, 1/\sqrt{3}, -1/\sqrt{3})\\
+\text{projection of $(1, 1, 1)$ onto $V$} &= ((1,1,1) \cdot s_1)s_1 + ((1,1,1) \cdot s_2)s_2\\
+&= (1, 0, 1) + (1/3, 1/3, -1/3)\\
+&= (\frac{4}{3}, \frac{1}{3}, \frac{2}{3})
+\end{align*}
+
+\begin{problem}{3.b.ii}
+\end{problem}
+\begin{align*}
+A &= \left( \begin{array}{cc}
+1 & 0\\
+0 & 1\\
+1 & -2
+\end{array} \right) \\
+b &= \left( \begin{array}{cc}
+1\\
+1\\
+1
+\end{array} \right) \\
+A^TAu &= A^Tb\\
+\left( \begin{array}{ccc}
+2 & -2\\
+-2 & 5
+\end{array} \right) u &=
+\left( \begin{array}{c}
+2\\
+-1\\
+\end{array} \right) \\
+u &= \left( \begin{array}{c}
+\frac{4}{3}\\
+\frac{1}{3}\\
+\end{array} \right) \\
+p &= Au\\
+&= \left( \begin{array}{cc}
+\frac{4}{3}\\
+\frac{1}{3}\\
+\frac{2}{3}
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{align*}
+\text{$S$ is a basis for $V$} &\Rightarrow \text{$\{u_1, u_2, u_3, u_4\}$ is L.I.}\\
+T = AS\\
+\left( \begin{array}{cccc} v_1 \\ v_2 \\ v_3 \\ v_4 \end{array} \right) &=
+\left( \begin{array}{cccc} 
+0.5 & 0.5 & 0.5 & 0.5 \\
+0.5 & 0.5 & -0.5 & -0.5 \\
+0.5 & -0.5 & -0.5 & 0.5 \\
+0.5 & -0.5 & 0.5 & -0.5 \\
+\end{array} \right)
+\left( \begin{array}{cccc} u_1 \\ u_2 \\ u_3 \\ u_4 \end{array} \right)\\
+A &\xrightarrow{G.E.} 
+\left( \begin{array}{cccc} 
+1 & 1 & 1 & 1 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 1 \\
+\end{array} \right) \Rightarrow \text{$AS = T$ is L.I.}
+\intertext{$\because$ dim$(T)$ = dim$(S)$ = 4 and $T$ is L.I., T is a basis for $V$.}
+\end{align*}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{align*}
+\text{$S$ is orthonormal} &\Leftrightarrow S^TS = I\\
+T &= AS\\
+T^TT &= (AS)^TAS\\
+&= S^TA^TAS\\
+&= S^T 
+\left( \begin{array}{cccc} 
+0.5 & 0.5 & 0.5 & 0.5 \\
+0.5 & 0.5 & -0.5 & -0.5 \\
+0.5 & -0.5 & -0.5 & 0.5 \\
+0.5 & -0.5 & 0.5 & -0.5 \\
+\end{array} \right)^T
+\left( \begin{array}{cccc} 
+0.5 & 0.5 & 0.5 & 0.5 \\
+0.5 & 0.5 & -0.5 & -0.5 \\
+0.5 & -0.5 & -0.5 & 0.5 \\
+0.5 & -0.5 & 0.5 & -0.5 \\
+\end{array} \right) S\\
+&= S^T I S\\
+&= S^TS\\
+&= I
+\intertext{$\therefore T$ is orthonormal.}
+\end{align*}
+
+\begin{problem}{5.a.i}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{cc|c}
+1 & 1 & 3\\
+1 & 2 & 4\\
+1 & 0 & 2
+\end{array} \right) &\xrightarrow{G.E.}
+\left( \begin{array}{cc|c}
+1 & 0 & 2\\
+0 & 1 & 1\\
+0 & 0 & 0
+\end{array} \right)\\
+x &= \left( \begin{array}{c}
+2\\
+1\\
+0
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{5.a.ii}
+\end{problem}
+\begin{align*}
+A^TAx &= A^Tb\\
+\left( \begin{array}{cc}
+3 & 3\\
+3 & 5\\
+\end{array} \right)
+x &= 
+\left( \begin{array}{ccc}
+1 & 1 & 1\\
+1 & 2 & 0
+\end{array} \right)
+\left( \begin{array}{c}
+3\\
+4\\
+2
+\end{array} \right)\\
+x = \left( \begin{array}{cc}
+3 & 3\\
+3 & 5\\
+\end{array} \right)^{-1} 
+\left( \begin{array}{c}
+9\\
+11
+\end{array} \right)\\
+&= \left( \begin{array}{c}
+2\\
+1
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{align*}
+\intertext{To prove solution set of (1) $Ax = b$ equal to solution set of (2) $A^TAb = A^Tb$ $\Leftrightarrow$ (1) $\subseteq$ (2) $\land$ (2) $\subseteq$ (1).}
+\intertext{(1) $\subseteq$ (2):}
+Ax &= b\\
+A^TAx &= A^Tb \quad \text{(Taking pre-multiplication by $A^T$ both sides.)}
+\intertext{(2) $\subseteq$ (1):}
+A^TAx &= b \\ 
+x &= x_p + x_g\\
+\intertext{For particular solution $x_p$, $Ax = b$ is consistent $\Rightarrow$ b is in column space of $A$. Then a particular solution is equal to the solution for the projection of $b$ onto the column space of $A$.}
+\therefore A^TAx_p = A^Tb &\Rightarrow Ax_p = b \\
+\intertext{For general solution $x_g$,}
+A^TAx_g &= 0\\
+x_g^TA^TAx_g &= 0\\
+(Ax_g)^TAx_g  &= 0\\
+||Ax_g|| &= 0\\
+Ax_g &= 0\\
+\therefore A^TA(x_p+x_g) = A^Tb &\Rightarrow Ax = b
+\end{align*}
+
+\end{document}

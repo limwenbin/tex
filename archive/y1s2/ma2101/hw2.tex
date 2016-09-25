@@ -1,0 +1,533 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\AtBeginDocument{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 5pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt 
+ \belowdisplayshortskip=4pt plus 5pt minus 4pt
+}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2101 Linear Algebra II Homework 2}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\section*{Section 1.5}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	u_1 = \left(\begin{array}{cc}
+		1 & 1 \\
+		0 & 0 \\
+		0 & 0 \\
+	\end{array}\right)
+	u_2 = \left(\begin{array}{cc}
+		0 & 0 \\
+		1 & 1 \\
+		0 & 0 \\
+	\end{array}\right)
+	u_3 = \left(\begin{array}{cc}
+		0 & 0 \\
+		0 & 0 \\
+		1 & 1 \\
+	\end{array}\right)
+	u_4 = \left(\begin{array}{cc}
+		1 & 0 \\
+		1 & 0 \\
+		1 & 0 \\
+	\end{array}\right)
+	u_5 = \left(\begin{array}{cc}
+		0 & 1 \\
+		0 & 1 \\
+		0 & 1 \\
+	\end{array}\right) 
+	\intertext{For the set to be linearly independent, 
+		for $a_1, a_2, a_3, a_4, a_5 \in F$,}
+	\sum_{i=1}^{5} a_i u_i = 0 \Rightarrow a_1 = \ldots = a_5 = 0 \\
+	\shortintertext{However, for}
+	a_1 = a_2 = a_3 = 1 \ne 0 \\
+	\text{and }a_4 = a_2 = -1 \ne 0 ,\\
+	a_1 u_1 + a_2 u_2+ a_3 u_3 - a_4 u_4 - a_5 u_5 = 0 \\
+	\intertext{$\therefore$ The set is linearly dependent.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{To prove: $\{u,v\}$ is linearly dependent $\Leftrightarrow$ 
+		$u$ and $v$ are multiples of each other}
+	\shortintertext{$(\Rightarrow):$}
+	\intertext{For scalars $a, b$,}
+	\{ u , v \} \text{ linearly dependent} \Rightarrow (au + bv = 0 \Rightarrow 
+	\exists a, b \text{ s.t. $a$ and $b$ not both zero}) \\
+	a = 0, b \ne 0 \Rightarrow 0 + bv = 0\\
+	\Rightarrow bv = 0\\
+	\Rightarrow v = 0\\
+	\therefore v = 0 u
+	\shortintertext{Similiarly,}
+	b = 0, a \ne 0 \Rightarrow 0 + au = 0\\
+	\Rightarrow au = 0\\
+	\Rightarrow u = 0\\
+	\therefore u = 0 v
+	\shortintertext{Lastly,}
+	b \ne 0, a \ne 0 \Rightarrow au + bv = 0\\
+	\Rightarrow au = -bv\\
+	\therefore u = \left(-\frac{b}{a}\right)v
+	\shortintertext{$(\Leftarrow):$}
+	\shortintertext{Suppose}
+	u = cv \\
+	\intertext{If $c = 0$,}
+	au + bv = a(cv) + bv = a(0) + bv = 0 \text{ for any $a$ as long as $b = 0$} \\
+	\Rightarrow \{u,v\} \text{ linearly dependent} 
+	\intertext{Else if $c \ne 0$,}
+	au + bv = a(cv) + bv 
+	\intertext{Choose $b = -1 \ne 0$ and $a = c^{-1} \ne 0$. Then,}
+	a(cv) + bv  = c^{-1} c v - v = 0 \\
+	\Rightarrow \{u,v\} \text{ linearly dependent} 
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{18}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	S = \{ p_i \in P(F) : \forall i \in \mathbb{N} \text{, where } 
+	p_i = \sum_{k=0}^{i} a_{i,k} \cdot x^k , (a_{i,k}) \in F \} 
+	\shortintertext{i.e.} 
+	p_0 = a_{0,0} \\
+	p_1 = a_{1,0} + a_{1,1} x \\
+	p_n = a_{n,0} + a_{n,1} x + \ldots + a_{n,n} x^n \\
+	\intertext{To satisfy $S$ being a set of non-zero polynomials with 
+		pairwise different degrees,}
+	a_{i,i} \ne 0 \text{ and $a_{i,k}$ not all 0}\\
+	\intertext{For $V \subseteq S$, where $V$ contains any 
+		$n+1 \in \mathbb{N}$ number of vectors in $S$,}
+	V = p_k + \ldots + p_n , 0 \le k \le n
+	\intertext{If $V$ is linearly independent,}
+	b_k p_k + \ldots + b_{n} p_{n}  = 0 , (b_i) \in F
+	\end{gather*}
+	\begin{align*}
+		\shortintertext{i.e}
+		&b_k(a_{k,0}) + b_k(a_{k,1}x) + \ldots + b_k(a_{k,k}x^k) \\
+		+ & \quad \vdots \\
+		+ &b_n(a_{n,0}) + b_n(a_{n,1}x) + \ldots + b_k(a_{n,k}x^k) + \ldots 
+		+ b_n(a_{n,n}x^n)\\
+		= &0 \\
+	\end{align*}
+	\intertext{Comparing coefficients,}
+	\begin{align*}
+		b_k(a_{k,0}) + \ldots + b_n(a_{n,0}) &= 0\\
+		&\vdots \\
+		b_k(a_{k,k}) + \ldots + b_n(a_{n,k}) &= 0\\
+		&\vdots \\
+		b_n(a_{n,n}) &= 0\\
+	\end{align*}
+	\begin{gather*}
+	\intertext{As each $a_{i,i} \ne 0$, necessarily:}
+	b_n = 0 \Rightarrow b_{m} = \ldots = b_k = 0 , \\
+	\text{where $m$ is the order of the second highest ordered $p \in S$}\\
+	\intertext{Every such $V \subseteq S$ is linearly independent. Therefore, $V$ is 
+		linearly independent.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{19}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\{ A_1, A_2, \ldots, A_k \} \text{ is linearly independent}\\
+	\Rightarrow ( s_1 A_1 + s_2 A_2 + s_3 A_3 + \ldots + s_k A_k = 0 
+	\Rightarrow s_1 = s_2 = \ldots = s_k = 0 ), (s_i)\in F \\
+	\shortintertext{Consider:}
+	t_1 A_1^T + t_2 A_2^T + t_3 A_3^T + \ldots + t_k A_k^T = 0, (t_i)\in F, \\
+	\intertext{Taking transpose on both sides,}
+	(t_1 A_1^T + t_2 A_2^T + t_3 A_3^T + \ldots + t_k A_k^T)^T = 0^T\\
+	t_1 A_1 + t_2 A_2 + t_3 A^T + \ldots + t_k A_k = 0\\
+	\Rightarrow t_1 = t_2 = \ldots = t_k = 0 \\
+	\intertext{$\therefore \{ A_1^T, A_2^T, \ldots, A_k^T \}$ is linearly independent.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 1.6}
+
+\begin{problem}{4}
+\end{problem}
+\begin{gather*}
+	p_1 = x^3 -2x^2 +1 , p_2 = 4x^2 -x +3, p_3 = 3x -2 \\
+	S = \{ p_1, p_2, p_3 \} \text{ generates } P_3(R) \Leftrightarrow 
+	\text{span}(S) = P_3(R) 
+	\intertext{$\forall p \in S$,} 
+	p \in P_3(R) \\
+	\text{order}(p) \le 3 \\
+	\Rightarrow s_1p_1 + s_2p_2 + s_3p_3 \in P_3(R), (s_i) \in R \\
+	\Rightarrow \text{span}(S) \subseteq P_3(R) 
+	\intertext{To prove the converse, for any $q = a_3x^3 + a_2x^2 + a_1x + a_0 \in P_3(R)$, 
+		suppose for some $(t_i) \in R$,}
+	q = t_1p_1 + t_2p_2 + t_3p_3 \\
+	\shortintertext{i.e.}
+	T = \left( \begin{array}{c}
+		t_1\\
+		t_2\\
+		t_3\\
+	\end{array} \right) ,  
+	P = \left( \begin{array}{ccc}
+		1 & 0 & 0\\
+		-2 & 4 & 0\\
+		0 & -1 & 3\\
+		1 & 3 & -2\\
+	\end{array} \right),
+	A = \left( \begin{array}{c}
+		a_3\\
+		a_2\\
+		a_1\\
+		a_0\\
+	\end{array} \right), PT = A \\
+	\text{rref}([P|A]) = 
+	\left( \begin{array}{ccc|c}
+		1 & 0 & 0 & a_3\\
+		0 & 1 & 0 & \frac{a_2+2a_3}{4}\\
+		0 & 0 & 1 & \frac{4a_1+a_2+2a_3}{12}\\
+		0 & 0 & 0 & \frac{12a_0+8a_1-7a_2-28a_3}{12}\\
+	\end{array} \right) \\
+	\intertext{Hence, there is no solution when the last expression in $a$ does not equal 0.
+		Therefore $S$ does not generate $P_3(R)$.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{gather*}
+	U = 
+	\left( \begin{array}{c|c|c|c}
+		u_1^T & u_2^T & u_3^T & u_4^T\\
+	\end{array} \right) 
+	=
+	\left( \begin{array}{cccc}
+		1 & 0 & 0 & 0\\
+		1 & 1 & 0 & 0\\
+		1 & 1 & 1 & 0\\
+		1 & 1 & 1 & 1\\
+	\end{array} \right) \\
+	\intertext{For scalars $(s_i)$,}
+	S =
+	\left( \begin{array}{c}
+		s_1\\
+		s_2\\
+		s_3\\
+		s_4\\
+	\end{array} \right),
+	A =
+	\left( \begin{array}{c}
+		a_1\\
+		a_2\\
+		a_3\\
+		a_4\\
+	\end{array} \right),
+	US = T \\
+	\text{rref}([U|T]) =
+	\left( \begin{array}{cccc|c}
+		1 & 0 & 0 & 0 & a_1\\
+		0 & 1 & 0 & 0 & a_2-a_1\\
+		0 & 0 & 1 & 0 & a_3-a_2\\
+		0 & 0 & 0 & 1 & a_4-a_3\\
+	\end{array} \right) \\
+	\therefore (a_1,a_2,a_3,a_4) = a_1u_1 + (a_2-a_1)u_2 + (a_3-a_2)u_3 + (a_4-a_3)u_4 
+\end{gather*}
+\filbreak
+
+\begin{problem}{13}
+\end{problem}
+\begin{gather*}
+	A = \left( \begin{array}{ccc}
+		1 & -2 & 1\\
+		2 & -3 & 1\\
+	\end{array} \right),
+	X = \left( \begin{array}{c}
+		x_1\\
+		x_2\\
+		x_3\\
+	\end{array} \right),
+	AX = 0 \\
+	\text{rref}(A) = 
+	\left( \begin{array}{ccc}
+		1 & 0 & -1\\
+		0 & 1 & -1\\
+	\end{array} \right)
+	\intertext{i.e. for $s \in \mathbb{R}$,}
+	x_1 = x_2 = x_3 = s \\
+	\text{Subspace generated by solutions} = s(1,1,1) \\
+	\text{Basis of subspace} = \{(1,1,1)\} \\
+\end{gather*}
+\filbreak
+
+\begin{problem}{17}
+\end{problem}
+\begin{gather*}
+	\intertext{For $A \in W$,}
+	A =
+	\left( \begin{array}{ccccc}
+		0 & a_{1,2} & a_{1,3} & \ldots & a_{1,n}\\
+		-a_{1,2} & 0 & a_{2,3} & \ldots & a_{2,n}\\
+		-a_{1,3} & -a_{2,3} & 0 & \ddots & \vdots\\
+		\vdots & \vdots & \ddots & \ddots & a_{n-1,n}\\
+		-a_{1,n} & -a_{2,n} & \ldots & -a_{n-1,n} & 0\\
+	\end{array} \right)
+	\intertext{Define $B(x,y) \in M_{n \times n}$, $\forall x, y \in \mathbb{Z}^+$, 
+		&1 \le x \le (n-1)$, $(x+1) \le y \le n$, where}
+	(B(x,y)_{ij}) = 
+	\begin{cases}
+		1, &\text{when $i = x$ and $j = y$}\\
+		-1, &\text{when $j = x$ and $i = y$}\\
+		0, &\text{otherwise}\\
+	\end{cases}
+	\intertext{i.e. $\forall A \in W$}
+	A = \sum_{x=1}^{n-1} \sum_{y=x+1}^{n} a_{x,y} B(x,y) \\
+	S = \{ B(x,y) : 1 \le x \le (n-1), (x+1) \le y \le n \} 
+	\text{ is a basis for $W$} \\
+	\begin{aligned}
+		\therefore \text{dim}(W) &= |S| \\
+		&= \frac{n^2 - n}{2}
+	\end{aligned}
+\end{gather*}
+\filbreak
+
+\begin{problem}{20.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}	
+	\text{$S$ generates $V$}\\
+	\Rightarrow \text{span($S$)} = V \\
+	\text{dim(span($S$))} = \text{dim($V$)} = n
+	\intertext{As span($S$) is $n$-dimensional, it has a basis, $\beta$, with $n$ elements,}
+	\beta = \{ s_1, \ldots, s_n \} \\
+	\intertext{Futhermore, as span($S$) is defined as all linear combinations 
+		of vectors in $S$, each $s_i$ is a linear combination of vectors in $S$. Then let:}
+	\beta' = \{ u \in S : \text{ $u$ is present in the linear combination 
+		of any $s \in \beta$} \} \\
+	\Rightarrow \beta' \subseteq S
+	\intertext{Furthermore, as span($S$) $=$ $V$, $\beta'$ is also a basis for $V$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{20.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}	
+	\intertext{Suppose, for contradiction, that $S$ contains $k < n$ vectors. As $V$ 
+		has dimension $n$, there exists a basis $\beta$,} 
+	|\beta| = n\\
+	\intertext{As $\beta$ is a linearly indepedent subset of $V$, 
+		by Theorem 1.10 (Replacement Theorem),}
+	|\beta| \le |S|\\
+	\Rightarrow n \le k\\
+	\intertext{Thus yielding a contradiction, therefore $|S| > k$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{26}
+\end{problem}
+\begin{proof}
+\begin{gather*}	
+	\intertext{Let $S$ be the subspace defined by $\{f \in P_n(R) : f(a) = 0\}$. 
+		Let $z$ denote the zero polynomial. 
+		For any $p \in S$,}
+	p(a) = 0 \\
+	\intertext{Implying that each $p$ has a real root at $a$, 
+		i.e. each $p$ is of the form:}
+	p = (x - a) (\alpha_{n-1}x^{n-1} + \alpha_{n-2}x^{n-2} + \ldots 
+	+ \alpha_1 x + \alpha_0) , (\alpha_i) \in R\\
+	\intertext{Define $B = \{p_k : k \in \mathbb{Z}, k \in [0, n-1]\}$ such that:}
+	\begin{align*}
+		p_0 &= (x-a) (1) &\\ 
+		p_1 &= (x-a) (x) \\ 
+		&\vdots \\
+		p_{n-1} &= (x-a) (x^{n-1}) 
+	\end{align*}
+	\intertext{Then, $\forall p \in S$,}
+	\begin{align*}
+		p &= (x-a) ( \alpha_{n-1}x^{n-1} + \ldots + \alpha_0) &\\
+		&= (x-a) ( \alpha_{n-1}x^{n-1}) + \ldots + (x-a)(\alpha_0) \\
+		&= \alpha_{n-1}p_{n-1} + \ldots + \alpha_0 p_0
+	\end{align*}
+	\intertext{Therefore, $B$ spans $S$. Furthermore,}
+	(x-a) ( \alpha_{n-1}x^{n-1} + \ldots + \alpha_0) = z \\
+	\Rightarrow \alpha_{n-1}x^{n-1} + \ldots + \alpha_0= z \\
+	\Rightarrow \alpha_{n-1} = \ldots = \alpha_0 = 0 \\
+	\intertext{Hence, $B$ also linearly independent and thus a basis for $S$.}
+	\therefore \text{dim($S$)} = |B| = n
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 2.1}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+\begin{gather*}	
+	\intertext{For $f, g \in P_2(R)$, $a \in R$,}
+	\begin{align*}
+		T(af(x)) &= x (af(x)) + (af(x))' &\\ 
+		&= axf(x)) + af'(x)\\ 
+		&= a(xf(x)) + f'(x))\\ 
+		&= aT(f(x)) \\
+	\text{Let } f(x) + g(x) &= h(x) &\\
+		T(f(x) + g(x)) &= T(h(x))\\ 
+		&= xh(x) + h'(x)\\ 
+		&= x(f(x) + g(x)) + f'(x)+g'(x)\\ 
+		&= xf(x) + f'(x) + xg(x) + g'(x)\\
+		&= T(f(x)) + T(g(x))
+	\end{align*}
+	\intertext{$\therefore T$ is a linear transformation}
+\end{gather*}
+\end{proof}
+\begin{gather*}
+	\intertext{Furthermore, $T$ is represented by the matrix $A$. For $p \in P_2(R)$, 
+		$p = a_2x^2 + a_1x + a_2}
+	A = 
+	\left( \begin{array}{ccc}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		2 & 0 & 1\\
+		0 & 1 & 0\\
+	\end{array} \right) \quad 
+	X = 
+	\left( \begin{array}{c}
+		a_2\\
+		a_1\\
+		a_0\\
+	\end{array} \right) \quad T(f(x)) = AX\\
+	\text{rref}(A) = 
+	\left( \begin{array}{ccc}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		0 & 0 & 1\\
+		0 & 0 & 0\\
+	\end{array} \right) \\ 
+	\Rightarrow \text{nullity}(T) = 0 \\
+	\beta_{\text{N}(T)} = \{ 0 \} \\
+	\beta_{P_2(R)} = \{ b_1, b_2, b_3\} = \left\{
+		\left( \begin{array}{c}
+			1\\
+			0\\
+			0\\
+		\end{array} \right) ,
+		\left( \begin{array}{c}
+			0\\
+			1\\
+			0\\
+		\end{array} \right) ,
+		\left( \begin{array}{c}
+			0\\
+			0\\
+			1\\
+		\end{array} \right) 
+	\right\} \\
+	A \left( \begin{array}{c|c|c}
+		b_1 & b_2 & b_3\\
+	\end{array} \right) =
+	\left( \begin{array}{ccc}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		2 & 0 & 1\\
+		0 & 1 & 0\\
+	\end{array} \right) \\ 
+	\beta_{P_3(R)} = \left\{
+		\left( \begin{array}{c}
+			1\\
+			0\\
+			2\\
+			0\\
+		\end{array} \right) ,
+		\left( \begin{array}{c}
+			0\\
+			1\\
+			0\\
+			1\\
+		\end{array} \right) ,
+		\left( \begin{array}{c}
+			0\\
+			0\\
+			1\\
+			0\\
+		\end{array} \right) 
+	\right\} \\
+	\text{rank}(T) = |\beta_{P_3(R)}| = 3 \\
+	\text{rank}(T) + \text{nullity}(T) = 3 + 0 = \text{dim}(P_2(R)) \\
+	\text{nullity}(T) = 0 \Rightarrow \text{$T$ is one-to-one} \\
+	\text{dim}(P_3(R)) = 4 \\
+	\text{rank}(T) = 3 < \text{dim}(P_3(R)) \Rightarrow \text{$T$ is not onto}  
+\end{gather*}
+\filbreak
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+\begin{gather*}	
+	\intertext{For $A, B \in M_{n \times n}(F)$, $c \in F$,}
+	\begin{align*}
+		T(cA) &= \sum_{i=1}^n cA_{ii} &\\ 
+		&= c \sum_{i=1}^n A_{ii} \\ 
+		&= cT(A) \\
+		T(A + B) &= \sum_{i=1}^n A_{ii} + B_{ii} \\ 
+		&= \sum_{i=1}^n A_{ii} + \sum_{i=1}^n B_{ii} \\ 
+		&= T(A) + T(B)
+	\end{align*}
+	\intertext{$\therefore T$ is a linear transformation}
+\end{gather*}
+\end{proof}
+\begin{gather*}	
+	\beta_{M_{n \times n}(F)} = \{B(1,1), \ldots, B(n,n) \} \\
+	\intertext{Such that for $1 \le x \le n$, $1 \le y \le n$,} 
+	B(x,y)_{ij} = \begin{cases}
+		1, &i=x, j=y\\
+		0, &\text{otherwise}\\
+	\end{cases} \\
+	\therefore \beta_{\text{R}(T)} = \{T(B(1,1)), \ldots, T(B(n,n)) \} = \{ 1 \} \\ 
+	\text{rank}(T) = 1 
+	\intertext{To find $\beta_{\text{N}(T)}$, let $X \subseteq \beta_{M_{n \times n}(F)}$ 
+		be the subset containing elements whose non-zero entry is off-diagonal. i.e.}
+	X =  \beta_{M_{n \times n}(F)} \setminus \{ B(x,y) : y = x \} \\
+	|X| = n^2 -n \\
+	X \subseteq \beta_{\text{N}(T)}
+	\intertext{For the entries on the diagonal, consider:}
+	Y = \{ C(z) : 1 \le z \le n-1 \} 
+	\shortintertext{where:}
+	C(z)_{ij} = \begin{cases}
+		1, &i=z, j=z\\
+		-1, &i=n, j=n\\
+		0, &\text{otherwise}\\
+	\end{cases} 
+	\intertext{Then, $X \cup Y = \beta_{\text{N}(T)}$.}
+	\text{nullity}(T) = |\beta_{\text{N}(T)}| = |X|+|Y| = (n^2 -n) + (n - 1) = n^2 -1 \\
+	\text{rank}(T) + \text{nullity}(T) = n^2 - 1 + 1 = n^2 
+	= \text{dim}(\beta_{M_{n \times n}(F)} ) \\
+	\text{nullity}(T) \ne 0 \Rightarrow \text{$T$ is not one-to-one} \\
+	\text{rank}(T) = 1 = \text{dim}(F) \Rightarrow \text{$T$ is onto}
+\end{gather*}
+\filbreak
+
+\end{document}

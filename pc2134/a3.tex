@@ -1,0 +1,555 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{gather*}
+	\text{Let } f \left(\begin{array}{c}
+		x\\
+		y\\
+		z\\
+	\end{array}\right) = \left(\begin{array}{c}
+		r\\
+		\phi\\
+		\theta\\
+	\end{array}\right) = \left(\begin{array}{c}
+		\sqrt{x^2 + y^2 + z^2}\\
+		\tan^{-1}\frac{y}{x}\\
+		\cos^{-1}\frac{z}{\sqrt{x^2 + y^2 + z^2}}\\
+	\end{array}\right). \\
+	\boldsymbol{J}_f = \left(\begin{array}{ccc}
+		\frac{x}{\sqrt{x^2 + y^2 + z^2}} & \frac{y}{\sqrt{x^2 + y^2 + z^2}} &
+			\frac{z}{\sqrt{x^2 + y^2 + z^2}}\\
+		-\frac{y}{x^2 + y^2} & \frac{x}{x^2 + y^2} & 0\\
+		\frac{xz}{\sin\theta(x^2 + y^2 + z^2)^{3/2}} & \frac{yz}{\sin\theta(x^2 +
+			y^2 + z^2)^{3/2}} & -\frac{r+r^{-1}z^2}{\sin\theta(x^2 + y^2 + z^2)} \\
+	\end{array}\right)\\
+	\phantom{\boldsymbol{J}_f} = \left(\begin{array}{ccc}
+		\sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\
+		-r^{-1}\sin\phi\csc\theta & -r^{-1}\cos\phi\csc\theta & 0\\
+		r^{-1}\cos\theta\cos\phi & r^{-1}\cos\theta\sin\phi & r^{-1}\sin\theta \\
+	\end{array}\right)\\
+	\begin{aligned}
+		\frac{\partial F}{\partial x} 
+			&= \frac{\partial F} {\partial r} \frac{\partial r}{\partial x}
+			+ \frac{\partial F} {\partial \phi} \frac{\partial \phi}{\partial x}
+			+ \frac{\partial F} {\partial \theta} \frac{\partial \theta}{\partial x} \\
+		&= \frac{\partial F} {\partial r} \sin\theta\cos\phi
+			- \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\csc\theta 
+			+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\cos\phi \\
+		\frac{\partial^2 F}{\partial x^2} 
+			&=\frac{\partial}{\partial x} \left[ 
+				\frac{\partial F} {\partial r} \sin\theta\cos\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\cos\phi
+			\right] \\
+		&= \frac{\partial}{\partial r} \frac{\partial F} {\partial x}
+			\sin\theta\cos\phi
+			- \frac{\partial}{\partial \phi} \frac{\partial F} {\partial
+			x} r^{-1}\sin\phi\csc\theta 
+			+ \frac{\partial}{\partial \theta} \frac{\partial F} {\partial
+			x} r^{-1}\cos\theta\cos\phi \\
+		&= \frac{\partial}{\partial r} 
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\cos\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\cos\phi
+			\right) 
+			\sin\theta\cos\phi \\
+		&\phantom{=} -\frac{\partial}{\partial \phi} 
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\cos\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\cos\phi
+			\right) 
+			r^{-1}\sin\phi\csc\theta  \\
+		&\phantom{=} +\frac{\partial}{\partial \theta}
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\cos\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\cos\phi
+			\right) 
+			r^{-1}\cos\theta\cos\phi \\
+	\end{aligned}
+	\filbreak
+	\begin{aligned}
+		\frac{\partial^2 F}{\partial x^2} 
+		% differentiate the terms
+		% term 1
+		&= \biggl( \frac{\partial^2 F} {\partial r^2} \sin\theta\cos\phi
+			+ \frac{\partial F} {\partial \phi} r^{-2}\sin\phi\csc\theta 
+			- \frac{\partial^2 F} {\partial r \partial\phi}
+			r^{-1}\sin\phi\csc\theta \\
+		&\phantom{=} -\frac{\partial F} {\partial \theta} r^{-2}\cos\theta\cos\phi
+			+\frac{\partial^2 F} {\partial r \partial\theta}
+			r^{-1}\cos\theta\cos\phi \biggl) \sin\theta\cos\phi \\
+		% term 2
+		&\phantom{=} - \biggl( 
+			\frac{\partial F} {\partial\phi \partial r} \sin\theta\cos\phi
+			- \frac{\partial F} {\partial r} \sin\theta\sin\phi
+			- \frac{\partial^2 F} {\partial \phi^2} r^{-1}\sin\phi\csc\theta 
+			- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta  \\
+		&\phantom{=} +\frac{\partial^2 F} {\partial\phi \partial\theta} 
+			r^{-1}\cos\theta\cos\phi -\frac{\partial F} {\partial
+			\theta}r^{-1}\cos\theta\sin\phi \biggl) r^{-1}\sin\phi\csc\theta  \\
+		% term 3
+		&\phantom{=} + \biggl( \frac{\partial^2 F} {\partial\theta \partial r} 
+			\sin\theta\cos\phi
+			+ \frac{\partial F} {\partial r} \cos\theta\cos\phi
+			- \frac{\partial^2 F} {\partial\theta \partial\phi} r^{-1}\sin\phi\csc\theta 
+			+ \frac{\partial F} {\partial \phi} r^{-1}\sin\phi\cos\theta\csc^2\theta \\
+		&\phantom{=} 
+			+\frac{\partial^2 F} {\partial\theta^2} r^{-1}\cos\theta\cos\phi 
+			-\frac{\partial F} {\partial \theta} r^{-1}\sin\theta\cos\phi 
+			\biggl) r^{-1}\cos\theta\cos\phi \\
+		% simplification
+		% term 1
+		&= \biggl( \frac{\partial^2 F} {\partial r^2} \sin^2\theta\cos^2\phi
+			+ \frac{\partial F} {\partial \phi} r^{-2}\sin\phi\cos\theta 
+			- \frac{\partial^2 F} {\partial r \partial\phi}
+			r^{-1}\sin\phi\cos\phi \\
+		&\phantom{=} -\frac{\partial F} {\partial \theta}
+			r^{-2}\cos\theta\sin\theta\cos^2\phi
+			+\frac{\partial^2 F} {\partial r \partial\theta}
+			r^{-1}\cos\theta\sin\theta\cos^2\phi \biggl) \\
+		% term 2
+		&\phantom{=} +\biggl( 
+			\frac{\partial F} {\partial\phi \partial r} r^{-1}\sin\phi\cos\phi
+			+ \frac{\partial F} {\partial r} r^{-1}\sin^2\phi
+			+ \frac{\partial^2 F} {\partial \phi^2} r^{-2}\sin^2\phi\csc^2\theta 
+			+ \frac{\partial F} {\partial \phi} r^{-2}\cos\phi\sin\phi\csc^2\theta  \\
+		&\phantom{=} -\frac{\partial^2 F} {\partial\phi \partial\theta} 
+			r^{-2}\sin\phi\csc\theta\cos\theta\cos\phi +\frac{\partial F} {\partial
+			\theta}r^{-2}\cos\theta\csc\theta\sin^2\phi \biggl) \\
+		% term 3
+		&\phantom{=} + \biggl( \frac{\partial^2 F} {\partial\theta \partial r} 
+			r^{-1}\sin\theta\cos\theta\cos^2\phi
+			+ \frac{\partial F} {\partial r} \cos^2\theta\cos^2\phi
+			- \frac{\partial^2 F} {\partial\theta \partial\phi}
+			r^{-2}\sin\phi\cos\phi\cos\theta\csc\theta \\
+		&\phantom{=} 
+			+ \frac{\partial F} {\partial \phi}
+			r^{-2}\sin\phi\cos\phi\cos^2\theta\csc^2\theta
+			+\frac{\partial^2 F} {\partial\theta^2} r^{-2}\cos^2\theta\cos^2\phi 
+			-\frac{\partial F} {\partial \theta} r^{-2}\sin\theta\cos\theta\cos^2\phi 
+			\biggl) \\
+		\frac{\partial F}{\partial y} 
+			&= \frac{\partial F} {\partial r} \frac{\partial r}{\partial y}
+			+ \frac{\partial F} {\partial \phi} \frac{\partial \phi}{\partial y}
+			+ \frac{\partial F} {\partial \theta} \frac{\partial \theta}{\partial y} \\
+		&= \frac{\partial F} {\partial r} \sin\theta\sin\phi
+			- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta 
+			+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\sin\phi \\
+		\frac{\partial^2 F}{\partial y^2} 
+			&=\frac{\partial}{\partial y} \left[ 
+				\frac{\partial F} {\partial r} \sin\theta\sin\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\sin\phi
+			\right] \\
+		&= \frac{\partial}{\partial r} 
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\sin\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\sin\phi
+			\right) 
+			\sin\theta\sin\phi \\
+		&\phantom{=} -\frac{\partial}{\partial \phi} 
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\sin\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\sin\phi
+			\right) 
+			r^{-1}\cos\phi\csc\theta  \\
+		&\phantom{=} +\frac{\partial}{\partial \theta}
+			\left( 
+				\frac{\partial F} {\partial r} \sin\theta\sin\phi
+				- \frac{\partial F} {\partial \phi} r^{-1}\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \theta} r^{-1}\cos\theta\sin\phi
+			\right) 
+			r^{-1}\cos\theta\sin\phi \\
+	\end{aligned}
+	\begin{aligned}
+		\frac{\partial^2 F}{\partial y^2} 
+		&= \biggl( 
+				\frac{\partial^2 F} {\partial r^2} \sin^2\theta\sin^2\phi
+				- \frac{\partial^2 F} {\partial r \partial\phi}
+					r^{-1}\sin\theta\sin\phi\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\theta\sin\phi\cos\phi\csc\theta \\
+				&\phantom{=} + \frac{\partial^2 F} {\partial r\partial \theta}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+				- \frac{\partial F} {\partial \theta}
+					r^{-2}\sin\theta\cos\theta\sin^2\phi
+			\biggl) \\
+		&\phantom{=} 
+			\biggl( 
+				\frac{\partial^2 F} {\partial\phi\partialr}
+					r^{-1}\cos\theta\cos\phi\sin\theta\sin\phi
+				+ \frac{\partial F} {\partial r} r^{-1}\sin\theta\cos\theta\cos^2\phi
+				- \frac{\partial^2 F} {\partial^2 \phi}
+					r^{-2}\cos\theta\cos^2\phi\csc\theta \\
+				&\phantom{=} + \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\phi\cos\phi\cos\theta\csc\theta 
+				+ \frac{\partial^2 F} {\partial\phi\partial\theta}
+					r^{-2}\cos^2\theta\cos\phi\sin\phi
+				+ \frac{\partial F} {\partial \theta} r^{-2}\cos^2\theta\cos^2\phi
+			\biggl) \\
+		&\phantom{=}
+			\biggl( 
+				\frac{\partial^2 F} {\partial\theta\partialr}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+				+\frac{\partial F} {\partial r} r^{-1}\cos^2\theta\sin^2\phi
+				- \frac{\partial^2 F} {\partial\theta\partial\phi}
+					r^{-2}\cos\phi\sin\phi\cos\theta\csc\theta \\
+				&\phantom{=} + \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\phi\cos\phi\cos^2\theta\csc^2\theta 
+				+ \frac{\partial^2 F} {\partial\theta^2} r^{-2}\cos^2\theta\sin^2\phi
+				- \frac{\partial F} {\partial \theta}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+			\biggl) \\
+		\frac{\partial F}{\partial z} 
+			&= \frac{\partial F} {\partial r} \frac{\partial r}{\partial z}
+			+ \frac{\partial F} {\partial \phi} \frac{\partial \phi}{\partial z}
+			+ \frac{\partial F} {\partial \theta} \frac{\partial \theta}{\partial z} 
+			= \frac{\partial F} {\partial r} \cos\theta
+			+ \frac{\partial F} {\partial \theta} r^{-1}\sin\theta \\
+		\frac{\partial^2 F}{\partial z^2} 
+			&=\frac{\partial}{\partial z} \left[ 
+				\frac{\partial F} {\partial r} \cos\theta
+				+ \frac{\partial F} {\partial \theta} r^{-1}\sin\theta
+			\right] \\
+		&= \frac{\partial}{\partial r} 
+			\left( 
+				\frac{\partial F} {\partial r} \cos\theta
+				+ \frac{\partial F} {\partial \theta} r^{-1}\sin\theta
+			\right) \cos\theta 
+			+\frac{\partial}{\partial \theta}
+			\left( 
+				\frac{\partial F} {\partial r} \cos\theta
+				+ \frac{\partial F} {\partial \theta} r^{-1}\sin\theta
+			\right) 
+			r^{-1}\sin\theta \\
+		&= \left( 
+				\frac{\partial^2F} {\partial r^2} \cos^2\theta
+				+ \frac{\partial^2F} {\partial r\partial\theta}
+					r^{-1}\cos\theta\sin\theta
+				- \frac{\partial F} {\partial \theta} r^{-2}\cos\theta\sin\theta
+			\right) \\
+			&\phantom{=} + \left( 
+				\frac{\partial^2F} {\partial\theta\partial r}
+					r^{-1}\sin\theta\cos\theta
+				- \frac{\partial F} {\partial r} r^{-1}\sin^2\theta
+				+ \frac{\partial^2F} {\partial \theta^2} r^{-2}\sin^2\theta
+				+ \frac{\partial F} {\partial \theta} r^{-2}\sin\theta\cos\theta
+			\right) \\
+	\end{aligned} \\
+	\begin{aligned}
+		\shortintertext{Then, Laplace's equation is given by}
+		&\qquad \frac{\partial^2 F}{\partial x^2} + \frac{\partial^2 F}{\partial y^2}
+			+ \frac{\partial^2 F}{\partial z^2}  \\ 
+		&= \biggl( \frac{\partial^2 F} {\partial r^2} \sin^2\theta\cos^2\phi
+			+ \frac{\partial F} {\partial \phi} r^{-2}\sin\phi\cos\theta 
+			- \frac{\partial^2 F} {\partial r \partial\phi}
+			r^{-1}\sin\phi\cos\phi \\
+		&\phantom{=} -\frac{\partial F} {\partial \theta}
+			r^{-2}\cos\theta\sin\theta\cos^2\phi
+			+\frac{\partial^2 F} {\partial r \partial\theta}
+			r^{-1}\cos\theta\sin\theta\cos^2\phi \biggl) \\
+		% term 2
+		&\phantom{=} +\biggl( 
+			\frac{\partial F} {\partial\phi \partial r} r^{-1}\sin\phi\cos\phi
+			+ \frac{\partial F} {\partial r} r^{-1}\sin^2\phi
+			+ \frac{\partial^2 F} {\partial \phi^2} r^{-2}\sin^2\phi\csc^2\theta 
+			+ \frac{\partial F} {\partial \phi} r^{-2}\cos\phi\sin\phi\csc^2\theta  \\
+		&\phantom{=} -\frac{\partial^2 F} {\partial\phi \partial\theta} 
+			r^{-2}\sin\phi\csc\theta\cos\theta\cos\phi +\frac{\partial F} {\partial
+			\theta}r^{-2}\cos\theta\csc\theta\sin^2\phi \biggl) \\
+		% term 3
+		&\phantom{=} + \biggl( \frac{\partial^2 F} {\partial\theta \partial r} 
+			r^{-1}\sin\theta\cos\theta\cos^2\phi
+			+ \frac{\partial F} {\partial r} \cos^2\theta\cos^2\phi
+			- \frac{\partial^2 F} {\partial\theta \partial\phi}
+			r^{-2}\sin\phi\cos\phi\cos\theta\csc\theta \\
+		&\phantom{=} 
+			+ \frac{\partial F} {\partial \phi}
+			r^{-2}\sin\phi\cos\phi\cos^2\theta\csc^2\theta
+			+\frac{\partial^2 F} {\partial\theta^2} r^{-2}\cos^2\theta\cos^2\phi 
+			-\frac{\partial F} {\partial \theta} r^{-2}\sin\theta\cos\theta\cos^2\phi 
+			\biggl) \\
+		&\phantom{=} \biggl( 
+				\frac{\partial^2 F} {\partial r^2} \sin^2\theta\sin^2\phi
+				- \frac{\partial^2 F} {\partial r \partial\phi}
+					r^{-1}\sin\theta\sin\phi\cos\phi\csc\theta 
+				+ \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\theta\sin\phi\cos\phi\csc\theta \\
+				&\phantom{=} + \frac{\partial^2 F} {\partial r\partial \theta}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+				- \frac{\partial F} {\partial \theta}
+					r^{-2}\sin\theta\cos\theta\sin^2\phi
+			\biggl) \\
+		&\phantom{=} 
+			\biggl( 
+				\frac{\partial^2 F} {\partial\phi\partialr}
+					r^{-1}\cos\theta\cos\phi\sin\theta\sin\phi
+				+ \frac{\partial F} {\partial r} r^{-1}\sin\theta\cos\theta\cos^2\phi
+				- \frac{\partial^2 F} {\partial^2 \phi}
+					r^{-2}\cos\theta\cos^2\phi\csc\theta \\
+				&\phantom{=} + \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\phi\cos\phi\cos\theta\csc\theta 
+				+ \frac{\partial^2 F} {\partial\phi\partial\theta}
+					r^{-2}\cos^2\theta\cos\phi\sin\phi
+				+ \frac{\partial F} {\partial \theta} r^{-2}\cos^2\theta\cos^2\phi
+			\biggl) \\
+		&\phantom{=}
+			\biggl( 
+				\frac{\partial^2 F} {\partial\theta\partialr}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+				+\frac{\partial F} {\partial r} r^{-1}\cos^2\theta\sin^2\phi
+				- \frac{\partial^2 F} {\partial\theta\partial\phi}
+					r^{-2}\cos\phi\sin\phi\cos\theta\csc\theta \\
+				&\phantom{=} + \frac{\partial F} {\partial \phi}
+					r^{-2}\sin\phi\cos\phi\cos^2\theta\csc^2\theta 
+				+ \frac{\partial^2 F} {\partial\theta^2} r^{-2}\cos^2\theta\sin^2\phi
+				- \frac{\partial F} {\partial \theta}
+					r^{-1}\sin\theta\cos\theta\sin^2\phi
+			\biggl) \\
+		&\phantom{=} \left( 
+				\frac{\partial^2F} {\partial r^2} \cos^2\theta
+				+ \frac{\partial^2F} {\partial r\partial\theta}
+					r^{-1}\cos\theta\sin\theta
+				- \frac{\partial F} {\partial \theta} r^{-2}\cos\theta\sin\theta
+			\right) \\
+			&\phantom{=} + \left( 
+				\frac{\partial^2F} {\partial\theta\partial r}
+					r^{-1}\sin\theta\cos\theta
+				- \frac{\partial F} {\partial r} r^{-1}\sin^2\theta
+				+ \frac{\partial^2F} {\partial \theta^2} r^{-2}\sin^2\theta
+				+ \frac{\partial F} {\partial \theta} r^{-2}\sin\theta\cos\theta
+			\right) \\
+		&= \frac{\partial^2 F}{\partial r^2} + \frac{\partial^2 F}{\partial\theta^2}
+			r^{-2} + \frac{\partial^2 F}{\partial\phi^2} r^{-2}\csc^2\theta
+			+ 2\frac{\partial F}{\partial r} r^{-1} + \frac{\partial F}
+			{\partial\theta} r^{-2} \cos\theta\csc\theta
+	\end{aligned}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\begin{cases}
+		u + w = x^2 + y^2 - k^2 \\
+		uw = a^2x^2 + b^2y^2 - h^4 \\
+	\end{cases}
+	\shortintertext{Taking differentials,}
+	\begin{cases}
+		du + dw = 2xdx + 2ydy \\
+		wdu + udw = 2a^2xdx + 2b^2ydy \\
+	\end{cases} \tag{1} \\
+	\Rightarrow \left (\begin{array}{cc}
+			1 & 1 \\
+			w & u \\
+		\end{array} \right)
+		\left (\begin{array}{c}
+			du \\
+			dw \\
+		\end{array} \right) =
+		\left (\begin{array}{c}
+			2xdx + 2ydy \\
+			2a^2xdx + 2b^2ydy \\
+		\end{array} \right) \\
+		A := \left (\begin{array}{cc}
+			1 & 1 \\
+			w & u \\
+		\end{array} \right) \\
+	A^{-1} = \frac{1}{u-w} \left (\begin{array}{cc}
+			u & -1 \\
+			-w & 1 \\
+		\end{array} \right)
+	\shortintertext{To find $\frac{\partial u}{\partial x}$, setting $dy = 0$,}
+	\begin{aligned}
+		du &= \frac{1}{u-w} \left (\begin{array}{cc}
+				u & -1 \\
+			\end{array} \right)
+			\left (\begin{array}{c}
+				2xdx \\
+				2a^2xdx \\
+			\end{array} \right) \\
+		&= \frac{(2xu - 2a^2x)dx}{u-w} \\
+		\frac{\partial u}{\partial x} &= -2x\frac{a^2 - u}{u-w} 
+	\end{aligned}
+	\shortintertext{To find $\frac{\partial w}{\partial y}$, setting $dx = 0$,}
+	\begin{aligned}
+		dw &= \frac{1}{u-w} \left (\begin{array}{cc}
+				-w & 1 \\
+			\end{array} \right)
+			\left (\begin{array}{c}
+			2ydy \\
+			2b^2ydy \\
+			\end{array} \right) \\
+		&= \frac{(-2wy + 2b^2y)dx}{u-w} \\
+		\frac{\partial w}{\partial y} &= -y\frac{b^2 - w}{u-w} 
+	\end{aligned}
+	\shortintertext{Rewriting system (1),}
+	\left (\begin{array}{cc}
+			2x & 2y \\
+			2a^2x & 2b^2y \\
+		\end{array} \right)
+		\left (\begin{array}{c}
+			dx \\
+			dy \\
+		\end{array} \right) =
+		\left (\begin{array}{c}
+			du + dw \\
+			wdu + udw \\
+		\end{array} \right) \\
+		B := \left (\begin{array}{cc}
+			2x & 2y \\
+			2a^2x & 2b^2y \\
+		\end{array} \right) \\
+	B^{-1} = \frac{1}{4b^2xy-4a^2xy} \left (\begin{array}{cc}
+			2b^2y  & -2y \\
+			-2a^2x & 2x \\
+		\end{array} \right)
+	\shortintertext{To find $\frac{\partial x}{\partial u}$, setting $dw = 0$,}
+	\begin{aligned}
+		du &= \frac{1}{4b^2xy-4a^2xy} \left (\begin{array}{cc}
+				2b^2y  & -2y \\
+			\end{array} \right)
+			\left (\begin{array}{c}
+				du \\
+				wdu \\
+			\end{array} \right) \\
+		&= \frac{(2b^2y - 2yw)du}{4b^2xy-4a^2xy} \\
+		&= \frac{(b^2 - w)du}{2b^2x-2a^2x} \\
+		\frac{\partial u}{\partial x} &= \frac{1}{-2x}\left(\frac{b^2 -
+			w}{a^2-b^2}\right)
+	\end{aligned}
+	\shortintertext{To find $\frac{\partial y}{\partial w}$, setting $du = 0$,}
+	\begin{aligned}
+		du &= \frac{1}{4b^2xy-4a^2xy} \left (\begin{array}{cc}
+				-2a^2x & 2x \\
+			\end{array} \right)
+			\left (\begin{array}{c}
+				dw \\
+				udw \\
+			\end{array} \right) \\
+		&= \frac{(-2a^2x - 2xu)dw}{4b^2xy-4a^2xy} \\
+		&= \frac{(a^2 - u)du}{2a^2y-2b^2y} \\
+		\frac{\partial u}{\partial x} &= \frac{1}{2y}\left(\frac{a^2 -
+			u}{a^2-b^2}\right)
+	\end{aligned}
+\end{gather*}
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\shortintertext{For arbitrary and continuous $f$,}
+	x(t) &= \int_0^\pi G(t,\xi)f(\xi) d\xi \\
+	&= \int_0^t -\cos t\sin\xi f(\xi) d\xi - \int_t^\pi \sin t \cos\xi
+		f(\xi) d\xi\\
+	\frac{dx(t)}{dt} &= \frac{d}{dt} \left( 
+			\int_0^t -\cos t\sin\xi f(\xi) d\xi - \int_t^\pi \sin t \cos\xi
+			f(\xi) d\xi
+		\right) \\
+	&= -\cos t\sin t f(t) + \int_0^t \sin t\sin\xi f(\xi) d\xi \\
+		&\phantom{=} + \sin t \cos t f(t) - \int_t^\pi \cos t \cos\xi f(\xi) d\xi \\
+	&= \int_0^t \sin t\sin\xi f(\xi) d\xi 
+		- \int_t^\pi \cos t \cos\xi f(\xi) d\xi \\
+\end{align*}
+\filbreak
+\begin{align*}
+	\frac{d^2x(t)}{dt^2} &= 
+		\sin t\sin t f(t) + \int_0^t \cos t\sin\xi f(\xi) d\xi \\
+		&\phantom{=} + \cos t\cos t f(t) + \int_t^\pi \sin t \cos\xi f(\xi) d\xi \\
+	&= (\sin^2 t + \cos^2 t)f(t) - x \\
+	&= f(t) - x \\
+	\therefore \frac{d^2x(t)}{dt^2} + x &= f(x)
+\end{align*}
+\begin{proof}
+\begin{gather*}
+	\intertext{To prove: $x(0) = \frac{df}{dt}\bigl|_{t=\pi}$. There seems to
+		be a mistake in the question. Consider the counterexample:}
+	f(t) = t^2 \\
+	\frac{df}{dt}\biggl|_{t=\pi} = 2\pi \\
+	\begin{aligned}
+	x(0) &= \int_0^0 -\xi^2 \cos 0\sin\xi d\xi - \int_0^\pi \xi^2 \sin 0 \cos\xi d\xi\\
+	&= -\int_0^\pi \xi^2 \sin 0 \cos\xi d\xi\\
+	&= 0 \ne \frac{df}{dt}\biggl|_{t=\pi}
+	\end{aligned}
+\end{gather*}
+\end{proof}
+\pagebreak
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\shortintertext{To find $\frac{\partial E}{\partial V}$, setting $dS = 0$,}
+	dE &= -PdV \\
+	\left (\frac{\partial E}{\partial V} \right)_S &= -P \\
+	\Rightarrow 
+	P &= -\left( \frac{\partial E}{\partial V} \right)_S
+	\shortintertext{To find $\frac{\partial E}{\partial S}$, setting $dV = 0$,}
+	dE &= TdS \\
+	\left( \frac{\partial E}{\partial S} \right)_V &= T \\
+	\intertext{To prove the given Maxwell's relation, by Schwarz's theorem,}
+	\left( \frac{\partial}{\partial S} \left( \frac{\partial E}{\partial V}
+		\right)_S \right)_V &=
+		\left( \frac{\partial}{\partial V} \left( \frac{\partial E}{\partial S}
+		\right)_V \right)_S \\
+	\left( \frac{\partial}{\partial S} (-P)\right)_V &=
+		\left( \frac{\partial}{\partial V} (T) \right)_S \\
+	-\left( \frac{\partial P}{\partial S} \right)_V &=
+		\left( \frac{\partial T}{\partial V}  \right)_S \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	dS = T^{-1}dE + PT^{-1}dV \\
+	TdS = dE + PdV \\
+	dE = TdS  - PdV \\
+	dE = d(TS) - SdT - PdV \tag{1} \\
+	d(E-TS) = -SdT - PdV \\
+	\shortintertext{Thus arriving at the Maxwell relation}
+	\left( \frac{\partial S}{\partial V} \right)_T =
+		\left( \frac{\partial P}{\partial T} \right)_V .\\
+	\shortintertext{From (1),}
+	\left( \frac{\partial E}{\partial V} \right)_T = T \left( \frac{\partial
+		S}{\partial V} \right)_T - P \\
+	= T \left( \frac{\partial P}{\partial T} \right)_V - P \\
+\end{gather*}
+\end{proof}
+\begin{align*}
+	\left( \frac{\partial P}{\partial T} \right)_V &= \frac{R}{V-b} \\
+	\therefore E &= \frac{RT}{V-b} - \left( \frac{RT}{V-b} - \frac{a}{V^2}
+		\right) + cT \\
+	&= \frac{a}{V^2} + cT \\
+\end{align*}
+
+\end{document}
+

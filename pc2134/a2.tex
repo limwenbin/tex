@@ -1,0 +1,186 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 2}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	(1 + e^{i\theta})^n &= \sum_{k=0}^n \binom{n}{k} e^{ik\theta} \\
+	&= \sum_{k=0}^n \binom{n}{k} (\cos(k\theta) + i\sin(k\theta)) \\
+	\sum_{k=0}^n \binom{n}{k} \cos(k\theta) &= \text{Re}\left\{ (1 +
+		e^{i\theta})^n \right\}\\
+	&= \text{Re}\left\{ [1 + (e^{i\frac{\theta}{2}})^2]^n \right\} \\
+	&= \text{Re}\left\{ \left[1 + \left( \cos\frac{\theta}{2} 
+		+ i\sin\frac{\theta}{2} \right)^2 \right]^n \right\} \\
+	&= \text{Re}\left\{ \left[1 + \cos^2\frac{\theta}{2} 
+		+ 2i\cos\frac{\theta}{2} \sin\frac{\theta}{2} 
+		-\sin^2\frac{\theta}{2} \right]^n \right\} \\
+	&= \text{Re}\left\{ \left[ 2\cos^2\frac{\theta}{2} 
+		+ 2i\cos\frac{\theta}{2} \sin\frac{\theta}{2} 
+		 \right]^n \right\} \\
+	&= \text{Re}\left\{ \left[ \left( 2\cos\frac{\theta}{2} \right)
+		\left( \cos\frac{\theta}{2} + i\sin\frac{\theta}{2} \right) 
+		\right]^n \right\} \\
+	&= \text{Re}\left\{ \left( 2^n\cos^n\frac{\theta}{2} \right)
+		\left( \cos\frac{n\theta}{2} + i\sin\frac{n\theta}{2} \right) 
+		\right\} \\
+	&= 2^n\cos^n\frac{\theta}{2} \cos\frac{n\theta}{2}
+\end{align*}
+\filbreak
+\begin{align*}
+	\intertext{Similarly,}
+	\sum_{k=0}^n \binom{n}{k} \sin(k\theta) &= \text{Im}\left\{ (1 +
+		e^{i\theta})^n \right\}\\
+	&= \text{Re}\left\{ \left( 2^n\cos^n\frac{\theta}{2} \right)
+		\left( \cos\frac{n\theta}{2} + i\sin\frac{n\theta}{2} \right) 
+		\right\} \\
+	&= 2^n\cos^n\frac{\theta}{2} \sin\frac{n\theta}{2}
+\end{align*}
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\cosh^2\Theta - \sinh^2\Theta = 1 \Rightarrow 
+		1 - \tanh^2\Theta = \frac{1}{\cosh^2\Theta} \\
+	\gamma = \frac{1}{\sqrt{(\cosh^2\Theta)^{-1}}} = \cosh\Theta
+	\shortintertext{Then,}	
+	\begin{cases}
+		x' = - ct \frac{\sinh\Theta \cosh\Theta} {\cosh\Theta} + x \cosh\Theta \\
+		ct' = ct \cosh\Theta  - x \frac{\sinh\Theta \cosh\Theta} {\cosh\Theta}\\
+	\end{cases} \\
+	\Rightarrow \begin{cases}
+		x' = - ct \sinh\Theta  + x \cosh\Theta \\
+		ct' = ct \cosh\Theta  - x \sinh\Theta \\
+	\end{cases}
+	\shortintertext{In addition,}
+	\begin{aligned}
+		-(ct')^2 + x'^2 &= -(ct)^2 \cosh^2\Theta  + 2ctx\cosh\Theta\sinh\Theta 
+			- x^2 \sinh^2\Theta \\
+		&\phantom{=} + (ct)^2 \sinh^2\Theta  - 2ctx\cosh\Theta\sinh\Theta 
+			+ x^2 \cosh^2\Theta \\
+		&= -(ct)^2 (\cosh^2\Theta \sinh^2\Theta) + x^2 (\cosh^2\Theta -
+			\sinh^2\Theta) \\
+		&= -(ct)^2 + x^2 \\
+	\end{aligned}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\boldsymbol{L} &= \sum_i \boldsymbol{r_i} \times m_i \boldsymbol{v_i} \\
+	&= \sum_i \boldsymbol{r_i} \times m_i \boldsymbol{v_i} \\
+	&= \sum_i m_i [\boldsymbol{r_i} \times (\boldsymbol{\omega} \times
+		\boldsymbol{r_i})] \\
+	&= \sum_i m_i [\boldsymbol{\omega} \cdot (\boldsymbol{r_i} \cdot
+		\boldsymbol{r_i}) 
+		- \boldsymbol{r_i} (\boldsymbol{r_i} \cdot \boldsymbol{\omega})] \\
+	&= \sum_i m_i [\boldsymbol{\omega} r_i^2
+		- \boldsymbol{r_i} (\boldsymbol{r_i} \cdot \boldsymbol{\omega})] \\
+\end{align*}
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{The component of $\boldsymbol{L}$ along the axis of
+		rotation is given by}
+	\omega^{-1} \boldsymbol{L} \cdot \boldsymbol{\omega} &=
+		\omega^{-1}	\sum_i m_i (\boldsymbol{\omega} \cdot [\boldsymbol{\omega} r_i^2 - \boldsymbol{r_i}
+		(\boldsymbol{r_i} \cdot \boldsymbol{\omega})]) \\
+	&= \omega^{-1}	\sum_i m_i [(\boldsymbol{\omega} \cdot \boldsymbol{\omega})
+		r_i^2 - (\boldsymbol{r_i} \cdot \boldsymbol{\omega})^2] \\
+	&= \omega^{-1}	\sum_i m_i [\omega^2 r_i^2 - (\boldsymbol{r_i} \cdot
+		\boldsymbol{\omega})^2] \\
+	&= \omega^{-1} \sum_i m_i [\omega^2 r_i^2 - r_i^2 \omega^2 \cos^2\theta_i] \\
+	&= \sum_i m_i (\omega r_i^2\sin^2\theta_i) \\
+	&= \omega \sum_i m_i (r_i\sin\theta_i)^2 \\
+	\intertext{where $\rho_i &= r_i\sin\theta_i$ is the component of the
+		distance of each point $i$ from the center perpendicular to the axis of
+		rotation.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	K &= \sum_i \frac{1}{2} m_i v_i^2 \\
+	&= \frac{1}{2} \sum_i m_i (\boldsymbol{v} \cdot \boldsymbol{v}) \\
+	&= \frac{1}{2} \sum_i m_i [(\boldsymbol{\omega} \times \boldsymbol{r_i})
+		\cdot (\boldsymbol{\omega} \times \boldsymbol{r_i})] \\
+	&= \frac{1}{2} \sum_i m_i [\boldsymbol{\omega} \cdot (\boldsymbol{r_i}
+	\times (\boldsymbol{\omega} \times \boldsymbol{r_i})] \\
+	&= \frac{1}{2} \sum_i m_i [\boldsymbol{\omega} \cdot (\boldsymbol{\omega}
+		r_i^2 - \boldsymbol{r_i} (\boldsymbol{r_i} \cdot \boldsymbol{\omega}))]
+		\quad (\text{from part (a))}\\
+	&= \frac{1}{2} \sum_i m_i [\omega^2 r_i^2 - r_i^2 \omega^2 \cos^2\theta_i] \\
+	&= \frac{1}{2} \omega^2 \sum_i m_i (r_i\sin\theta_i)^2 \quad (\text{from
+		part (b))}\\
+	&= \frac{1}{2} \omega^2 I
+\end{align*}
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{Let $a = (a_1, a_2, a_2)$ and $b = (b_1, b_2, b_2)$ be non-zero
+		vectors.}
+	S(a)S(b) &= \left( \sum_{i=1}^3 a_iS_i \right) \left( \sum_{j=1}^3 b_jS_j
+		\right) \\
+	&= \sum_{i=1}^3 \sum_{j=1}^3 a_ib_i (S_iS_j) \\
+	&= \sum_{i=1}^3 \sum_{j=1}^3 a_ib_i \left[ \delta_{ij} I 
+		+ i \sum_{k=1}^3 \epsilon_{ijk} S_k \right] \\
+	&= \sum_{i=1}^3 \sum_{j=1}^3 a_ib_i \delta_{ij} I 
+		+ i \sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \epsilon_{ijk} a_ib_jS_k \\
+	&= (a \cdot b) I + i \sum_{k=1}^3 S_k (a \times b)_k\\
+	&= (a \cdot b) I + i S(a \times b)\\
+\end{align*}
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\shortintertext{In general, for even $r$,}
+	S(n)^r &= S(n)^{2k}  \\
+	&= [S(n)^2]^k \\
+	&= [(n\cdot n)I + iS(n \times n)]^k \\
+	&= [I + 0]^k = I
+	\shortintertext{while for odd $r$,}
+	S(n)^r &= IS(n) = S(n).
+	\shortintertext{Then,}
+	\text{exp}[i\theta S(n)] &= \sum_{r=0}^\infty \frac{(i\theta S(n))^r} {r!} \\
+	&= \sum_{\substack{r=0,\\\text{$r$ even}}}^\infty \frac{i^r \theta^r I} {r!}
+		+ \sum_{\substack{r=1,\\\text{$r$ odd}}}^\infty \frac{i^r \theta^r S(n)} {r!} \\
+	&= I \sum_{k=0}^\infty \frac{(-1)^n \theta^{2k}} {(2k)!}
+		+ iS_s\sum_{k=0}^\infty \frac{(-1)^k \theta^{2k+1}} {(2k+1)!} \\
+	&= \cos\theta I + i\sin\theta S(n)
+\end{align*}
+\end{proof}
+
+\end{document}

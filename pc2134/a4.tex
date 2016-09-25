@@ -1,0 +1,338 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 4}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{In spherical coordinates,}
+	x &= r\sin\theta\cos\phi,\ y = r\sin\theta\sin\phi,\ z = r\cos\theta \\
+	\left| \frac{\partial(x,y,z)}{\partial(r,\theta,\phi)}
+	&= \left| \begin{array}{ccc}
+		\sin\theta\cos\phi & r\cos\theta\cos\phi & -r\sin\theta\sin\phi \\
+		\sin\theta\sin\phi & r\cos\theta\sin\phi & r\sin\theta\cos\phi \\
+		\cos\theta & -r\sin\theta & 0 \\
+	\end{array} \right| \\
+	&= r^2\sin^3\theta\sin^2\phi + r^2\cos^2\phi\cos^2\theta\sin\theta \\
+	&\phantom{=} + r^2\sin\theta\cos^2\theta\sin^2\phi + r^2\sin^3\theta\cos^2\phi \\
+	&= r^2\sin\theta(\sin^2\theta + \cos^2\phi\cos^2\theta + \cos^2\theta\sin^2\phi) \\
+	&= r^2\sin\theta
+\end{align*}
+Then,
+\begin{align*}
+	\iiint |\Psi_1(r,\theta,\phi)|^2 dV 
+	&= \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{1}{a_0^3\pi} e^{-2r/a_0}
+		r^2 \sin\theta\ drd\theta d\phi\\
+	&= 2 \int_0^\pi \sin\theta\ d\theta \int_0^\infty \frac{1}{a_0^3} e^{-2r/a_0}
+		r^2\ dr\\
+	&= 4 \int_0^\infty \frac{1}{a_0^3} e^{-2r/a_0} r^2\ dr\\
+	&= 4 \left\{ \left[-\frac{1}{2a_0^2} e^{-2r/a_0} r \right]_0^\infty 
+		+ \int_0^\infty \frac{2}{2a_0^2} e^{-2r/a_0} r\ dr \right\}\\
+	&= 4 \left\{ 0 - \int_0^\infty \frac{1}{a_0^2} e^{-2r/a_0}r \right\}\\
+\end{align*}
+\filbreak
+\begin{align*}
+	\iiint |\Psi_1(r,\theta,\phi)|^2 dV 
+	&= 4 \left\{ \left[\frac{1}{2a_0} e^{-2r/a_0} r \right]_0^\infty 
+		- \int_0^\infty \frac{1}{2a_0} e^{-2r/a_0} \ dr \right\}\\
+	&= 4 \left\{ 0 + \left[ \frac{1}{4} e^{-2r/a_0} \right]_0^\infty \right\}\\
+	&= \left[ e^{-2r/a_0} \right]_0^\infty \\
+	&= 1
+	\shortintertext{Similarly,}
+	\iiint |\Psi_1(r,\theta,\phi)|^2 dV 
+	&= \int_0^{2\pi} \int_0^\pi \int_0^\infty 
+			\frac{1}{64a_0^5\pi} e^{-r/a_0} r^4 \sin^3\theta
+		\ drd\theta d\phi\\
+	&=  \int_0^\pi 
+			\sin^3\theta\ 
+		d\theta 
+		\int_0^\infty 
+			\frac{1}{32a_0^5} e^{-r/a_0} r^4
+		\ dr\\
+	&=  \int_0^\pi 
+			\sin\theta - \sin\theta\cos^2\theta\ 
+		d\theta 
+		\int_0^\infty 
+			\frac{1}{32a_0^4} e^{-r/a_0} 4r^3
+		\ dr\\
+	&=  \left[
+			\frac{\cos^3\theta}{3} - \cos\theta 
+		\right]_0^\pi 
+		\int_0^\infty 
+			\frac{1}{32a_0^4} e^{-r/a_0} 4r^3
+		\ dr\\
+	&=  \int_0^\infty 
+			\frac{4^2}{2^5(3)a_0^4} e^{-r/a_0} r^3
+		\ dr\\
+	&=  \int_0^\infty 
+			\frac{1}{2a_0^3} e^{-r/a_0} r^2
+		\ dr\\
+	&=  \int_0^\infty 
+			\frac{1}{a_0^2} e^{-r/a_0} r
+		\ dr\\
+	&=  \int_0^\infty 
+			\frac{1}{a_0} e^{-r/a_0}
+		\ dr\\
+	&=  \left[
+			e^{-r/a_0}
+		\right]_0^\infty \\
+	&= 1
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+	p_x &= \int_0^{2\pi} \int_0^\pi \int_0^\infty
+		\frac{2}{2^4 a_0^4 \pi} e^{-3r/2a_0} e^{i\phi} q r^4 \sin^2\theta \cos\phi
+	\ dr d\theta d\phi \\
+	&= \int_0^{2\pi} 
+		e^{i\phi} \cos\phi
+	\ d\phi 
+	\int_0^\pi 
+		\sin^2\theta 
+	\ d\theta 
+	\int_0^\infty
+		\frac{1}{2^3 a_0^4 \pi} e^{-3r/2a_0}  q r^4 
+	\ dr \\
+	&= \int_0^{2\pi} 
+		\cos^2\phi + i\sin\theta\cos\theta
+	\ d\phi 
+	\int_0^\pi 
+		\frac{1-\cos2\theta}{2}
+	\ d\theta 
+	\int_0^\infty
+		\frac{2^3}{2^3 (3) a_0^3 \pi} e^{-3r/2a_0}  q r^3 
+	\ dr \\
+	&= \int_0^{2\pi} 
+		\cos^2\phi + \frac{i}{2}\sin2\theta
+	\ d\phi 
+	\int_0^\pi 
+		\frac{1-\cos2\theta}{2}
+	\ d\theta 
+	\int_0^\infty
+		\frac{1}{3 a_0^3 \pi} e^{-3r/2a_0}  q r^3 
+	\ dr \\
+	&= 
+	\frac{\pi}{2}
+	\int_0^{2\pi} 
+		\frac{1+\cos2\theta}{2}
+	\ d\phi 
+	\int_0^\infty
+		\frac{3(2)}{3(3) a_0^2 \pi} e^{-3r/2a_0}  q r^2 
+	\ dr \\
+	&= 
+	\frac{q\pi^2}{2}
+	\int_0^\infty
+		\frac{2^3}{3(3) a_0 \pi} e^{-3r/2a_0}  r 
+	\ dr \\
+	&= \frac{2^4q\pi}{3^4}
+\end{align*}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+	\text{Area of ellipse} &= \iint_{E} 1 \ dV \\
+	&= \int_{-a}^a \int_{-(b/a)\sqrt{a^2 - x^2}}^{(b/a)\sqrt{a^2 - x^2}}
+		1 
+	\ dy dx \\
+	\intertext{Using the change of variable $x = ar\cos\theta$, $y = br\sin\theta$,
+		$0 \le r \le 1$, $0 \le \theta < 2\pi$,}
+	\left| \frac{\partial (x,y)}{\partial (r, \theta)} \right|
+	&= \left| \begin{array}{cc}
+		a\cos\theta & -ar\sin\theta \\
+		b\sin\theta & br\cos\theta \\
+	\end{array} \right| \\
+	&= abr (\cos^2\theta + \sin^2\theta) \\
+	&= abr \\
+	\text{Area of ellipse} 
+	&= \int_0^1 \int_0^{2\pi}
+		abr 
+	\ dr d\theta \\
+	&= 2ab\pi \int_0^1
+		r 
+	\ dr \\
+	&= ab\pi
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{align*}
+	\text{Volume of ellipsoid} &= \iiint_{E} 1 \ dV \\
+	\intertext{Using the change of variable $x = ar\sin\theta\cos\phi$, $y =
+		br\sin\theta\sin\phi$, $z = cr\cos\theta$, $0 \le r \le 1$, $0 \le \phi <
+		2\pi$, $0 \le \theta < \pi$,}
+	\left| \frac{\partial (x,y,z)}{\partial (r,\phi,\theta)} \right|
+	&= \left| \begin{array}{ccc}
+		a\sin\theta\cos\phi & -ar\sin\theta\sin\phi & ar\cos\theta\cos\phi \\
+		b\sin\theta\sin\phi & br\sin\theta\cos\phi & br\cos\theta\sin\phi \\
+		c\cos\theta & 0 & -cr\sin\theta \\
+	\end{array} \right| \\
+	&= abcr^2(\sin^3\theta\cos^2\phi + \sin\theta\cos^2\theta\sin^2\phi \\
+	&\phantom{=} +\sin\theta\cos^2\theta\cos^2\phi + \sin^3\theta\sin^2\phi) \\
+	&= abcr^2\sin\theta \\
+	\text{Volume of ellipsoid} 
+	&= \int_0^\pi \int_0^{2\pi} \int_0^1 
+		abcr^2 \sin\theta
+	\ dr d\phi d\theta \\
+	&= 2abc\pi 
+	\int_0^\pi 
+		\sin\theta 
+	\ d\theta 
+	\int_0^1 
+		r^2 
+	\ dr d\phi \\
+	&= \frac{4}{3}abc\pi 
+\end{align*}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{align*}
+	I_{ij} &= abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		r^2 \sin\theta 
+		\left( 
+			\delta_{ij} \sum_{k=1}^3 x_k^2 - x_ix_j
+		\right)
+	\ dr d\phi d\theta \\
+	I_{1,2} = I_{2,1} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		-r^4 ab \sin^3\theta\sin\phi\cos\phi 
+	\ dr d\phi d\theta \\
+	&= -a^2b^2c \rho 
+	\int_0^1 
+		r^4 
+	\ dr 
+	\int_0^\pi 
+		\sin^3\theta
+	\ d\theta 
+	\int_0^{2\pi} 
+		\sin\phi\cos\phi 
+	\ d\phi \\
+	&= -a^2b^2c \rho \frac{4}{5(3)(2)}
+	\int_0^{2\pi} 
+		\sin2\phi
+	\ d\phi \\
+	&= 0 \\
+	I_{1,3} = I_{3,1} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		-r^4 ac \sin^2\theta\cos\theta\cos\phi 
+	\ dr d\phi d\theta \\
+	&= -a^2bc^2 \rho 
+	\int_0^\pi 
+		\sin^2\theta\cos\theta
+	\ d\theta 
+	\int_0^{2\pi} 
+		\cos\phi 
+	\ d\phi 
+	\int_0^1 
+		r^4 
+	\ dr \\
+	&= 0 \\
+	I_{2,3} = I_{3,2} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		-r^4 bc \sin^2\theta\cos\theta\sin\phi 
+	\ dr d\phi d\theta \\
+	&= 0 \\
+\end{align*}
+\filbreak
+\begin{align*}
+	I_{1,1} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		r^4 \sin\theta (
+			b^2\sin^2\theta\sin^2\phi + c^2\cos^2\theta
+		)
+	\ dr d\phi d\theta \\
+	&= abc \rho 
+	\int_0^1 
+		r^4
+	\ dr 
+	\int_0^\pi 
+		b^2 \sin^3\theta 
+			\int_0^{2\pi} 
+				\sin^2\phi 
+			\ d\phi 
+		+ c^2 \sin\theta \cos^2\theta
+	\ d\theta \\
+	&= \frac{abc \rho}{5}
+	\int_0^\pi 
+		b^2 \sin^3\theta 
+			\int_0^{2\pi} 
+				\sin^2\phi 
+			\ d\phi 
+		+ c^2 \sin\theta \cos^2\theta
+	\ d\theta \\
+	&= \frac{abc \rho}{5}
+	\int_0^\pi 
+		\pi b^2 \sin^3\theta 
+		+ c^2 \sin\theta \cos^2\theta
+	\ d\theta \\
+	&= \frac{abc \rho}{5}
+	\int_0^\pi 
+		\pi b^2 \sin\theta + (c^2 -\pi b^2)\cos^2\theta\sin\theta
+	\ d\theta \\
+	&= \frac{abc \rho}{5} [
+		-\pi b^2 \cos\theta + \frac{\pi b^2 - c^2}{3}\cos^3\theta
+	]_0^\pi \\
+	&= \frac{2abc \rho}{5} \left(	
+		-\pi b^2 + \frac{\pi b^2 - c^2}{3}
+	\right) \\
+	&= \frac{2abc \rho(\pi b^2 - c^2)}{15} \\
+	I_{2,2} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		r^4 \sin\theta (
+			a^2\sin^2\theta\cos^2\phi + c^2\cos\theta
+		)
+	\ dr d\phi d\theta \\
+	&= \frac{abc \rho}{5}
+	\int_0^\pi 
+		\pi a^2 \sin^3\theta 
+		+ c^2 \sin\theta \cos^2\theta
+	\ d\theta \\
+	&= \frac{2abc \rho(\pi a^2 - c^2)}{15} \\
+	I_{3,3} &= 
+	abc \rho \int_0^\pi \int_0^{2\pi} \int_0^1 
+		r^4 \sin\theta (
+			a^2\sin^2\theta\cos^2\phi + b^2\sin^2\theta\sin^2\phi
+		)
+	\ dr d\phi d\theta \\
+	&= \frac{abc (a^2 + b^2) \pi\rho}{5}
+	\int_0^\pi 
+		\sin^3\theta
+	\ d\theta \\
+	&= \frac{abc (a^2 + b^2) \pi\rho}{5}
+	\int_0^\pi 
+		\sin\theta - \sin\theta\cos^2\theta
+	\ d\theta \\
+	&= \frac{abc (a^2 + b^2) \pi\rho}{5} \left[
+		-\cos\theta + \frac{\cos^2\theta}{3}
+	\right]_0^\pi \\
+	&= \frac{abc (a^2 + b^2) \pi\rho}{5} \left(-2 + \frac{2}{3} \right) \\
+	&= \frac{4abc (a^2 + b^2) \pi\rho}{15} \\
+	\therefore \boldsymbol{I} &= \left( \begin{array}{ccc}
+		\frac{2abc \rho(\pi b^2 - c^2)}{15} & 0 & 0 \\
+		0 & \frac{2abc \rho(\pi a^2 - c^2)}{15} & 0 \\
+		0 & 0 & \frac{4abc (a^2 + b^2) \pi\rho}{15} \\
+	\end{array} \right)
+\end{align*}
+
+\end{document}
+

@@ -1,0 +1,948 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Homework Assignment 4}
+\author{Lim Wen Bin \\
+A0140764H\\
+T02}
+\maketitle
+
+\begin{problem}{1.i}
+\end{problem}
+\begin{align*}
+\intertext{Let $\{u_1, u_2, u_3\}$ be an orthogonal basis for $V$.}
+u_1 &= v_1\\
+&= (1, 0, -1, 1)\\
+u_2 &= v_2 - \frac{v_2 \cdot u_1}{u_1 \cdot u_1}u_1\\
+&= (2, 1, 2, 3) - \frac{3}{3} (1, 0, -1, 1)\\
+&= (1, 1, 3, 2)\\
+u_3 &= v_3 - \frac{v_3 \cdot u_1}{u_1 \cdot u_1}u_1 - \frac{v_3 \cdot u_2}{u_2 \cdot u_2}u_2\\ 
+&= (0, -1, 2, 5) - \frac{3}{3} (1, 0, -1, 1) - \frac{15}{15} (1, 1, 3, 2)\\
+&= (-2, -2, 0, 2) \\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.ii}
+\end{problem}
+\begin{align*}
+\intertext{Let $w = (15, 15, 15, 15)$.}
+\text{projection of $w$ onto $V$} &= \frac{w \cdot u_1}{u_1 \cdot u_1}u_1 + \frac{w \cdot u_2}{u_2 \cdot u_2}u_2 + \frac{w \cdot u_3}{u_3 \cdot u_3}u_3 \\
+&= \frac{15}{3} (1, 0, -1, 1) + \frac{105}{15} (1, 1, 3, 2) - \frac{30}{12} (-2, -2, 0, 2)\\
+&= 5 (1, 0, -1, 1) + 7 (1, 1, 3, 2) - \frac{5}{2} (-2, -2, 0, 2)\\
+&= (17, 12, 16, 14)
+\end{align*}
+\filbreak
+
+\begin{problem}{1.iii}
+\end{problem}
+\begin{align*}
+\intertext{Let projection of $w$ onto $V$ be $y$}
+A &= \left( \begin{array}{ccc}
+1 & 2 & 0\\
+0 & 1 & -1\\
+-1 & 2 & 2\\
+1 & 3 & 5\\
+\end{array} \right)\\
+A^TAx &= A^Tb\\
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+2 & 1 & 2 & 3\\
+0 & -1 & 2 & 5\\
+\end{array} \right)
+\left( \begin{array}{ccc}
+1 & 2 & 0\\
+0 & 1 & -1\\
+-1 & 2 & 2\\
+1 & 3 & 5\\
+\end{array} \right)x
+&=
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+2 & 1 & 2 & 3\\
+0 & -1 & 2 & 5\\
+\end{array} \right)
+\left( \begin{array}{c}
+15\\
+15\\
+15\\
+\end{array} \right)\\
+\left( \begin{array}{ccc}
+3 & 3 & 3\\
+3 & 18 & 18\\
+3 & 18 & 30\\
+\end{array} \right)x
+&=
+\left( \begin{array}{c}
+15\\
+120\\
+90\\
+\end{array} \right)\\
+\left( \begin{array}{ccc|c}
+3 & 3 & 3 & 15\\
+3 & 18 & 18 & 120\\
+3 & 18 & 30 & 90\\
+\end{array} \right)
+\xrightarrow{\substack{R_2 - R_1,\\R_3 - R_1}} 
+&
+\left( \begin{array}{ccc|c}
+3 & 3 & 3 & 15\\
+0 & 15 & 15 & 105\\
+0 & 15 & 27 & 75\\
+\end{array} \right)
+\xrightarrow{\substack{R_3 - R_2}} 
+\left( \begin{array}{ccc|c}
+3 & 3 & 3 & 15\\
+0 & 15 & 15 & 105\\
+0 & 0 & 12 & -30\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_1 \times 1/3,\\R_2 \times 1/15,\\R_1 \times 1/12}} 
+\left( \begin{array}{ccc|c}
+1 & 1 & 1 & 5\\
+0 & 1 & 1 & 7\\
+0 & 0 & 1 & -5/2\\
+\end{array} \right)
+\xrightarrow{\substack{R_2 - R_3,\\R_1 - R_3}} 
+&
+\left( \begin{array}{ccc|c}
+1 & 1 & 0 & 15/2\\
+0 & 1 & 0 & 19/2\\
+0 & 0 & 1 & -5/2\\
+\end{array} \right)
+\xrightarrow{\substack{R_1 - R_2}} 
+\left( \begin{array}{ccc|c}
+1 & 0 & 0 & -2\\
+0 & 1 & 0 & 19/2\\
+0 & 0 & 1 & -5/2\\
+\end{array} \right)\\
+x &= 
+\left( \begin{array}{ccc|c}
+-2\\
+19/2\\
+-5/2\\
+\end{array} \right)\\
+y &= Ax\\
+&=
+\left( \begin{array}{ccc|c}
+17\\
+12\\
+16\\
+14\\
+\end{array} \right)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.iv}
+\end{problem}
+\begin{align*}
+\intertext{Let $\{u_1, u_2, u_3\} \cup \{u_4\}$ be an orthogonal basis for $\mathbb{R}^4$}
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+2 & 1 & 2 & 3\\
+0 & -1 & 2 & 5\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_2 - R_1}} 
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+0 & 1 & 3 & 2\\
+0 & -1 & 2 & 5\\
+\end{array} \right) \\
+\xrightarrow{\substack{R_3 + R_2}}
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+0 & 1 & 3 & 2\\
+0 & 0 & 5 & 7\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_3 + R_2}}
+\left( \begin{array}{cccc}
+1 & 0 & -1 & 1\\
+0 & 1 & 3 & 2\\
+0 & 0 & 5 & 7\\
+\end{array} \right)\\
+v_4 &= 
+\left( \begin{array}{c}
+0\\
+0\\
+0\\
+1\\
+\end{array} \right)
+\intertext{rref of matrix has pivots in first $3$ columns. $\therefore \{u_1, u_2, u_3\} \cup \{v_4\}$ is a basis for $\mathbb{R}^4$.}
+u_4 &= v_4 - \frac{v_4 \cdot u_1}{u_1 \cdot u_1}u_1 - \frac{v_4 \cdot u_2}{u_2 \cdot u_2}u_2 - \frac{v_4 \cdot u_3}{u_3 \cdot u_3}u_3\\ 
+&= (0, 0, 0, 1) - \frac{1}{3} (1, 0, -1, 1) - \frac{2}{15} (1, 1, 3, 2) - \frac{2}{12} (-2, -2, 0, 2)\\
+&= (-2/15, 1/5, -1/15, 1/15) 
+\end{align*}
+\filbreak
+
+\begin{problem}{2.i}
+\end{problem}
+\begin{align*}
+Ax &= \lambda x\\
+(I\lambda - A)x &= 0\\
+(I\lambda - A) &= 
+\left( \begin{array}{cccc}
+\lambda + 1 & -4 & -2 & -4\\
+1 & \lambda - 3 & -1 & -2\\
+1 & -2 & \lambda - 2 & -2\\
+-1 & 2 & 1 &\lambda + 1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 \leftrightarrow R_1,\\R_2 \leftrightarrow  R_4,\\R_3 \leftrightarrow R_4}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+-1 & 2 & 1 &\lambda + 1\\
+\lambda + 1 & -4 & -2 & -4\\
+1 & -2 & \lambda - 2 & -2\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_4 + R_2,\\R_3 - (\lambda + 1)R_1}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+-1 & 2 & 1 &\lambda + 1\\
+0 & -4 - (\lambda + 1)(\lambda - 3) & (\lambda + 1)-2 & 2(\lambda + 1)-4\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 + R_1}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & -4 - (\lambda + 1)(\lambda - 3) & (\lambda + 1)-2 & 2(\lambda + 1)-4\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)\\
+=&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & - \lambda^2 + 2\lambda - 1 & \lambda - 1 & 2(\lambda - 1)\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)
+=
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & - (\lambda - 1)^2 & \lambda - 1 & 2(\lambda - 1)\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 - R_4}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & - (\lambda - 1)^2 & 0 & \lambda - 1\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 + (\lambda - 1)R_2}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & 0 & 0 & \lambda - 1 + (\lambda-1)^2\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 \leftrightarrow R_3,\\R_3 \leftrightarrow R_4,}}
+&
+\left( \begin{array}{cccc}
+1 & \lambda - 3 & -1 & -2\\
+0 & \lambda - 1 & 0 &\lambda - 1\\
+0 & 0 & \lambda - 1 & \lambda-1\\
+0 & 0 & 0 & \lambda(\lambda - 1)\\
+\end{array} \right)\\
+\end{align*}
+\begin{align*}
+- \lambda (\lambda - 1)^3  &= 0\\
+\lambda &= 0 \text{ or } \lambda = 1\\
+(I\lambda - A)x &= 0
+\intertext{When $\lambda = 1$,}
+\left( \begin{array}{cccc}
+2 & -4 & -2 & -4\\
+1 & -2 & -1 & -2\\
+1 & -2 & -1 & -2\\
+-1 & 2 & 1 & 2\\
+\end{array} \right)x &= 0\\
+\left( \begin{array}{cccc}
+2 & -4 & -2 & -4\\
+1 & -2 & -1 & -2\\
+1 & -2 & -1 & -2\\
+-1 & 2 & 1 & 2\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_1 \times 1/2}}
+\left( \begin{array}{cccc}
+1 & -2 & -1 & -2\\
+1 & -2 & -1 & -2\\
+1 & -2 & -1 & -2\\
+-1 & 2 & 1 & 2\\
+\end{array} \right)\\
+&
+\xrightarrow{\substack{R_2 - R_1,\\R_3 - R_1,\\R_4 + R_1}}
+\left( \begin{array}{cccc}
+1 & -2 & -1 & -2\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &=
+a\left( \begin{array}{cccc}
+2\\
+1\\
+0\\
+0\\
+\end{array} \right) +
+b\left( \begin{array}{cccc}
+1\\
+0\\
+1\\
+0\\
+\end{array} \right) +
+c\left( \begin{array}{cccc}
+2\\
+0\\
+0\\
+1\\
+\end{array} \right) \quad a, b, c \in \mathbb{R}\\
+E_1 &= \text{span}\left\{ 
+\left( \begin{array}{cccc}
+2\\
+1\\
+0\\
+0\\
+\end{array} \right) ,
+\left( \begin{array}{cccc}
+1\\
+0\\
+1\\
+0\\
+\end{array} \right) ,
+\left( \begin{array}{cccc}
+2\\
+0\\
+0\\
+1\\
+\end{array} \right)
+\right\}
+\intertext{When $\lambda = 0$,}
+\left( \begin{array}{cccc}
+1 & -4 & -2 & -4\\
+1 & -3 & -1 & -2\\
+1 & -2 & -2 & -2\\
+-1 & 2 & 1 & 1\\
+\end{array} \right)x &= 0\\
+\left( \begin{array}{cccc}
+1 & -4 & -2 & -4\\
+1 & -3 & -1 & -2\\
+1 & -2 & -2 & -2\\
+-1 & 2 & 1 & 1\\
+\end{array} \right)
+\xrightarrow{\substack{R_2 - R_1,\\R_3 - R_1,\\R_4 + R_1,\\}}
+&
+\left( \begin{array}{cccc}
+1 & -2 & -1 & -2\\
+0 & 1 & 1 & 2\\
+0 & 0 & -2 & -2\\
+0 & 0 & 1 & 1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 \times -1/2,\\R_4 - R_3}}
+\left( \begin{array}{cccc}
+1 & -2 & -1 & -2\\
+0 & 1 & 1 & 2\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+\xrightarrow{\substack{R_3 - R_2,\\R_1 + 2R_1}}
+&
+\left( \begin{array}{cccc}
+1 & -4 & -2 & -4\\
+0 & 1 & 0 & 1\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_1 + 4R_2}}
+&
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 2\\
+0 & 1 & 0 & 1\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &=
+s\left( \begin{array}{cccc}
+-2\\
+-1\\
+-1\\
+1\\
+\end{array} \right) \quad s \in \mathbb{R}\\
+E_0 &= \text{span}\left\{ 
+\left( \begin{array}{cccc}
+-2\\
+-1\\
+-1\\
+1\\
+\end{array} \right)
+\right\}\\
+|S| &= |S_1| + |S_0|\\
+&= 3 + 1\\
+&= n = 4
+\intertext{$\therefore A$ is diagonalizable.}
+P &=
+\left( \begin{array}{cccc}
+2 & 1 & 2 & -2\\
+1 & 0 & 0 & -1\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & 1\\
+\end{array} \right)
+\end{align*}
+\filbreak
+
+\begin{problem}{2.ii}
+\end{problem}
+\begin{align*}
+Bx &= \lambda x\\
+(I\lambda - B)x &= 0\\
+(I\lambda - B) &= 
+\left( \begin{array}{cccc}
+\lambda - 1 & 0 & 0 & -1\\
+-4 & \lambda - 1 & 2 & -8\\
+-2 & 0 & \lambda & -5\\
+0 & 0 & 0 &\lambda - 1\\
+\end{array} \right)\\
+\text{det}(I\lambda - B) &=  0
+\intertext{By co-factor expansion of row $4$,}
+(\lambda - 1) \left| \begin{array}{ccc}
+\lambda - 1 & 0 & 0\\
+-4 & \lambda - 1 & 2\\
+-2 & 0 & \lambda\\
+\end{array} \right| &= 0\\
+\lambda(\lambda - 1)^3 = 0\\
+\lambda &= 0 \text{ or } \lambda = 1\\
+(I\lambda - B)x &= 0\\
+\intertext{When $\lambda = 0$,}
+\left( \begin{array}{cccc}
+-1 & 0 & 0 & -1\\
+-4 & -1 & 2 & -8\\
+-2 & 0 & 0 & -5\\
+0 & 0 & 0 & -1\\
+\end{array} \right)x &= 0\\
+\left( \begin{array}{cccc}
+-1 & 0 & 0 & -1\\
+-4 & -1 & 2 & -8\\
+-2 & 0 & 0 & -5\\
+0 & 0 & 0 & -1\\
+\end{array} \right)
+\xrightarrow{\substack{R_1 \times -1,\\R_2 + 4R_1,\\R_3 + 2R_1}}
+&
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 1\\
+0 & -1 & 2 & -4\\
+0 & 0 & 0 & -3\\
+0 & 0 & 0 & -1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 \times -1,\\R_3 \times -1/3,\\R_4 + R_3}}
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 1\\
+0 & 1 & -2 & 4\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+\xrightarrow{\substack{R_2 - 4R_3,\\R_1 - R_3}}
+&
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & -2 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &=
+s\left( \begin{array}{cccc}
+0\\
+2\\
+1\\
+0\\
+\end{array} \right) \quad s \in \mathbb{R}\\
+E_0 &= \text{span}\left\{ 
+\left( \begin{array}{cccc}
+0\\
+2\\
+1\\
+0\\
+\end{array} \right)
+\right\}
+\intertext{When $\lambda = 1$,}
+\left( \begin{array}{cccc}
+0 & 0 & 0 & -1\\
+-4 & 0 & 2 & -8\\
+-2 & 0 & 1 & -5\\
+0 & 0 & 0 & 0\\
+\end{array} \right)x &= 0\\
+\left( \begin{array}{cccc}
+0 & 0 & 0 & -1\\
+-4 & 0 & 2 & -8\\
+-2 & 0 & 1 & -5\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+\xrightarrow{\substack{R_2 \leftrightarrow R_1,\\R_1 \times -1/4,\\R_3 + 2R_1}}
+&
+\left( \begin{array}{cccc}
+1 & 0 & -1/2 & 2\\
+0 & 0 & 0 & -1\\
+0 & 0 & 0 & -1\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 \time -1,\\R_3 + R_2}}
+\left( \begin{array}{cccc}
+1 & 0 & -1/2 & 2\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)
+\xrightarrow{\substack{R_1 - 2R_2}}
+&
+\left( \begin{array}{cccc}
+1 & 0 & -1/2 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &=
+a\left( \begin{array}{cccc}
+0\\
+1\\
+0\\
+0\\
+\end{array} \right) +
+b\left( \begin{array}{cccc}
+1/2\\
+0\\
+1\\
+0\\
+\end{array} \right) \quad a, b \in \mathbb{R}\\
+E_1 &= \text{span}\left\{ 
+\left( \begin{array}{cccc}
+0\\
+1\\
+0\\
+0\\
+\end{array} \right) ,
+\left( \begin{array}{cccc}
+1/2\\
+0\\
+1\\
+0\\
+\end{array} \right) 
+\right\} \\
+|S| &= |S_1| + |S_0|\\
+&= 2 + 1\\
+&= 3\\
+&< n = 4
+\intertext{$\therefore B$ is not diagonalizable.}
+\end{align*}
+\filbreak
+
+\begin{problem}{3.i}
+\end{problem}
+\begin{align*}
+\shortintertext{Let}
+X_n &= 
+\left( \begin{array}{c} 
+x_1\\
+x_2\\
+x_3\\
+\end{array} \right)
+\intertext{such that $x_1,x_2,x_3 \in [0,1]$ denote the probability of good weather, snow and rain on day $n$ respectively.}
+A &=
+\left( \begin{array}{ccc} 
+0 & 0.25 & 0.25\\
+0.5 & 0.5 & 0.25\\
+0.5 & 0.25 & 0.5\\
+\end{array} \right)\\
+X_{n_1} &= AX_n\\
+\intertext{Suppose it is sunny on day $0$, i.e.}
+X_0 &= 
+\left( \begin{array}{c} 
+1\\
+0\\
+0\\
+\end{array} \right)\\
+\left( \begin{array}{c} 
+1\\
+0\\
+0\\
+\end{array} \right)\\
+(I\lambda - A)x &= 0\\
+\left( \begin{array}{ccc} 
+\lambda & -0.25 & -0.25\\
+-0.5 & \lambda-0.5 & -0.25\\
+-0.5 & -0.25 & \lambda-0.5\\
+\end{array} \right) x &= 0\\
+\text{det}(I\lambda - A) &= 0\\
+\lambda(\lambda-0.5)^2 - (0.25)^2 - 0.25(\lambda - 0.5) - (0.25)^2\lambda &= 0\\
+16\lambda^3 - 16\lambda^2 + 4\lambda -1 -4\lambda + 2 - \lambda &= 0\\
+16\lambda^3 - 16\lambda^2 - \lambda + 1 &= 0\\
+(4\lambda - 1)(4\lambda + 1)(\lambda -1) &= 0\\
+\lambda = \frac{1}{4} \text{ or } \lambda = -\frac{1}{4} \text{ or }\lambda &= 1\\
+\intertext{When $\lambda = 1$,}
+\left( \begin{array}{ccc} 
+1 & -0.25 & -0.25\\
+-0.5 & 0.5 & -0.25\\
+-0.5 & -0.25 & 0.5\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_3 - R_2,\\R_2 + 1/2R_1}}
+\left( \begin{array}{ccc} 
+1 & -0.25 & -0.25\\
+0 & 0.375 & -0.375\\
+0 & -0.75 & 0.75\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 + 2R_2,\\R_2 \times 8/3}}
+\left( \begin{array}{ccc} 
+1 & -0.25 & -0.25\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_1 + 1/4R_2}}
+\left( \begin{array}{ccc} 
+1 & 0 & -1/2\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+\end{array} \right)\\
+\therefore E_1 &= \text{span}
+\left( \begin{array}{c} 
+1/2\\
+1\\
+1\\
+\end{array} \right)\\
+\intertext{When $\lambda = 0.25$,}
+\left( \begin{array}{ccc} 
+0.25 & -0.25 & -0.25\\
+-0.5 & -0.25 & -0.25\\
+-0.5 & -0.25 & -0.25\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_3 - R_2,\\R_2 + 2R_1}}
+\left( \begin{array}{ccc} 
+0.25 & -0.25 & -0.25\\
+0 & -0.75 & -0.75\\
+0 & 0 & 0\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_1 \times 4,\\R_2 \times -4/3}}
+\left( \begin{array}{ccc} 
+1 & -1 & -1\\
+0 & 1 & 1\\
+0 & 0 & 0\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_1 + 2R_2}}
+\left( \begin{array}{ccc} 
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 0\\
+\end{array} \right)\\
+\therefore E_{0.25} &= \text{span}
+\left( \begin{array}{c} 
+0\\
+-1\\
+1\\
+\end{array} \right)\\
+\intertext{When $\lambda = -0.25$,}
+\left( \begin{array}{ccc} 
+-0.25 & -0.25 & -0.25\\
+-0.5 & -0.75 & -0.25\\
+-0.5 & -0.25 & -0.75\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_3 - R_2,\\R_2 - R_1}}
+\left( \begin{array}{ccc} 
+-0.25 & -0.25 & -0.25\\
+0 & -0.25 & 0.25\\
+0 & 0.25 & -0.25\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 + R_2,\\R_1 \times -4,\\R_2 \times -4}}
+\left( \begin{array}{ccc} 
+1 & 1 & 1\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+\end{array} \right)
+&
+\xrightarrow{\substack{R_1 - R_2}}
+\left( \begin{array}{ccc} 
+1 & 0 & 2\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+\end{array} \right)\\
+\therefore E_{-0.25} &= \text{span}
+\left( \begin{array}{c} 
+-2\\
+1\\
+1\\
+\end{array} \right)\\
+\therefore P &= 
+\left( \begin{array}{ccc} 
+1/2 & 0 & -2\\
+1 & -1 & 1\\
+1 & 1 & 1\\
+\end{array} \right)\\
+\left( \begin{array}{ccc|ccc} 
+1/2 & 0 & -2 & 1 & 0 & 0\\
+1 & -1 & 1 & 0 & 1 & 0\\
+1 & 1 & 1 & 0 & 0 & 1\\
+\end{array} \right)
+\xrightarrow{\substack{R_1 \times 2,\\R_2 - R_1,\\R_3 - R_1}}
+&
+\left( \begin{array}{ccc|ccc} 
+1 & 0 & -4 & 2 & 0 & 0\\
+0 & -1 & 5 & -2 & 1 & 0\\
+0 & 1 & 5 & -2 & 0 & 1\\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 + R_2,\\R_2 \times -1}}
+\left( \begin{array}{ccc|ccc} 
+1 & 0 & -4 & 2 & 0 & 0\\
+0 & 1 & -5 & 2 & -1 & 0\\
+0 & 0 & 10 & -4 & 1 & 1\\
+\end{array} \right)
+\xrightarrow{\substack{R_3 \times 1/10,\\R_2 + 5R_3,\\R_1 + 4R_3}}
+&
+\left( \begin{array}{ccc|ccc} 
+1 & 0 & 0 & 2/5 & 2/5 & 2/5\\
+0 & 1 & 0 & 0 & -1/2 & 1/2\\
+0 & 0 & 1 & -2/5 & 1/10 & 1/10\\
+\end{array} \right)\\
+P^{-1} &= 
+\left( \begin{array}{ccc} 
+2/5 & 2/5 & 2/5\\
+0 & -1/2 & 1/2\\
+-2/5 & 1/10 & 1/10\\
+\end{array} \right)\\
+D &= 
+\left( \begin{array}{ccc} 
+1 & 0 & 0\\
+0 & 0.25 & 0\\
+0 & 0 & -0.25\\
+\end{array} \right)\\
+\end{align*}
+\begin{align*}
+X_n &= A^n X_0\\
+&=
+P D^n P^{-1} x_0
+\\
+&=
+\left( \begin{array}{ccc} 
+1/2 & 0 & -2\\
+1 & -1 & 1\\
+1 & 1 & 1\\
+\end{array} \right)
+\left( \begin{array}{ccc} 
+1 & 0 & 0\\
+0 & 0.25 & 0\\
+0 & 0 & -0.25\\
+\end{array} \right)^n
+\left( \begin{array}{ccc} 
+2/5 & 2/5 & 2/5\\
+0 & -1/2 & 1/2\\
+-2/5 & 1/10 & 1/10\\
+\end{array} \right)
+\left( \begin{array}{c} 
+1\\
+0\\
+0\\
+\end{array} \right)\\
+&=
+\left( \begin{array}{ccc} 
+1/2 & 0 & -2(-0.25)^n\\
+1 & -(0.25)^n & (-0.25)^n\\
+1 & (0.25)^n & (-0.25)^n\\
+\end{array} \right)
+\left( \begin{array}{ccc} 
+2/5\\
+0\\
+-2/5\\
+\end{array} \right)
+\\
+&=
+\left( \begin{array}{ccc} 
+1/5 + 4(-0.25)^n/5\\
+2/5 - 2(-0.25)^n/5\\
+2/5 - 2(-0.25)^n/5\\
+\end{array} \right)
+\\
+\end{align*}
+\filbreak
+
+\begin{problem}{3.ii}
+\end{problem}
+\begin{align*}
+\lim_{n \to \infty} X_n &= (\lim_{n \to \infty} A^n) X_0\\
+&= P(\lim_{n \to \infty} D^n)P^{-1} X_0\\
+&= P
+\left( \begin{array}{ccc} 
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+\end{array} \right)^n
+P^{-1} X_0\\
+&=
+\left( \begin{array}{c} 
+0.2\\
+0.4\\
+0.4\\
+\end{array} \right)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{4.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{If $\lambda$ is an eigenvalue of A,}
+Ax &= \lambda x \text{, for some $x$}
+\intertext{Taking pre-multiplication by A on both sides,}
+A(A x) &= A(\lambda x) \\
+A^2 x &= \lambda Ax \\
+&= \lambda^2 x\\
+Ix &= \lambda^2 x \quad (\because A^2 = I)\\
+x &= \lambda^2 x\\
+\therefore \lambda &= \pm 1
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.ii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+(I-A) + (I+A) &= 2I\\
+\intertext{Suppose column space of $(I-A)$, C$(I-A)$ = span$(S)$, C$(I+A)$ = span$(T)$.}
+\text{C}(2I) &= \text{span}(S \cup T)\\
+\text{dim(C$2I$))} &\le \text{dim}(S) + \text{dim}(T)\\
+\text{rank}(2I) &\le \text{rank}(I-A) + \text{rank}(I+A) \\
+\therefore n &\le \text{rank}(A - I) + \text{rank}(A + I) \\
+(I + A) (I - A) &= I^2 - IA + AI - A^2\\
+&= I - A + A - A^2\\
+&= I - A^2\\
+&= 0 \quad (\because A^2 = I)
+\intertext{The column space of $(I - A) \subseteq$ nullspace of $(I + A)$,}
+\text{nullity}(I + A) &\ge \text{rank}(I - A) \\
+n - \text{rank}(I + A) &\ge \text{rank}(I - A) \quad (\because \text{nullity}(I + A) + \text{rank}(I+A) = n)\\
+\therefore n &\ge \text{rank}(I - A) + \text{rank}(I + A) \\
+\therefore n &= \text{rank}(I - A) + \text{rank}(I + A) \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.iii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{If $-1$ is the only eigenvalue of A,}
+(I\lambda - A)x_{\lambda} = 0 &\Leftrightarrow \lambda = -1
+\intertext{If $\lambda = 1$,}
+\neg \exists x_{1} \ne 0 &: (I- A)x_{1} = 0\\
+\therefore \text{rank}(I - A) &= n
+\intertext{By 4(ii),}
+\text{rank}(I + A) &= n - \text{rank}(I - A) \\
+&= 0\\
+\Rightarrow I + A &= 0 \quad (\because \text{for any matrix $M$, det}(M) = 0 \Leftrightarrow M = 0)\\
+A &= -I
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.iv}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{If $1$ is the only eigenvalue of A,}
+(I\lambda - A)x_{\lambda} = 0 &\Leftrightarrow \lambda = 1
+\intertext{If $\lambda = -1$,}
+\neg \exists x_{-1} \ne 0 &: (-I - A)x_{-1} = 0 \Rightarrow (I + A)x_{-1} = 0\\
+\therefore \text{rank}(I + A) &= n
+\intertext{By 4(ii),}
+\text{rank}(I - A) &= n - \text{rank}(I + A) \\
+&= 0\\
+\Rightarrow I - A &= 0 \quad (\because \text{for any matrix $M$, det}(M) = 0 \Leftrightarrow M = 0)\\
+A &= I
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.v}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{If $-1$ is the only eigenvalue of A or $1$ is the only eigenvalue of A,}
+A = I &\lor A = -I
+\intertext{A is diagonal and thus diagonalizable.}
+\intertext{If $n$ eigenvalues of A are a combination of $-1$ or $1$,}
+(I + A)x_{-1} = 0 &\land (I- A)x_{1} = 0\\
+\text{dim}(E) &= \text{dim}(E_{-1}) + \text{dim}(E_{1}) \\
+&= \text{nullity}(I + A) + \text{nullity}(I - A) \\
+&= (n - \text{rank}(I + A)) + (n - \text{rank}(I - A)) \\
+&= 2n - (\text{rank}(I + A) + \text{rank}(I - A)) \\
+&= 2n - n \quad (\text{by 4(ii)})\\
+&= n\\
+\intertext{$\therefore$ A is diagonalizable.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{5.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text {Let } A &= \left( \begin{array}{cccc}
+s_1 s_2 \ldots s_n
+\end{array} \right)\\
+v &= A (v)_S\\
+v \cdot v &= [A (v)_S] \cdot [A (v)_S]\\
+v^T v &= [A (v)_S]^T [A (v)_S]\\
+&=  (v)_S^T A^T A (v)_S\\
+&=  (v)_S^T I (v)_S \quad (\because \text{A is orthonormal.})\\
+&=  (v)_S^T (v)_S \\
+\therefore ||(v_S)||^2 &= ||v||^2\\
+||(v_S)|| &= ||v||\\
+&= 1
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{5.ii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{$A$ is diagonal} &\Leftrightarrow \text{$A$ is diagonalizable}
+\intertext{i.e. $A$ has $n$ eigenvectors, $\{q_1, q_2, \ldots, q_n\}$, which form an orthonormal basis for $\mathbb{R}^n$.}
+Q &= \left( \begin{array}{cccc}
+q_1 & q_2 & \ldots & q_n\\
+\end{array} \right)\\
+D &= \left( \begin{array}{ccc}
+\lambda_{min} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & \lambda_{max}\\
+\end{array} \right)\\
+v^T A v &= v^T Q D Q^T v\\
+\intertext{Let $u = Q^Tv$. By 5(i),}
+v &= (u)_{Q^T}\\
+||u|| &= 1\\
+v^T Q &= (Q^T v)^T\\
+&= u^T\\
+v^T Q D Q^T v &= u^T D u\\
+\lambda_{min} u^T u &\le u^T D u \le \lambda_{max} u^T u \\
+\lambda_{min} ||u||^2 &\le u^T D u \le \lambda_{max} ||u||^2\\
+\therefore \lambda_{min} &\le v^T A v \le \lambda_{max}\\
+\end{align*}
+\end{proof}
+\filbreak
+
+\end{document}

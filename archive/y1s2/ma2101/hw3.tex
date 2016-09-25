@@ -1,0 +1,528 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\AtBeginDocument{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 5pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt 
+ \belowdisplayshortskip=4pt plus 5pt minus 4pt
+}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2101 Linear Algebra II Homework 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\section*{Section 2.1}
+
+\begin{problem}{17.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{By the dimension theorem,}
+	\text{nullity}(T) + \text{rank}(T) = \text{dim}(V) \\
+	\intertext{rank($T$) is largest when nullity($T$) $= 0$. i.e.}
+	0 + \text{rank}(T) = \text{dim}(V) \\
+	\text{rank}(T) = \text{dim}(V) \\
+	\shortintertext{However,}
+	\text{dim}(V) < \text{dim}(W) \\
+	\Rightarrow \text{rank}(T) < \text{dim}(W) \\
+	\intertext{$\therefore$ $T$ cannot be onto.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{17.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{By Theorem 2.1, R($T$) is a subspace of $W$.}
+	\Rightarrow \text{rank}(T) \le \text{dim}(W) \\
+	\intertext{By the dimension theorem,}
+	\text{nullity}(T) + \text{rank}(T) = \text{dim}(V) \\
+	\intertext{nullity($T$) is minimum when rank($T$) is maximum. i.e.}
+	\text{rank}(T) = \text{dim}(W) \\
+	\text{nullity}(T) = \text{dim}(V) - \text{rank}(T) = \text{dim}(V) - \text{dim}(W) \\
+	\shortintertext{However,}
+	\text{dim}(W) < \text{dim}(V) \\
+	\Rightarrow \text{dim}(V) - \text{dim}(W) > 0\\	
+	\Rightarrow \text{nullity}(T) > 0\\	
+	\intertext{$\therefore$ $T$ cannot be one-to-one.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{21.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{For $\{a\} = (a_1, a_2, \ldots), \{b\} = (b_1, b_2, \ldots) \in V$,
+		$c \in F$,}
+	T(c\{a\} + \{b\}) &=  T(ca_1 + b_1, ca_2 + b_2, \ldots) \\
+	&= (ca_2 + b_2, ca_3 + b_3, \ldots) \\
+	&= c(a_2, a_3, \ldots) + (b_2, b_3, \ldots) \\
+	&= cT(\{a\}) + T(\{b\}) \\
+	\intertext{$\therefore T$ is a linear transformation. Similiarly,}
+	U(c\{a\} + \{b\}) &=  U(ca_1 + b_1, ca_2 + b_2, \ldots) \\
+	&= (0, ca_1 + b_1, ca_2 + b_2, \ldots) \\
+	&= c(0, a_1, a_2, \ldots) + (0, b_1, b_2, \ldots) \\
+	&= cU(\{a\}) + U(\{b\}) \\
+	\intertext{$\therefore U$ is a linear transformation.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{21.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{For any $\{v\} = (v_1, v_2, \ldots) \in V$,}
+	\exists \{v'\} \in V \text{ where } \{v'\} = (k, v_1, v_2, \ldots), 
+		\text{for any $k \in F$}\\
+	\text{s.t. } T(\{v'\} = T(k, v_1, v_2, \ldots) = (v_1, v_2, \ldots) = \{v\}
+	\intertext{$\therefore T$ is onto. To prove that $T$ is not one-to-one, take 
+		$k_1, k_2 \in F$ where $k_1 \ne k_2$. Then, let:}
+	\{u\} = (k_1, u_1, u_2, \ldots) \\
+	\{u'\} = (k_2, u_1, u_2, \ldots) \\
+	\{u\} \ne \{u'\} \\
+	T(\{u\}) = (u_1, u_2, \ldots) \\
+	T(\{u'\}) = (u_1, u_2, \ldots) = T(\{u\})
+	\intertext{$\therefore T$ is not one-to-one.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{21.c}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{For $\{a\}, \{b\} \in V$, where $\{a\} \ne \{b\}$, 
+		suppose, for contradiction, that $U(\{a\}) = U(\{b\})$. Then,}
+	U(\{a\}) = (0, a_1, a_2, \ldots) \\
+	U(\{b\}) = (0, b_1, b_2, \ldots) \\
+	\Rightarrow a_1 = b_1, a_2 = b_2, \ldots \\
+	\Rightarrow \{a\} = \{b\} 
+	\intertext{Thus yielding a contradiction. Therefore, for $\{a\} \ne \{b\}$, 
+		$U(\{a\}) \ne U(\{b\}) \Rightarrow U$ is one-to-one. To prove $U$ is not onto,
+		take any $\{v\} \in V$, where:}
+	\{v\} = (k, v_1, v_2, \ldots) 
+	\intertext{When $k \ne 0$,}
+	\{v\} \not \in \text{R}(U) 
+	\intertext{$\therefore U$ is not onto.} 
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{35.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	V = R(T) \oplus N(T) \Leftrightarrow V = R(T) + N(T) \land R(T) \cap N(T) = \{0\} \\
+	\intertext{Thus, it suffices to prove that $R(T) \cap N(T) = \{0\}$.
+		As $V$ is finite dimensional, suppose dim$(V)=n$, nulllity$(T)=k$ with basis:}
+	\beta_{N(T)}=\{v_1, \ldots, v_k\}
+	\intertext{By the Dimension Theorem,}
+	\text{rank}(T) = \text{dim}(V) - \text{nullity}(T) = n - k \\
+	\text{Let } \beta_{R(T)} = \{v_{k+1}, \ldots, v_n\} \text{ be a basis for $V$}
+	\intertext{Suppose, for contradiction that there exists $u\ne0 \in R(T) \cap N(T)$.}
+	u \in N(T) \Rightarrow u = \sum_{i=1}^k a_i v_i \\
+	u \in R(T) \Rightarrow u = \sum_{j=k+1}^n b_j v_j \\
+	\sum_{i=1}^k a_i v_i - \sum_{j=k+1}^n b_j v_j = 0
+	\intertext{Furthermore, as $u\ne0$, $(a_i)$ and $(b_j)$ not all zero. Then,}
+	S = \beta_{N(T)} \cup \beta_{R(T)} \text{ is not linearly independent.} \\
+	\Rightarrow \text{dim}(R(T)) < |S| = n
+	\shortintertext{Then,}
+	\text{nullity}(T) + \text{rank}(T) > \text{dim}(V) \\
+	\intertext{Thus violating the Dimension Theorem. Hence,}
+	u \in R(T) \cap N(T) \Rightarrow u = 0 \\
+	\therefore R(T) \cap N(T) = \{0\} \Rightarrow  V = R(T) \oplus N(T)
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{35.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	V = R(T) \oplus N(T) \Leftrightarrow V = R(T) + N(T) \land R(T) \cap N(T) = \{0\} \\
+	\intertext{Thus it suffices to prove that $V = R(T) + N(T)$. As $V$ is finite 
+		dimensional, suppose dim$(V) = n$ and dim$(N(T)) = k$. Then by the Dimension 
+		Theorem,}
+	\text{rank}(T) = \text{dim}(V) - \text{nullity}(T) = n-k
+	\intertext{Let $R(T)$ and $N(T)$ have the following bases:}
+	\beta_{N(T)} = \{v_1, \ldots, v_k\} \\
+	\beta_{R(T)} = \{u_1, \ldots, u_{n-k}\}
+	\intertext{Furthermore,}
+	|\beta_{N(T)} \cup \beta_{R(T)}| = n \\
+	\sum_{i=1}^k a_i v_i + \sum_{j=1}^{n-k} b_j u_j = 0 \\
+	\Rightarrow \sum_{i=1}^k a_i v_i = -\sum_{j=1}^{n-k} b_j u_j \in R(T) \cup N(T) \\
+	\Rightarrow \sum_{i=1}^k a_i v_i = -\sum_{j=1}^{n-k} b_j u_j = 0 \\
+	\intertext{As $(v_i)$ and $(u_j)$ are bases for $N(T)$ and $R(T)$ respectively,}
+	a_1 = \ldots = a_k \text{ and } b_1 = \ldots = b_{n-k} \\
+	\Rightarrow \beta_{N(T)} \cup \beta_{R(T)} \text{ is linearly independent} \\
+	\Rightarrow \beta_{V} = \beta_{N(T)} \cup \beta_{R(T)} \\
+	\intertext{For any $v \in V$,}
+	v = \sum_{i=1}^k c_i v_i + \sum_{j=1}^{n-k} d_j u_j = 0 \\
+	\shortintertext{where}
+	\sum_{i=1}^k c_i v_i \in N(T) \text{ and }\sum_{j=1}^{n-k} d_j u_j \in R(T) \\
+	\therefore V \subseteq R(T) + N(T)
+	\intertext{To show the converse, by Theorem 2.1, both $N(T)$ and $R(T)$ 
+		are subspaces of $V$. For any $w \in R(T) + N(T)$,}
+	w = v + u \text{ where } v, u \in V \\
+	\Rightarrow w \in V \\
+	\therefore R(T) + N(T) \subseteq V \Rightarrow V = R(T) + N(T) \\
+	\Rightarrow R(T) \oplus N(T) = V
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 2.2}
+
+\begin{problem}{13}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	(aT + bU)(x) = 0 \\
+	aT(x) + bU(x) = 0 \\
+	\intertext{As $T$ and $U$ are both non-zero, consider the case when either $a$ or 
+		$b$ is not zero. Say $a\ne0, b=0$. Then,}
+	aT(x) + b = 0 \Rightarrow T = 0
+	\intertext{Yielding a contradiction as it is in the case when $a=0, b\ne0$. 
+		In the case $a\ne0, b\ne0$,}
+	T(x) = -\frac{b}{a}U(x) 
+	\Rightarrow R(T) \cap R(U) \ne \{0\}
+	\intertext{Which also results in a contradiction. Then, necessarily, $a=b=0$. 
+		As $aT + bU = 0 \Rightarrow a = b = 0$, 
+		$\{T,U\}$ is a linearly independent subset of $\mathcal{L}(V,W)$.}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{16}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{Suppose dim$(V)$ = dim$(W) = n$ and nullity$(T) = k$. Then,}
+	\beta_{N(T)} = \{v_1, \ldots, v_k\} \\
+	\text{Let } \beta = (v_1,ldots, v_n) \\
+	\intertext{Following the derivation of the Dimension Theorem,}
+	\beta_{R(T)} = \{T(v_{k+1}), \ldots, T(v_n)\} = \{w_{k+1}, \ldots, w_n\} \\
+	\intertext{By the Replacement Theorem,}
+	\exists S = \{ w_1, \ldots, w_k \} \\
+	\text{s.t. } S \cup \beta_{R(T)} \text{ is a basis for $W$} \\
+	\text{Let } \gamma = (w_1, \ldots, w_k, w_{k+1}, \ldots, w_n) \\
+	\intertext{Then, for any $[x]_\beta \in V$,}
+	[x]_\beta = \left( \begin{array}{c}
+			x_1\\
+			\vdots\\
+			x_n\\
+		\end{array} \right) 
+		= x_1 u_1 + \ldots + x_n u_n \\
+	\text{where } u_m = \left( \begin{array}{c}
+			\delta_1\\
+			\vdots\\
+			\delta_n\\
+		\end{array} \right) 
+		\text{ where } \delta_n = \begin{cases}
+			1, & \text{when $n=m$} \\
+			0, & \text{otherwise} \\
+		\end{cases} \\
+	\Rightarrow T(v_m) = \begin{cases}
+		0, & \text{when }m \in \{1, \ldots, k\} \\
+		w_{m}, & \text{when }m \in \{k+1, \ldots, n\} \\
+	\end{cases} \\
+	[T]_\beta^\gamma [u_m]_\beta = \begin{cases}
+		0, & \text{when }m \in \{1, \ldots, k\} \\
+		[u_{m}]_\gamma, & \text{when }m \in \{k+1, \ldots, n\} \\
+	\end{cases}
+	\shortintertext{Then,}
+	[T]_\beta^\gamma = A_{n \times n} \\
+	\text{where } (a_{ij}) = \begin{cases}
+		1, & \when{i=j, i \in \{k+1, \ldots, n\}} \\
+		0, & \text{otherwise} \\
+	\end{cases} \\
+	\text{s.t. $A$ is diagonal}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 2.3}
+
+\begin{problem}{12.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{$UT$ is one-to-one} \Rightarrow N(UT) = \{0\}
+	\intertext{Assume, for contradiction, that $T$ is not one-to-one.}
+	\Leftrightarrow \exists v \ne 0 \in N(T) \\
+	\text{i.e. } T(v) = 0
+	\shortintertext{Then,}
+	UT(v) = U(T(v)) = U(0) = 0 \\
+	\Rightarrow UT \text{ is not one-to one}
+	\intertext{Thus yielding a contradiction. Therefore $UT$ is one-to-one $\Rightarrow$ 
+		$T$ is one-to-one. On the other hand, $U$ need not be one-to-one as suppose:}
+	N(U) \ne \{0\} \text{ and } N(T) = 0
+	\intertext{However, if $R(T) \cap N(U) = \{0\}$, $\forall x \in V,$}
+	\begin{align*}
+		UT(x) &= U(T(x)) &\\
+		&= U(y),\ (y \ne 0 \because N(T) = 0) \\
+		&= z \ne 0,\ (\because y \ne 0 \in R(T) \Rightarrow y \not \in N(U))
+	\end{align*}
+	\\
+	\Rightarrow UT \text{ is one-to-one}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{12.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{$UT$ is onto } \Rightarrow \forall z \in Z,\ 
+		\exists v \in V \text{ s.t } UT(v) = z
+	\intertext{Assume, for contradiction, that $U$ is not onto.}
+	\text{i.e. } \exists z_0 \in Z,\ z_0 \not \in R(U) \\
+	\Rightarrow \neg \exists w \in W \text{ s.t. } U(w) = z_0 \\
+	\Rightarrow \neg \exists v \in V \text{ s.t. } UT(v) = z_0 \\
+	\intertext{Thus, yielding a contradiction. Therefore, $UT$ is onto $\Rightarrow$ 
+		$U$ is onto. On the other hand, $T$ need not be onto. Suppose so, and  
+		$U$ is onto. Then,}
+	\forall z \in Z,\ \exists w \in W \text{ s.t. } U(w) = z \\
+	\text{Let } S = \{w' \in W : w' \not \in R(T) \} \\
+	\intertext{However, as long as $S \subseteq N(U)$, for any $z_1 \in Z$, if $z_1=0$,}
+	UT(0) = z_1
+	\intertext{When $z_1\ne0$,}
+	\exists w_1 \in W \text{ s.t. }  U(w_1) = 0 = z_1 \\
+	\because w_1 \not \in S,\ \exists v_1 \in V \text{ s.t. }  U(v_1) = w_1 \\
+	\Rightarrow UT(v_1) = z_1 \Rightarrow \text{$UT$ is still onto}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{12.c}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{As $U$ and $T$ are one-to-one,}
+	N(T) = N(U) = \{0\} \\
+	\shortintertext{Then,}
+	z_0 = 0 \in Z \\
+	U(w_0) = z_0 \Rightarrow w_0 = 0 \\
+	T(v_0) = w_0 \Rightarrow v_0 = 0 \\
+	\Rightarrow N(UT) = \{0\} \\
+	\therefore UT \text{ is one-to-one}
+	\intertext{When $U$ and $T$ are onto, for any $z_1 \in Z$,}
+	\exists w_1 \in W \text{ s.t } U(w_1) = z_1 \\
+	\text{and } \exists v_1 \in V \text{ s.t } T(v_1) = w_1 \\
+	\therefore UT \text{ is onto}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{13}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{For $i \in \{1, \ldots, n\}$,}
+	(a_{ii}) = ([a^t]_{ii}) \\
+	\text{tr}(A) = \sum_{i=1}^n a_{ii} \\
+	\therefore\text{tr}(A^t) = \sum_{i=1}^n [a^t]_{ii} = \text{tr}(A)  \\
+	\intertext{Let $AB=C$ and $BA=D$} 
+	\begin{align*}
+	(c_{ij}) &= \sum_{k=1}^n a_{ik} b_{kj},\ (d_{ij}) = \sum_{k=1}^n b_{ik} a_{kj} \\
+		\text{tr}(C) &= \sum_{i=1}^n c_{ii} 
+			= \sum_{i=1}^n \sum_{k=1}^n a_{ik} b_{ki} &\\
+		\text{tr}(D) &= \sum_{i=1}^n d_{ii} \\
+		&= \sum_{i=1}^n \sum_{k=1}^n b_{ik} a_{ki} 
+			= \sum_{k=1}^n \sum_{i=1}^n a_{ki} b_{ik} 
+	\end{align*}
+	\\
+	\intertext{Switching the dummy variables,} 
+	\sum_{k=1}^n \sum_{i=1}^n a_{ki} b_{ik} = \sum_{i=1}^n \sum_{k=1}^n a_{ik} b_{ki}
+		= \text{tr}(C) \\
+	\therefore \text{tr}(AB) = \text{tr}(BA) 
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 2.4}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{gather*}
+	\intertext{Suppose an inverse, $T^{-1}$, exists. Then,}
+	T^{-1} : R^3 \to R^2 \\
+	\intertext{By the dimension theorem,}
+	\text{dim}(R^3) = \text{nullity}(T) + \text{rank}(T) \\
+	\text{dim}(R^3) = 3 \\
+	\text{rank}(T) \le 2 \\
+	\Rightarrow \text{nullity}(T) \ge 1 \\
+	\Rightarrow T^{-1} \text{ is not invertible}
+	\intertext{Thus yielding a contradiction. Hence $T$ is not invertible.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{gather*}
+	\intertext{Suppose an inverse, $T^{-1}$, exists. Then,}
+	T^{-1} : R^3 \to R^2 \\
+	\intertext{By the dimension theorem,}
+	\text{dim}(R^3) = \text{nullity}(T) + \text{rank}(T) \\
+	\text{dim}(R^3) = 3 \\
+	\text{rank}(T) \le 2 \\
+	\Rightarrow \text{nullity}(T) \ge 1 \\
+	\Rightarrow T^{-1} \text{ is not invertible}
+	\intertext{Thus yielding a contradiction. Hence $T$ is not invertible.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{gather*}
+	\intertext{Let $\beta$ be the standard basis for $\mathbb{R}^3$. Then $[T]_\beta$ 
+		is equivalent to $L_A$ where:}
+	A = \left( \begin{array}{ccc}
+		3 & 0 & -2\\
+		0 & 1 & 0\\
+		3 & 4 & 0\\
+	\end{array} \right) \\
+	A^{-1} = \left( \begin{array}{ccc}
+		0 & 4/3 & 1/3\\
+		0 & 1 & 0\\
+		-1/2 & -2 & 1/2\\
+	\end{array} \right) \\
+	\Rightarrow \text{$T$ is invertible}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{gather*}
+	T : P_3(R) \to P_2(R) \\
+	\intertext{By the dimension theorem,}
+	\text{dim}(P_3(R)) = \text{nullity}(T) + \text{rank}(T) \\
+	\text{dim}(P_3(R)) = 3 \\
+	\text{rank}(T) \le 2 \\
+	\Rightarrow \text{nullity}(T) \ge 1 \\
+	\Rightarrow T\text{ is not invertible}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.e}
+\end{problem}
+\begin{gather*}
+	T : M_{2\times2}(R) \to P_2(R) \\
+	\intertext{By the dimension theorem,}
+	\text{dim}(M_{2\times2}(R)) = \text{nullity}(T) + \text{rank}(T) \\
+	\text{dim}(M_{2\times2}(R)) = 2(2) = 4 \\
+	\text{rank}(T) \le 2 \\
+	\Rightarrow \text{nullity}(T) \ge 2 \\
+	\Rightarrow T\text{ is not invertible}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.f}
+\end{problem}
+\begin{gather*}
+	\intertext{By the corollary to Theorem 2.17,}
+	T : M_{2\times2}(R) \to M_{2\times2}(R) \text{ is invertible}
+		\Leftrightarrow R(T) \text{ is one-to-one}
+	\intertext{Suppose for some $A \in M_{2\times2}(R)$,}
+	A = \left( \begin{array}{ccc}
+		a_{11} & a_{12}\\
+		a_{21} & a_{22}\\
+	\end{array} \right) \\
+	\text{s.t. } T(A) = 0 \\
+	\shortintertext{Then,}
+	a_{11} = 0 \text{ and } a_{11} + a_{12} = 0 \Rightarrow a_{12} = 0 \\
+	a_{21} = 0 \text{ and } a_{21} + a_{22} = 0 \Rightarrow a_{22} = 0 \\
+	T(A) = 0 \Rightarrow A = 0
+	\intertext{Hence, $T$ is one-to-one and therefore invertible.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{When $A$ is invertible.} 
+	\exists A^{-1} \text{ s.t. } A^{-1} A = I \\
+	\intertext{Taking the premultiplication by $A^{-1}$ on both sides,}
+	A^{-1} A B = A^{-1} 0 \\
+	I B = 0 \\
+	B = 0
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 2.5}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{gather*}
+	(a_1, a_2) = a_1 e_1 + a_2 e_2 \\
+	(b_1, b_2) = b_1 e_1 + b_2 e_2 \\
+	Q= \left( \begin{array}{cc} 
+		a_1 & b_1\\
+		a_2 & b_2\\
+	\end{array} \right)
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{gather*}
+	(0, 10) = 4(-1,3) + 2(2, -1) \\
+	(5, 0) = (-1,3) + 3(2, -1) \\
+	Q= \left( \begin{array}{cc} 
+		4 & 1\\
+		2 & 3\\
+	\end{array} \right)
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{gather*}
+	(2, 5) = 2 e_1 + 5 e_2 \\
+	(-1, -3) = -1 e_1 + (-3) e_2 \\
+	Q^{-1} = \left( \begin{array}{cc} 
+		2 & -1\\
+		5 & -3\\
+	\end{array} \right) \\
+	\begin{align*}
+		Q&= (Q^{-1})^{-1} &\\
+		&= \left( \begin{array}{cc} 
+			3 & -1\\
+			5 & -2\\
+		\end{array} \right)
+	\end{align*}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{gather*}
+	(2, 1) = 2(-4,3) + 5(2, -1) \\
+	(-4, 1) = (-1)(-4,3) + (-4)(2, -1) \\
+	Q= \left( \begin{array}{cc} 
+		2 & -1\\
+		5 & -4\\
+	\end{array} \right) 
+\end{gather*}
+\filbreak
+
+\end{document}

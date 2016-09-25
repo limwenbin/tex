@@ -1,0 +1,258 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Tutorial 11}
+\author{Lim Wen Bin \\
+A0140764H\\
+T02}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+\intertext{Let $A$ be the standard matrix for the linear transformation $T_1$.}
+A &=
+\left( \begin{array}{cc}
+1 & 0\\
+2 & 0\\
+\end{array} \right)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+T_2 (\mathbf{0}) 
+&= 
+\left( \begin{array}{c}
+2\\
+1\\
+\end{array} \right)\\
+&\ne
+\left( \begin{array}{c}
+0\\
+0\\
+\end{array} \right)
+\intertext{$\therefore T_2$ is not a linear transformation.}
+\end{align*}
+\filbreak
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{align*}
+\intertext{Let $A$ be the standard matrix for the linear transformation $T_3$.}
+A &=
+\left( \begin{array}{ccc}
+0 & 0 & 0\\
+-1 & 1 & 0\\
+0 & 1 & -1\\
+\end{array} \right)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{align*}
+T_4 (ax_1 + bx_2) &= (ax_1 + bx_2)^T A y \quad a, b \in \mathbb{R}\\
+&= (ax_1^T + bx_2^T) A y\\
+&= ax_1^T A y + bx_2^T A y\\
+&= a(x_1^T A y) + b(x_2^T A y)\\
+&= T_4(x_1) + T_4(x_2) \\
+\intertext{$\therefore T_4$ is a linear transformation.}
+\intertext{Let $B$ be the standard matrix for the linear transformation $T_4$.}
+T_4(x) &= x^T A y\\
+&= Bx\\
+x^T A y &= (x^T A y)^T \quad (\because x^T A y \in \mathbb{R})\\
+&= y^T A^T x\\
+\therefore B &= y^T A^T
+\end{align*}
+\filbreak
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+T_5 (ax_1 + bx_2) &= (ax_1 + bx_2)^T A (ax_1 + bx_2) \quad a, b \in \mathbb{R}\\
+&= (ax_1^T + bx_2^T) A (ax_1 + bx_2)\\
+&= ax_1^T A (ax_1 + bx_2) + bx_2^T A (ax_1 + bx_2) \\
+&= ax_1^T A ax_1 + ax_1^T A bx_2 + bx_2^T A ax_1 + bx_2^T A bx_2 \\
+&= a(x_1^T A x_1) + ax_1^T A bx_2 + bx_2^T A ax_1 + b(x_2^T A x_2) \\
+&= aT_5(x_1) + ax_1^T A bx_2 + bx_2^T A ax_1 + bT_5(x_2) \\
+&\ne aT_5(x_1) + bT_5(x_2) \\
+\intertext{$\therefore T_4$ is not a linear transformation.}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+(T_1 + T_2)(au + bv) &= T_1(au + bv) + T_2(au + bv) \quad a, b \in \mathbb{R}\\
+&= aT_1(u) + bT_1(v) + aT_2(u) + bT_2(v)\\
+&= a[T_1(u) + T_2(u)] + b[T_1(v) + T_2(v)]\\
+&= a(T_1 + T_2)(u) + b(T_1 + T_2)(v)\\
+\intertext{$\therefore (T_1+T_2)$ is a linear transformation.}
+\intertext{Let $C$ be the standard matrix for the linear transformation $(T_1 + T_2)$.}
+(T_1 + T_2)(u) &= T_1(u) + T_2(u)\\ 
+&= Au + Bu\\
+&= (A + B)u\\
+\therefore C &= A+B
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{align*}
+(\lambda T)(au + bv) &= \lambda T(au + bv) \quad a, b \in \mathbb{R}\\
+&= \lambda (aT(u) + bT(v)) \\
+&= a\lambda T(u) + b\lambda T(v) \\
+&= a(\lambda T)(u) + b(\lambda T)(v) \\
+\intertext{$\therefore (\lambda T)$ is a linear transformation.}
+\intertext{Let $B$ be the standard matrix for the linear transformation $(\lambda T)$.}
+(\lambda T)(u) &= \lambda T(u)\\ 
+&= \lambda Au\\
+\therefore B &= \lambda A
+\end{align*}
+\filbreak
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+P(ax_1 + bx_2) &= (ax_1 + bx_2) - (n \cdot (ax_1 + bx_2)) n\quad a, b \in \mathbb{R}\\
+&= ax_1 - (n \cdot (ax_1)) n + bx_2 - (n \cdot (bx_2)) n\\
+&= a(x_1 - (n \cdot x_1) n) + b(x_2 - (n \cdot x_2) n)\\
+&= aP(x_1) + bP(x_2)\\
+\intertext{$\therefore P$ is a linear transformation.}
+\intertext{Let $A$ be the standard matrix for the linear transformation $P$.}
+P(x) &= Ax\\
+P(x) &= x - (n \cdot x)n\\
+&= x - n(n \cdot x) \quad (\text{$\because n \cdot x$ is a scalar}) \\
+&= x - n(n^T x) \\
+&= Ix - nn^T x\\
+&= (I - nn^T) x\\
+\therefore A &= (I - nn^T)
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+\begin{align*}
+(P \circ P)(x) &= P (P(x))\\
+&= P(x - (n \cdot x)n))\\
+&= x - (n \cdot x)n - (n \cdot (x - (n \cdot x)n))n \\
+&= x - (n \cdot x)n - (n \cdot x)n + [n \cdot ((n \cdot x)n)]n \\
+&= x - (n \cdot x)n - (n \cdot x)n + (n \cdot x)[n \cdot n]n \quad (\text{$\because n \cdot x$ is a scalar}) \\
+&= x - (n \cdot x)n - (n \cdot x)n + (n \cdot x)n \quad (\because n \cdot n = 1) \\
+&= x - (n \cdot x)n\\
+&= P(X)\\
+\therefore P \circ P &= P
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{align*}
+\intertext{Let $A$ be the standard matrix for the linear transformation $T$.}
+\text{rref}(A) &=
+\left( \begin{array}{ccccc}
+1 & 2 & 0 & 0 & -3\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 2\\
+0 & 0 & 0 & 0 & 0\\
+\end{array} \right)\\
+\text{Range}(T) &= \text{C}(A)\\
+&= \text{span} \left\{
+\left( \begin{array}{c}
+1\\
+2\\
+-1\\
+0\\
+\end{array} \right) ,
+\left( \begin{array}{c}
+3\\
+2\\
+-3\\
+2\\
+\end{array} \right) ,
+\left( \begin{array}{c}
+4\\
+4\\
+-2\\
+2\\
+\end{array} \right) 
+\right\}\\
+\end{align*}
+\filbreak
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{align*}
+\text{Ker}(T) &= \text{N}(A)\\
+&= \text{span} \left\{
+\left( \begin{array}{c}
+-2\\
+1\\
+0\\
+0\\
+0\\
+\end{array} \right) ,
+\left( \begin{array}{c}
+3\\
+0\\
+0\\
+-2\\
+1\\
+\end{array} \right) 
+\right\}\\
+\end{align*}
+\filbreak
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{align*}
+\text{dim(Range($T$))} + \text{dim(Ker($T$))} &= 3 + 2\\
+&= 5 = n
+\end{align*}
+\filbreak
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{align*}
+T(e_n) &= Ae_n\\
+&= a_n \text{, where $a_n$ is the $n$th column of A.}\\
+\{T(e_i)&:i \in \mathbb{Z}, i \in [1,n]\} \text{ is orthogonal}\\
+\Rightarrow T(e_i) \cdot T(e_j) &= \begin{cases}
+0, & i \ne j\\
+1, & i=j\\
+\end{cases}\\
+\Rightarrow a_i \cdot a_j &= \begin{cases}
+0, & i \ne j\\
+1, & i=j\\
+\end{cases}\\
+A^T A &= I
+\intertext{$\therefore A$ is orthogonal.}
+\end{align*}
+\filbreak
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{align*}
+T(u) &= u_1T(e_1) + u_2T(e_2)\\
+\intertext{$\therefore T$ is a rotation on $\mathbb{R}^2$}
+\end{align*}
+\filbreak
+
+\end{document}

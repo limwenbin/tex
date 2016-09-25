@@ -1,0 +1,314 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{mathtools,amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+
+
+\pdfinfo{
+  /Title (example.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Seamus)
+  /Subject (Example)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{FIN2004X Finance}} \\
+\end{center}
+
+Lim Wen Bin A0140764H
+
+\subsection{Lecture 1: Financial Management Overview}
+
+Finance is a discipline concerned with \textbf{determining value} and
+\textbf{making decisions based on that value assessment}. \\
+
+Main areas of finance include: 1. Investments, 2. Financial Markets and
+Intermediaries and 3. Corporate Finance. \\
+
+\textbf{Investment Vehicle Model}: Investors provide financing in exchange
+for financial securities, Firms invest funds in assets, Income generated
+is distributed to the investors. \\
+
+\textbf{Balance Sheet/Accounting Model}: Investment decisions are
+represented on the asset side of the balance sheet, Financing decisions
+are represented on the liabilities and equity side. \\
+
+Corporate Finance can be thought as the analysis of \textbf{Capital
+structure}, \textbf{Capital budgeting} and \textbf{Net working capital}. \\
+
+\subsubsection{Forms of Business Organisation} 
+
+1. \textbf{Sole proprietorship} Advantages: Easy to start, least
+   regulated, single owner keeps profits, taxed once as personal income.
+   Disadvantages: Limited to life of owner, capital limited to owner
+   wealth, unlimited liability, difficult to sell ownership. 
+   
+2. \textbf{Partnership} Advantages: Two or more owners, more capital,
+   relatively easy to start, Income taxed once as personal income.
+   Disadvantages: Unlimited liablity (General vs. Limited partnership),
+   Dissolved when one owners dies or sells out, Difficult to transfer
+   ownership.
+
+3. \textbf{Corporation} Advantages: Limited liability, unlimited life,
+   seperation of ownership and management, easy transfer of ownershipo,
+   easy capital raising. Disadvantages: Agency costs, double taxation
+   (corporate and personal income)
+
+\subsubsection{Sources of External Corporate Financing} 
+
+1. \textbf{Debt} Lender lend money with debt contracts and become the
+   corporations's creditors, possessing higher claim priority in
+   a liquidation event. 
+
+2. \textbf{Equity} By buying shares, shareholders become residual
+   claimants of the firm, receiving payoffs in terms of dividends sand
+   capital gains.
+
+\textbf{Goal of Financial Management}: Maximize stock prices, i.e.
+increase the intrinsic value of the stock my influencing the amout, timing
+and riskiness of cash flow streams. \\
+
+\subsubsection{The Agency Problem}
+
+Conflicts of interests between: Shareholders and managers, shareholders
+and creditors. \\
+
+Costs: Direct agency costs (management expenses and monitoring costs),
+Indirect agency costs (lost opportunities).
+
+Solutions: Appropriate compensation plans, monitoring by lenders and
+investors, threat of firing, awareness of good corporate governance.
+
+\subsubsection{Financial Markets}
+
+\textbf{Money markets}: Trades debt securities of one year maturity or
+less, involves loosely connected dealer markets, major bank involvement.
+
+\textbf{Capital markets}: Trades equity and long-term debt claims, auction
+markets like SGX.
+
+\textbf{Primary markets}: Goverment and corporate issued securities,
+public offerings, private offerings (to FIs and HNWI)
+
+\textbf{Secondary markets}: Trades existing claims, Dealer markets (OTC),
+Auction market (SGX), Easy retrieval of market value.
+
+\subsection{Lecture 2: Financial Statement Analysis}
+
+The annual report issued to stockholders includes the: Balance sheet,
+Income statement, Statement of retained earning, Statement of cash flows.
+
+\subsubsection{Balance Sheet}
+
+Assets = Liailities + Equity: Lists item from decreasing liquidity, valued
+at original cost (except for marketable securities and inventories). \\
+
+\textbf{Enterprise value} = Market value of assets + Debt - Excess cash
+(and other non-operating assets); 
+\textbf{Market to book ratio} = Market value of X / Book value of X;
+
+The \textbf{Income Statement} shows revenues and expenses and taxes
+associated. 
+\textbf{EBIT} = Earnings before interest and tax.
+
+\textbf{Statement of Retained Earning}: EOY RE = Initial RE + NI
+- Dividends. \\
+
+\subsubsection{Statement of Cash Flows}
+
+Changes in cash divided into 3 categories: \textbf{Operating activities},
+\textbf{Investment activites}, \textbf{Financing activites}. \\
+
+NWC = Cash + Other CA - CL (CL = non-interest CL + interest CL); 
+$\Rightarrow$ $\Delta$Cash = $\Delta$RE + $\Delta$CL - $\Delta$Non-cash CA
+- $\Delta$Net fixed assets + $\Delta$LT-debt + $\Delta$Common stock; \\
+
+\textbf{Operating working capital} stems from operations and is removed
+from financing decisions (excludes interest bearing CL). \\
+
+\textbf{Cash flow from assets (CFFA/FCF)} = Operating cash flow (OCF)
+- Net capital spending (NCS) - $\Delta$Net operating working capital
+(NOWC);
+
+\textbf{OCF} = EBIT + Depreciation - (EBIT * Tax rate);
+\textbf{NCS} = Ending fixed assets - Beginning fixed assets + Depreciation;
+$\Delta$\textbf{NOWC} = Ending NOWC - Beginning NOWC;
+\textbf{Interest tax shield} = Cash saved from reduction in tases due to
+tax-free interest = Interest * Tax rate;
+\textbf{Cash flow to creditors} = Interest paid - Net new borrowing (LT-Debt
+and Note payable);
+\textbf{Cash flow to stockholders} = Dividends - Net new equity raised;
+\textbf{Cash flow to creditors and stockholders} = CFFA + Interest tax shield;
+
+\subsubsection{Financial Ratios}
+
+1. Liquidity Ratios: 
+\textbf{Current ratio} = $\frac{\text{CA}}{\text{CL}}$;
+\textbf{Quick ratio} = $\frac{\text{CA - Inventory}}{\text{CL}}$;
+\textbf{Cash ratio} = $\frac{\text{Cash}}{\text{CL}}$;
+\textbf{NWC to total assets} = $\frac{\text{NWC}}{\text{TA}}$;
+\textbf{Interval measure} = $\frac{\text{CA}}{\text{Average daily operating cost}}$;
+\\
+
+2. LT solvency: 
+\textbf{Total debt ratio} = $\frac{\text{TD}}{\text{TA}}$;
+\textbf{Debt/equity ratio} = $\frac{\text{TA - TE}}{\text{TE}}$;
+\textbf{Equity multiplier} = $\frac{\text{TA}}{\text{TE}}$
+= 1 + Debt/equity ratio;
+\textbf{LT debt ratio} = $\frac{\text{LT debt}}{\text{LT debt + TE}}$;
+\textbf{Times interest earned ratio} = $\frac{\text{EBIT}}{\text{Interest}}$;
+\textbf{Cash coverage ratio} = $\frac{\text{EBIT + Depreciation}}
+{\text{Interest}}$;
+\\
+
+3. Asset managment ratios: 
+\textbf{Inventory turnover} = $\frac{\text{COGS}}{\text{Inventory}}$;
+\textbf{Days' sales in inventory} = $\frac{\text{365}}{\text{Inventory turnover}}$;
+\textbf{Rec. turnover} = $\frac{\text{Sales}}{\text{Receivables}}$
+\textbf{Days sales outstanding} = $\frac{\text{AR}}{\text{Average daily sales}}$;
+= $\frac{\text{365}}{\text{Rec. turnover}}$;
+\textbf{FA turnover} = $\frac{\text{Sales}}{\text{Net fixed assets}}$;
+\textbf{TA turnover} = $\frac{\text{Sales}}{\text{Total assets}}$;
+\\
+
+4. Profitability: 
+\textbf{Profit margin} = $\frac{\text{NI}}{\text{Sales}}$;
+\textbf{Basic earning power} = $\frac{\text{EBIT}}{\text{TA}}$;
+\textbf{ROA} = $\frac{\text{NI}}{\text{TA}}$
+\textbf{ROE} = $\frac{\text{NI - Preferred dvds}}{\text{Total common equity}}$;
+\\
+
+5. Market value ratios: 
+\textbf{P/E} = $\frac{\text{Price}}{\text{EPS}}$;
+\textbf{M/B} = $\frac{\text{Market share price}}{\text{Book share price}}$;
+\\
+
+\textbf{Dupont Identity}: ROE = Profit margin * TA turnover * Equity multiplier;
+
+\subsection{Lecture 3: Time Value of Money}
+
+\subsubsection{Annuities & Perpetuities}
+
+\textbf{Ordinary annuities} have cash flows at the end of each period.
+\textbf{Annuity dues} have cash flows at the beginning of each period.
+\textbf{Perpetuities} are a set of payments paid forever, growing perpetuities
+grow at a constant rate each period. 
+\\
+
+\textbf{Simple Interest}: FV = PV$(1 + rt)$;
+\textbf{Compound Interest}: FV = PV$(1 + r)^t$;
+% TODO: derive this
+\textbf{PV(Annuity)} = PMT * $\frac{1 - (1/(1 + r)^t)}{r}$;
+\textbf{PV(Annuity due)} = PV(Annuity) * (1+r);
+\textbf{FV(Annuity)} = PMT * $\frac{(1+r)^n - 1}{r}$;
+\textbf{FV(Growing annuity)} = PMT1 * $\frac{(1+r)^n - (1+g)^n}{r-g}$;
+\textbf{FV(Annuity due)} = FV(Annuity) * (1+r);
+\textbf{PV(Perpetuity)} = $\frac{\text{PMT}}{r}$;
+\textbf{EAR} = $\left(1 + \frac{\text{APR}}{m}\right)^m -1$;
+
+\subsubsection{Different Types of Loans}
+
+\textbf{Loan with fixed principal payment}: Pays fixed amount of principal per
+year, interest paid is the rate multiplied by the beginning balance. \\
+\textbf{Amortized loan}: Each payment first covers the interest on the
+beginning balance and then is contributed to repaying the principal.
+
+\subsection{Lecture 4 \& 5: Risk \& Return}
+
+\textbf{\% Return} = Dvd yield + Capital gain yield = 
+$\frac{\text{Dvd}}{\text{Initial share price}} + \frac{\text{Capital gain
+yield}}{\text{Initial share price}}$;
+\textbf{Real return} = $\frac{\text{1 + nominal}}{\text{1 + inflation}}-1$;
+\textbf{Expected return}: $\hat{r} = \sum_i r_i P_i$;
+When given probabilites, $\sigma = \sqrt{\sum_i (r_i - \hat{r}) P_i}$;
+When given data, $\sigma = \sqrt{\frac{\sum_i (r_i - \hat{r})}{n-1}}$;
+\textbf{Coeffficient of variation (CV)} = $\frac{\sigma}{\hat{r}}$;
+\textbf{Risk premium} = Excess return over risk-free rate = $r - r_{rf}$;
+% TODO: revisit
+\textbf{Real risk premium} = $\text{Re}(r) - \text{Re}(r_{rf}) =
+\frac{\text{nominal RP}}{\text{1+inflation}}$;
+\textbf{Expected portfolio return}: $\hat{r_p} = \sum_i w_i \hat{r_i} = \sum_i
+P_i (r_p)_i$;
+$\sigma_p = \sum_i ((r_p)_i - \hat{r_p})P_i$;
+\textbf{Sample Cov(X,Y)} = $\frac{\sum_i (r_x - \hat{r_x})(r_y - \hat{r_y})}{n-1}$;
+Cov(X,Y) = $\rho_{XY} \sigma_X \sigma_Y$;
+$\sigma(ax+by) = \sqrt{a^2 \sigma(x)^2 + b^2\sigma(y)^2 +
+	2ab\sigma(x)\sigma(y)\rho_{xy}}$;
+\textbf{Total risk} = Coy-specific risk + Market risk;
+\textbf{Market risk} $\beta_i = \frac{\text{Cov}(r_i, r_M)}{\sigma_M^2}
+= \frac{\rho_{iM} \sigma_i \sigma_M}{\sigma_M^2}
+= \frac{\sigma_i}{\sigma_M}\rho_{iM}$;
+\textbf{Required rate of return}: $r = r_{rf} + RP_i = r_{rf} + (r_M
+- r_{rf})\beta_i$;
+
+% You can even have references
+%\rule{0.3\linewidth}{0.25pt}
+%\scriptsize
+%\bibliographystyle{abstract}
+%\bibliography{refFile}
+
+\end{multicols}
+\end{document}

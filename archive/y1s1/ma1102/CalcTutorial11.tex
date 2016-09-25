@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1102R Tutorial 11}
+\author{Lim Wen Bin \\
+A0140764H\\
+T03}
+\maketitle
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+\sqrt{x} \frac{dy}{dx} &= e^{y+\sqrt{x}}, \quad x, y > 0\\
+y+\sqrt{x} &= \frac{1}{2}\ln x + \ln \frac{dy}{dx}\\
+\ln \frac{dy}{dx}  &= y + \sqrt{x} - \frac{1}{2}\ln x\\
+\frac{dy}{dx}  &= e^{\sqrt{x} - \frac{1}{2}\ln x } \cdot e^y\\
+&= \frac{e^{- \sqrt{x}}}{\sqrt{x}} \cdot e^y\\
+\int e^{-y} \diff y &= \int \frac{e^{- \sqrt{x}}}{\sqrt{x}} \diff x\\
+&= -2\int -\frac{e^{- \sqrt{x}}}{2\sqrt{x}} \diff x\\
+&= -2 e^{-\sqrt{x}}
+\end{align*}
+\filbreak
+
+\begin{problem}{1.e}
+\end{problem}
+\begin{align*}
+(t-1)^3\frac{ds}{dt} + 4(t-1)^2s &= t + 1, \quad t>1\\
+\frac{ds}{dt} + \frac{4}{t-1}s &= \frac{t + 1}{(t-1)^3}\\
+\intertext{Let $p(t) = \frac{4}{t-1}$, $q(t) = \frac{t+1}{(t-1)^3}$.}
+\frac{ds}{dt} + p(t)s &= q(t)\\
+\int \frac{4}{t-1} \diff t &= 4\ln(t-1) + C\\
+P(t) &= 4\ln (t-1)\\
+e^{P(t)}\frac{ds}{dt} + e^{P(t)}p(t)s &= e^{P(t)}q(t)\\
+\frac{d}{dt}(e^{P(t)}s) &= e^{P(t)}q(t)\\
+e^{P(x)}s &= \int e^{P(t)}q(t) \diff t\\
+s &= \frac{1}{e^{P(t)}} \int e^{P(t)}q(t) \diff x\\
+&= \frac{1}{(t-1)^4} \int \frac{(t+1)(t-1)^4}{(t-1)^3} \diff t\\
+&= \frac{1}{(t-1)^4} \int (t+1)(t-1)\diff t\\
+&= \frac{1}{(t-1)^4} (\frac{t^3}{3} - t + C)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{align*}
+x\frac{dy}{dx} &= y + x^2\sin x, \quad x>0\\
+\frac{dy}{dx} - \frac{1}{x}\cdot y &= x\sin x\\
+\int -\frac{1}{x} &= -\ln x + C\\
+\intertext{Let integrating factor $v(x) = e^(-\ln x) =x^{-1}$,}
+y &= x \int \frac{x\sin x}{x} \diff x\\
+&= x \int \sin x \diff x\\
+&= x (-\cos x + C)\\
+y(\pi) &= 0\\
+\pi (-\cos \pi + C) &= 0\\
+C &= \cos \pi\\
+&= -1\\
+y &= x (-\cos x - 1)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{align*}
+\frac{dy}{dx} &= 4x^3y\\
+\int \frac{1}{y} \diff y &= \int 4x^3\diff x\\
+\ln y &= x^4 + C_1\\
+y &= C_2 e^{x^4}\\
+\intertext{When $x = 0$, $ y = 7$.}
+7 &= C_2 e^0\\
+C_2 &= 7\\
+\text{$\therefore$ equation of curve}:y &= 7e^{x^4}
+\end{align*}
+\filbreak
+
+\begin{problem}{5}
+\end{problem}
+\begin{align*}
+\frac{dL}{dx} &= -kL\\
+\int \frac{1}{L} \diff L &= \int -k \diff x\\
+\ln L &= -kx + C_1\\
+L &= C_2e^{-kx}\\
+L(0) &= C_2e^0\\
+&= C_2 \\
+L(18) &= \frac{C_2}{2}\\
+e^{-18k} &= \frac{1}{2}\\
+\intertext{When intensity is one-tenth,}
+(e^{-18k})^{\log_2 10} &= \left( \frac{1}{2} \right)^{\log_2 10}\\
+x &= 18 \log_2 10\\ 
+&= 59.79\\
+&\approx 59.8
+\end{align*}
+\filbreak
+
+\begin{problem}{7}
+\end{problem}
+\begin{align*}
+\intertext{By Newton's Law of Cooling,}
+\frac{dT}{dt} &= -r(T-T_S)\\
+\int \frac{1}{T-T_S} \diff T &= \int -r \diff t\\
+T - T_s &= Ce^{-rt}\\
+46 - T_s &= C\\
+39 - T_s &= Ce^{-10r}\\
+39 - T_s &= (46 - T_s)e^{-10r}\\
+\frac{39 - T_s}{46 - T_s} &= e^{-10r}\\
+\frac{33 - T_s}{46 - T_s} &= e^{-20r}\\
+\left(\frac{39 - T_s}{46 - T_s}\right)^2  &= \frac{33 - T_s}{46 - T_s}\\
+(39 - T_s)^2 &= (33 - T_s)(46 - T_s)\\
+(39 - T_s)^2 - (33 - T_s)(46 - T_s) &= 0
+\intertext{Let $u = 39 - T_S$,}
+u^2 - (u-6)(u+7) &= 0\\
+-7u+6u+42 &= 0\\
+u &= 42\\
+39 - T_S &= 42\\
+T_S &= 42 - 39\\
+&= -3
+\end{align*}
+\filbreak
+
+\end{document}

@@ -1,0 +1,656 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\AtBeginDocument{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 5pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt 
+ \belowdisplayshortskip=4pt plus 5pt minus 4pt
+}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2101 Linear Algebra II}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\section*{Section 1.2}
+
+\begin{problem}{12}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let $\mathcal{F}$ denote the set of all even functions 
+from $\mathbb{R}$ to $\mathbb{R}$. For $f, g, h \in \mathcal{F}$ and 
+$s, a, b, c \in \mathbb{R}$, by the definitions in Example 3,}
+(f+g)(s) &= f(s) + g(s) \\
+&= f(-s) + g(-s) \\
+&= (f+g)(-s) \in \mathcal{F} \\
+(cf)(s) &= c[f(s)] \\
+&= c[f(-s)] \\
+&= (cf)(-s) \in \mathcal{F}\\
+\shortintertext{Then,}
+(f+g)(s) &= f(s) + g(s)\\
+&= g(s) + f(s)\\
+&= (f+g)(s) \tag{VS 1} \\
+((f+g)+h)(s) &= (f(s) + g(s)) + f(s) \\
+&= f(s) + (g(s) + f(s)) \\
+&= (f+(g+h))(s) \tag{VS 2} \\
+\intertext{Let $z$ denote the zero function. i.e. $z(s) = 0$ 
+	$\forall s \in \mathbb{R}$.}
+z &\in \mathcal{F} \\
+(f+z)(s) &= f(s) + 0 \\
+&= f(s) \\
+&= (f)(s) \tag{VS 3} \\
+(f)(s) + ((-1)(f))(s) &= f(s) + (-1)[f(s)] \\
+&= f(s) - f(s) \\
+&= 0 \\
+&= (z)(s) \tag{VS 4} \\ 
+(1f)(s) &= (1)[f(s)] \\
+&= f(s)\tag{VS 5} \\
+(abf)(s) &= (ab)[f(s)] \\
+&= a(b[f(s)]) \\
+&= (a(bf))(s) \tag{VS 6} \\
+(a(f+g))(s) &= a(f(s) + g(s))\\
+&= a[f(s)] + a[g(s)]\\
+&= (af+ag))(s) \tag{VS 7} \\
+((a+b)f)(s) &= (a+b)[f(s)] \\
+&= a[f(s)] + b[f(s)] \\
+&= ((af+bf)(s) \tag{VS 8}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{16}
+\end{problem}
+\text{For $A, B, C \in V_{m \times n}(F)$ and $a, b, c \in F$,}
+\begin{align*}
+A + B = (a_{ij}) + (b_{ij}) &\quad \text{and} \quad (c)(A) = (ca_{ij}) \\
+\shortintertext{Then,}
+A + B &= (a_{ij}) + (b_{ij})\\
+&= (a_{ij} + b_{ij})\\
+&= (b_{ij} + a_{ij})\\
+&= B + A \tag{VS 1} \\
+(A + B) + C &= ((a_{ij}) + (b_{ij})) + (c_{ij})\\
+&= ((a_{ij} + b_{ij}) + c_{ij})\\
+&= (a_{ij} + (b_{ij} + c_{ij}))\\
+&= A + (B + C) \tag{VS 2} \\
+\intertext{Let $Z$ denote the zero matrix. i.e. $(z_{ij}) = 0$ 
+	$\forall i, j \in \mathbb{Z}, i \in [1,m], j \in [1,n]$.}
+Z &\in V_{m \times n}(F)\\
+A + Z &= (a_{ij}) + (z_{ij})\\
+&= (a_{ij} + 0) = (a_{ij})\\
+&= A \tag{VS 3} \\
+A + (-1)(A) &= (a_{ij}) + ((-1)a_{ij})\\
+&= (a_{ij}-a_{ij})\\
+&= (z_{ij}) = Z \tag{VS 4} \\
+(1)(A) &= (1a_{ij}) \\
+&= (a_{ij}) = A \tag{VS 5} \\
+(ab)(A) &= ((ab)a_{ij}) \\
+&= (a(ba_{ij})) \\
+&= (a)(bA) \tag{VS 6} \\
+(c(A+B)) &= c(a_{ij} + b_{ij})\\
+&= (ca_{ij} + cb_{ij})\\
+&= cA+cB \tag{VS 7} \\
+(b+c)A &= ((b+c)(a_{ij})) \\
+&= (ba_ij+ca_{ij}) \\
+&= bA+cA \tag{VS 8}
+\intertext{$\therefore$ $V$ is a vector space over $F$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{18}
+\end{problem}
+\begin{align*}
+(a_1, a_2) + (b_1, b_2) &= (a_1 + 2b_1, a_2 + 3b_2) \\
+(b_1, b_2) + (a_1, a_2) &= (b_1 + 2a_1, b_2 + 3a_2) \\
+&\ne (a_1, a_2) + (b_1, b_2) 
+\intertext{$\therefore$ (VS 1) is not satisfied and V is not a vector space over 
+	$\mathbb{R}$.}
+\end{align*}
+\filbreak
+
+\section*{Section 1.3}
+
+\begin{problem}{8.a}
+\end{problem}
+\text{For $(a_1, a_2, a_3), (b_1, b_2, b_3) \in W_1$ and $c \in \mathbb{R}$,}
+\begin{align*}
+(0, 0, 0) &= (3(0), 0, -0) \tag{Theorem 1.3.a} \\
+(a_1, a_2, a_3) + (b_1, b_2, b_3) &= (a_1+b_1,a_2+b_2,a_3+b_3) \\
+&= (3a_2+3b_2,a_2+b_2,(-a_2-b_2)) \\
+a&= (3(a_2+b_2),a_2+b_2,-(a_2+b_2)) \tag{Theorem 1.3.b} \\
+c(a_1, a_2, a_3) &= (ca_1, ca_2, ca_3) \\
+&= (c(3a_2), ca_2, c(-a_2)) \\
+&= (3(ca_2), ca_2, -(ca_2)) \tag{Theorem 1.3.c} \\
+\intertext{$\therefore$ $W_1$ is a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.b}
+\end{problem}
+\begin{align*}
+(0, 0, 0) &\ne (0, 0, 0+2) \\
+\therefore (0, 0, 0) &\not\in \mathbb{R}^3
+\intertext{$\therefore$ $W_2$ is not a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.c}
+\end{problem}
+\text{For $(a_1, a_2, a_3), (b_1, b_2, b_3) \in W_3$ and $c \in \mathbb{R}$,}
+\begin{align*}
+2(0) - 7(0) + 0 &= 0\\
+(0, 0, 0) &\in W_3 \tag{Theorem 1.3.a} \\
+(a_1, a_2, a_3) + (b_1, b_2, b_3) &= (a_1+b_1,a_2+b_2,a_3+b_3) \\
+2(a_1+b_1) -7(a_2+b_2) +(a_3+b_3) &= 2a_1 + 2b_1 -7a_2 -7b_2 + a_3 + b_3 \\
+&= (2a_1-7a_2+a_3) + (2b_1-7b_2+b_3) \\
+&= 0 + 0 = 0 \tag{Theorem 1.3.b} \\
+c(a_1, a_2, a_3) &= (ca_1, ca_2, ca_3) \\
+2ca_1-7ca_2+ca_3 &= c(2a_1-7a_2+a_3) \\
+&= c(0) = 0 \tag{Theorem 1.3.c} \\
+\intertext{$\therefore$ $W_3$ is a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.d}
+\end{problem}
+\text{For $(a_1, a_2, a_3), (b_1, b_2, b_3) \in W_4$ and $c \in \mathbb{R}$,}
+\begin{align*}
+2(0) - 4(0) - 0 &= 0\\
+(0, 0, 0) &\in W_4 \tag{Theorem 1.3.a} \\
+(a_1, a_2, a_3) + (b_1, b_2, b_3) &= (a_1+b_1,a_2+b_2,a_3+b_3) \\
+(a_1+b_1) - 4(a_2+b_2) - (a_3+b_3) &= a_1 + b_1 -4a_2 -4b_2 - a_3 - b_3 \\
+&= (a_1-4a_2-a_3) + (b_1-4b_2-b_3) \\
+&= 0 + 0 = 0 \tag{Theorem 1.3.b} \\
+c(a_1, a_2, a_3) &= (ca_1, ca_2, ca_3) \\
+ca_1-4ca_2-ca_3 &= c(a_1-4a_2-a_3) \\
+&= c(0) = 0 \tag{Theorem 1.3.c} \\
+\intertext{$\therefore$ $W_4$ is a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.e}
+\end{problem}
+\begin{align*}
+(0) + 2(0) - 3(0) &\ne 1\\
+\therefore (0, 0, 0) &\not\in \mathbb{R}^3
+\intertext{$\therefore$ $W_5$ is not a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{8.f}
+\end{problem}
+\text{For $(a_1, a_2, a_3), (b_1, b_2, b_3) \in W_6$ and $c \in \mathbb{R}$,}
+\begin{align*}
+(a_1, a_2, a_3) + (b_1, b_2, b_3) &= (a_1+b_1,a_2+b_2,a_3+b_3) \\
+5(a_1+b_1)^2 - 3(a_2+b_2)^2 + 6(a_3+b_3)^2 &= 
+5a_1^2 + 5b_1^2 + 10a_1b_1 - 3a_2^2 - 3b_2^2 - 6a_2b_2 + 6a_3^2 \\
+&\phantom{=} + 6b_3^2 + 12a_3b_3 \\
+&= (5a_1^2 -3a_2^2 +6a_3^2) + (5b_1^2 -3b_2^2 +6b_3^2) \\
+&\phantom{=} +10a_1b_1 -6a_2b_2 +12a_3b_3 \\
+&= 0 + 0 +10a_1b_1 -6a_2b_2 +12a_3b_3 \\
+&\ne 0 \\
+\therefore (a_1, a_2, a_3) + (b_1, b_2, b_3) &\not\in \mathbb{R}^3
+\intertext{$\therefore$ $W_6$ is not a subspace of $\mathbb{R}^3$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{align*}
+W_1 &= \{(a_1, a_2, a_3) \in \mathbb{R}^3 : a_1 = 3a_2 , a_3 = -a_2 \} \\
+W_3 &= \{(a_1, a_2, a_3) \in \mathbb{R}^3 : 2a_1 -7a_2 +a_3 = 0\} \\
+W_4 &= \{(a_1, a_2, a_3) \in \mathbb{R}^3 : a_1 -4a_2 -a_3 = 0\} 
+\end{align*}
+\begin{alignat*}{4}
+\shortintertext{$(W_1 \cap W_3)$:}
+  a_1&{}-{}& 3a_2&     &      &{}={}& 0\\
+     &     &  a_2&{}+{}&   a_3&{}={}& 0\\
+ 2a_1&{}-{}& 7a_2&{}+{}&   a_3&{}={}& 0\\
+\shortintertext{Solving the system,}
+  a_1&     &     &     &     &{}={}& 0\\
+     &     &  a_2&     &     &{}={}& 0\\
+     &     &     &     &  a_3&{}={}& 0\\
+\end{alignat*}
+\begin{gather*}
+W_1 \cap W_3 = \{0\}
+\intertext{$W_1 \cap W_3$ is the zero vector.}
+\end{gather*}
+\begin{alignat*}{4}
+\shortintertext{$(W_1 \cap W_3)$:}
+  a_1&{}-{}& 3a_2&     &     &{}={}& 0\\
+     &     &  a_2&{}+{}&  a_3&{}={}& 0\\
+  a_1&{}-{}& 4a_2&{}+{}& -a_3&{}={}& 0\\
+\shortintertext{Solving the system,}
+  a_1&     &     &     & 3a_3&{}={}& 0\\
+     &     &  a_2&{}+{}&  a_3&{}={}& 0\\
+     &     &     &     &    0&{}={}& 0\\
+\end{alignat*}
+\begin{gather*}
+\therefore W_1 \cap W_4 = 
+\{s(-3, -1, 1) \in \mathbb{R}^3 : s \in \mathbb{R} \}
+\intertext{$W_1 \cap W_3$ is a line in $\mathbb{R}^3$.}
+\end{gather*}
+\begin{alignat*}{4}
+\shortintertext{$(W_3 \cap W_4)$:}
+ 2a_1&{}-{}& 7a_2&{}+{}&  a_3&{}={}& 0\\
+  a_1&{}-{}& 4a_2&{}-{}&  a_3&{}={}& 0\\
+\shortintertext{Solving the system,}
+  a_1&     &     &{}+{}&11a_3&{}={}& 0\\
+     &     &  a_2&{}+{}& 3a_3&{}={}& 0\\
+\end{alignat*}
+\begin{gather*}
+\therefore W_1 \cap W_2 = 
+\{s(-11, -3, 1) \in \mathbb{R}^3 : s \in \mathbb{R} \} \\
+\intertext{$W_1 \cap W_3$ is a line in $\mathbb{R}^3$. 
+	By Theorem 1.4, the intersections are subspaces of $\mathbb{R}^3$.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{19}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\shortintertext{$(\Rightarrow)$:}
+W_1 \subseteq W_2 &\Rightarrow W_1 \cup W_2 = W_2 \\
+\shortintertext{Similiarly,}
+W_2 \subseteq W_1 &\Rightarrow W_1 \cup W_2 = W_1 \\
+\intertext{$\therefore W_1 \subseteq W_1 \lor W_1 \subseteq W_1  
+	\Rightarrow W_1 \cup W_2$ is a subspace of $V$.}
+\shortintertext{$(\Leftarrow)$:}
+W_1 \cup W_2 &\text{ is a subspace of $V$} \\
+\intertext{Suppose, for contradiction, that $\exists a, b$ such that $a \in W_1/W_2$
+	and $b \in W_2/W_1$. Then,}
+a + b &\in W_1 \cup W_2 \\
+\Rightarrow a + b \in W_1 &\text{ or } a + b \in W_2 \\
+\shortintertext{Suppose the former,}
+a + b &\in W_1 \\
+\Rightarrow (a + b) - a &\in W_1 \qquad \text{($\because W_1$ is a subspace of $V$)} \\
+\Rightarrow b &\in W_1
+\shortintertext{which leads to a contradiction. Similiarly,}
+a + b \in W_2 &\Rightarrow (a + b) - b \in W_2 \\
+\Rightarrow a &\in W_2
+\intertext{$\therefore$ $W_1 \cup W_2$ is a subspace of $V$ $\Leftrightarrow  
+	W_1 \subseteq W_1 \lor W_1 \subseteq W_1$}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{25}
+\end{problem}
+\begin{proof}
+\begin{align*}
+P(F) &= \{ c_nx^n +c_{n-1}x^{n-1} +\ldots + c_1x+ a_0 : c_i, x \in F\} \\
+W_1 &= \{ a_nx^n +a_{n-1}x^{n-1} +\ldots + a_1x+ a_0 : a_i = 0 \text{ when $i$ is even}\} \\
+W_2 &= \{ b_nx^n +b_{n-1}x^{n-1} +\ldots + b_1x+ b_0 : b_i = 0 \text{ when $i$ is odd}\} \\
+W_1 \cap W_2 &=
+\{ a_nx^n +a_{n-1}x^{n-1} +\ldots + a_1x+ a_0 : (a_i) = 0 \} \\
+&= \{0\} \\
+\end{align*}
+\begin{align*}
+\intertext{By definition,}
+W_1 + W_2 &\subseteq P(F) \\
+\intertext{For any $p \in P(F)$,}
+p &= \sum_{i=0}^{n} (c_i) x^i \\
+&= \sum_{\text{odd $i$}}^{n} (c_i) x^i + \sum_{\text{even $i$}}^{n} (c_i) x^i \\
+&= \sum_{i=0}^{n} (a_i) x^i + \sum_{i=0}^{n} (b_i) x^i \\
+\text{where }
+a_i &= 
+\begin{cases}
+	c_i, &\text{ when $i$ is odd} \\
+	0 &\text{ when $i$ is even} \\
+\end{cases}, \\
+b_i &= 
+\begin{cases}
+	c_i, &\text{ when $i$ is even} \\
+	0 &\text{ when $i$ is odd} \\
+\end{cases} \\
+\therefore P(F) &\subseteq W_1 + W_2 \\
+\Rightarrow W_1 + W_2 &= P(F) \\
+\Rightarrow W_1 \oplus W_2 &= P(F)
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{29}
+\end{problem}
+\begin{proof}
+\begin{align*}
+M_{n \times n} (F) & \{A : A_{ij} \in F\} \\
+W_1 \cap W_2 &= \{A \in M_{n \times n} (F) : A_{ij} = 0 \forall i, j \} \\
+&= \{0\} \\
+\shortintertext{By definition,}
+W_1+W_2 &\subseteq M_{n \times n} \\
+\shortintertext{Then, $\forall A \in M_{n \times n} (F) $,}
+\omega (A) &:=  
+\begin{cases}
+	A_{ij} - A_{ji}, &\text{ if } i > j \\
+	0, &\text{ if } i \le j
+\end{cases} \\
+\omega (A) &\in W_1 \\  
+\delta (A) &:= 
+\begin{cases}
+	A_{ji}, &\text{ if } i > j \\
+	A_{ij}, &\text{ if } i \le j
+\end{cases} \\
+\delta (A) &\in W_2 \\  
+A &= \omega (A) + \delta (A) \\
+\therefore A &\in W_1 + W_2 \\
+\Rightarrow M_{n \times n} (F) &\subseteq W_1 + W_2 \\
+\Rightarrow M_{n \times n} (F) &= W_1 + W_2 \\
+\Rightarrow W_1 \oplus W_2 &= M_{n \times n} (F)
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{30}
+\end{problem}
+\intertext{To prove: $\forall v \in V, \exists! x_1 \in W_1,
+\exists! x_2 \in W_2$ s.t. $v=x_1+x_2 \Leftrightarrow 
+W_1 \oplus W_2 = V$}
+\begin{proof}
+\begin{gather*}
+\shortintertext{$(\Rightarrow)$:}
+\shortintertext{By definition,}
+W_1 + W_2 \subseteq V \\
+\shortintertext{For any $v \in V$,}
+v = x_1 + x_2 \\
+\therefore v \in W_1 + W_2 \\
+\Rightarrow V \subseteq W_1 + W_2  \\
+\Rightarrow V = W_1 + W_2  \\
+\shortintertext{Furthermore,}
+\forall v \in V, \exists! x_1 \in W_1, \exists! x_2 \in W_2 \\
+\Rightarrow \forall a \ne 0 \in W_1, a \not\in W_2  \\
+\text{and } \forall b \ne 0 \in W_2, b \not\in W_1  \\
+\Rightarrow W_1 \cap W_2 = \{0\} \\
+\Rightarrow W_1 \oplus W_2 = V
+\shortintertext{$(\Leftarrow)$:}
+W_1 \oplus W_2 = V \Rightarrow W_1 + W_2 = V \\
+\Rightarrow V \subseteq W_1 + W_2 \\
+\therefore \forall v \in V, v = x_1 + x_2, x_1 \in W_1, x_2 \in W_2 \\
+\shortintertext{Furthermore,}
+W_1 \oplus W_2 = V \Rightarrow W_1 \cap W_2 = \{0\} \\
+\therefore \text{$x_1$ and $x_2$ are unique for each }v \in V
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 1.4}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{align*}
+\intertext{If $(2,-1,1)$ is in span($S$), for scalars $a$ and $b$,}
+(2,-1,1) &= a(1,0,2) + b(-1,1,1) 
+\end{align*}
+\begin{alignat*}{3}
+ a&{}-{}&b&{}={}& 2\\
+  &     &b&{}={}& -1\\
+2a&{}+{}&b&{}={}& 1\\
+\shortintertext{Solving the system,}
+ a&     & &{}={}& 1\\
+  &     &b&{}={}& -1\\
+  &     &0&{}={}& 0\\
+\intertext{$(2,-1,1)$ is in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{align*}
+\intertext{If $(-1,2,1)$ is in span($S$), for scalars $a$ and $b$,}
+(-1,2,1) &= a(1,0,2) + b(-1,1,1) 
+\end{align*}
+\begin{alignat*}{3}
+ a&{}-{}&b&{}={}& -1\\
+  &     &b&{}={}& 2\\
+2a&{}+{}&b&{}={}& 1\\
+\shortintertext{Solving the system,}
+ a&     & &{}={}& 1\\
+  &     &b&{}={}& 2\\
+  &     &0&{}={}& -3\\
+\intertext{The system is inconsistent and $(-1,2,1)$ is not in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{align*}
+\intertext{If $(-1,1,1,2)$ is in span($S$), for scalars $a$ and $b$,}
+(-1,1,1,2) &= a(1,0,1,-1) + b(0,1,1,1) 
+\end{align*}
+\begin{alignat*}{3}
+ a&{}   & &{}={}& -1\\
+  &     &b&{}={}& 1\\
+ a&{}+{}&b&{}={}& 1\\
+-a&{}+{}&b&{}={}& 2\\
+\shortintertext{Solving the system,}
+ a&{}   & &{}={}& -1\\
+  &     &b&{}={}& 1\\
+  &     &0&{}={}& 1\\
+-a&{}+{}&b&{}={}& 2\\
+\intertext{The system is inconsistent and $(-1,1,1,2)$ is not in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.d}
+\end{problem}
+\begin{align*}
+\intertext{If $(2,-1,1,-3)$ is in span($S$), for scalars $a$ and $b$,}
+(2,-1,1,-3) &= a(1,0,1,-1) + b(0,1,1,1) 
+\end{align*}
+\begin{alignat*}{3}
+ a&     & &{}={}& 2\\
+  &     &b&{}={}& -1\\
+ a&{}+{}&b&{}={}& 1\\
+-a&{}+{}&b&{}={}& -3\\
+\shortintertext{Solving the system,}
+ a&     & &{}={}& 2\\
+  &     &b&{}={}& -1\\
+  &     &0&{}={}& 0\\
+  &     &0&{}={}& 0\\
+\intertext{$(2,-1,1,-3)$ is in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.e}
+\end{problem}
+\begin{align*}
+\intertext{If $-x^3+2x^2+3x+3$ is in span($S$), for scalars $a$, $b$ and $c$,}
+-x^3+2x^2+3x+3 &= a(x^3+x^2+x+1) + b(x^2+x+1) + c(x+1) 
+\end{align*}
+\begin{alignat*}{4}
+ a&     & &     & &{}={}& -1\\
+ a&{}+{}&b&     & &{}={}& 2\\
+ a&{}+{}&b&{}+{}&c&{}={}& 3\\
+ a&{}+{}&b&{}+{}&c&{}={}& 3\\
+\shortintertext{Solving the system,}
+ a&     & &     & &{}={}& -1\\
+  &     &b&     & &{}={}& 3\\
+  &     & &     &c&{}={}& 1\\
+  &     & &     &0&{}={}& 0\\
+\intertext{$-x^3+2x^2+3x+3$ is in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.f}
+\end{problem}
+\begin{align*}
+\intertext{If $2x^3-x^2+x+3$ is in span($S$), for scalars $a$, $b$ and $c$,}
+2x^3-x^2+x+3 &= a(x^3+x^2+x+1) + b(x^2+x+1) + c(x+1) 
+\end{align*}
+\begin{alignat*}{4}
+ a&     & &     & &{}={}& 2\\
+ a&{}+{}&b&     & &{}={}& -1\\
+ a&{}+{}&b&{}+{}&c&{}={}& 1\\
+ a&{}+{}&b&{}+{}&c&{}={}& 3\\
+\shortintertext{Solving the system,}
+ a&     & &     & &{}={}& 2\\
+ a&{}+{}&b&     & &{}={}& -1\\
+ a&{}+{}&b&{}+{}&c&{}={}& 1\\
+  &     & &     &0&{}={}& 2\\
+\intertext{The system is inconsistent and $2x^3-x^2+x+3$ is not in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.g}
+\end{problem}
+\begin{align*}
+\text{Let } A &=
+\left( \begin{array}{cc}
+	1 & 2\\
+	-3 & 4\\
+\end{array} \right) 
+\intertext{If $A$ is in span($S$), for scalars $a$, $b$ and $c$,}
+A = 
+a
+\left( \begin{array}{cc}
+	1 & 0\\
+	-1 & 0\\
+\end{array} \right) 
+&+b
+\left( \begin{array}{cc}
+	0 & 1\\
+	0 & 1\\
+\end{array} \right) 
++c
+\left( \begin{array}{cc}
+	1 & 1\\
+	0 & 0\\
+\end{array} \right) 
+\end{align*}
+\begin{alignat*}{4}
+ a&     & &{}+{}&c&{}={}& 1\\
+  &\phantom{{}+{}}&b&{}+{}&c&{}={}& 2\\
+-a&     & &     & &{}={}& -3\\
+  &     &b&     & &{}={}& 4\\
+\shortintertext{Solving the system,}
+ a&     & &     & &{}={}& 3\\
+  &     &b&     & &{}={}& 4\\
+  &     & &     &c&{}={}& -2\\
+  &     & &     &0&{}={}& 0\\
+\intertext{$A$ is in span($S$).}
+\end{alignat*}
+\filbreak
+
+\begin{problem}{5.h}
+\end{problem}
+\begin{align*}
+\text{Let } A &=
+\left( \begin{array}{cc}
+	1 & 0\\
+	0 & 1\\
+\end{array} \right) 
+\intertext{If $A$ is in span($S$), for scalars $a$, $b$ and $c$,}
+A = 
+a
+\left( \begin{array}{cc}
+	1 & 0\\
+	-1 & 0\\
+\end{array} \right) 
+&+b
+\left( \begin{array}{cc}
+	0 & 1\\
+	0 & 1\\
+\end{array} \right) 
++c
+\left( \begin{array}{cc}
+	1 & 1\\
+	0 & 0\\
+\end{array} \right) 
+\end{align*}
+\begin{alignat*}{4}
+ a&     & &{}+{}&c&{}={}& 1\\
+  &\phantom{{}+{}}&b&{}+{}&c&{}={}& 0\\
+-a&     & &     & &{}={}& 1\\
+  &     &b&     & &{}={}& 0\\
+\shortintertext{Solving the system,}
+ a&     & &     & &{}={}& -1\\
+  &     &b&     & &{}={}& -2\\
+  &     & &     &c&{}={}& 2\\
+  &     & &     &0&{}={}& 2\\
+\intertext{The system is inconsistent and $A$ is not in span($S$).}
+\end{alignat*}
+
+\begin{problem}{10}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let $\mathcal{S}$ denote the set of all symmetric $2 \times 2$ matrices. 
+	For any $A \in \mathcal{S}$,} 
+A &= 
+\left( \begin{array}{cc}
+	A_{1,1} & A_{1,2}\\
+	A_{2,1} & A_{2,2}\\
+\end{array} \right) \qquad \text{(where $A_{1,2} = A_{2,1}$)} \\
+&= A_{1,1}M_1 + A_{2,2}M_2 + A_{1,2}M_3 \\
+\therefore A &\in \text{span}\{M_1, M_2, M_3\} \\
+\Rightarrow A &\subseteq \text{span}\{M_1, M_2, M_3\}
+\intertext{For any $B$ in span\{$M_1, M_2, M_3$\}, for scalars $a, b, c$,}
+B &= a M_1 + b M_2 + c M_3 \\
+&=
+\left( \begin{array}{cc}
+	(a)(1) & (c)(1)\\
+	(c)(1) & (b)(1)\\
+\end{array} \right) \\
+B_{1,2} &= (c)(1) \\
+&= B_{2,1} \\
+\therefore B &\in \mathcal{S} \\
+\Rightarrow \text{span\{$M_1, M_2, M_3$\}} &\subseteq \mathcal{S} \\
+\Rightarrow \text{span\{$M_1, M_2, M_3$\}} &= \mathcal{S}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{15}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{Let }S_1 &= \{ (a_i) \} \\
+S_2 &= \{ (b_i) \}, \\
+S_1 \cap S_2 &= \{(c_i)\}, \\
+S_1 / (S_1 \cap S_2) &= \{ (d_i)\} \\
+S_2 / (S_1 \cap S_2) &= \{ (e_i)\} \\
+\intertext{For scalars $(\alpha_i)$, $(\beta_i)$ and $(\gamma_i)$,}
+\forall x &\in \text{span\{$S_1 \cup S_2$\}} \\
+x &= \sum_{i} \alpha_i c_i \\
+&= \sum_{i} \alpha_i c_i + 0 \\
+&= \sum_{i} \alpha_i c_i + \sum_{i} (0) (d_i) \\
+&= \sum_{i} \beta_i a_i \\
+\therefore x &\in \text{span\{$S_1$\}} \\
+x &= \sum_{i} \alpha_i c_i + 0 \\
+&= \sum_{i} \alpha_i c_i + \sum_{i} (0) (e_i) \\
+&= \sum_{i} \gamma_i b_i \\
+\therefore x &\in \text{span\{$S_2$\}} \\
+\Rightarrow x &\in \text{span\{$S_1$\} $\cap$ span\{$S_2$\}} \\
+\Rightarrow \text{span\{$S_1 \cap S_2$\}} &\subseteq
+\text{span\{$S_1$\} $\cap$ span\{$S_2$\}} \\
+\end{align*}
+\end{proof}
+\begin{align*}
+\intertext{If $S_1 = \{ (1,0,0), (0,1,0) \}, S_2 = \{ (1,0,0) , (0,0,1)\}$, 
+	for scalars $a, b$,}
+\text{span\{$S_1 \cap S_2$\}} &= \{ a(1,0,0) \} \\ 
+\text{span\{$S_1$\} $\cap$ span\{$S_2$\}} &= \{ a(1,0,0) \} \\ 
+&= \text{span\{$S_1 \cap S_2$\}} \\ 
+\intertext{If $S_1 = \{ (1,0,0), (0,1,0) \}, S_2 = \{ (2,0,0) , (0,0,1)\}$, 
+	for scalars $a, b$,}
+\text{span\{$S_1 \cap S_2$\}} &= \{ 0 \} \\ 
+\text{span\{$S_1$\} $\cap$ span\{$S_2$\}} &= \{ a(1,0,0) \} \\ 
+&\ne \text{span\{$S_1 \cap S_2$\}} \\ 
+\end{align*}
+\filbreak
+
+\end{document}

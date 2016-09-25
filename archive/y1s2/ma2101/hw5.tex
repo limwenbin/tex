@@ -1,0 +1,417 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\AtBeginDocument{%
+ \abovedisplayskip=4pt plus 5pt minus 3pt
+ \abovedisplayshortskip=0pt plus 5pt
+ \belowdisplayskip=4pt plus 5pt minus 3pt 
+ \belowdisplayshortskip=4pt plus 5pt minus 4pt
+}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2101 Linear Algebra II Homework 5}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\section*{Section 6.1}
+
+\subsubsection*{Problem 5}
+\begin{align*}
+	\text{Let } 
+		x = \left( \begin{array}{c}
+			x_1 \\
+			x_2 \\
+		\end{array} \right),\ 
+		y &= \left( \begin{array}{c}
+			y_1 \\
+			y_2 \\
+		\end{array} \right),\ 
+		z = \left( \begin{array}{c}
+			z_1 \\
+			z_2 \\
+		\end{array} \right)\\
+	\intertext{For $c \in C$,}
+		\langle cx + z, y \rangle &= (cx+z) A y^* \\
+		&= (cx) A y^* + z A y^* \\
+		&= c(x A y^*) + z A y^* \\
+		&=\langle cx, y \rangle + \langle z, y \rangle \\
+		\intertext{As $A^* = A$,}
+		\overline{\langle x, y \rangle} &= \overline{xAy^*} \\
+		&= \overline{\overline{y}A^Tx^T} \\
+		&= y\overline{A^Tx^T} \\
+		&= yAx^* \\
+		&= \overline{\langle y, x \rangle}
+		\intertext{Lastly, for $x \ne 0$,}
+		\langle x, x \rangle &= (x_1 - ix_2, ix_1 + 2x_2)
+			\left( \begin{array}{c}
+				x_1 \\
+				x_2 \\
+			\end{array} \right)\\
+		&= x_1(x_1 - ix_2) + x_2(ix_1 + 2x_2) \ne 0
+	\intertext{$\therefore \langle x, y \rangle = xAy^*$ is a inner product.}
+\end{align*}
+\begin{align*}
+	\langle (1-i, 2+3i), (2+i, 3-2i) \rangle 
+	&= (1-i-i(2+3i), i(1-i)+2(2+3i))
+	\left( \begin{array}{c}
+		2-i \\
+		3+2i \\
+	\end{array} \right)\\
+	&= (1-i-2i+3, i+1+4+6i)
+	\left( \begin{array}{c}
+		2-i \\
+		3+2i \\
+	\end{array} \right)\\
+	&= (4-3i, 5+7i)
+	\left( \begin{array}{c}
+		2-i \\
+		3+2i \\
+	\end{array} \right)\\
+	&= 5-10i+1+31i\\
+	&= 6+21i
+\end{align*}
+\filbreak
+
+\subsubsection*{Problem 8(a)}
+\begin{gather*}
+	\intertext{For $x = (1,1) \ne 0$,}
+	\langle x,x\rangle = 1-1 = 0
+	\intertext{$\therefore \langle(a,b),(c,d)\rangle = ac-bd$ is not an inner product.}
+\end{gather*}
+\filbreak
+
+\subsubsection*{Problem 9(a)}
+\begin{proof}
+\begin{gather*}
+	\text{Let } \beta = \{z_1,\ldots,z_n\} \\
+	\langle x, z_i \rangle = 0,\ \forall z_i \in \beta
+	\intertext{For an inner product space, $\langle x,x \rangle = 0 \Leftrightarrow x = 0$.
+		For some scalars $(a_i)$,}
+	x = \sum_{i=1}^n a_i z_i \\ 
+	\begin{align*}
+		\langle x, x \rangle &= \langle x, \sum_{i=1}^n a_i z_i \rangle &\\
+		&= \sum_{i=1}^n \overline{a_i} \langle x, z_i \rangle \\
+		&= \sum_{i=1}^n \overline{a_i} \cdot 0 \\
+		&= 0
+	\end{align*}
+	\\
+	\Rightarrow x = 0 
+\end{gather*}
+\end{proof}
+\filbreak
+
+\subsubsection*{Problem 9(b)}
+\begin{proof}
+\begin{gather*}
+	\langle x, z \rangle = \langle y, z \rangle \\
+	\langle x, z \rangle - \langle y, z \rangle = 0\\
+	\langle x-y, z \rangle = 0,\ \forall z \in \beta \\
+	\intertext{By (a),}
+	x-y=0 \Rightarrow x=y
+\end{gather*}
+\end{proof}
+\filbreak
+
+\subsubsection*{Problem 11}
+\begin{proof}
+\begin{align*}
+	\lVert x+y \rVert^2 + \lVert x-y \rVert^2
+	&= \langle x+y,x+y \rangle + \langle x-y,x-y \rangle \\
+	&= [(\langle x,x \rangle + \langle y,x \rangle) + (\langle x,y \rangle + 
+		\langle y,y \rangle)] \\
+	&\phantom{=}+[(\langle x,x \rangle - \langle y,x \rangle) - (\langle x,y \rangle - 
+		\langle y,y \rangle)] \\
+	&= \langle x,x \rangle + \langle y,x \rangle + \langle x,y \rangle + 
+		\langle y,y \rangle \\
+	&\phantom{=}+\langle x,x \rangle - \langle y,x \rangle - \langle x,y \rangle + 
+		\langle y,y \rangle \\
+	&= 2\langle x,x \rangle + 2\langle y,y \rangle \\
+	&= 2\lVert x \rVert^2 + 2\lVert y \rVert^2
+	\intertext{The equation states that the sum of the squares of the lengths of both 
+		diagonals of a parallelogram is equal to the sum of the squares of the lengths 
+		of its sides.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\subsubsection*{Problem 12}
+\begin{proof}
+\begin{gather*}
+	S = \{v_1, \ldots, v_k\} \text{ is orthogonal} \\
+	\Rightarrow \langle v_i, v_j \rangle = 0 \text{ for } i \ne j \\
+	\begin{align*}
+		\left\lVert \sum_{i=1}^{k} a_i v_i \right\rVert^2 
+		&= \left\langle \sum_{i=1}^{k} a_i v_i, \sum_{j=1}^{k} a_j v_j \right\rangle &\\
+		&= \sum_{i=1}^{k} a_i \left\langle v_i, \sum_{j=1}^{k} a_j v_j \right\rangle \\
+		&= \sum_{i=1}^{k} \sum_{j=1}^{k} a_i \overline{a_j} 
+			\left\langle v_i, v_j \right\rangle \\
+		&= \sum_{i=1}^{k} a_i \overline{a_i} \left\langle v_i, v_i \right\rangle\ 
+			(\because \langle v_i, v_j \rangle = 0 \text{ when } i \ne j) \\
+		&= \sum_{i=1}^{k} |a_i|^2 \lVert v_i \rVert^2
+	\end{align*}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\section*{Section 6.2}
+
+\subsubsection*{Problem 6}
+\intertext{To prove: for $x \not \in W$, $\exists y \in V$ s.t. $y \in W^\bot$ 
+	and $\langle x,y \rangle \ne 0$}
+\begin{proof}
+\begin{gather*}
+	\intertext{By Theorem 6.6,}
+	x = z + y,\ z \in W,\ y \in W^\bot \\
+	y = x-z
+	\intertext{Assume, for contradiction, that $\langle x, y\rangle = 0$. Then,}
+	\langle z+y, y \rangle = 0 \\
+	\langle z, y \rangle + \langle y, y \rangle = 0 \\
+	0 + \lVert y \rVert^2 = 0 \\
+	y = 0 
+	\intertext{Then,}
+	x = z \Rightarrow x \in W
+	\intertext{Thus yielding a contradiction. Therefore, $\exists y \in W^\bot$ s.t. 
+		$\langle x, y\rangle \ne 0$}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\subsubsection*{Problem 7} 
+\intertext{To prove: $z \in W^\bot
+\Leftrightarrow \langle z,v \rangle = 0,\ \forall v \in \beta$}
+\begin{proof} 
+\begin{gather*} 
+	\intertext{$(\Rightarrow):$}
+	z \in W^\bot \Rightarrow \langle z, w \rangle = 0,\ \forall w \in W \\
+	v \in \beta \Rightarrow v \in W \\
+	\therefore \langle z, v \rangle = 0,\ \forall v \in \beta
+	\intertext{$(\Leftarrow):$}
+	\intertext{For any $x \in W$, for scalars $(a_i)$,}
+	\text{Let } \beta = \{v_1, v_2, \ldots\} \\
+	x = a_1 v_1 + a_2 v_2 + \ldots \\
+	\begin{align*}
+		\langle z, x \rangle &= \langle z, a_1 v_1 \rangle 
+			+ \langle z, a_2 v_2 \rangle + \ldots &\\
+		&= \overline{a_1} \langle z, v_1 \rangle + 
+			\overline{a_2} \langle z, v_2 \rangle + \ldots \\
+		&= 0
+	\end{align*}
+	\intertext{i.e.} \langle z, x \rangle = 0,\ \forall z \in W
+	\Rightarrow x \in W^\bot
+\end{gather*} 
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 13(a)} 
+\begin{proof} 
+\begin{gather*} 
+	\intertext{For any $v \in S^\bot$,}	
+	\langle v, s \rangle = 0,\ \forall s \in S \\
+	\because S_0 \subseteq S, \\
+	\langle v, s' \rangle = 0,\ \forall s' \in S_0 \subseteq S \\
+	\Rightarrow v \in S_0^\bot \\
+	\therefore S_0 \subseteq S \Rightarrow S^\bot \subseteq S_0^\bot
+\end{gather*} 
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 13(b)} 
+\begin{proof} 
+\begin{gather*} 
+	v \in S^\bot \Rightarrow \langle v, u \rangle = 0\ \forall u \in S \\
+	w \in (S^\bot)^\bot \Rightarrow \langle w, v \rangle = 0\ \forall v \in S^\bot \\
+	\intertext{i.e.}
+	\forall u \in S,\ v \in S^\bot,\ \langle u, v \rangle = \overline{0} = 0 \\
+	\therefore u \in S \Rightarrow u \in (S^\bot))^\bot \\
+	\Rightarrow S \subseteq (S^\bot)^\bot
+	\intertext{Then, for any $x \in \text{span}(S)$, $v \in S^\bot$, for scalars $(a_i)$,}
+	\text{Let } S = \{ s_1, s_2, \ldots\} \\
+	x = a_1 s_1 + a_1 s_2 + \ldots \\
+	\begin{align*}
+		\langle x, v \rangle &= \langle a_1 s_1, v \rangle 
+			+ \langle a_2 s_2, v \rangle + \ldots &\\
+		&= \overline{a_1} \langle s_1, v \rangle + 
+			\overline{a_2} \langle s_2, v \rangle + \ldots \\
+		&= 0
+	\end{align*}
+	\\
+	\Rightarrow x \in (S^\bot))^\bot \\
+	\therefore \text{span}(S) \subseteq (S^\bot))^\bot 
+\end{gather*} 
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 13(c)} 
+\begin{proof} 
+\begin{gather*} 
+	\intertext{Taking the contrapositive of the result in Exercise 6,}
+	\forall v \in W^\bot,\ \langle u,v \rangle = 0 \Rightarrow u \in W \\
+	\intertext{For any $w \in (W^\bot)^\bot$,}
+	\langle w,v \rangle = 0,\ \forall v \in W^\bot \\
+	\therefore w \in (W^\bot)^\bot \Rightarrow w \in W \\
+	\Rightarrow (W^\bot)^\bot \subseteq W
+	\intertext{From (b),}
+	W \subseteq (W^\bot)^\bot \\
+	\therefore W = (W^\bot)^\bot
+\end{gather*} 
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 13(d)} 
+\begin{proof} 
+\begin{gather*} 
+	V = W \oplus W^\bot \Leftrightarrow W \cap W^\bot = \{0\} \land V = W + W^\bot
+	\intertext{$(W \cap W^\bot = \{0\}):$}
+	\intertext{Suppose $x \in W \cap W^\bot$. For any $v \in V$, by Theorem 6.6,}
+	v = w + w',\ w \in W,\ w' \in W^\bot \\
+	\begin{align*}
+		\langle x, v \rangle &= \langle x, w \rangle + \langle x, w' \rangle &\\
+		&= 0 + 0 = 0
+	\end{align*}
+	\intertext{i.e.}
+	\forall v \in V,\ \langle x, v \rangle = 0 = \langle 0, v \rangle \\
+	\Rightarrow x = 0
+	\intertext{$(V = W + W^\bot):$}
+	\intertext{Trivially, $W + W^\bot \subseteq V$. To prove the converse, for any 
+		$v \in V$, by Theorem 6.6,}
+	v = w + w',\ w \in W,\ w' \in W^\bot \\
+	\therefore V \subseteq W + W^\bot \\
+	\Rightarrow V = W \oplus W^\bot
+\end{gather*} 
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 19(a)} 
+\begin{gather*} 
+	\intertext{Let $v$ be the orthogonal projection of $u$ on $W$.}
+	W = \text{span}(w) = \text{span}((1,4)) \\
+	\begin{align*} 
+		v &= \frac{\langle u, w \rangle}{\langle w, w \rangle}w &\\
+		&= \frac{2 + 24}{17}(1,4) \\
+		&= \frac{26}{17}(1,4) \\
+	\end{align*} 
+\end{gather*} 
+\filbreak
+
+\subsubsection*{Problem 19(b)} 
+\begin{gather*} 
+	\intertext{Let $v$ be the orthogonal projection of $u$ on $W$.}
+	W = \text{span}(w_1, w_2) = \text{span}((-3,1,0), (2,0,1)) \\
+	\intertext{To make $\{w_1, w_2\}$ into an orthogonal basis for $W$,}
+	\text{Let } w_1' = w_1 \\
+	\begin{align*} 
+		w_2' &= w_2 - \frac{\langle w_2,w_1, \rangle}{\langle w_1, w_1 \rangle} w_1 &\\
+		&= (2,0,1) - \frac{-6}{10} (-3,1,0) \\
+		&= (1/5,3/5,1) \\
+		v &= \frac{\langle u, w_1' \rangle}{\langle w_1', w_1' \rangle}w_1' +
+			\frac{\langle u, w_2' \rangle}{\langle w_2', w_2' \rangle}w_2' \\
+		&= \frac{-6 + 1}{10}(-3,1,0) + \frac{2/5 + 3/5 + 3}{7/5}(1/5,3/5,1) \\
+		&= (3/2,-1/2,0) + (4/7,12/7,20/7) \\
+		&= (29/14,17/14,20/7)
+	\end{align*} 
+\end{gather*} 
+\filbreak
+
+\subsubsection*{Problem 19(c)} 
+\begin{gather*} 
+	\intertext{Let $v$ be the orthogonal projection of $h$ on $W$.}
+	W = \text{span}(w_1, w_2) = \text{span}((1,0,\ldots), (0,1,\ldots)) \\
+	\intertext{To make $\{w_1, w_2\}$ into an orthogonal basis for $W$,}
+	\text{Let } w_1' = w_1 \\
+	\begin{align*} 
+		w_2' &= w_2 - \frac{\langle w_2,w_1 \rangle}{\langle w_1, w_1 \rangle} w_1 &\\
+		&= (0,1,\ldots) - \frac{1}{2}(1,0,\ldots) \\
+		&= (-1/2,1,\ldots) \\
+		\langle w_2', w_2' \rangle &= \int_0^1 1/4 -x +x^2 \diff x \\
+		&= 1/4 -1/2 +1/3 \\
+		&= 1/12\\
+		v &= \frac{\langle u, w_1' \rangle}{\langle w_1', w_1' \rangle}w_1' +
+			\frac{\langle u, w_2' \rangle}{\langle w_2', w_2' \rangle}w_2' \\
+		&= \left( \int_0^1 4+3x-2x^2 \diff x \right)(1,0,\ldots) \\
+		&\phantom{=} + 12\left( \int_0^1 (x-1/2)(4+3x-2x^2) \diff x \right) 
+			(-1/2,1,\ldots) \\
+		&= (4+3/2-2/3)(1,0,\ldots) \\
+		&\phantom{=} + 12\left( \int_0^1 4x+3x^2-2x^3 -2-(3/2)x+x^2 \diff x \right) 
+			(-1/2,1,\ldots) \\
+		&= (29/6,0,\ldots) + 12(2 +1 -1/2 -2 -3/4 +1/3) (-1/2,1,\ldots) \\
+		&= (29/6,0,\ldots) + (-1/2,1,\ldots) \\
+		&= (13/3,1,\ldots) 
+	\end{align*} 
+\end{gather*} 
+\filbreak
+
+\section*{Section 6.3}
+
+\subsubsection*{Problem 2(b)} 
+\begin{align*} 
+	\intertext{$\beta = \{(1,0),(0,1)\}$ is an orthonomal basis for $C^2$. Then,}
+	y &= g((1,0)) \cdot (1,0) +  g((0,1)) \cdot (0,1) \\
+	&= (1, -2)
+\end{align*} 
+\filbreak
+
+\subsubsection*{Problem 8} 
+\begin{proof} 
+\begin{gather*} 
+	\text{$T$ is invertible} \Rightarrow \exists T^{-1} \text{ s.t. } TT^{-1} = T^{-1}T = I
+	\intertext{For any $x, y \in V$,}
+	\langle T(x), y \rangle = \langle x, T^*(y) \rangle \\
+	\langle T^{-1}(x), y \rangle = \langle x, (T^{-1})^*(y) \rangle \\
+	\intertext{Considering the composition,}
+	\langle T^{-1}(T(x)), y \rangle = \langle x, (T^{-1})^*(T^*(y)) \rngle \\
+	\langle x, y \rangle = \langle x, (T^{-1})^*(T^*(y)) \rngle \\
+	\therefore (T^{-1})^*T^* = I
+	\intertext{A similiar argument taking the composition in the other order shows that 
+		$T^* (T^{-1})^*= I$. Therefore, $T^*$ is invertible. Furthermore,}
+	T^* (T^{-1})^* = (T^{-1})^*T^* = I \\
+	\Rightarrow (T^*)^{-1} = (T^{-1})^* 
+\end{gather*}
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 12(a)} 
+\begin{proof} 
+\begin{gather*} 
+	\intertext{For any $u \in N(T)$,}
+	T(u) = 0 \\
+	\forall y \in V, \langle T(u), y \rangle = \langle u, T^*(y) \rangle \\
+	\langle 0, y \rangle = \langle u, T^*(y) \rangle \\
+	\langle u, T^*(y) \rangle = 0 \\
+	\Rightarrow u \in R(T^*)^\bot \\
+	\therefore N(T) \subseteq R(T^*)^\bot \\
+	\intertext{For any $v \in R(T^*)^\bot$,}
+	\forall x\in V, \langle v, T^*(x) \rangle = 0 \\
+	\langle T(v), x \rangle = \langle v, T^*(x) \rangle = 0 \\
+	\intertext{i.e.}
+	\langle T(v), x \rangle = 0, \forall x \in V \\
+	\Rightarrow T(v) = 0 \text{ and } v \in N(T) \\
+	\therefore R(T^*)^\bot \subseteq N(T) \Rightarrow R(T^*)^\bot = N(T)
+\end{gather*}
+\end{proof} 
+\filbreak
+
+\subsubsection*{Problem 12(b)} 
+\begin{proof} 
+\begin{align*} 
+	\intertext{In general, from (a),}
+	R(T^*)^\bot &= N(T)
+	\intertext{When $V$ is finite dimensional, using Exercise 13(c) of section 6.2}
+	R(T^*) &= (R(T^*)^\bot)^\bot \\
+	&= N(T)^\bot \\
+\end{align*}
+\end{proof} 
+\filbreak
+
+\end{document}

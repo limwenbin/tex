@@ -1,0 +1,259 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1104 Multivariable Calculus Tutorial 2}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{align*}
+\intertext{Let $n$ be the normal to the plane $3x + 2y -z = 6$.}
+n &= \left( \begin{array}{c}
+	3\\
+	2\\
+	-1\\
+\end{array} \right) \\
+L : X
+&=
+\left( \begin{array}{c}
+	2\\
+	3\\
+	4\\
+\end{array} \right)
++ s
+\left( \begin{array}{c}
+	3\\
+	2\\
+	-1\\
+\end{array} \right)
+, 
+s \in \mathbb{R}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+L_1 : X &= 
+\left( \begin{array}{c}
+	2\\
+	3\\
+	4\\
+\end{array} \right)
++ t
+\left( \begin{array}{c}
+	4\\
+	0\\
+	-1\\
+\end{array} \right)
+, 
+t \in \mathbb{R} \\
+L_2 : Y &= 
+\left( \begin{array}{c}
+	2\\
+	3\\
+	1\\
+\end{array} \right)
++ s
+\left( \begin{array}{c}
+	2\\
+	2\\
+	1\\
+\end{array} \right)
+, 
+s \in \mathbb{R} \\
+\intertext{If $L_1$ and $L_2$ intersect,}
+4t - 2s &= 0 \\
+2s &= 0 \\
+-t - s &= 0\\
+\intertext{Solving for $s$ and $t$,}
+t &= 0 \\
+s &= 0 \\
+\intertext{$L_1$ and $L_2$ intersect when $s=0$ and $t=0$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{align*}
+L_1 : X &= 
+\left( \begin{array}{c}
+	1\\
+	-2\\
+	-1\\
+\end{array} \right)
++ t
+\left( \begin{array}{c}
+	-3\\
+	2\\
+	4\\
+\end{array} \right)
+, 
+t \in \mathbb{R} \\
+L_2 : Y &= 
+\left( \begin{array}{c}
+	-2\\
+	4\\
+	3\\
+\end{array} \right)
++ s
+\left( \begin{array}{c}
+	2\\
+	4\\
+	1\\
+\end{array} \right)
+, 
+s \in \mathbb{R} \\
+\intertext{If $L_1$ and $L_2$ intersect,}
+-3t - 2s &= -3 \\
+2t - 4s &= 6 \\
+4t - s &= 4\\
+\intertext{Solving for $s$ and $t$,}
+t + (2/3)s &= 1 \\
+s &= 0\\
+0 &= 4 \\
+\intertext{There is no solution and $L_1$ and $L_2$ do not intersect.}
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{align*}
+A &= (2, 2, 1)  \\
+B &= (-1, 1, -1)  \\
+\vec{AB} &= (-1, 1, -1) - (2, 2, 1)  \\
+&= (-3, -1, -2)  \\
+\intertext{Let $n$ be the normal to the required plane, $L$.}
+n &= \left| \begin{array}{ccc}
+	i & j & k\\
+	-3 & -1 & -2\\
+	2 & -3 & 1\\
+\end{array} \right| \\
+&= (-7, -1, 11)  \\
+L : 
+-7x -y +11z &= (-7, -1, 11) \cdot (-1, 1, -1)  \\
+&= -5
+\end{align*}
+\filbreak
+
+\begin{problem}{4}
+\end{problem}
+\begin{align*}
+\intertext{Point $A (1, 0, 0)$ is on the plane $P$ with normal $n=(1,1,1)$.} 
+\vec{QA} &= (1,0,0) - (2,1,2) \\
+&= (-1,-1,-2)
+\intertext{Let the point on the plane closest to $Q$ be $X$.} 
+\vec{QX} &= \text{proj}_{n} \vec{QA} \\
+&= \frac{-4}{3} (1,1,1) \\
+X &= \frac{-4}{3} (1,1,1) + (2,1,2) \\
+&= (2/3, -1/3, 2/3)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{5}
+\end{problem}
+\begin{gather*}
+2x -3y +4z = 3, x +4y -2z = 7\\
+2x = 3 +3y -4z , x = 7 -4y +2z \\
+3 +3y -4z = 14 -8y +4z \\
+11y = 11 + 8z \\
+y = 1 + (8/11)z \\
+x = 8 + (30/11)z \\
+\therefore 
+y = 1 + (8/11)s, x = 8 + (30/11)s, z = s, \forall s \in \mathhb{R} \\
+\end{gather*}
+\filbreak
+
+\begin{problem}{6}
+\end{problem}
+\begin{align*}
+\intertext{Let $L$ be the intersection of the planes.}
+L : X &= a_L + s d_L , s \in \mathbb{R} \\
+d_L &= (2,-3,1) \times (1,2,-3) \\
+&= (7,7,7) \\
+\intertext{To find $a_L$, suppose $z=0$,}
+-3y + z &= 3 \\
+2y + -3z &= 5 \\
+\intertext{Solving for $y$ and $z$,}
+y &= -2 \\
+z &= -3 \\
+L: X &= (0,-2,-3) + s(1,1,1)
+\intertext{Let $n$ be the normal of the required plane, $P$.}
+n &= (1,1,1) \times (3,2,-4) \\
+&= (-6,7,-1) \\
+P : -6x +7y -z &= (-6,7,-1) \cdot (0,-2,-3) \\
+&= -11 \\ 
+\end{align*}
+\filbreak
+
+\begin{problem}{7}
+\end{problem}
+\begin{align*}
+\intertext{Point $A (1,1,0)$ lies on the plane.}
+B &= (1,-2,4) \\
+\vec{AB} &= (1,-2,4) - (1,1,0) \\
+&= (0,-3,4) \\
+\text{Distance} &= \frac{(0,-3,4) \cdot (3,2,6)}{7} \\
+&= \frac{18}{7}
+\end{align*}
+\filbreak
+
+\begin{problem}{8}
+\end{problem}
+\begin{align*}
+2x -3y +z = 4 &\Rightarrow 4x -6y +2z = 8 \\
+\text{Distance between planes} &= \frac{8-3}{2\sqrt{14}} \\
+&= \frac{5}{2\sqrt{14}} \\
+\end{align*}
+\filbreak
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let $A_P$ denote the area of the face opposite $P$.}
+v_1 &= \lambda ((\vec{PQ} - \vec{PS}) \times (\vec{PR} - \vec{PS})) 
+, \lambda \in \mathbb{R} \\
+A_P &= \frac{1}{2} \lVert (\vec{PQ} - \vec{PS}) \times (\vec{PR} - \vec{PS}) \rVert \\
+&= \lVert v_1 \rVert \\
+\therefore v_1 &= \frac{1}{2} ((\vec{PQ} - \vec{PS}) \times (\vec{PR} - \vec{PS})) \\
+\shortintertext{Similiarly,}
+v_2 &= \frac{1}{2} (\vec{PS} \times \vec{PR}) \\
+v_3 &= \frac{1}{2} (\vec{PQ} \times \vec{PS}) \\
+v_4 &= \frac{1}{2} (\vec{PR} \times \vec{PQ}) \\
+\shortintertext{Then,}
+2\sum_{i=1}^{4} v_i &= 
+((\vec{PQ} - \vec{PS}) \times (\vec{PR} - \vec{PS})) \\
+&\phantom{=}+ (\vec{PS} \times \vec{PR}) 
++ (\vec{PQ} \times \vec{PS})
++ (\vec{PR} \times \vec{PQ}) \\
+&= 
+\vec{PQ} \times \vec{PR} - \vec{PQ} \times \vec{PS} - \vec{PS} \times \vec{PR} + 0 \\
+&\phantom{=}+ (\vec{PS} \times \vec{PR}) 
++ (\vec{PQ} \times \vec{PS})
++ (\vec{PR} \times \vec{PQ}) \\
+&= 
+- \vec{PR} \times \vec{PQ} - \vec{PQ} \times \vec{PS} - \vec{PS} \times \vec{PR} + 0 \\
+&\phantom{=}+ (\vec{PS} \times \vec{PR}) 
++ (\vec{PQ} \times \vec{PS})
++ (\vec{PR} \times \vec{PQ}) \\
+&= 0
+\end{align*}
+\end{proof}
+\filbreak
+
+\end{document}

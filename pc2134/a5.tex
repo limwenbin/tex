@@ -1,0 +1,301 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 5}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+For the stone to be always moving away from the thrower, the projection of the
+velocity vector onto the position vector has to be a non-negative multiple of
+the position vector. Or equivalently,
+\[\mathbf{r} \cdot \mathbf{\dot{r}} > 0. \]
+\intertext{For a stone thrown at angle $\theta$ from the horizontal,}
+\begin{gather*}
+	\mathbf{\dot{r}} = \left(\begin{array}{c} 
+			v\cos\theta \\
+			v\sin\theta - at \\
+		\end{array} \right), \\
+	\mathbf{r} = \left(\begin{array}{c} 
+			vt\cos\theta \\
+			vt\sin\theta - \frac{at^2}{2} \\
+		\end{array} \right). \\
+	\begin{aligned}
+		\mathbf{r} \cdot \mathbf{\dot{r}} &= vt\cos^2\theta + (v\sin\theta-at)
+			\left(vt\sin\theta-\frac{at^2}{2}\right) \\
+		&= v^2t\cos^2\theta + v^2t\sin^2\theta  - avt^2\sin\theta -
+			\frac{1}{2}avt^2\sin\theta + \frac{1}{2}a^2t^3 \\
+		&= t \left( v^2 - \frac{3}{2}avt\sin\theta + \frac{1}{2}a^2t^2 \right) \\ 
+		&=  \frac{a^2t}{2} \left( \frac{2v^2}{a^2} - \frac{3v\sin\theta}{a}t +
+			t^2 \right) \\ 
+		&=  \frac{a^2t}{2} \left[ 
+			\frac{2v^2}{a^2} - \left(\frac{3v\sin\theta}{2a}\right)^2 + \left(t
+			- \frac{3v\sin\theta}{2a}\right)^2
+			\right] \\ 
+	\end{aligned}
+	\\
+	\Rightarrow \frac{2v^2}{a^2} - \left(\frac{3v\sin\theta}{2a}\right)^2 > 0 \\
+	\frac{2v^2}{a^2} > \frac{9v^2\sin^2\theta}{4a^2} \\
+	2 > \frac{9\sin^2\theta}{4} \\
+\end{gather*}
+\begin{gather*}
+	\frac{8}{9} > \sin^2\theta \\
+	\sin\theta < \frac{2^{3/2}}{3} \\
+	\theta < \sin^{-1} \frac{2^{3/2}}{3} \\
+\end{gather*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{gather*}
+	\mathbf{r} = \left( \begin{array}{c}
+			r\sin\theta\cos\phi \\
+			r\sin\theta\sin\phi \\
+			r\cos\theta \\
+		\end{array} \right) \\
+	\frac{\partial\mathbf{r}}{\partial r} = \left( \begin{array}{c}
+			\sin\theta\cos\phi \\
+			\sin\theta\sin\phi \\
+			\cos\theta \\
+		\end{array} \right),\ 
+		\frac{\partial\mathbf{r}}{\partial \theta} = \left( \begin{array}{c}
+			r\cos\theta\cos\phi \\
+			r\cos\theta\sin\phi \\
+			-r\sin\theta \\
+		\end{array} \right),\ 
+		\frac{\partial\mathbf{r}}{\partial \phi} = \left( \begin{array}{c}
+			-r\sin\theta\sin\phi \\
+			r\sin\theta\cos\phi \\
+			0 \\
+		\end{array} \right) \\
+	\left| \frac{\partial\mathbf{r}}{\partial r} \right| = 1,\ 
+		\left| \frac{\partial\mathbf{r}}{\partial \theta} \right| = r,\ 
+		\left| \frac{\partial\mathbf{r}}{\partial \phi} \right| = r\sin\theta \\
+	\hat{\mathbf{e}}_r = \left( \begin{array}{c}
+			\sin\theta\cos\phi \\
+			\sin\theta\sin\phi \\
+		\cos\theta \\
+		\end{array} \right),\ 
+		\hat{\mathbf{e}}_\theta = \left( \begin{array}{c}
+			\cos\theta\cos\phi \\
+			\cos\theta\sin\phi \\
+			-\sin\theta \\
+		\end{array} \right),\ 
+		\hat{\mathbf{e}}_\phi = \left( \begin{array}{c}
+			-\sin\phi \\
+			\cos\phi \\
+			0 \\
+		\end{array} \right) \\
+	\mathbf{r} \cdot \hat{\mathbf{e}}_r = r\sin^2\theta\cos^2\phi +
+		r\sin^2\theta\sin^2\phi + r\cos^2\theta = r\\
+	\mathbf{r} \cdot \hat{\mathbf{e}}_\theta = r\sin\theta\cos\theta\cos^2\phi +
+		r\sin\theta\cos\theta\sin^2\phi - r\sin\theta\cos\theta = 0\\
+	\mathbf{r} \cdot \hat{\mathbf{e}}_\phi = -r\sin\theta\sin\phi\cos\phi +
+		r\sin\theta\sin\phi\cos\phi = 0\\
+	\intertext{Let $\beta$ represent the orthogonal spherical basis. Then,}
+	\mathbf{r} = \left( \begin{array}{c}
+			r \\
+			0 \\
+			0 \\
+		\end{array} \right)_\beta. \\
+	\dot{\mathbf{r}} = \left( \begin{array}{c}
+			\dot{r}\sin\theta\cos\phi +
+			r\dot{\theta}\cos\theta\cos\phi -
+			r\dot{\phi}\sin\theta\sin\phi \\
+			\dot{r}\sin\theta\sin\phi +
+			r\dot{\theta}\cos\theta\sin\phi +
+			r\dot{\phi}\sin\theta\cos\phi \\
+			\dot{r}\cos\theta - r\dot{\theta}\sin\theta \\
+		\end{array} \right) \\
+	\begin{aligned}
+		\dot{\mathbf{r}} \cdot \hat{\mathbf{e}}_r &= 
+			\sin\theta\cos\phi (\dot{r}\sin\theta\cos\phi +
+				r\dot{\theta}\cos\theta\cos\phi - r\dot{\phi}\sin\theta\sin\phi) \\
+			&\phantom{=}+ \sin\theta\sin\phi (\dot{r}\sin\theta\sin\phi +
+				r\dot{\theta}\cos\theta\sin\phi + r\dot{\phi}\sin\theta\cos\phi) \\
+			&\phantom{=}+ \cos\theta (\dot{r}\cos\theta - r\dot{\theta}\sin\theta) \\
+		&= \dot{r}\sin^2\theta + r\dot{\theta}\sin\theta\cos\theta
+			+ \dot{r}\cos^2\theta - r\dot{\theta}\sin\theta\cos\theta \\
+		&= \dot{r}
+	\end{aligned}
+\end{gather*}
+\filbreak
+\begin{gather*}
+	\begin{aligned}
+		\dot{\mathbf{r}} \cdot \hat{\mathbf{e}}_\theta &= 
+			\cos\theta\cos\phi (\dot{r}\sin\theta\cos\phi +
+				r\dot{\theta}\cos\theta\cos\phi - r\dot{\phi}\sin\theta\sin\phi) \\
+			&\phantom{=}+ \cos\theta\sin\phi (\dot{r}\sin\theta\sin\phi +
+				r\dot{\theta}\cos\theta\sin\phi + r\dot{\phi}\sin\theta\cos\phi) \\
+			&\phantom{=}- \sin\theta (\dot{r}\cos\theta - r\dot{\theta}\sin\theta) \\
+		&= \dot{r}\sin\theta\cos\theta + r\dot{\theta}\cos^2\theta
+			- \dot{r}\sin\theta\cos\theta + r\dot{\theta}\sin^2\theta \\
+		&= r\dot{\theta} \\
+		\dot{\mathbf{r}} \cdot \hat{\mathbf{e}}_\phi &= 
+			-\sin\phi (\dot{r}\sin\theta\cos\phi +
+				r\dot{\theta}\cos\theta\cos\phi - r\dot{\phi}\sin\theta\sin\phi) \\
+			&\phantom{=}+ \cos\phi (\dot{r}\sin\theta\sin\phi +
+				r\dot{\theta}\cos\theta\sin\phi + r\dot{\phi}\sin\theta\cos\phi) \\
+		&= r\dot{\phi}\sin\theta
+	\end{aligned} \\
+	\therefore \mathbf{v} = \dot{\mathbf{r}} = \left( \begin{array}{c}
+			\dot{r} \\
+			r\dot{\theta} \\
+			r\dot{\phi}\sin\theta \\
+		\end{array} \right)_\beta \\
+	\begin{aligned}
+		[\ddot{\mathbf{r}}]_1 &= 
+			\ddot{r}\sin\theta\cos\phi + \dot{r}\dot{\theta}\cos\theta\cos\phi
+				- \dot{r}\dot{\phi}\sin\theta\sin\phi \\
+			&\phantom{=} + \dot{r}\dot{\theta}\cos\theta\cos\phi 
+				+ r\ddot{\theta}\cos\theta\cos\phi - r\dot{\theta}^2\sin\theta\cos\phi 
+				- r\dot{\theta}\dot{\phi}\cos\theta\sin\phi \\
+			&\phantom{=}- \dot{r}\dot{\phi}\sin\theta\sin\phi
+				- r\dot{\theta}\dot{\phi}\cos\theta\sin\phi 
+				- r\ddot{\phi}\sin\theta\sin\phi - r\dot{\phi}^2\sin\theta\cos\phi \\
+		&= \ddot{r}\sin\theta\cos\phi 
+				+ r\ddot{\theta}\cos\theta\cos\phi - r\dot{\theta}^2\sin\theta\cos\phi 
+				- r\ddot{\phi}\sin\theta\sin\phi - r\dot{\phi}^2\sin\theta\cos\phi  \\
+			&\phantom{=} 
+				+ 2\dot{r}\dot{\theta}\cos\theta\cos\phi
+				- 2\dot{r}\dot{\phi}\sin\theta\sin\phi 
+				- 2r\dot{\theta}\dot{\phi}\cos\theta\sin\phi \\
+		[\ddot{\mathbf{r}}]_2 &= 
+			\ddot{r}\sin\theta\sin\phi + \dot{r}\dot{\theta}\cos\theta\sin\phi
+				+ \dot{r}\dot{\phi}\sin\theta\cos\phi \\
+			&\phantom{=} + \dot{r}\dot{\theta}\cos\theta\sin\phi 
+				+ r\ddot{\theta}\cos\theta\sin\phi - r\dot{\theta}^2\sin\theta\sin\phi 
+				+ r\dot{\theta}\dot{\phi}\cos\theta\cos\phi \\
+			&\phantom{=}+ \dot{r}\dot{\phi}\sin\theta\cos\phi
+				+ r\dot{\theta}\dot{\phi}\cos\theta\cos\phi 
+				+ r\ddot{\phi}\sin\theta\cos\phi - r\dot{\phi}^2\sin\theta\sin\phi \\
+		&= \ddot{r}\sin\theta\sin\phi 
+				+ r\ddot{\theta}\cos\theta\sin\phi - r\dot{\theta}^2\sin\theta\sin\phi 
+				+ r\ddot{\phi}\sin\theta\cos\phi - r\dot{\phi}^2\sin\theta\sin\phi  \\
+			&\phantom{=} 
+				+ 2\dot{r}\dot{\theta}\cos\theta\sin\phi
+				+ 2\dot{r}\dot{\phi}\sin\theta\cos\phi 
+				+ 2r\dot{\theta}\dot{\phi}\cos\theta\cos\phi \\
+		[\ddot{\mathbf{r}}]_3 &= 
+			\ddot{r}\cos\theta - 2\dot{r}\dot{\theta}\sin\theta 
+			- r\ddot{\theta}\sin\theta - r\dot{\theta}^2\cos\theta \\
+		\ddot{\mathbf{r}} \cdot \hat{\mathbf{e}}_r &= 
+				\ddot{r}\sin^2\theta
+				+ r\ddot{\theta}\sin\theta\cos\theta - r\dot{\theta}^2\sin^2\theta
+				- r\dot{\phi}^2\sin^2\theta + 2\dot{r}\dot{\theta}\sin\theta\cos\theta \\
+			&\phantom{=} 
+				+ \ddot{r}\cos^2\theta - 2\dot{r}\dot{\theta}\sin\theta\cos\theta 
+				- r\ddot{\theta}\sin\theta\cos\theta - r\dot{\theta}^2\cos^2\theta \\
+			&= \ddot{r} - r\dot{\theta}^2 - r\dot{\phi}^2\sin^2\theta \\
+		\ddot{\mathbf{r}} \cdot \hat{\mathbf{e}}_\theta &= 
+				\ddot{r}\sin\theta\cos\theta
+				+ r\ddot{\theta}\cos^2\theta - r\dot{\theta}^2\sin\theta\cos\theta
+				- r\dot{\phi}^2\sin\theta\cos\theta + 2\dot{r}\dot{\theta}\cos^2\theta \\
+			&\phantom{=} 
+				-\ddot{r}\sin\theta\cos\theta + 2\dot{r}\dot{\theta}\sin^2\theta 
+				+ r\ddot{\theta}\sin^2\theta + r\dot{\theta}^2\sin\theta\cos\theta \\
+			&= r\ddot{\theta} - r\dot{\phi}^2\sin\theta\cos\theta +
+				2\dot{r}\dot{\theta} \\
+		\ddot{\mathbf{r}} \cdot \hat{\mathbf{e}}_\phi &= 
+			r\ddot{\phi}\sin\theta + 2\dot{r}\dot{\phi}\sin\theta
+			+ 2r\dot{\theta}\dot{\phi}\cos\theta \\
+	\end{aligned} \\
+	\therefore \mathbf{a} = \ddot{\mathbf{r}} = \left( \begin{array}{c}
+			\ddot{r} - r\dot{\theta}^2 - r\dot{\phi}^2\sin^2\theta \\
+			r\ddot{\theta} - r\dot{\phi}^2\sin\theta\cos\theta +
+				2\dot{r}\dot{\theta} \\
+			r\ddot{\phi}\sin\theta + 2\dot{r}\dot{\phi}\sin\theta
+			+ 2r\dot{\theta}\dot{\phi}\cos\theta \\
+		\end{array} \right)_\beta \\
+\end{gather*}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{align*}
+	r &= \sqrt{x^2 + y^2 + z^2} \\
+	\nabla \left( \frac{1}{r} \right) &= \left( \begin{array}{c}
+			- x/r^3 \\
+			- y/r^3 \\
+			- z/r^3 \\
+		\end{array} \right)
+\end{align*}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{align*}
+	\nabla \cdot \left( \frac{\hat{\mathbf{r}}}{r^2} \right) &= 
+		\nabla \cdot \left( \frac{\mathbf{r}}{r^3} \right) \\
+	&= ( x/r^3 )_x + ( y/r^3 )_y + ( z/r^3 )_z \\
+	&= \frac{r^2 - 3x^2}{r^5} + \frac{r^2 - 3y^2}{r^5} + \frac{r^2 - 3z^2}{r^5} \\
+	&= \frac{3r^2-3r^2}{r^5} \\
+	&= 0
+\end{align*}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{align*}
+	\nabla \times \left( \frac{\hat{\mathbf{r}}}{r^2} \right) &= 
+		\nabla \times \left( \frac{\mathbf{r}}{r^3} \right) \\
+	&= -\nabla \times \left( -\frac{\mathbf{r}}{r^3} \right) \\
+	&= -\nabla \times \left[ \nabla \left( \frac{1}{r} \right) \right] \\
+	&= \mathbf{0}
+\end{align*}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{align*}
+	\nabla^2 \left( \frac{1}{r} \right) &= 
+		\nabla \cdot \left[ \nabla \left( \frac{1}{r} \right) \right] \\
+	&= \nabla \cdot \left( -\frac{\hat{\mathbf{r}}}{r^2} \right) \\
+	&= -\nabla \cdot \left( \frac{\hat{\mathbf{r}}}{r^2} \right) \\
+	&= 0
+\end{align*}
+\filbreak
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\mathbf{B} = \nabla \times \mathbf{A} \\
+	\shortintertext{Taking curl on both sides,}
+	\nabla \times \mathbf{B} = \nabla \times (\nabla \times \mathbf{A}). \\
+	\frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \nabla (\nabla \cdot
+		\mathbf{A}) - \nabla^2 \mathbf{A} \\
+	\nabla^2 \mathbf{A} + \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t}
+		+ \nabla \left( \frac{1}{c^2} \frac{\partial \Phi}{\partial t} \right) = 0 \\
+	\nabla^2 \mathbf{A} + \frac{1}{c^2} \left[ \frac{\partial}{\partial t} \left(
+		- \nabla \Phi - \frac{\partial A}{\partial t} \right) + 
+		\nabla \frac{\partial \Phi}{\partial t} \right] = 0 \\
+	\nabla^2 \mathbf{A} + \frac{1}{c^2} \left[ -\nabla \frac{\partial
+		\Phi}{\partial t} - \frac{\partial^2 A}{\partial t^2} 
+		+ \nabla \frac{\partial \Phi}{\partial t} \right] = 0 \\
+	\nabla^2 \mathbf{A} - \frac{1}{c^2} \frac{\partial^2 A}{\partial t^2} = 0 \\
+	\shortintertext{Next, we have}
+	\mathbf{E} = - \nabla \Phi - \frac{\partial \mathbf{A}}{\partial t}. \\
+	\shortintertext{Taking divergence on both sides,}
+	\nabla \cdot \mathbf{E} = - \nabla^2 \Phi - \nabla \cdot \frac{\partial
+		\mathbf{A}}{\partial t}. \\
+	\nabla^2 \Phi + \nabla \cdot \frac{\partial \mathbf{A}}{\partial t} = 0 \\
+	\nabla^2 \Phi + \frac{\partial }{\partial t} (\nabla \cdot \mathbf{A}) = 0 \\
+	\nabla^2 \Phi + \frac{\partial }{\partial t} \left(- \frac{1}{c^2}
+		\frac{\partial \Phi}{\partial t} \right) = 0 \\
+	\nabla^2 \Phi - \frac{1}{c^2} \frac{\partial^2 \Phi}{\partial t^2} = 0 \\
+\end{gather*}
+\end{proof}
+
+\end{document}
+

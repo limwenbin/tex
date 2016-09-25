@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1102R TUtorial 10}
+\author{Lim Wen Bin \\
+A0140764H\\
+T03}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{align*}
+x^4 &= 8x\\
+x^4 - 8x &= 0\\
+x(x^3 - 8) &= 0\\
+x &= 0 \text{ or } x = 2\\
+\text{Area of region} &= \int_{0}^{2} 8x - x^4 \diff x\\
+&= 4x^2 - \frac{x^5}{5} \Bigl|_{0}^{2}\\ 
+&= 4(2)^2 - \frac{2^5}{5} \\ 
+&= 16 - \frac{32}{5} \\ 
+&= 9 \frac{3}{5} \\ 
+\end{align*}
+\filbreak
+
+\begin{problem}{2.1}
+\end{problem}
+\begin{align*}
+\frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1\\
+y^2 &= b^2 - \frac{b^2x^2}{a^2} \\
+y &= \sqrt{b^2 - \frac{b^2x^2}{a^2}} \quad \text{(for first quadrant)} \\
+&= b\sqrt{1 - \left(\frac{x}{a}\right)^2}\\
+\text{Area of ellipse} &= 4b\int_{0}^{2} \sqrt{1 - \left(\frac{x}{a}\right)^2} \diff x\\
+\intertext{Let $ \frac{x}{a} = \sin t$, $\frac{dx}{dt} = a\cos t$,}
+\text{Area of ellipse} &= 4b\int_{o}^{\pi/2} a\cos t \cos t \diff t\\
+&= 4b\int_{0}^{\pi/2} a\cos^{2} t \cos t \diff t\\
+&= 4ba \int_{0}^{\pi/2} \frac{1 + \cos 2t}{2} \diff t\\
+&= 4ba \left[ \frac{1}{2}t + \frac{1}{4}\sin2t \right]_{0}^{\pi/2}\\
+&= 4ba \left( \frac{\pi}{4} \right) \\
+&= ab\pi\\
+\end{align*}
+\filbreak
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{align*}
+\intertext{Let $V$ be volume of solid obtained from rotating $s = \sqrt{2\sin 2y}$, $(0 \le y \le \pi/2)$, and $x=0$ about the $y$-axis.}
+\sqrt{2\sin 2y} &= 0\\
+\sin 2y &= 0\\
+y &= 0 \text{ or } y = \frac{\pi}{2}\\
+V &= \int_{0}^{\pi/2} \pi 2\sin 2y \diff x\\
+&= 2\pi \int_{0}^{\pi/2} \sin 2y \diff x\\
+&= -\pi \cos 2y \Bigl|_{0}^{\pi/2}\\
+&= -\pi (-1 - 1)\\
+&= 2\pi \\
+\end{align*}
+\filbreak
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{align*}
+\intertext{Let $V$ be volume of solid obtained from rotating $y = 4-x^2$, and $y = 2- x$ about the $x$-axis.}
+4-x^2 &= 2 - x\\
+x &= - 1 \text{ or } x = 2 \\
+V &= \int_{0}^{\pi/2} \pi \left[ (4-x)^2 - (2 - x)^2 \right] \diff x\\
+\end{align*}
+\filbreak
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{align*}
+\intertext{Let $V$ be volume of solid obtained from rotating $x= (y-3) ^2 $, and $x= 4$ about $x = 4$}
+\end{align*}
+\filbreak
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{align*}
+x ^ {2/3} + y^ {2/3}  &= 1\\
+\frac{2}{3}x^{-1/3} + \frac{2}{3} y^{-1/3}  \frac{dy}{dx}  &= 0\\
+\frac{dy}{dx} &= -\frac{y^{1/3}}{x^{1/3}} \\
+\end{align*}
+\filbreak
+
+\end{document}

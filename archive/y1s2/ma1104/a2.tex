@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+	\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+\title{MA1104 Multivariable Calculus Assignment 2}
+\author{Lim Wen Bin \\
+	A0140764H\\
+	T01}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+	\intertext{Along the path $y=0$,}
+	\lim_{(x,y)\to(0,0)} \frac{2xy^3} {x^2 + 8y^6} &= \lim_{x\to0} \frac{0} {x^2} \\
+	&= 0 \\
+	\intertext{Along the path $x=y^3$,}
+	\lim_{(x,y)\to(0,0)} \frac{2xy^3} {x^2 + 8y^6} &= 
+		\lim_{y\to0} \frac{2y^6} {9y^6} \\
+	&= 	\lim_{y\to0} \frac{2} {9} \\
+	&= 	\frac{2} {9}
+	\intertext{As the limits along different paths are not equal, 
+		the limit does not exist.}
+\end{align*}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+	\intertext{Suppose the limit exists and equals 2. Then,}
+	\left| \frac{x^3 +4x^2 +2y^2} {2x^2 +y^2} - 2 \right| &=
+		\left| \frac{x^3 +4x^2 +2y^2 - 2(2x^2 +y^2)} {2x^2 +y^2} \right| \\
+	&= \left| \frac{x^3} {2x^2 +y^2} \right| \\
+	&= \left| \frac{x^2} {2x^2 +y^2} \right| |x| \\
+	&\le \frac{1}{2} |x| \\
+	&\le |x| \\
+	\lim_{x\to0} |x| &= 0
+	\intertext{By Squeeze Theorem,}
+	\lim_{(x,y)\to(0,0)} \frac{x^3 +4x^2 +2y^2} {2x^2 +y^2} &= 2
+\end{align*}
+\filbreak
+
+\begin{problem}{2.i}
+\end{problem}
+\begin{align*}
+	\frac{\partial z}{\partial x} &= \frac{\partial z}{\partial u} 
+		\frac{\partial u}{\partial x} \\
+	&= f_u (u, v) (2xy)
+\end{align*}
+\filbreak
+
+\begin{problem}{2.ii}
+\end{problem}
+\begin{align*}
+	\frac{\partial}{\partial y} \frac{\partial z}{\partial x} &= 
+		\frac{\partial}{\partial y} (f_u (u, v) (2xy)) \\
+	&= (\frac{\partial}{\partial y} f_{u} (u, v)) (2xy) + f_u (u, v) (2x) \\
+	&= \left(
+		f_{uu} (u, v) \frac{\partial u}{\partial y} 
+		+ f_{vu} (u, v)\frac{\partial v}{\partial y}
+	\right) (2xy) + f_u (u, v) (2x) \\
+	&= (f_{uu} (u, v) x^2 + f_{vu} (u, v)2y) (2xy) + f_u (u, v) (2x) \\
+	&= 2f_{uu} (u, v) x^3y + 4f_{vu} (u, v)xy^2 + 2f_u (u, v) x \\
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{align*}
+	\intertext{Let $f(x,y) = 2x^2 + y^2$.}
+	\nabla f(x,y) &= \langle 4x, 2y \rangle \\
+	\nabla f(1,1) &= \langle 4, 2 \rangle \\
+	\intertext{Any vector $k\langle 1, -2 \rangle$, $k \in \mathbb{R}$, 
+		is tangential to the ellipse at $(1,1)$ in the clockwise direction. 
+		i.e. the insect in moving at a speed of 3cm/s in the direction of this vector. 
+		Let the unit vector in this direction be $u$.}
+	u &= \langle 1/\sqrt{5}, -2/\sqrt{5} \rangle \\
+	T(x,y) &= 3x^2 -2yx \\
+	\nabla T(x,y) &= \langle 6x -2y, -2x \rangle \\
+	\nabla T(1,1) &= \langle 4, -2 \rangle \\
+	D_u T &= \langle 4, -2 \rangle \cdot \langle 1/\sqrt{5}, -2/\sqrt{5} \rangle \\
+	&= 8/\sqrt{5} \text{ $^{\circ}$C/cm}\\
+	\text{Rate of change of temperature} &= 3(8/\sqrt{5}) \text{ $^{\circ}$C/s}\\\
+	&= 24/\sqrt{5} \text{ $^{\circ}$C/s}\\\
+\end{align*}
+\filbreak
+
+\end{document}

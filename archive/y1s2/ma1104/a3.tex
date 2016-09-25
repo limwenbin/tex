@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep{\bfseries #1}\hskip \labelsep{\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+\title{MA1104 Multivariable Calculus Assignment 3}
+\author{Lim Wen Bin \\
+	A0140764H\\
+	T01}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{gather*}
+	\text{Let } g(x,y,z) = (x-3)^2 + y^2 + z^2 \\
+	\intertext{Then, $D$ is minimum when $g$ is minimum. It remains to find the minimum 
+		of $g(x,y,z)$ subject to $f(x,y,z) = \frac{x^2}{4}+\frac{y^2}{25}-z = 0$.}
+	\nabla f(x,y,z) = \langle x/2, 2y/25, -1 \rangle \\
+	\nabla g(x,y,z) = \langle 2(x-3), 2y, 2z \rangle
+	\intertext{At an extremum, using the method of Langrange Multipliers,}
+	\nabla f(x,y,z) = \lambda \nabla g(x,y,z) \text{ and } f(x,y,z) = 0
+	\shortintertext{i.e.}
+	x = 4\lambda(x-3) \tag{1}\\
+	2y/25 = 2\lambda y \\
+	y= 25\lambda y \tag{2}\\
+	-1 = 2\lambda z \tag{3}\\
+	\frac{x^2}{4}+\frac{y^2}{25}-z = 0 \tag{4} \\
+	\intertext{From (2), either $\lambda = 1/25$ or $y=0$. When $\lambda=1/25$, 
+		from (1) and (3),}
+	25x = 4x-12\\
+	x = -\frac{12}{21} ,\ z = -\frac{25}{2} \\
+		y^2 = 25\left(
+			-\frac{25}{2} - \frac{1}{4} \left(\frac{12}{21}\right)^2
+		\right)\ \text{(rejected)}
+	\intertext{When $y=0$, from (4),}
+	z = \frac{x^2}{4} \\
+	\intertext{From (3),}
+	\lambda x^2 = -2 \\
+	4\lambda x^2 (x-3) = -8(x-3)
+	\intertext{From (1),}
+	x^3 = 4\lambda x^2 (x-3) \\
+	x^3 + 8x - 24 = 0
+	\intertext{Solving for $x$,}
+	x = 2 z = 1 \\
+	D(2,0,1) = \sqrt{g(2,0,1)} = \sqrt{2} \\
+	\intertext{On another point on the curve, say $(0,0,0)$,}
+	D(0,0,0) = 3
+	\intertext{Hence, $D$ is minimum at (2,0,1).}
+\end{gather*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{gather*}
+	T_x = 2x + 2,\ T_y = 2y
+	\intertext{It would suffice to consider critical points interior to the plate and 
+		the extremum points on the boundary of the plate, $f(x,y) = x^2+4y^2 = 24$. 
+		At a critical point interior to the plate,}
+	x^2 + 4y^2 < 24 \\
+	T_x = 0,\ T_y = 0 \\
+	x=-1,\ y=0 \\
+	T(-1,0) = -1
+	\intertext{To find the extremum on the boundary,}
+	\nabla T(x,y) = \lrangle 2x+2, 2y \rangle \\
+	\nabla f(x,y) = \lrangle 2x, 8y \rangle \\
+	\nabla f(x,y) = \lambda \nabla T(x,y)
+	\shortintertext{i.e.}	
+	2x = \lambda (2x+2) \\
+	x = \lambda (x+1) \tag{1}\\
+	8y = \lambda 2y \tag{2}\\
+	x^2 + 4y^2 = 24 \tag{3}\\
+	\intertext{From (2), either $\lambda = 4$ or $y=0$, when $\lambda = 4$,}
+	x = 4x + 4 \Rightarrow x = -4/3 \\
+	y = \pm \sqrt{\frac{1}{4}(24 - \frac{16}{9})} = \pm \sqrt{\frac{50}{9}} \\
+	T \left( -4/3, \pm \sqrt{\frac{50}{9}} \right) = 4\frac{2}{3}
+	\intertext{When $y=0$,}
+	x=2\sqrt{6} \\
+	T(4,0) = 24 + 4\sqrt{6}
+	\intertext{Therefore, the maximum temperature is $T(4,0) = 24 + 4\sqrt{6}$ and minimum 
+		temperature is $T(-1,0) = -1$.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{align*}
+	\int_0^4 \int_{\sqrt{y}}^2 \sqrt{x^2 + y} \diff x \diff y 
+	&= \int_0^2 \int_0^{x^2} \sqrt{x^2 + y} \diff y \diff x \\
+	&= \int_0^2 \left[
+		\frac{2}{3}(x^2 + y)^{3/2}
+		\right]_0^{x^2} \diff x \\
+	&= \int_0^2 
+		\frac{2}{3}[2\sqrt{2}x^3- x^3]
+ 		\diff x \\
+	&= \frac{4\sqrt{2} - 2}{3} \int_0^2 
+		x^3
+ 		\diff x \\
+	&= \frac{4\sqrt{2} - 2}{3(4)} 
+		\Big[ x^4 \Big]_0^2 \\
+	&= \frac{16(4\sqrt{2} - 2)}{3(4)} \\
+	&= \frac{16\sqrt{2} - 8}{3} 
+\end{align*}
+\filbreak
+
+\begin{problem}{4}
+\end{problem}
+\begin{gather*}
+	\intertext{For $-1\le x \le 1$ and $0 \le y \le \sqrt{1-x^2}$,}
+	0 \le z \le \frac{y}{2} \Rightarrow 0 \le z \le \frac{1}{2}
+	\intertext{Along the intersection of the plane $\frac{y}{2} = z$ and the surface 
+		$y=\sqrt{1-x^2}$,}
+	4z^2 = 1-x^2 \\
+	x = \sqrt{1-4z^2}
+	\intertext{Lastly,}
+	z \le y/2 \text{ and } y \le \sqrt{1-x^2} \Rightarrow 2z \le y \le \sqrt{1-x^2} \\
+	\therefore\int_{-1}^1 \int_0^{\sqrt{1-x^2}} \int_0^{y/2} 
+		f(x,y,z) 
+		\diff z \diff y \diff x
+	= \int_0^{1/2} \int_{-\sqrt{1-4z^2}}^{\sqrt{1-4z^2}} \int_{2z}^{\sqrt{1-x^2}} 
+		f(x,y,z) 
+		\diff y \diff x \diff z \\
+\end{gather*}
+\filbreak
+
+\end{document}

@@ -1,0 +1,459 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{mathtools,amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+
+
+\pdfinfo{
+  /Title (example.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Seamus)
+  /Subject (Example)
+  /Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{PC2134 Mathematical Mtds}} \\
+     \Large{\underline{of Physics I}} \\
+\end{center}
+
+Lim Wen Bin A0140764H
+
+\subsection{Lecture 1: Revision of Basic Mathematics}
+
+\subsubsection{Trigonometric identities}
+$\sin^2 x + \cos^2 x = 1$;
+$\tan^2 x + 1 = \sec^2 x$;
+$\sin2x = 2\sin x\cos x$;
+$\cos2x = 2\cos^2x-1 = 1 - 2\sin^2x$;
+$\sin^2(x) = \frac{1-\cos(2x)}{2}$;
+$\cos^2(x) = \frac{1+\cos(2x)}{2}$;
+$\sin(x\pm y) = \sin x\cos y \pm \cos x\sin y$;
+$\cos(x\pm y) = \cos x\cos y \mp \sin x\sin y$;
+$\tan(x\pm y) = (\tan x \pm \tan y) / (1 \mp \tan x\tan y)$;
+$\sin P + \sin Q = 2\sin\frac{1}{2}(P+Q) \cos\frac{1}{2}(P-Q)$;
+$\sin P - \sin Q = 2\cos\frac{1}{2}(P+Q) \sin\frac{1}{2}(P-Q)$;
+$\cos P + \cos Q = 2\cos\frac{1}{2}(P+Q) \cos\frac{1}{2}(P-Q)$;
+$\cos P - \cos Q = -2\sin\frac{1}{2}(P+Q) \sin\frac{1}{2}(P-Q)$;
+
+\subsubsection{Limits}
+$\lim_{x\to a} [f(x)]^{1/n} = \left[ \lim_{x\to a} f(x) \right]^{1/n}$;
+
+\subsubsection{Intermediate value theorem}
+$f$ continuous on $[a,b] \land f(a)f(b)<0 \Rightarrow \exists x \in (a,b) : f(x)=0$.
+L'Hopital's Rule: for $\frac{0}{0}$ or $\frac{\infty}{\infty}$, for $c=\infty$ or $c=a^+/a^-$
+	$\lim_{x\to c} \frac{f(x)}{g(x)} = \lim_{x\to c} \frac{f'(x)}{g'(x)}$;
+Leibnitz's Theorem: $\frac{d^n}{dx^n} [f(x)g(x)] = \sum_{r=0}^n \binom{n}{r}
+	\left[ \frac{d^r}{dx^r}f(x) \right]  \left[ \frac{d^{n-r}}{dx^{n-r}}g(x) \right]$
+
+\subsubsection{Derivatives}
+$f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)} {h}$;
+$\frac{d^n}{dx^n} \sin(x) = \sin(\frac{n\pi}{2} + x)$;
+$\frac{d^n}{dx^n} \cos(x) = \cos(\frac{n\pi}{2} + x)$;
+$\frac{d \tan(f(x))}{dx} = f'(x)\sec^2(f(x))$;
+$\frac{d}{dx} \tan(f(x)) = f'(x)\sec^2(f(x))$;
+$\frac{d}{dx} \csc(f(x)) = f'(x)\csc(f(x))\cot(f(x))$;
+$\frac{d}{dx} \sec(f(x)) = f'(x)\sec(f(x))\tan(f(x))$;
+$\frac{d}{dx} \cot(f(x)) = f'(x)\csc^2(f(x))$;
+% hyperbolic trigo
+$\frac{d}{dx} \cosh(f(x)) = f'(x)\sinh(f(x))$;
+$\frac{d}{dx} \tanh(f(x)) = f'(x)\sech^2(f(x))$;
+$\frac{d}{dx} \csch(f(x)) = -f'(x)\csch(f(x))\coth(f(x))$;
+$\frac{d}{dx} \sech(f(x)) = -f'(x)\sech(f(x))\tanh(f(x))$;
+$\frac{d}{dx} \coth(f(x)) = -f'(x)\csch^2(f(x))$;
+% inverse trigo
+$\frac{d}{dx} \sin^{-1}(f(x)) = \frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
+$\frac{d}{dx} \cos^{-1}(f(x)) = -\frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
+$\frac{d}{dx} \tan^{-1}(f(x)) = \frac{f'(x)} {1+(f(x))^2}$;
+$\frac{d}{dx} (f(x))^{g(x)} = (f(x))^{g(x)} \frac{d}{dx} (g(x) \ln f(x))$;
+Quotient Rule: $\frac{d}{dx} \frac{f(x)}{g(x)} = \frac{f'(x)g(x)-g'(x)f(x)}{(g(x))^2}$;
+
+\subsubsection{Integrals}
+FTC: $\int_{a}^{b} F'(x) dx = F(b) - F(a)$, $\frac{d}{dx}\int_a^x f(u)du = f(x)$;
+
+$\int \frac{1} {a^2+(x+b)^2} dx = \frac{1}{a} \tan^{-1} \left( \frac{x+b}{a} \right)$;
+$\int \frac{1} {\sqrt{a^2+(x+b)^2}} dx = \sin^{-1} \left( \frac{x+b}{a} \right)$;
+$\int -\frac{1} {\sqrt{a^2+(x+b)^2}} dx = \cos^{-1} \left( \frac{x+b}{a} \right)$;
+$\int \tan x dx = -\ln|\cos x|$; 
+$\int \frac{1} {a^2-(x+b)^2} dx = \frac{1}{2a} \ln \left| \frac{x+b+a}{x+b-a} \right|$;
+$\int \cot x dx = \ln|\cos x|$; 
+$\int \frac{1} {(x+b)^2-a^2} dx = \frac{1}{2a} \ln \left| \frac{x+b-a}{x+b+a} \right|$; 
+$\int \sec x dx = \ln|\sec x + \tan x|$; 
+$\int \frac{1} {(x+b)^2-a^2} dx = \frac{1}{2a} \ln \left| \frac{x+b-a}{x+b+a} \right|$; 
+$\int \csc x dx = \ln|\csc x + \cot x|$; 
+\\
+Substitution I: $u=g(x), \int f(g(x))g'(x) dx = \int f(u)du$;
+Substitution II: $x=g(t), \int f(x)dx = \int f(g(t))g'(t)dt$;
+\textbf{Integration by parts}: $\int fg' dx = fg - \int f'g dx$;
+Arc length: $\int_a^b \sqrt{1+f'(x)^2}dx$;
+Surface area: $\int_a^b 2\pi f(x) \sqrt{1+f'(x)^2}dx$;
+Washer method: $\int_a^b \pi f(x)^2 dx$;
+Cylindrical shell method ($y$-axis): $\int_a^b 2\pi xf(x) dx$;
+Integrating powers of $\sin$ and $\cos$: $\cos x = \frac{e^{ix} + e^{-ix}}{2}$, 
+$\sin x = \frac{e^{ix} - e^{-ix}}{2}$; 
+Weierstrass substitution: $x = \tan(\theta/2)$, $\sin\theta = \frac{2x}{1+t^}$,
+	$\cos\theta = \frac{1-t^2}{1+t^2}$, $\tan\theta = \frac{2t}{1-t^2}$,
+	$dx = \frac{2}{1+t^2}dt$,
+
+\subsubsection{Matrices}
+$(AB)_{ij} = \sum_{k=1}^R A_{ik} B_{kj}$; 
+$\text{Tr}(A) = \text{Tr}(A^T)$;
+$\text{Tr}(ABC) = \text{Tr}(BCA)$;
+$\text{det}(A) = \sum_{j=1}^N (-1)^{i+j} A_{ij} M_{ij}$;
+$\text{det}(A) = \text{det}(A^T)$;
+$\text{det}(A^{-1}) = 1/\text{det}(A)$;
+Cramer's Rule: $x_i = \frac{|\Delta_i|}{|A|}$;
+Characteristic equation: $|A-\lambda I| = 0$;
+$\sum_{i=1}^N \lambda_i = \text{Tr}(A)$;
+$0 \not\in \Lambda \Rightarrow \exists A^{-1}$;
+
+\subsection{Lecture 2: Infinite Series}
+An infinite series is convergent if $S = \lim_{N\to\infty} S_N = \sum_{n=1}^\infty a_n$.
+Arithmetic series: $S_N = \sum_{n=1}^N [a + (n-1)d] = \frac{N}{2} [2a+(N-1)d]$;
+Geometric series: $S_N = \sum_{n=1}^N ar^{n-1} = \frac{a(1-r^N)}{1-r}$,
+when $|r| < 1$, $S = \frac{a}{1-r}$;
+Harmonic series is divergent: $\sum_{n=1}^\infty \frac{1}{n}$;
+$\sum |a_n|$ converges $\Rightarrow$ absolute convergence $\Rightarrow$ terms
+	can be reordered;
+$\sum |a_n|$ diverges but $\sum a_n$ converges $\Rightarrow$ conditional convergence;
+
+\subsubsection{Convegence tests}
+\textbf{Preliminary test}: $\lim_{n\to\infty} \ne 0 \Rightarrow$ divergence;
+\textbf{Comparison test}: $(u_i) \text{ converges } \Land \forall n > N, 0 \le
+	a_n \le u_n
+\Rightarrow \sum_n a_n$ converges.
+Conversely, $(u_i) \text{ diverges } \Land \forall n > N, 0 \le u_n \le a_n
+\Rightarrow \sum_n a_n$ diverges.
+\textbf{Ratio test}: For $p = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|, 
+p < 1 \Rightarrow \text{convergence},\
+p > 1 \Rightarrow \text{divergence},\
+p = 1 \text{ is inconclusive};$
+\textbf{Integral test}: If $0 < a_{n+1} < a_n$ for $n > N$, series is convergent if 
+$\int^\infty f(x)dx$ is finite.
+
+\subsubsection{Power series}
+$f(x) = \sum_{n=0}^\infty a_n (x - x_0)^n$;
+Interval of convergence: $|x-x_0| < \lim_{n\to\infty} \left| 
+	\frac{a_{n+1}}{a_n} \right|$, convergence on endpoints have to be considered 
+	seperately. 
+\textbf{Operations with power series}:
+1. $f(x)$ and $g(x)$ converges on $A \Rightarrow f(x)\pm g(x)$ and $f(x)g(x)$
+	converges on $A$.
+2. $f(x)$ and $g(x)$ converges $\forall x \Rightarrow f[g(x)]$ and $g[f(x)]$
+	converges $\forall x$.
+3. $f(x)$ converges $\Rightarrow f'(x)$ and $\int f(x)$ converges.
+\textbf{Taylor's theorem}: $f(x) = \sum_{n=0}^N \frac{f^{(n)} (x_0)}{n!}
+	(x-x_0)^n + R_N(x)$,
+$R_N(x) = \frac{f^{(N+1)}(\eta)}{(N+1)!} (x-x_0)^{N+1}$ where $\eta \in [x_0,x]$; \\
+\textbf{Taylor's series}: $f(x) = \sum_{n=0}^\infty \frac{f^{(n)} (x_0)}{n!}
+	(x-x_0)^n$, $lim_{N\to\infty} |R_N(x)| = 0$;
+
+\subsubsection{Maclaurin series}
+$f(x) = \sum_{n=0}^\infty \frac{f^{(n)} (0)}{n!} x^n$;
+$\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots = \sum_{n=0}^\infty 
+	\frac{(-1)^n x^{2n+1}}{(2n+1)!}$;
+$\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \ldots = \sum_{n=0}^\infty 
+	\frac{(-1)^n x^{2n}}{(2n)!}$;
+$e^x = 1 + x + \frac{x^2}{2!} + \ldots = \sum_{n=0}^\infty 
+	\frac{x^n}{n!}$;
+$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots = \sum_{n=0}^\infty 
+	\frac{(-1)^n x^{n+1}}{n+1}$;
+
+\subsubsection{Binomial series}: $(1+x)^N = 1 + Nx + \frac{N(N-1)}{2!} + \ldots
+\sum_{n=0}^N \binom{N}{n} x^n$;
+
+\subsection{Lecture 3: Complex Variables}
+$z = x + iy = r(\cos\theta + i\sin\theta) = re^{i\theta}$;
+$|z| = r = \sqrt{x^2 + y^2}$;
+$\text{arg}(z) = \theta = \tan^{-1} (\frac{y}{x})$;
+$z^* = x - iy = r(\cos(-\theta) + i\sin(-\theta))$;
+$(z^*)^* = z$;
+$(z_1 + z_2)^* = z_1^* + z_2^*$;
+$(z_1z_2)^* = z_1^* z_2^*$;
+$|z|^2 = zz^*$;
+Division: $\frac{z_1}{z_2} = \frac{z_1z_2^*}{|z_2|^2}$;
+
+\textbf{de Moivre's theorem}: $(e^{i\theta})^n = cos(n\theta) + i\sin(n\theta)$;
+Complex logarithm: $\ln z = \ln r + i(\theta + 2n\pi)$;
+Complex power: $z_1^{z_2} = e^{z_2\ln z_1}$;
+
+\subsubsection{Complex trigonometric and hyperbolic functions}
+$\sin z = \frac{e^{iz} - e^{-iz}}{2}$; 
+$\cos z = \frac{e^{iz} + e^{-iz}}{2}$; 
+$\sinh z = \frac{e^{z} - e^{-z}}{2}$; 
+$\cosh z = \frac{e^{z} + e^{-z}}{2}$; 
+$\sin(iz) = i\sinh(z)$;
+$\sinh(iz) = i\sin(z)$;
+$\cos(iz) = \cosh(z)$;
+$\cosh(iz) = \cos(z)$;
+$\sin^{-1} z = -i\ln(iz + \sqrt{1-z^2}) = \csc^{-1} (\frac{1}{z})$;
+$\cos^{-1} z = -i\ln(z + \sqrt{z^2-1}) = \sec^{-1} (\frac{1}{z})$;
+$\sinh^{-1} z = \ln(z + \sqrt{z^2+1}) = \csch^{-1} (\frac{1}{z})$;
+$\cosh^{-1} z = \ln(z + \sqrt{z^2-1}) = \sech^{-1} (\frac{1}{z})$;
+
+\subsection{Lecture 4: Vector Algebra}
+Magnitude: $A^2 = |\mathbf{A}|^2 = \sum_{i=1}^3 A_i^2$;
+Direction cosines: $A_i = A\cos\theta_i \Rightarrow \sum_{i=1}^3 \cos^@\theta_i = 1$;
+Dot (scalar) product: $\mathbf{A} \cdots \mathbf{B} = AB\cos\theta$;
+$C^2 = \mathbf{C} \cdot \mathbf{C} = (\mathbf{A} + \mathbf{B}) \cdot
+	(\mathbf{A} + \mathbf{B}) = A^2 + B^2 + 2AB\cos\theta$;
+Cross (vector) product: $\mathbf{A} \times \mathbf{B} = AB\sin\theta
+	\hat{\mathbf{e}}_n$ where $\hat{\mathbf{e}}_n$ is the unit normal obtained
+	by the right-hand rule.
+comp$_a b = \frac{a \cdot b}{|a|}$, proj$_a b = \frac{a \cdot b}{a \cdot a} a$;
+$\mathbf{A} \times \mathbf{B} = - \mathbf{B} \times \mathbf{A}$;
+\textbf{Levi-Civita symbol}: $\hat{\mathbf{e}}_i \times \hat{\mathbf{e}}_j
+	= \sum_{k=1}^3 \epsilon_{ijk} \hat{\mathbf{e}}_k$;
+$\sum_{k=1}^3 \epsilon_{ijk} \epsilon_{mnk} = \delta_{im} \delta_{jn} - 
+	\delta_{in} \delta_{jm}$;
+$\sum_{j=1}^3 \sum_{k=1}^3 \epsilon_{mjk} \epsilon_{njk} = 2\delta_{mn}$;
+$\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \epsilon_{ijk} \epsilon_{ijk} = 6$;
+$(\mathbf{A} \times \mathbf{B})_k = \sum_{i,j} \epsilon_{ijk} A_i B_i$;
+Scalar triple product identity: 
+$\mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = \mathbf{B} \cdot (\mathbf{C}
+	\times \mathbf{A}) = \mathbf{C} \cdot (\mathbf{A} \times \mathbf{B})$;
+Vector triple product identity: 
+$\mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = \mathbf{B} (\mathbf{A}
+	\cdot \mathbf{C}) - \mathbf{C} (\mathbf{A} \cdot \mathbf{B})$;
+
+\subsection{Lecture 5: Partial Derivative}
+$\frac{\partial f}{\partial x_i} = \lim_{\Delta x_i \to 0} 
+	\frac{f(x_1, \ldots, x_i + \Delta x_i, \ldots, x_N) - 
+	f(x_1, \ldots, x_N)}{\Delta x_i} = \left( \frac{\partial f}{\partial x_i}
+	\right)_{(x_k), k \ne i}$;
+Schwarz' theorem: $f_{x_jx_i} = f_{x_ix_j}$;
+\textbf{Total differential}: $df = \sum_{i=1}^N \frac{\partial f}{\partial x_i} dx_i$;
+Reciprocity relation: $dy = 0 \Rightarrow \left( \frac{\partial
+	z}{\partial x} \right)_y \left( \frac{\partial x}{\partial z} \right)_y^{-1}$;
+Cyclic relation: $dz = 0 \Rightarrow \left( \frac{\partial x}{\partial
+	y} \right)_z \left( \frac{\partial y}{\partial z} \right)_x
+	 \left( \frac{\partial z}{\partial x} \right)_y$;
+\textbf{Exact differential}: $\forall i, j, i \ne j, f_{x_ix_j} = f_{x_jx_i}$;
+$\frac{\partial}{\partial x} \int^t f(x,t) dt = \int^t \frac{\partial
+	f(x,t)}{\partial x} dt$;
+Leibnitz' rule: $\frac{d}{d x} \int_u^v f(x,t) dt = \int_u^v \frac{\partial
+	f(x,t)}{\partial x} dt$;
+$\frac{d}{d x} \int_{u(x)}^{v(x)} f(x,t) dt = 
+	f[x,v(x)] \frac{dv(x)}{dx} - f[x,u(x)] \frac{du(x)}{dx} \\
+	+ \int_{u(x)}^{v(x)} \frac{\partial f(x,t)}{\partial x} dt$;
+\textbf{Taylor's theorem for multi-variavle function}: 
+	$f(x) = \sum_{n=0}^N \frac{1}{n!} \left[ \sum_{i=1}^M (x_i - x_{i_0}) 
+	\frac{\partial}{\partial x_i} \right]^n f(x) \biggl|_{x=x_0} + R_N(x)$,
+$R_N(x) = \frac{1}{(N+1)!} \left[ \sum_{i=1}^M (x_i - x_{i_0}) 
+\frac{\partial}{\partial x_i} \right]^{N+1} f(x) \biggl|_{x=x_0}$;
+
+\subsubsection{Stationary values of multi-variable functions}
+Stationary points: $\frac{\partial f}{\partial x_i} = 0,\ \forall i$;
+Second order behaviour: $\Delta f = f(\mathbf{x}) - f(\mathbf{x_0}) \approx
+	\frac{1}{2!} \sum_{i=1}^N \sum_{j=1}^N \frac{\partial^2 f}{\partial x_i
+	\partial x_j} \biggl|_{\mathbf{x} = \mathbf{x_0}} \Delta x_i \Delta x_j$;
+Hessian matrix (real and symmetric): $H_ij = \frac{\partial^2 f}{\partial x_i
+	\partial x_j}$;
+For eigenvalues $\lambda_r$ and ortogonal eigenvectors $e_r$,
+	$\mathbf{H} \mathbf{e}_r = \lambda_r \mathbf{e}_r$, where $\{\mathbf{e}_r\}$ is 
+	the basis, $\Delta \mathbf{x} = \sum_{r=1}^N a_r \mathbf{e}_r$;
+$\Delta f = \frac{1}{2} \Delta \mathbf{x}^T \mathbf{H} \Delta \mathbf{x}
+	= \frac{1}{2} \sum_{r=1}^N a_r^2 \lambda_r$;
+\textbf{Classification of stationary points}:
+1. Minima: $\lambda_r > 0,\ \forall r$ or ($f_{xx}, f_{yy} > 0 \land f_{xy}^2 <
+	f_{xx} f_{yy})$
+2. Maxima: $\lambda_r > 0,\ \forall r$ or ($f_{xx}, f_{yy} < 0 \land f_{xy}^2 <
+	f_{xx} f_{yy})$
+3. Saddle point: $\lambda_r$ have mixed signs or ($f_{xx}, f_{yy} < 0 \land
+	f_{xy}^2 \ge f_{xx} f_{yy})$
+Using \textbf{Lagrange undetermined multiplier} to find the stationary points
+	of $f(x,\ldots,x_N)$ subject to $K<N$ contraints, $g_j(x_1,\ldots,x_N) = 0$,
+	$F(x_1,\ldots,s_N,\lambda_1,\ldots,\lambda_K) = f + \sum_{j=1}^K \lambda_j
+	g_j$.
+The stationary points are found by solving $dF = 0 \Rightarrow \frac{\partial f}
+	{\partial x_i} + \sum_{j=1}^K \lambda_j \frac{\partial g_j}{\partial x_i} = 0$
+	and $g_j = 0$.
+
+\subsection{Lecture 6: Multiple Integrals}
+$\int_a^b \int_c^d g(x)h(y) dydx = \int_a^b g(x) dx \int_c^d h(y) dy$;
+\textbf{Jacobian}: $J = \frac{\partial(x,y)}{\partial(u,v)} = 
+	\frac{\partial x}{\partial u} \frac{\partial y}{\partial v}
+	- \frac{\partial x}{\partial v} \frac{\partial y}{\partial u}$;
+$\iint_\mathcal{R} f(x,y) dxdy = \iint_{R'} g(u,v) \left|
+	\frac{\partial(x,y)}{\partial(u,v)} \right| du dv$;
+$\mathbf{J}_{xz} = \mathbf{J}_{xy}\mathbf{J}_{yz}$;
+$|\mathbf{J}_{xy}| = |\mathbf{J}_{yx}|^{-1}$;
+
+\subsection{Lecture 7: Grad, Div and Curl}
+$\frac{d}{du} \phi \mathbf{a} = \phi \frac{d\mathbf{a}}{du} + \frac{d\phi}{du} 
+	\mathbf{a}$;
+$\frac{d}{du} \mathbf{a} \cdot \mathbf{b} = \mathbf{a} \cdot
+	\frac{d\mathbf{b}}{du} + \frac{d\mathbf{a}}{du} \cdot \mathbf{b}$;
+$\frac{d}{du} (\mathbf{a} \times \mathbf{b}) = \mathbf{a} \times
+	\frac{d\mathbf{b}}{du} + \frac{d\mathbf{a}}{du} \times \mathbf{b}$;
+Integration of vectors: $\int \mathbf{a} du = \mathbf{A}(u) + \mathbf{b}$, 
+	$\int_{u_1}^{u_2} \mathbf{a}(u) = \mathbf{A}(u_2) - \mathbf{A}(u_1)$;
+\textbf{Arc length}: $s = \int_{u_1}^{u_2} \sqrt{\frac{d\mathbf{r}}{du} \cdot
+	\frac{d\mathbf{r}}{du}} du$;
+\textbf{Tangent vector}: $\frac{d\mathbf{r}}{du} = \left( \frac{dx(u)}{du},
+	\frac{dy(u)}{du}, \frac{dz(u)}{du} \right)$;
+\textbf{Area of surface}: $A = \iint_\mathcal{R} \left| \frac{d\mathbf{r}}{du} \times 
+	\frac{d\mathbf{r}}{dv} \right| dudv$;
+\textbf{Gradient of scalar field}: $\Phi = \sum_{i=1}^3 \hat{\mathbf{e}}_i 
+	\frac{\partial \Phi}{\partial x_i}$;
+Infinitesimal change from $\mathbf{r}$ to $\mathbf{r} + d\mathbf{r}$: 
+	$d\Phi = \nabla \Phi \cdot d\mathbf{r}$;
+Total derivative along curve $\mathbf{r}(u)$: 
+	$\frac{d\Phi}{du} = \nabla \Phi \cdot \frac{d\mathbf{r}}{du}$;
+\textbf{Directional derivative} w.r.t. distance $s$ in direction $\mathbf{a}$: 
+	$\frac{d\Phi}{ds} = \nabla \Phi \cdot \hat{\mathbf{a}}$;
+Largest increase in $\Phi$ is in the direction of $\nabla \Phi$.
+$\nabla\Phi$ is normal to the surface $\Phi(x,y,z)=c$ i.e. it is the normal
+	derivative.
+\textbf{Divergence} of vector field: $\nabla \cdot \mathbf{a} = \sum_{i=1}^3 
+	\frac{\partial a_i}{\partial x_i}$;
+$\nabla \cdot \mathbf{a} = 0 \Rightarrow \mathbf{a}$ is solenoidal.
+\textbf{Curl} of vector field: $\nabla \times \mathbf{a} = \sum_{i,j,k}
+	\epsilon \frac{\partial}{\partial x_i} a_j \hat{\mathbf{e}}_k$;
+$\nabla \times \mathbf{a} = 0 \Rightarrow \mathbf{a}$ is irrotational.
+
+\subsubsection{Identities of vector differential operators}
+Grad, div and curl are distributive over addition and scalar multiplication.
+$\nabla (\Phi\Psi) = \Phi (\nabla \Psi) + (\nabla \Phi) \Psi$;
+$\nabla (\mathbf{a} \cdot \mathbf{b}) = \mathbf{a} \times (\nabla \times \mathbf{b}) 
+	+ \mathbf{b} \times (\nabla \times \mathbf{a}) 
+	+ (\mathbf{a} \cdot \nabla) \times \mathbf{b} 
+	+ (\mathbf{b} \cdot \nabla) \times \mathbf{a}$;
+$\nabla \cdot (\Phi\mathbf{a}) = \Phi (\nabla \cdot \mathbf{a}) + \mathbf{a} \cdot
+	(\nabla \Phi)$;
+$\nabla \cdot (\mathbf{a} \times \mathbf{b}) = 
+	\mathbf{b} \cdot (\nabla \times \mathbf{a}) 
+	- \mathbf{a} \cdot (\nabla \times \mathbf{b})$;
+$\nabla \times (\Phi \mathbf{a}) = 
+	\nabla \Phi \times \mathbf{a} + \Phi \cdot (\nabla \times \mathbf{a})$;
+$\nabla \times (\mathbf{a} \times \mathbf{b}) = 
+	\mathbf{a} (\nabla \cdot \mathbf{b}) 
+	- \mathbf{b} (\nabla \cdot \mathbf{a}) 
+	+ (\mathbf{b} \cdot \nabla) \mathbf{a} 
+	- (\mathbf{a} \cdot \nabla) \mathbf{b}$;
+$\nabla \times (\nabla \Phi) = \mathbf{0}$;
+$\nabla \cdot (\nabla \times \mathbf{a}) = \mathbf{0}$;
+$\nabla (\nabla \cdot \mathbf{a}) = \sum_{i=1}^3 \hat{\mathbf{e}}_i \left( 
+	\sum_{j=1}^3 \frac{\partial^2 a_j}{\partial x_i \partial x_j} \right)$;
+$\nabla \cdot (\nabla \Phi) = \nabla^2 \Phi = \sum_{i=1}^3 
+	\frac{\partial^2 \Phi}{\partial x_i^2}$;
+$\nabla \times (\nabla \times \mathbf{a}) = \nabla (\nabla \cdot \mathbf{a}) 
+	- \nabla^2 \mathbf{a}$;
+$\nabla^2 \Phi = \sum_{i,j} \frac{\partial^2 a_j}{\partial x_i^2}
+	\hat{\mathbf{e}}_j$;
+
+\subsection{Lecture 8: Line, Surface and Volume Integrals}
+
+\subsubsection{Line integrals}
+$\int_\mathcal{C} \Phi d\mathbf{r} = \sum_{k=1}^3 \hat{\mathbf{e}}_k
+	\int_\mathcal{C} \Phi dx_k$;
+$\int_\mathcal{C} \mathbf{a} \cdot d\mathbf{r} = \sum_{k=1}^3 \int_\mathcal{C}
+	a_k dx_k$;
+$\int_\mathcal{C} \mathbf{a} \times d\mathbf{r} = \sum_{i,j,k} \epsilon_{ijk} 
+	\hat{\mathbf{e}}_k \int_\mathcal{C} a_i dx_j$;
+Line integrals w.r.t. arc lengths:
+$\int_\mathcal{C} \Phi ds = \int_\mathcal{C} \Phi \sqrt{ \frac{d\mathbf{r}}{du} \cdot
+	\frac{d\mathbf{r}}{du} }du$;
+$\int_\mathcal{C} \mathbf{a} ds = \sum_{k=1}^3 \hat{\mathbf{e}}_k
+	\int_\mathcal{C} a_k \sqrt{ \frac{d\mathbf{r}}{du} \cdot \frac{d\mathbf{r}}{du}
+	}du$;
+
+\subsubsection{Surface integrals}
+$\iint_\mathcal{S} \Phi dS = \iint_\mathcal{S} \Phi \left| \frac{\partial
+	\mathbf{r}}{\partial u} \times \frac{\partial \mathbf{r}}{\partial v} \right|
+	dudv$;
+$\iint_\mathcal{S} \Phi d\mathbf{S} = \pm \iint_\mathcal{S} \Phi \cdot
+	\hat{\mathbf{n}} dS = \pm \iint_\mathcal{S} \Phi \left( \frac{\partial
+	\mathbf{r}}{\partial u} \times \frac{\partial \mathbf{r}}{\partial v} \right)
+	dudv$;
+Projecting $S$ onto the $xy$-plane:
+$\hat{\mathbf{n}} = \frac{\nabla F}{|\nabla F|},\ dxdy = \hat{\mathbf{e}}_z \cdot 
+	dS \hat{\mathbf{n}}$;
+$\iint_\mathcal{S} \Phi dS = \iint_\mathcal{S} \Phi \frac{|\nabla F|
+	dxdy}{\partial F/\partial z}$,
+$\iint_\mathcal{S} \Phi d\mathbf{S} = \pm \iint_\mathcal{S} \Phi \frac{\nabla F
+	dxdy}{\partial F/\partial z}$,
+
+\subsubsection{Volume integrals}
+$\iiint_V a dV = \sum_{k=1}^3 \hat{\mathbf{e}}_k \iiint_V a_k dxdydz$;
+
+\subsubsection{Parametrizations}
+Sphere: $\mathbf{r}(\theta, \phi) = (r\sin\theta\cos\phi, r\sin\theta\sin\phi, 
+	r\cos\theta)$,
+	$r_\theta \times r_\phi = (r^2 \sin^2\theta\cos\phi, r^2\sin^2\theta\sin\phi,
+	r^2 \sin\theta\cos\phi)$;
+	$|r_\theta \times r_\phi| = r\sin\theta$;
+Ellipse: $\mathbf{r}(\theta) = (a\cos\theta, b\sin\theta)$;
+Ellipsoid: $\mathbf{r}(\theta, \phi) = (a\sin\theta\cos\phi, b\sin\theta\sin\phi, 
+	c\cos\theta)$;
+
+% You can even have references
+%\rule{0.3\linewidth}{0.25pt}
+%\scriptsize
+%\bibliographystyle{abstract}
+%\bibliography{refFile}
+
+\end{multicols}
+\end{document}

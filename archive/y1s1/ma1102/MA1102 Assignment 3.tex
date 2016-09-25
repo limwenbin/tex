@@ -1,0 +1,1155 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1102R Homework Assignment 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+T03}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{align*}
+\lim_{x \to 0} \left( \frac{\cos x}{\cos 2x} \right)^{1/x^2} &=
+\lim_{x \to 0}
+\text{exp}\left(\frac{\ln \cos x - \ln \cos 2x}{x^2}\right) 
+\\
+&=
+\text{exp}\left(
+\lim_{x \to 0}
+\frac{\ln \cos x - \ln \cos 2x}{x^2}
+\right) 
+\\
+&=
+\text{exp}\left(
+\lim_{x \to 0}
+\frac{-\tan x + 2\tan 2x}{2x}
+\right)
+\\
+&=
+\text{exp}\left(
+\lim_{x \to 0}
+\frac{-\sec^2 x + 4\sec^2 2x}{2}
+\right) 
+\\
+&=
+\text{exp}\left(
+\frac{3}{2}
+\right) \\
+&= e^{\frac{3}{2}}
+\end{align*}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+\lim_{x \to 0} \left( \frac{1+x2^x}{1+x3^x} \right)^{1/x^2} &=
+\lim_{x \to 0}
+\text{exp}\left(\frac{\ln(1+x2^x)-\ln(1+x3^x)}{x^2}\right) 
+\\
+&=
+\text{exp}\left(
+\lim_{x \to 0}
+\frac{\ln(1+x2^x)-\ln(1+x3^x)}
+{x^2}
+\right)
+\\
+&=
+\text{exp}\left[
+\lim_{x \to 0}
+\frac{1}{2x} 
+\left(
+\frac{2^x+x2^x\ln2}{1+x2^x} - \frac{3^x+x3^x\ln3}{1+x3^x}
+\right)
+\right] 
+\\
+&=
+\text{exp}\biggl[
+\lim_{x \to 0}
+\frac{1}{2} 
+\biggl(
+\frac{2^x\ln2 + 2^x\ln2 + x2^x\ln2\ln2 - 2^x-x2^x\ln2} {(1+x2^x)^2} \\
+&\phantom{=}- 
+\frac{3^x\ln3 + 3^x\ln3 + x3^x\ln3\ln3 - 3^x-x3^x\ln3} {(1+x3^x)^2} 
+\biggl)
+\biggl] 
+\\
+&=
+\text{exp}\biggl[
+\lim_{x \to 0}
+\frac{1}{2} 
+\biggl(
+\frac{2^x(\ln2 + \ln2 + x\ln2\ln2 - 1 -x\ln2)} {(1+x2^x)^2} \\
+&\phantom{=}- 
+\frac{3^x(\ln3 + \ln3 + x\ln3\ln3 - 1 -x\ln3)} {(1+x2^x)^2} 
+\biggl)
+\biggl] 
+\\
+&=
+\text{exp}[
+\frac{1}{2}(
+(2\ln2 - 1)
+- 
+(2\ln3 - 1)
+)]
+\\
+&=
+\text{exp}(
+\ln\frac{2}{3}
+)\\
+&= \frac{2}{3}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+\intertext{Let $u = x^{1/4}$, $\frac{du}{dx} = \frac{1}{4}x^{-3/4} = \frac{1}{4}u^{-3}$,}
+\int e^{\sqrt[4]{x}} \diff x &= \int 4 u^3 e^u \diff u\\
+&= 4 u^3 e^u - 12\int u^2 e^u \diff u + C_1\\
+&= 4 u^3 e^u - 12 u^2 e^u + 24\int u e^u \diff u + C_2\\
+&= 4 u^3 e^u - 12 u^2 e^u + 24u e^u - 24\int e^u \diff u + C_3\\
+&= 4 u^3 e^u - 12 u^2 e^u + 24u e^u - 24e^u + C_4\\
+&= 4 x^{3/4} e^{x^{1/4}} - 12 u^2 e^{x^{1/4}} + 24u e^{x^{1/4}} - 24e^{x^{1/4}}  + C_4\\
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{align*}
+\intertext{Let $x = 2\sec u$, $u \in [0,\frac{\pi}{2}] \cup [\pi, \frac{3\pi}{2})$, $\frac{dx}{du} = 2\sec u\tan u$, $u = \sec^{-1}\left(\frac{x}{2}\right)$,}
+\int
+	\frac{
+		1
+	}
+	{
+		x^3 \sqrt{x^2-4}
+	}
+\diff x
+&=
+\int
+	\frac{
+		2\sec u\tan u
+	}
+	{
+		8\sec^3 u \sqrt{4\sec^2 u - 4}
+	}
+\diff u\\
+&=
+\int
+	\frac{
+		\sec u\tan u
+	}
+	{
+		8\sec^3 u \tan u
+	}
+\diff u\\
+&=
+\frac{1}{8}
+\int
+	\cos^2 u
+\diff u\\
+&=
+\frac{1}{8}
+\int
+	\frac{
+		\cos 2u + 1
+	}
+	{
+		2
+	}
+\diff u\\
+&=
+\frac{1}{16} 
+\left(
+\frac{\sin 2u}{2} + u
+\right)
+\\
+&=
+\frac{1}{16} 
+\left(
+\sin u \cos u + u
+\right)
+\\
+&=
+\frac{1}{16} 
+\left(
+\frac{2\sqrt{x^2-4}}{x^2} + \sec^{-1}\left(\frac{x}{2}\right)
+\right)
+\\
+\end{align*}
+\filbreak
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{align*}
+\int 
+	\frac{
+		3
+	}
+	{
+		x^3 - 1
+	}
+\diff x
+&=
+\int 
+	\frac{
+		3
+	}
+	{
+		(x-1) (x^2+x+1)
+	}
+\diff x
+\\
+&=
+\int 
+	\frac{
+		1
+	}
+	{
+		x-1
+	}
+	-
+	\frac{
+		x+2
+	}
+	{
+		x^2+x+1
+	}
+\diff x
+\\
+&=
+\int 
+	\frac{
+		1
+	}
+	{
+		x-1
+	}
+\diff x
+-
+\frac{1}{2}\int 
+	\frac{
+		2x+1
+	}
+	{
+		x^2+x+1
+	}
+	+
+	\frac{
+		3
+	}
+	{
+		(x+\frac{1}{2})^2 + \frac{3}{4}
+	}
+\diff x
+\\
+&=
+\int 
+	\frac{
+		1
+	}
+	{
+		x-1
+	}
+\diff x
+-
+\frac{1}{2}\int 
+	\frac{
+		2x+1
+	}
+	{
+		x^2+x+1
+	}
+-
+2\int 
+	\frac{
+		1
+	}
+	{
+		\frac{4}{3} (x+\frac{1}{2})^2 + 1
+	}
+\diff x
+\\
+&=
+\ln|x-1|
+-
+\frac{1}{2}\ln |x^2+x+1|
+-
+2 
+\frac{\sqrt{3}}{2}
+\tan^{-1} \left(
+	\frac{2}{\sqrt{3}} (x+\frac{1}{2})
+\right)
++ C
+\\
+&=
+\ln|x-1|
+-
+\frac{1}{2}\ln |x^2+x+1|
+-
+\sqrt{3}
+\tan^{-1} \left(
+	\frac{2}{\sqrt{3}} (x+\frac{1}{2})
+\right)
++ C
+\end{align*}
+\filbreak
+
+\begin{problem}{3.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{For $n \ge 1$,}
+A_n 
+&= 
+\int_{0}^{\pi/2} 
+	x^n \cos x
+\diff x
+\\
+&=
+\left[
+	x^n \sin x
+\right]_{0}^{\pi/2}
+-
+\int_{0}^{\pi/2} 
+	n x^{n-1} \sin x
+\diff x
+\\
+&=
+\left(\frac{\pi}{2}\right)^n \sin \left(\frac{\pi}{2}\right)
+- 0 -
+n\int_{0}^{\pi/2} 
+	x^{n-1} \sin x
+\diff x
+\\
+&=
+\left(\frac{\pi}{2}\right)^n 
+- 
+n B_{n-1}
+\\
+B_n 
+&= 
+\int_{0}^{\pi/2} 
+	x^n \sin x
+\diff x
+\\
+&=
+\left[
+	x^n \cos x
+\right]_{0}^{\pi/2}
+-
+\int_{0}^{\pi/2} 
+	n x^{n-1} \sin x
+\diff x
+\\
+&=
+0 - 0 -
+n\int_{0}^{\pi/2} 
+	x^{n-1} \sin x
+\diff x
+\\
+&=
+n A_{n-1}
+\\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{3.ii}
+\end{problem}
+\begin{align*}
+A_0 &= \int_{0}^{\pi/2} \cos x \diff x\\
+&= \left[\sin x\right]_{0}^{\pi/2}\\
+&= 1\\
+B_0 &= \int_{0}^{\pi/2} \sin x \diff x\\
+&= \left[-\cos x\right]_{0}^{\pi/2}\\
+&= 1\\
+A_3 
+&= 
+\left(\frac{\pi}{2}\right)^3 
+- 3B_{2}
+\\
+&= 
+\left(\frac{\pi}{2}\right)^3 
+- 3(2)A_{1}
+\\
+&= 
+\left(\frac{\pi}{2}\right)^3 
+- 3(2) \left[
+	\left(\frac{\pi}{2}\right)
+	- B_0
+\right]
+\\
+&= 
+\left(\frac{\pi}{2}\right)^3 
+- 3(2) \left[
+	\left(\frac{\pi}{2}\right)
+	- 1
+\right]
+\\
+&=
+\frac{\pi^3}{8}
+- 3 \pi
++ 6
+\\
+B_3 
+&= 
+3A_{2}
+\\
+&= 
+3\left[
+	\left(\frac{\pi}{2}\right)^2 
+	- 2B_{1}
+\right]
+\\
+&= 
+3\left[
+	\left(\frac{\pi}{2}\right)^2 
+	- 2A_{0}
+\right]
+\\
+&= 
+3\left[
+	\left(\frac{\pi}{2}\right)^2 
+	- 2
+\right]
+\\
+&=
+3\left(\frac{\pi}{2}\right)^2 
+- 6
+\\
+\end{align*}
+\filbreak
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{align*}
+\intertext{Washer method:}
+\text{when } x &= 0,\\
+y &= 0\\
+\text{Volume} 
+&= 
+\int_{0}^{4} 
+	\pi
+	(\sqrt{x})^2
+\diff x
+\\
+&= 
+\int_{0}^{4} 
+	\pi x
+\diff x
+\\
+&= 
+\left[
+	\frac{
+		\pi x^2
+	}
+	{
+		2	
+	}
+\right]_{0}^{4}
+\\
+&= 
+\frac{
+	16\pi 
+}
+{
+	2	
+}
+\\
+&= 
+8\pi 
+\intertext{Cylindrical shell method:}
+y &= \sqrt{x}\\
+x &= y^2\\
+\text{when } x &= 4,\\
+y &= 2\\
+\text{Volume} 
+&= 
+4(2)^2\pi
+-
+\int_{0}^{2} 
+	2\pi
+	y
+	(y^2)
+\diff y
+\\
+&= 
+16\pi
+-
+\left[
+	\frac{2\pi y^4}
+	{4}
+\right]_{0}^{2} 
+\\
+&= 
+16\pi
+-
+\frac{2(16)\pi}
+{4}
+\\
+&= 
+16\pi
+-
+8\pi
+\\
+&=
+8\pi
+\end{align*} \filbreak
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{align*}
+\intertext{Washer method:}
+\text{Volume} 
+&= 
+2(4)^2\pi
+-
+\int_{0}^{2} 
+	\pi
+	(y^2)^2
+\diff y
+\\
+&= 
+32\pi
+-
+\left[
+	\frac{
+		\pi y^5
+	}
+	{5}
+\right]_{0}^{2} 
+\\
+&= 
+32\pi
+-
+\frac{
+	32 \pi
+}
+{
+	5	
+}
+\\
+&=
+\frac{
+	128 \pi
+}
+{
+	5	
+}
+\intertext{Cylindrical shell method:}
+\text{Volume} 
+&= 
+\int_{0}^{4} 
+	2\pi x \sqrt{x}
+\diff x
+\\
+&= 
+\left[
+	\frac{4\pi y^{5/2}}
+	{5}
+\right]{0}^{4} 
+\\
+&= 
+\frac{4\pi y^{5/2}}
+{5}
+\\
+&= 
+\frac{
+	128 \pi
+}
+{
+	5	
+}
+\end{align*}
+\filbreak
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{align*}
+\intertext{Washer method:}
+\text{Volume} 
+&= 
+4 (3)^2 \pi 
+-
+\int_{0}^{4} 
+	\pi
+	(3 - \sqrt{x})^2
+\diff x
+\\
+&= 
+36\pi
+-
+\int_{0}^{4} 
+	(9 - 6\sqrt{x} + x)
+	\pi
+\diff x
+\\
+&= 
+36\pi
+-
+\left[
+	(9x - 4x^{3/2} + \frac{x^2}{2})
+	\pi
+\right]_{0}^{4} 
+\\
+&= 
+36\pi
+-
+12\pi
+\\
+&=
+24 \pi 
+\intertext{Cylindrical shell method:}
+y &= 3 - \sqrt{x}\\
+x &= (3 - y)^2\\
+\text{Volume} 
+&= 
+4 (3)^2 \pi 
+-
+4 (1)^2\pi 
+-
+\int_{1}^{3} 
+	2\pi y (3-y)^2
+\diff y
+\\
+&= 
+36 \pi 
+-
+4 \pi 
+-
+2\pi
+\int_{1}^{3} 
+	 9y - 6y^2 + y^3
+\diff y
+\\
+&= 
+32 \pi 
+-
+2\pi
+\left[
+	 \frac{9y^2}{2} - 2y^3 + \frac{y^4}{4}
+\right]_{1}^{3} 
+\\
+&= 
+32 \pi 
+-
+2(4)\pi
+\\
+&= 
+24 \pi 
+\end{align*}
+\filbreak
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{align*}
+\intertext{Washer method:}
+\text{Volume} 
+&= 
+\int_{0}^{2} 
+	\pi
+	(y^2 - 5)^2
+\diff y
+-
+2 (1)^2 \pi 
+\\
+&= 
+\pi
+\int_{0}^{2} 
+	y^4 - 10y^2 + 25
+\diff y
+-
+2 \pi 
+\\
+&= 
+\pi
+\left[
+	\frac{y^5}{5} - \frac{10y^3}{3} + 25y
+\right]_{0}^{2} 
+-
+2 \pi 
+\\
+&=
+\pi
+\left[
+	\frac{2^5}{5} - \frac{10(2)^3}{3} + 25(2)
+\right]
+-
+2 \pi 
+\\
+&= 
+\frac{446\pi}{15}
+-
+2\pi
+\\
+&=
+\frac{416\pi}{15} 
+\intertext{Cylindrical shell method:}
+\text{Volume} 
+&= 
+\int_{1}^{5} 
+	2\pi x \sqrt{5 - x}
+\diff x
+\\
+&= 
+-2\pi 
+\int_{4}^{0}
+	(5 - u) \sqrt{u}
+\diff u \quad (\text{sub. $u=5-x$, $\frac{du}{dx}=-1$})
+\\
+&= 
+-2\pi 
+\int_{4}^{0}
+	5\sqrt{u} - u^{3/2} 
+\diff u
+\\
+&= 
+-2\pi 
+\left[
+	\frac{10u^{3/2}}{3} - \frac{2u^{5/2}}{5} 
+\right]_{4}^{0} 
+\\
+&= 
+2\pi 
+\left[
+	\frac{10(4)^{3/2}}{3} - \frac{2(4)^{5/2}}{5} 
+\right]\\
+&=
+\frac{2(208)\pi}{15}\\
+&=
+\frac{416\pi}{15}
+\end{align*}
+\filbreak
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{align*}
+\text{$(a, b)$ is a point on the graph} &\Rightarrow \text{$(a, -b)$ is a point on the graph}\\
+&\Rightarrow \text{$(-a, b)$ is a point on the graph}\\
+\intertext{$\therefore$ The graph is symmetric about the $x$-axis and $y$-axis.}
+x = 0 &\Rightarrow y = 1\\
+y = 0 &\Rightarrow x = 1\\
+\intertext{In the first quadrant,}
+y &= (1 - x^{2/3})^{3/2}\\
+\frac{dy}{dx}
+&=
+-\frac{3}{2} \left(\frac{2}{3}\right) x^{-1/3}
+(1 - x^{2/3})^{1/2}
+\\
+&=
+-(x^{-2/3}(1 - x^{2/3}))^{1/2}
+\\
+&=
+-(x^{-2/3} - 1)^{1/2}
+\\
+\text{Length of curve} 
+&=
+4 \int_{0}^{1}
+	\sqrt{
+		1 + (x^{-2/3} - 1)
+	}
+\diff x
+\\
+&=
+4 \int_{0}^{1}
+	x^{-1/3}
+\diff x
+\\
+&=
+4 \left[
+	\frac{3x^{2/3}}{2}
+\right]_{0}^{1}
+\\
+&=
+4 \left(
+	\frac{3(1)^{2/3}}{2}
+\right)
+\\
+&= 6 
+\end{align*}
+\filbreak
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{align*}
+\frac{dx}{dy}
+&=
+\frac{1}{2} \sqrt{y^2-1}
++
+\frac{y^2}
+{2\sqrt{y^2-1}}
+-
+\frac{
+	1 + y(y^2-1)^{-1/2}
+}
+{
+	2(y+(y^2-1)^{1/2})
+}
+\\
+&=
+\frac{1}{2} \sqrt{y^2-1}
++
+\frac{y^2}
+{2\sqrt{y^2-1}}
+-
+\frac{
+	1
+}
+{
+	2(y^2-1)^{1/2}
+}
+\\
+&=
+\frac{
+	y^2 - 1 + y^2 - 1
+}
+{
+	2(y^2-1)^{1/2}
+}
+\\
+&=
+\frac{
+	2(y^2 - 1)
+}
+{
+	2(y^2-1)^{1/2}
+}
+\\
+&=
+\frac{
+	(y^2 - 1)
+}
+{
+	(y^2-1)^{1/2}
+}
+\\
+&=
+(y^2-1)^{1/2}
+\\
+\text{Length of curve}
+&=
+\int_{1}^{2}
+	\sqrt{1 + y^2 - 1}
+\diff y
+\\
+&=
+\int_{1}^{2}
+	y
+\diff y
+\\
+&=
+\left[
+	\frac{y^2}{2}
+\right]_{1}^{2}
+\\
+&=
+\frac{2^2}{2}
+-
+\frac{1^2}{2}
+\\
+&=
+\frac{3}{2}
+\end{align*}
+\filbreak
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{align*}
+\frac{dy}{dx} 
+&=
+\frac{1}{2}(y^{-1/2} - y^{1/2})\\
+&=
+\frac{1 - y}{2y^{1/2}}\\
+\text{Area of surface} 
+&=
+\int_{1}^{3} 
+	2\pi 
+	(y^{1/2}-\frac{1}{3}y^{3/2})
+	\sqrt{
+		1 + \frac{(1 - y)^2}{4y}
+	}
+\diff y
+\\
+&=
+2\pi 
+\int_{1}^{3} 
+	(y^{1/2}-\frac{1}{3}y^{3/2})
+	\sqrt{
+		\frac{4y + (1 - y)^2}{4y}
+	}
+\diff y
+\\
+&=
+2\pi 
+\int_{1}^{3} 
+	(y^{1/2}-\frac{1}{3}y^{3/2})
+	\sqrt{
+		\frac{(1 + y)^2}{4y}
+	}
+\diff y
+\\
+&=
+2\pi 
+\int_{1}^{3} 
+	(y^{1/2}-\frac{1}{3}y^{3/2})
+	\frac{1 + y}{2y^{1/2}}
+\diff y
+\\
+&=
+\pi 
+\int_{1}^{3} 
+	(1-\frac{1}{3}y)
+	(1 + y)
+\diff y
+\\
+&=
+\pi 
+\int_{1}^{3} 
+	1-\frac{1}{3}y + y - \frac{1}{3}y^2
+\diff y
+\\
+&=
+\pi 
+\int_{1}^{3} 
+	1 + \frac{2}{3}y - \frac{1}{3}y^2
+\diff y
+\\
+&=
+\pi 
+\left[
+	y + \frac{1}{3}y^2 - \frac{1}{9}y^3
+\right]_{1}^{3} 
+\\
+&=
+\pi 
+\left[
+	3 + \frac{9}{3} - \frac{27}{9}
+	-1 - \frac{1}{3} + \frac{1}{9}
+\right]
+\\
+&=
+\frac{
+	16\pi
+}
+{
+	9
+}
+\end{align*}
+\filbreak
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{align*}
+\frac{x^2}{25}
++
+\frac{y^2}{16}
+&=
+1
+\intertext{In the first and second quadrant,}
+\left(
+	\frac{y}{4}
+\right)^2
+&=
+	1 -
+\left(
+	\frac{x}{5}
+\right)^2
+\\
+y &=
+4\sqrt{
+	1 -
+	\left(
+		\frac{x}{5}
+	\right)^2
+}
+\\
+\frac{dy}{dx} &=
+-\frac{
+	4x 
+}
+{
+	5(5)\sqrt{
+		1 -
+		\left(
+			\frac{x}{5}
+		\right)^2
+	}
+}
+\\
+&=
+-\frac{
+	4x 
+}
+{
+	5\sqrt{
+		25 - x^2
+	}
+}
+\\
+& \int
+	2 \pi
+	\cdot
+	4\sqrt{
+		1 -
+		\left(
+			\frac{x}{5}
+		\right)^2
+	}
+	\sqrt{
+		1+
+		\frac{
+			16x^2 
+		}
+		{
+			25(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		1 -
+		\left(
+			\frac{x}{5}
+		\right)^2
+	}
+	\sqrt{
+		\frac{
+			25(25 - x^2) +
+			16x^2 
+		}
+		{
+			25(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		\frac{
+			(1 - \frac{x^2}{25})
+			(625 - 9x^2)
+		}
+		{
+			25(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		\frac{
+			625 - 25x^2
+			- 9x^2 + \frac{9x^4}{25}
+		}
+		{
+			25(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		\frac{
+			15625 - 850x^2 + 9x^4
+		}
+		{
+			625(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		\frac{
+			(25 - x^2)(625 - 9x^2)
+		}
+		{
+			625(25 - x^2)
+		}
+	}
+\diff x
+\\
+&=
+8 \pi
+\int
+	\sqrt{
+		1 - \frac{9x^2}{625}
+	}
+\diff x
+\\
+&=
+8 \left(\frac{25}{3}\right) \pi
+\int
+	\cos u \cos u 
+\diff u
+\quad (\text{
+	sub. $\sin u = \frac{3}{25}x$, 
+	$\frac{dx}{du} = \frac{25}{3}\cos u$, 
+	$u \in [-\frac{\pi}{2}, \frac{\pi}{2}]$
+})
+\\
+&=
+8 \left(\frac{25}{3}\right) \pi
+\int
+	\frac{1+\cos2u}{2}
+\diff u
+\\
+&=
+8 \left(\frac{25}{3}\right) \pi
+\left(
+	\frac{u}{2} + \frac{\sin2u}{4}
+\right)
++ C
+\\
+&= 
+8 \left(\frac{25}{3}\right) \pi
+\left(
+	\frac{1}{2}\sin^{-1} \left(\frac{3x}{25}\right) + \frac{3x}{50} \sqrt{1-\frac{9x^2}{625}}
+\right)
++ C
+\\
+&= 
+8 \left(\frac{25}{3}\right) \pi
+\left(
+	\frac{1}{2}\sin^{-1} \left(\frac{3x}{25}\right) + \frac{3x}{1250} \sqrt{625-9x^2}
+\right)
++ C
+\end{align*}
+\begin{align*}
+y = 0 &\Rightarrow x = \pm 5\\
+\text{Area of surface} &= 
+8 \left(\frac{25}{3}\right) \pi
+\left[
+	\frac{1}{2}\sin^{-1} \left(\frac{3x}{25}\right) + \frac{3x}{1250} \sqrt{625-9x^2}
+\right]_{-5}^{5}
+\\
+&= 235.3 \\
+&\approx 235 \text{ units}^2 \quad (\text{$3$ s.f.})
+\end{align*}
+\filbreak
+
+\end{document}

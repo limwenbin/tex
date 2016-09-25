@@ -1,0 +1,346 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Linear Algebra Tutorial 7}
+\author{Lim Wen Bin}
+\maketitle
+ 
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+V &= \{ (\frac{s-t}{2}, s, t) | s, t \in \mathbb{R} \}
+\intertext{$S$ is a basis for $V$ if (1) $S$ is linearly independent and (2) $S$ spans $V$. (1) is trivial. To prove (2): }
+\exists a, b \in \mathbb{R} : \quad
+\left( \begin{array}{cc}
+	0 & 1 \\
+	1 & 2 \\
+	1 & 0 
+\end{array} \right)
+\left( \begin{array}{c}
+	a \\
+	b
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	\frac{s-t}{2} \\
+	s \\
+	t
+\end{array} \right) \quad \forall s, t \in \mathbb{R} \\
+\left( \begin{array}{cc|c}
+	0 & 1 & \frac{s-t}{2} \\
+	1 & 2 & s\\
+	1 & 0 & t
+\end{array} \right)
+&\xrightarrow{G.E.}
+\left( \begin{array}{cc|c}
+	1 & 0 & t \\
+	0 & 1 & \frac{s-t}{2}\\
+	0 & 0 & s - t -(s-t)
+\end{array} \right) \\
+&=
+\left( \begin{array}{cc|c}
+	1 & 0 & t \\
+	0 & 1 & \frac{s-t}{2}\\
+	0 & 0 & 0
+\end{array} \right)
+\intertext{Augmented matrix is consistent $\forall s, t \in \mathbb{R}$ and $S$   is a basis for $V$.}
+\intertext{For $T$, to prove: }
+\exists a, b \in \mathbb{R} : \quad
+\left( \begin{array}{cc}
+	1 & 1 \\
+	1 & 0 \\
+	-1 & -2 
+\end{array} \right)
+\left( \begin{array}{c}
+	a \\
+	b
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	\frac{s-t}{2} \\
+	s \\
+	t
+\end{array} \right) \quad \forall s, t \in \mathbb{R} \\
+\left( \begin{array}{cc|c}
+	1 & 1 & \frac{s-t}{2} \\
+	1 & 0 & s\\
+	-1 & -2 & t
+\end{array} \right)
+&\xrightarrow{G.E.}
+\left( \begin{array}{cc|c}
+	1 & 0 & s \\
+	0 & 1 & \frac{-s-t}{2}\\
+	0 & 0 & t + s +(-s-t)
+\end{array} \right) \\
+&=
+\left( \begin{array}{cc|c}
+	1 & 0 & s \\
+	0 & 1 & \frac{-s-t}{2}\\
+	0 & 0 & 0
+\end{array} \right)
+\intertext{Augmented matrix is consistent $\forall s, t \in \mathbb{R}$ and $T$ is a basis for $V$.}
+\end{align*}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{cc}
+	0 & 1 \\
+	1 & 2 \\
+	1 & 0 
+\end{array} \right)
+\left( \begin{array}{c}
+	a \\
+	b
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	1 \\
+	1 \\
+	-1
+\end{array} \right) \\
+\left( \begin{array}{c}
+	a \\
+	b
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	-1 \\
+	1
+\end{array} \right) \\
+\left( \begin{array}{cc}
+	0 & 1 \\
+	1 & 2 \\
+	1 & 0 
+\end{array} \right)
+\left( \begin{array}{c}
+	c \\
+	d
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	1 \\
+	0 \\
+	-2
+\end{array} \right) \\
+\left( \begin{array}{c}
+	c \\
+	d
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	-2 \\
+	1
+\end{array} \right) \\
+P_{T \to S} &=
+\left( \begin{array}{cc}
+	-1 & -2 \\
+	1 & 1\\
+\end{array} \right) \\
+P_{S \to T} &= (P_{T \to S})^{-1} \\
+&= 
+\left( \begin{array}{cc}
+	1 & 2 \\
+	-1 & -1\\
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{cc}
+	0 & 1 \\ 
+	1 & 2 \\
+	1 & 0 
+\end{array} \right)
+(w)_S
+&= 
+\left( \begin{array}{c}
+	0 \\
+	-1 \\
+	-3  
+\end{array} \right) \\
+(w)_S &= \left( \begin{array}{c}
+	-3 \\
+	1
+\end{array} \right) \\
+(w)_T &= P_{S \to T} (w)_S \\
+&= 
+\left( \begin{array}{cc}
+	1 & 2 \\
+	-1 & -1\\
+\end{array} \right)
+\left( \begin{array}{c}
+	-3 \\
+	1
+\end{array} \right) \\
+&= \left( \begin{array}{c}
+	-1 \\
+	2
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{2}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{ccccc}
+	1 & 1 & 1 & 0 & 3 \\
+	1 & -1 & -3 & 0 & -3 \\
+	1 & 1 & 1 & 0 & 3 \\
+	1 & 0 & -1 & 1 & 1 \\
+	1 & -1 & -3 & 1 & -2
+\end{array} \right)	
+& \xrightarrow{G.E.}
+\left( \begin{array}{ccccc}
+	1 & 1 & 1 & 0 & 3 \\
+	0 & 1 & 2 & 0 & 3 \\
+	0 & 0 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0
+\end{array} \right)	
+\intertext{$\therefore \{ u_1, u_2, u_3\}$ is a basis for $V$.}
+\left( \begin{array}{ccccc}
+	1 & 1 & 1 & 1 & 1 \\
+	1 & -1 & 1 & 0 & -1 \\
+	1 & -3 & 1 & -1 & -3 \\
+	0 & 0 & 0 & 1 & 1 \\
+	3 & -3 & 3 & 1 & -2
+\end{array} \right)	
+& \xrightarrow{G.E.}
+\left( \begin{array}{ccccc}
+	1 & -1 & 1 & 1/3 & 1/3 \\
+	0 & 1 & 0 & 2/3 & 2/3 \\
+	0 & 0 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0
+\end{array} \right)	
+\intertext{$\therefore \{ (1, -1, 1, 1/3, 1/3), (0, 1, 0, 2/3, 2/3), (0, 0, 0, 1, 1)\}$ is a basis for $V$.}
+\end{align*}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{align*}
+\text{rref}(A) &= 
+\left( \begin{array}{ccccc}
+	1 & 0 & 1.5 & -.5 & 4 \\
+	0 & 1 & -2 & -1 & -3 \\
+	0 & 0 & 0 & 0 & 0 \\
+\end{array} \right)	
+\end{align*}
+
+\begin{problem}{3.b.i}
+\end{problem}
+\begin{align*}
+\text{Basis for row space of A} &= \{(1, 0, 1.5, -0.5, 4), (0, 1, -2, -1, -3)\}
+\end{align*}
+
+\begin{problem}{3.b.ii}
+\end{problem}
+\begin{align*}
+\text{Basis for column space of A} &= \{(2, 2, -4), (0, 1, -3)\}
+\end{align*}
+
+\begin{problem}{3.b.ii}
+\end{problem}
+\begin{align*}
+\left( \begin{array}{c}
+	x_1 \\
+	x_2 \\
+	x_3 \\
+	x_4 \\
+	x_5 \\
+\end{array} \right)
+&= 
+\left( \begin{array}{c}
+	-1.5s_1 + 1.5s_2 - 4s_3 \\
+	2s_1 + s_2 + 3s_3 \\
+	s_1 \\
+	s_2 \\
+	s_3 \\
+\end{array} \right) \\
+\text{Basis for null space of A} &= \{(-1.5, 2, 1, 0, 0), (1.5, 1, 0, 1, 0), (-4, 3, 0, 0, 1)\}
+\end{align*}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{align*}
+\text{rank}(A) &= 2 \\
+\text{nullity}(A) &= 3 
+\end{align*}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{align*}
+\text{Basis for }\mathbb{R}^5 &= \text{Basis for null space of A} \cup {(0, 0, 1, 0, 0), (0, 0, 0, 1, 0), (0, 0, 0, 0, 1)}
+\end{align*}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{align*}
+\text{rref}(A) &= 
+\left( \begin{array}{ccccc}
+	1 & 0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & -2 & 1 \\
+	0 & 0 & 1 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 
+\end{array} \right)
+\end{align*}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{align*}
+\text{Basis for row space of A} &= \{(1, 0, 0, 1, 0), (0, 1, 0, -2, 1), (0, 0, 1, 1, 0)\} \\
+\text{Basis for column space of A} &= \{a_1, a_2, a_3\}
+\end{align*}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{rank}(A) &\in [0, 5]\\
+\text{rank}(PA) &= \text{min}\{\text{rank}(P), \text{rank}(A)\} \\
+&= \text{rank}A) \qquad (\text{$\because P$ is invertible $\Rightarrow$ rank$(P) = m$})
+\end{align*}
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+\begin{align*}
+A &= \left( \begin{array}{cc}
+	1 & 0 \\
+	0 & 1 \\
+	0 & 0 \\
+\end{array} \right) \\
+\text{rank}(A) &= 2 \\
+P &= \left( \begin{array}{ccc}
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{array} \right) \\
+PA &= \left( \begin{array}{cc}
+	0 & 0 \\
+	0 & 0 \\
+	0 & 0 \\
+\end{array} \right) \\
+\text{rank}(PA) &= 0
+\end{align*}
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{align*}
+\text{No.}
+\end{align*}
+
+\end{document}

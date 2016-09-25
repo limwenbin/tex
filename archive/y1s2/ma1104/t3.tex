@@ -1,0 +1,215 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1104 Multivariable Calculus Tutorial 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+T01}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{gather*}
+	\intertext{Let the parametrization of the circle be $r(t)$.}
+	r(t) = \langle 2\cos(t), 2\sin(t) \rangle 
+\end{gather*}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{gather*}
+	\intertext{Let the parametrization of the intersection be $r(t)$.}
+	2y^2 + 2z^2 = 1 \\
+	y^2 + z^2 = \frac{1}{2} \\
+	\shortintertext{Then,}
+	r(t)_j = \frac{1}{2} \sin t \\ 
+	r(t)_k = \frac{1}{2} \cos t \\ 
+	r(t)_i = 1 + \frac{1}{2} \cos t - \frac{1}{2} \sin t \\ 
+	r(t) = \langle 1 + \frac{1}{2} \cos t - \frac{1}{2} \sin t, \frac{1}{2} \sin t,
+	\frac{1}{2} \cos t \rangle  \\ 
+\end{gather*}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\text{LSH} &= \frac{d}{dt}(r(t) \times s(t)) \\
+	&= \frac{d}{dt} 
+	\left| \begin{array}{ccc}
+		i & j & k\\
+		a(t) & b(t) & c(t)\\
+		d(t) & e(t) & f(t)\\
+	\end{array} \right| \\
+	&= \frac{d}{dt} \langle b(t)f(t) - c(t)(e(t), c(t)d(t) - a(t)f(t), 
+	a(t)e(t) - b(t)d(t) \rangle \\
+	&= \langle b'(t)f(t) - c'(t)e(t), c'(t)d(t) - a'(t)f(t), 
+	a'(t)e(t) - b'(t)d(t) \rangle \\
+	&\phantom{=} + \langle b(t)f'(t) - c(t)e'(t), c(t)d'(t) - a(t)f'(t), 
+	a(t)e'(t) - b(t)d'(t) \rangle \\
+	&= (r'(t) \times s(t)) + (r(t) \times s'(t))\\
+	&= \text{RHS}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{gather*}
+	x^2 -y +z^2 = 0\\
+	x^2 +z^2 = -y
+	\intertext{(a) elliptic paraboloid symmetric about the $y$-axis}
+	x^2 -2x +1 -z^2 +y = 0\\
+	z^2 -(x-1)^2 = y\\
+	\intertext{(b) hyberbolic paraboloid symmetric about the $y$-axis}
+	16x^2 +9y^2 +16z^2 -32x -36y +36 = 0\\
+	16(x-1)^2 +9(y-2)^2 +16z^2 = 16 -36 +36\\
+	(x-1)^2 + \frac{9}{16}(y-2)^2 +z^2 = 1
+	\intertext{(c) ellipsoid}
+	4x^2 -8x -y^2 + 4z^2 = 0 \\
+	4(x^2 -2) - 16 -y^2 + 4z^2 = 0 \\
+	\frac{(x^2 -2)}{4} -\frac{y^2}{16} + \frac{z^2}{4} = 1 \\
+	\intertext{(d) hyperboloid of one sheet}
+\end{gather*}
+\filbreak
+
+\begin{problem}{5}
+\end{problem}
+\begin{gather*}
+	\text{D}(f) = \{ (x,y,z) : x^2 + y^2 + z^2 \le 9 \} \\
+	\text{R}(f) = [0, \infty)
+\end{gather*}
+\filbreak
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{align*}
+	\intertext{Considering the path $y = 0$,}
+	\lim_{(x,y)\to(0,0)} \left(\frac{x^2-y^2}{x^2+y^2}\right)^2 &= 
+	\lim_{x\to0} \left(\frac{x^2}{x^2}\right)^2 \\
+	&= 1
+	\intertext{Considering the path $x = 0$,}
+	\lim_{(x,y)\to(0,0)} \left(\frac{x^2-y^2}{x^2+y^2}\right)^2 &= 
+	\lim_{y\to0} \left(\frac{-y^2}{y^2}\right)^2 \\
+	&= -1
+	\intertext{$\therefore$ The limit does not exist.}
+\end{align*}
+\filbreak
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{align*}
+	\lim_{(x,y)\to(1,2)} \frac{xy-2x-y+2} {x^2-2x+y^2-4y+5}
+	&= \lim_{(x,y)\to(1,2)} \frac{y(x-1)-2(x-1)} {(x^2-2x+1)+(y^2-4y+4)} \\
+	&= \lim_{(x,y)\to(1,2)} \frac{(y-2)(x-1)} {(x-1)^2+(y-2)^2} \\
+	\intertext{Along the path $y=x+1$,}
+	\lim_{(x,y)\to(1,2)} \frac{(y-2)(x-1)} {(x-1)^2+(y-2)^2} 
+	&= \lim_{x\to1} \frac{(x-1)^2} {(x-1)^2+(x-1)^2} \\
+	&= \frac{1}{2}
+	\intertext{Along the path $y=2$,}
+	\lim_{(x,y)\to(1,2)} \frac{(y-2)(x-1)} {(x-1)^2+(y-2)^2} 
+	&= \lim_{x\to1} \frac{(0)(x-1)} {(x-1)^2} \\
+	&= 0 
+	\intertext{$\therefore$ The limit does not exist.}
+\end{align*}
+\filbreak
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{align*}
+	\intertext{Along any path $y=mx, m \in \mathbb{R}$,}
+	\lim_{(x,y)\to(0,0)} \frac{xy} {\sqrt{x^2+y^2}}
+	&= \lim_{x\to0} \frac{mx^2} {\sqrt{(m+1)x^2}} \\
+	&= \lim_{x\to0} \frac{mx} {\sqrt{(m+1)}} \\
+	&= 0
+	\intertext{Along the path $y=0$,}
+	\lim_{(x,y)\to(0,0)} \frac{xy} {\sqrt{x^2+y^2}}
+	&= \lim_{x\to0} \frac{x(0)} {x} \\
+	&= 0
+	\intertext{Suppose the limit $L$ exists and $L=0$,}
+	\left| \frac{xy} {\sqrt{x^2+y^2}} - 0 \right| &\le 
+	\left| \frac{x} {\sqrt{x^2+y^2}} \right| \lvert y \rvert \\
+	&\le |y| \\
+	\therefore \lim_{(x,y)\to(0,0)} \frac{xy} {\sqrt{x^2+y^2}}
+	&= \lim_{y\to0} |y| \\
+	&= 0
+\end{align*}
+\filbreak
+
+\begin{problem}{6.d}
+\end{problem}
+\begin{align*}
+	\intertext{Along the path $y=0$,}
+	\lim_{(x,y)\to(0,0)} \frac{xy^2} {(x-2)^2+y^4+4y^2}
+	&= \lim_{x\to2} \frac{x(0)} {(x-2)^2} \\
+	&= 0
+	\intertext{Along the path $x=2$,}
+	\lim_{(x,y)\to(0,0)} \frac{xy^2} {(x-2)^2+y^4+4y^2}
+	&= \lim_{y\to0} \frac{2y^2} {y^2(y^2+4)}\\
+	&= \lim_{y\to0} \frac{2} {y^2+4}\\
+	&= \frac{1}{2}
+	\intertext{$\therefore$ The limit does not exist.}
+\end{align*}
+\filbreak
+
+\begin{problem}{6.e}
+\end{problem}
+\begin{align*}
+	\intertext{Suppose the limit $L$ exists and $L=0$,}
+	\left| \frac{2x^2y^2\sin x} {x^4 + y^4} -0 \right| &=
+	\left| \frac{ \frac{x^2}{y^2}} {\frac{x^4}{y^4} + 1} \cdot 2\sin x\right| \\
+	&\le \left|2\sin x\right|
+	\intertext{By squeeze theorem,}
+	L &= \lim_{x\to0} 2\sin x \\
+	&= 0
+\end{align*}
+\filbreak
+
+\begin{problem}{7.a}
+\end{problem}
+\begin{gather*}
+	f(x,y) = \frac{x+y}{x-y}
+	\intertext{$f$ is undefined for $y=x$. Therefore, $f$ is continous everywhere on 
+	$\mathbb{R}^2$ except on the line $y=x$.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{7.b}
+\end{problem}
+\begin{gather*}
+	\intertext{For $(x,y)$ \ne $(0,0)$,}
+	\lim_{(x,y)\to(x,y)} f(x,y) = f(x,y) \\
+	\intertext{For $(x,y)$ = $(0,0)$,}
+	\lim_{(x,y)\to(0,0)} f(x,y) = 0 \ne f(0,0) \\
+	\intertext{Therefore, $f$ is continous everywhere on $\mathbb{R}^2$ except 
+		at $(0,0)$.}
+\end{gather*}
+\filbreak
+
+\begin{problem}{7.c}
+\end{problem}
+\begin{gather*}
+	\intertext{When $y = b \ne x = a$,}
+	\lim_{(x,y)\to(a,b)} f(x,y) = x+y+6 \\
+	\intertext{When $y = x = c$, along the line $y=x$,}
+	\lim_{(x,y)\to(c,c)} f(x,y) = 4c \\
+	\intertext{When $y = x = c$, along the line $x=c$,}
+	\lim_{(x,y)\to(c,c)} f(x,y) = \lim_{y\to c} c+y+6 = 2c + 6 \ne 4c\\
+	\text{$\Rightarrow f$ is discontinuous on $y=x$}
+	\intertext{Therefore, $f$ is continous everywhere on $\mathbb{R}^2$ except 
+		on the line $y=x$.}
+\end{gather*}
+\filbreak
+
+\end{document}

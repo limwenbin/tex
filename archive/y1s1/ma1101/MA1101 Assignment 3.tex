@@ -1,0 +1,592 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Homework Assignment 3}
+\author{Lim Wen Bin \\
+A0140764H\\
+T02}
+\maketitle
+
+\begin{problem}{1.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+V &= \text{span}(S)\\
+\intertext{$S$ is a basis for $V$ $\Leftrightarrow$ $S$ is linearly independent,}
+A &= 
+\left( \begin{array}{ccc}
+s_1 & s_2 & s_3\\ 
+\end{array} \right)\\
+=
+\left( \begin{array}{ccc}
+2 & 5 & 1\\ 
+3 & 2 & -1\\ 
+1 & 0 & 9\\ 
+4 & 1 & 9\\ 
+0 & 2 & 2\\ 
+\end{array} \right) \xrightarrow{\substack{R_3 \leftrightarrow R_1}} 
+&\left( \begin{array}{ccc}
+1 & 0 & 9\\ 
+3 & 2 & -1\\ 
+2 & 5 & 1\\ 
+4 & 1 & 9\\ 
+0 & 2 & 2\\ 
+\end{array} \right) \xrightarrow{\substack{R_2 - 3R_1,\\ R_3 - 2R_1,\\ R_4 - 4R_1}} 
+\left( \begin{array}{ccc}
+1 & 0 & 9\\ 
+0 & 2 & -28\\ 
+0 & 5 & -17\\ 
+0 & 1 & -27\\ 
+0 & 2 & 2\\ 
+\end{array} \right) \\
+\xrightarrow{\substack{R_2 \times 1/2}}
+\left( \begin{array}{ccc}
+1 & 0 & 9\\ 
+0 & 2 & -14\\ 
+0 & 5 & -17\\ 
+0 & 1 & -27\\ 
+0 & 2 & 2\\ 
+\end{array} \right) 
+\xrightarrow{\substack{R_3 - 5R_2,\\ R_4 - R_2,\\ R_5 - 2R_2}}
+&\left( \begin{array}{ccc}
+1 & 0 & 9\\ 
+0 & 1 & -14\\ 
+0 & 0 & 53\\ 
+0 & 0 & -13\\ 
+0 & 0 & 30\\ 
+\end{array} \right) 
+\xrightarrow{\substack{R_3 \times 1/53,\\ R_4 + 13R_3,\\ R_5 - 30R_3}}
+\left( \begin{array}{ccc}
+1 & 0 & 9\\ 
+0 & 1 & -14\\ 
+0 & 0 & 1\\ 
+0 & 0 & 0\\ 
+0 & 0 & 0\\ 
+\end{array} \right) \\
+\intertext{$ax = 0$ only has trivial solution $\rightarrow s$ is linearly independent and is a basis for $v$.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.ii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\left( \begin{array}{c|c|c|c}
+a & t_1 & t_2 & t_3\\ 
+\end{array} \right)
+&=
+\left( \begin{array}{ccc|c|c|c}
+2 & 5 & 1 & 0 & 9 & 7\\ 
+3 & 2 & -1 & -1 & 8 & 7\\
+1 & 0 & 9 & 14 & 2 & -27\\ 
+4 & 1 & 9 & 15 & 9 & -25\\ 
+0 & 2 & 2 & 2 & 2 & -2\\ 
+\end{array} \right) \\
+\xrightarrow{\substack{R_3 \leftrightarrow R_1}} 
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 9 & 14 & 2 & -27\\ 
+3 & 2 & -1 & -1 & 8 & 7\\
+2 & 5 & 1 & 0 & 9 & 7\\ 
+4 & 1 & 9 & 15 & 9 & -25\\ 
+0 & 2 & 2 & 2 & 2 & -2\\ 
+\end{array} \right) 
+&\xrightarrow{\substack{R_2 - 3R_1,\\ R_3 - 2R_1,\\ R_4 - 4R_1}} 
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 9 & 14 & 2 & -27\\ 
+0 & 2 & -28 & -43 & 2 & 88\\
+0 & 5 & -17 & -28 & 5 & 61\\ 
+0 & 1 & -27 & -41 & 1 & 83\\ 
+0 & 2 & 2 & 2 & 2 & -2\\ 
+\end{array} \right) \\
+\xrightarrow{\substack{R_2 \times 1/2}} 
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 9 & 14 & 2 & -27\\ 
+0 & 1 & -14 & -43/2 & 1 & 44\\
+0 & 5 & -17 & 28 & 5 & 61\\ 
+0 & 1 & -27 & -41 & 1 & 83\\ 
+0 & 2 & 2 & 2 & 2 & -2\\ 
+\end{array} \right) 
+&\xrightarrow{\substack{R_3 - 5R_2,\\ R_4 - R_2,\\ R_5 - 2R_2}}
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 9 & 14 & 2 & -27\\ 
+0 & 1 & -14 & -43/2 & 1 & 44\\
+0 & 0 & 53 & 159/2 & 0 & -159\\ 
+0 & 0 & -13 & -39/2 & 0 & 39\\ 
+0 & 0 & 30 & 45 & 0 & -90\\ 
+\end{array} \right)\\ 
+\xrightarrow{\substack{R_3 \times 1/53,\\ R_4 + 13R_3,\\ R_5 - 30R_3}}
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 9 & 14 & 2 & -27\\ 
+0 & 1 & -14 & -43/2 & 1 & 44\\
+0 & 0 & 1 & 3/2 & 0 & -3\\ 
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array} \right)
+&\xrightarrow{\substack{R_2 + 14R_3,\\ R_1 - 9R_3}}
+\left( \begin{array}{ccc|c|c|c}
+1 & 0 & 0 & 1/2 & 2 & 0\\ 
+0 & 1 & 0 & -1/2 & 1 & 2\\
+0 & 0 & 1 & 3/2 & 0 & -3\\ 
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array} \right)\\
+\therefore \text{span}(t) &\subseteq v\\
+\left( \begin{array}{ccc}
+(t_1)_s & (t_2)_s & (t_3)_s\\
+\end{array} \right) &=
+\left( \begin{array}{ccc}
+1/2 & 2 & 0\\ 
+-1/2 & 1 & 2\\
+3/2 & 0 & -3\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 + R_1,\\ R_3 - 3R_1}} 
+\left( \begin{array}{ccc}
+1/2 & 2 & 0\\ 
+0 & 3 & 2\\
+0 & -6 & -3\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_3 + 2R_2}} 
+\left( \begin{array}{ccc}
+1/2 & 2 & 0\\ 
+0 & 3 & 2\\
+0 & 0 & 1\\ 
+\end{array} \right)
+\intertext{$\therefore (t_1)_s, (t_2)_s, (t_3)_s$ are linearly independent and dim(span$\{(t_1)_s, (t_2)_s, (t_3)_s\}) = $ dim$(v) = 3 \rightarrow t$ is a basis for $v$.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.iii}
+\end{problem}
+\begin{align*}
+P_{S \to T}
+&=
+P_{T \to S}^{-1}\\
+\left( \begin{array}{ccc|ccc}
+1/2 & 2 & 0 & 1 & 0 & 0\\ 
+-1/2 & 1 & 2 & 0 & 1 & 0\\
+3/2 & 0 & -3 & 0 & 0 & 1\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_1 \times 2}} 
+\left( \begin{array}{ccc|ccc}
+1 & 4 & 0 & 2 & 0 & 0\\ 
+-1/2 & 1 & 2 & 0 & 1 & 0\\
+3/2 & 0 & -3 & 0 & 0 & 1\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 + 1/2R_1,\\ R_3 - 3/2R_1}} 
+\left( \begin{array}{ccc|ccc}
+1 & 4 & 0 & 2 & 0 & 0\\ 
+0 & 3 & 2 & 1 & 1 & 0\\
+0 & -6 & -3 & -3 & 0 & 1\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_2 \times 1/3}} 
+\left( \begin{array}{ccc|ccc}
+1 & 4 & 0 & 2 & 0 & 0\\ 
+0 & 1 & 2/3 & 1/3 & 1/3 & 0\\
+0 & -6 & -3 & -3 & 0 & 1\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 + 6R_2,\\ R_3 - 3/2R_1}} 
+\left( \begin{array}{ccc|ccc}
+1 & 4 & 0 & 2 & 0 & 0\\ 
+0 & 1 & 2/3 & 1/3 & 1/3 & 0\\
+0 & 0 & 1 & -2 & 2 & 1\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_2 - 2/3R_3,\\ R_1 - 4R_1}} 
+\left( \begin{array}{ccc|ccc}
+1 & 0 & 0 & -2 & 4 & 8/3\\ 
+0 & 1 & 0 & 1 & -1 & -2/3\\
+0 & 0 & 1 & -1 & 2 & 1\\ 
+\end{array} \right)\\
+P_{T \to S} &= 
+\left( \begin{array}{ccc}
+-2 & 4 & 8/3\\ 
+1 & -1 & -2/3\\
+-1 & 2 & 1\\ 
+\end{array} \right)
+\end{align*}
+\filbreak
+
+\begin{problem}{1.iv}
+\end{problem}
+\begin{align*}
+P_{T \to S}
+&=
+\left( \begin{array}{ccc}
+1/2 & 2 & 0\\ 
+-1/2 & 1 & 2\\
+3/2 & 0 & -3\\ 
+\end{array} \right)
+\end{align*}
+\filbreak
+
+\begin{problem}{1.v}
+\end{problem}
+\begin{align*}
+w &= \left( \begin{array}{ccc}
+t_1 & t_2 & t_3\\ 
+\end{array} \right)
+\left( \begin{array}{c}
+2\\
+-3\\
+1\\ 
+\end{array} \right)\\
+&= 
+\left( \begin{array}{c}
+-20\\
+-19\\
+-5\\
+-22\\
+-4\\ 
+\end{array} \right)\\
+(w)_S &= P_{T \to S} \cdot (w)_T\\
+&=
+\left( \begin{array}{ccc}
+1/2 & 2 & 0\\ 
+-1/2 & 1 & 2\\
+3/2 & 0 & -3\\ 
+\end{array} \right)
+\left( \begin{array}{c}
+2\\
+-3\\
+1\\ 
+\end{array} \right)\\
+&=
+\left( \begin{array}{c}
+5\\
+-2\\
+0\\ 
+\end{array} \right)
+\end{align*}
+\filbreak
+
+\begin{problem}{2.i}
+\end{problem}
+\begin{align*}
+A
+=
+\left( \begin{array}{cccccc}
+2 & 8 & -16 & -6 & 12 & 6\\ 
+-3 & 11 & 24 & 8 & -17 & -9\\
+3 & 13 & -24 & -10 & 19 & 9\\ 
+-1 & -2 & 6 & 1 & -4 & -3\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_1 \times 1/2}} 
+\left( \begin{array}{cccccc}
+1 & 4 & -8 & -3 & 6 & 3\\ 
+-3 & 11 & 24 & 8 & -17 & -9\\
+3 & 13 & -24 & -10 & 19 & 9\\ 
+-1 & -2 & 6 & 1 & -4 & -3\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 + 3R_1,\\R_3 - 3R_1,\\R_4 + 1R_1}} 
+\left( \begin{array}{cccccc}
+1 & 4 & -8 & -3 & 6 & 3\\ 
+0 & 1 & 0 & -1 & 1 & 0\\
+0 & 1 & 0 & -1 & 1 & 0\\ 
+0 & 2 & -2 & -2 & 2 & 0\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_3 - R_1,\\R_4 - 2R_1}} 
+\left( \begin{array}{cccccc}
+1 & 4 & -8 & -3 & 6 & 3\\ 
+0 & 1 & 0 & -1 & 1 & 0\\
+0 & 0 & 0 & 0 & 0 & 0\\ 
+0 & 0 & -2 & 0 & 0 & 0\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_4 \times -1/2,\\ R_4\leftrightarrow R_3}} 
+\left( \begin{array}{cccccc}
+1 & 4 & -8 & -3 & 6 & 3\\ 
+0 & 1 & 0 & -1 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0\\ 
+\end{array} \right)\\
+A^T
+=
+\left( \begin{array}{cccc}
+2 & -3 & 3 & -1\\ 
+8 & -11 & 13 & -2\\
+-16 & 24 & -24 & 6\\ 
+-6 & 8 & -10 & 1\\ 
+12 & -17 & 19 & -4\\ 
+6 & -9 & 9 & -3\\ 
+\end{array} \right)
+&\xrightarrow{\substack{R_1 \times 1/2}} 
+\left( \begin{array}{cccc}
+1 & -3/2 & 3/2 & -1/2\\ 
+8 & -11 & 13 & -2\\
+-16 & 24 & -24 & 6\\ 
+-6 & 8 & -10 & 1\\ 
+12 & -17 & 19 & -4\\ 
+6 & -9 & 9 & -3\\ 
+\end{array} \right)\\
+\xrightarrow{\substack{R_2 - 8R_1,\\R_3 + 16R_1,\\R_4 + 6R_1,\\R_5 - 12R_1,\\R_6 - 6R_1}} 
+\left( \begin{array}{cccc}
+1 & -3/2 & 3/2 & -1/2\\ 
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & -2\\ 
+0 & -1 & -1 & -2\\ 
+0 & 1 & 1 & 2\\ 
+0 & 0 & 0 & 0 \\
+\end{array} \right)
+&\xrightarrow{\substack{R_4 + R_2,\\R_5 - R_2}} 
+\left( \begin{array}{cccc}
+1 & -3/2 & 3/2 & -1/2\\ 
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & -2\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 \\
+\end{array} \right)\\
+\xrightarrow{\substack{R_3 \times -1/2}} 
+\left( \begin{array}{cccc}
+1 & -3/2 & 3/2 & -1/2\\ 
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & 1\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 \\
+\end{array} \right)
+\end{align*}
+\filbreak
+
+\begin{problem}{2.ii}
+\end{problem}
+\begin{align*}
+\intertext{$\because$ ref$(A)$ has pivots in the first three columns,}
+\text{Columns of $A$ that form basis for C$(A)$}
+&=
+\left( \begin{array}{ccc}
+2 & 8 & -16\\ 
+-3 & 11 & 24\\
+3 & 13 & -24\\ 
+-1 & -2 & 6\\ 
+\end{array} \right)\\
+\intertext{From ref$(A^T)$, C$(A)$ = span$\{ (1, -3/2, 3/2, -1/2), (0, 1, 1, 2),(0, 0, 0, 1)\}$. Then,}
+\left( \begin{array}{ccc}
+2 & 8 & -16\\ 
+-3 & 11 & 24\\
+3 & 13 & -24\\ 
+-1 & -2 & 6\\ 
+\end{array} \right)
+&\cup
+\left( \begin{array}{c}
+0\\ 
+0\\
+1\\ 
+0\\ 
+\end{array} \right)
+\intertext{would be a basis for $\mathbb{R}^4$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.iii}
+\end{problem}
+\begin{align*}
+\intertext{$\because$ ref$(A^T)$ has pivots in the first second and fourth column,}
+\text{Rows of $A$ that form basis for C$(A)$}
+&=
+\left( \begin{array}{cccccc}
+2 & 8 & -16 & -6 & 12 & 6\\ 
+-3 & 11 & 24 & 8 & -17 & -9\\
+-1 & -2 & 6 & 1 & -4 & -3\\ 
+\end{array} \right)\\
+\intertext{From ref$(A)$, R$(A)$ = span$\{ (1, 4, -8, -3, 6, 3), (0, 1, 0, -1, 1, 0), (0, 0, 1, 0, 0, 0)\}$. Then,}
+\left( \begin{array}{cccccc}
+2 & 8 & -16 & -6 & 12 & 6\\ 
+-3 & 11 & 24 & 8 & -17 & -9\\
+-1 & -2 & 6 & 1 & -4 & -3\\ 
+\end{array} \right)
+&\cup
+\left( \begin{array}{cccccc}
+0 & 0 & 0 & 1 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 1 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 1\\ 
+\end{array} \right)
+\intertext{would be a basis for $\mathbb{R}^6$.}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.iv}
+\end{problem}
+\begin{align*}
+\text{ref$(A)$}
+&=
+\left( \begin{array}{cccccc}
+1 & 4 & -8 & -3 & 6 & 3\\ 
+0 & 1 & 0 & -1 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0\\ 
+\end{array} \right)\\
+\text{rref$(A)$}
+&=
+\left( \begin{array}{cccccc}
+1 & 0 & 0 & 1 & 2 & 3\\ 
+0 & 1 & 0 & -1 & 1 & 0\\
+0 & 0 & 1 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 & 0 & 0\\ 
+\end{array} \right)\\
+Ax = 0 \Rightarrow x &= 
+a\left( \begin{array}{c}
+-1\\ 
+1\\
+0\\
+1\\
+0\\ 
+0\\ 
+\end{array} \right)
++ b\left( \begin{array}{c}
+-2\\ 
+-1\\
+0\\
+0\\
+1\\ 
+0\\ 
+\end{array} \right)
++ c\left( \begin{array}{c}
+-3\\ 
+0\\
+0\\
+0\\
+0\\ 
+1\\ 
+\end{array} \right),
+\quad a, b, c \in \mathbb{R}
+\intertext{$\therefore$ basis for nullspace of $A$ = $\{(-1, 1, 0, 1, 0, 0), (-2, -1, 0, 0, 1, 0), (-3, 0, 0, 0, 0, 1)\}$}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.v}
+\end{problem}
+\begin{align*}
+\text{ref$(A^T)$}
+&=
+\left( \begin{array}{cccc}
+1 & -3/2 & 3/2 & -1/2\\ 
+0 & 1 & 1 & 2\\
+0 & 0 & 0 & 1\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 \\
+\end{array} \right)\\
+\text{rref$(A^T)$}
+&=
+\left( \begin{array}{cccc}
+1 & 0 & 3 & 0 \\
+0 & 1 & 1 & 0\\
+0 & 0 & 0 & 1\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0\\ 
+0 & 0 & 0 & 0 \\
+\end{array} \right)\\
+Ax = 0 \Rightarrow x &= 
+a\left( \begin{array}{c}
+-3\\ 
+-1\\
+1\\
+0\\
+\end{array} \right),
+\quad a \in \mathbb{R}
+\intertext{$\therefore$ basis for nullspace of $A^T$ = $\{(-3, -1, 1, 0)\}$}
+\end{align*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{For any $v \in \mathbb{R}^n$,}
+v &= [v]_E\\
+\intertext{Let $Av = u$.}
+\text{RHS} &= P^{-1}AP[v]_S\\
+&= P^{-1}A[v]_E \quad \text{($\because P$ is the transition matrix from $S$ to $E$)}\\
+&= P^{-1}Av\\
+&= P^{-1}u\\
+&= P^{-1}[u]_E\\
+&= [u]_S \quad \text{($\because P^{-1}$ is the transition matrix from $E$ to $S$)}\\
+&= [Av]_S\\
+&= \text{LHS}\\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\text{N$(B)$} &= \{x \in \mathbb{R}^p: Bx = 0\}\\
+\text{N$(AB)$} &= \{x \in \mathbb{R}^p: ABx = 0\}\\
+\text{rank$(AB)$} = \text{rank$(AB)$} &\Rightarrow \text{nullity$(AB)$} = \text{nullity$(B))$}\\
+\intertext{Suppose $Bx_0 = 0$,}
+ABx_0 &= A(Bx_0)\\
+&= A0\\
+&= 0
+\intertext{$\therefore$ N$(B) \subseteq$ N$(AB)$. Suppose $ABx_1 = 0$ and $Bx_1 = v, v \ne 0$,}
+ABx_1 = Av = 0 &\Rightarrow \text{nullity}(AB) = \text{nullity}(B) + 1 
+\intertext{This is a contradiction and $ABx = 0 \Rightarrow Bx = 0$ $\Rightarrow$ N$(AB) \subseteq$ N$(B)$. $\therefore$ N$(AB) =$ N$(B)$.}
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{4.ii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+ABu &= ABv\\
+ABu - ABv = 0\\
+A(Bu - Bv) = 0\\
+AB(u - v) = 0\\
+\intertext{Then by 4(i),}
+B(u - v) = 0\\
+Bu - Bv = 0\\
+Bu = Bv \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{5.i}
+\end{problem}
+\begin{proof}
+\begin{align*}
+\intertext{Let rank$(A)$ be $\alpha$, rank$(B)$ be $\beta$.}
+AB &= \left( \begin{array}{cccc}
+Ab_1 & Ab_2 & \cdots & Ab_p\\
+\end{array} \right)\\
+\intertext{$B$ contains $\beta$ linearly independent vectors.}
+\therefore \text{nullity}(A) &\ge \beta\\
+n - \text{rank}(A) &\ge \text{rank}(B) \quad (\because n = \text{rank}(A) + \text{nullity}(A))\\
+\text{rank}(A) + \text{rank}(B) &\le n
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{5.ii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+A^2 &= A\\
+A - A^2 &= 0\\
+A(I - A) &= 0\\
+\shortintertext{By 5(i),}
+\text{rank}(A) + \text{rank}(I - A) &\le n\\
+I &= (I - A) + A\\
+\intertext{Suppose C$(I - A) =$ span$(S)$ and C$(A) =$ span$(T)$.}
+\text{C}(I) &= \text{span}(S \cup T)\\
+\text{dim(C$(I)$))} &\le \text{dim}(S) + \text{dim}(T)\\
+\therefore \text{rank}(I) &\le \text{rank}(I - A) + \text{rank}(A)\\
+\text{rank}(A) + \text{rank}(I - A) &\ge n \quad (\because \text{rank}(I) = n)\\
+\therefore \text{rank}(A) + \text{rank}(I - A) &= n\\
+\end{align*}
+\end{proof}
+\filbreak
+
+\end{document}

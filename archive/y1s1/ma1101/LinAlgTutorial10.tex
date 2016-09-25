@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA1101R Tutorial 10}
+\author{Lim Wen Bin \\
+A0140764H\\
+T02}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+(\lambda - 1)(\lambda + 1) - 3 &= 0\\
+\lambda^2 &= 4\\
+\lambda &= \pm 2\\
+E_2 = x :
+&\left( \begin{array}{cc}
+1 & 3\\
+1 & 3\\
+\end{array} \right) x = 0 \\
+\left( \begin{array}{cc}
+1 & 3\\
+1 & 3\\
+\end{array} \right)
+&\xrightarrow{G.E}
+\left( \begin{array}{cc}
+1 & 3\\
+0 & 0\\
+\end{array} \right)\\
+x &= 
+s\left( \begin{array}{c}
+-3\\
+1\\
+\end{array} \right) , s \in \mathbb{R}\\
+E_2 &= \text{span}\left\{
+\left( \begin{array}{c}
+-3\\
+1\\
+\end{array} \right) \right\} \\
+E_{-2} = x :
+&\left( \begin{array}{cc}
+-3 & 3\\
+1 & -1\\
+\end{array} \right) x = 0 \\
+\left( \begin{array}{cc}
+-3 & 3\\
+1 & -1\\
+\end{array} \right)
+&\xrightarrow{G.E}
+\left( \begin{array}{cc}
+1 & -1\\
+0 & 0\\
+\end{array} \right)\\
+x &= 
+s\left( \begin{array}{c}
+1\\
+1\\
+\end{array} \right) , s \in \mathbb{R}\\
+E_{-2} &= \text{span}\left\{
+\left( \begin{array}{c}
+1\\
+1\\
+\end{array} \right) \right\} \\
+\intertext{$A$ has two independent eigenvectors $\Rightarrow$ $A$ is diagonalizable.}
+P &= 
+\left( \begin{array}{cc}
+1 & -3\\
+1 & 1\\
+\end{array} \right)\\
+\end{align*}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+(\lambda - 1)^3(\lambda - 2) &= 0\\
+\lambda &= \pm 1, \lambda = 2 \\
+E_2 = x :
+&\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+1 & 1 & 0 & 0\\
+2 & 0 & 1 & 0\\
+5 & 0 & 1 & 0\\
+\end{array} \right) x = 0 \\
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+1 & 1 & 0 & 0\\
+2 & 0 & 1 & 0\\
+5 & 0 & 1 & 0\\
+\end{array} \right)
+&\xrightarrow{G.E}
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &= 
+s\left( \begin{array}{c}
+0\\
+0\\
+0\\
+1\\
+\end{array} \right) , s \in \mathbb{R}\\
+E_2 &= \text{span}\left\{
+\left( \begin{array}{c}
+0\\
+0\\
+0\\
+1\\
+\end{array} \right) \right\} \\
+E_{1} = x :
+&\left( \begin{array}{cccc}
+0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0\\
+2 & 0 & 0 & 0\\
+5 & 0 & 1 & 1\\
+\end{array} \right) x = 0 \\
+\left( \begin{array}{cccc}
+0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0\\
+2 & 0 & 0 & 0\\
+5 & 0 & 1 & 1\\
+\end{array} \right)
+&\xrightarrow{G.E}
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{array} \right)\\
+x &= 
+s\left( \begin{array}{c}
+0\\
+1\\
+0\\
+0\\
+\end{array} \right) + 
+t\left( \begin{array}{c}
+0\\
+0\\
+-1\\
+1\\
+\end{array} \right) , s , t \in \mathbb{R}\\
+E_{-2} &= \text{span}\left\{
+\left( \begin{array}{c}
+0\\
+1\\
+0\\
+0\\
+\end{array} \right),
+\left( \begin{array}{c}
+0\\
+0\\
+-1\\
+1\\
+\end{array} \right)
+ \right\} \\
+\intertext{$A$ only has three independent eigenvectors $\Rightarrow$ $A$ is not diagonalizable.}
+\end{align*}
+\filbreak
+
+\end{document}
