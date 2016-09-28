@@ -75,7 +75,7 @@
 \setlength{\columnsep}{2pt}
 
 \begin{center}
-     \Large{\underline{MA3269 Mathematical Analysis I}} \\
+     \Large{\underline{MA3269 Mathematical Finance I}} \\
 \end{center}
 
 Lim Wen Bin A0140764H
@@ -92,28 +92,15 @@ $\sum_{i=1}^n i^2 = \frac{1}{6} n(n+1)(2n+1)$;
 $\sum_{i=1}^n i^3 = \frac{1}{4} n^2(n+1)^2$;
 $\sum_{i=m}^n u_i = \sum_{i=k}^n u_i = \sum_{i=k}^{m-1} u_i$;
 
-\subsubsection{Intermediate Value Theorem}
+\subsubsection{Calculus}
+AM-GM Inequality: $\frac{x+y}{2} \ge \sqrt{xy} \Leftrightarrow \frac{\sqrt{xy}}{x+y} \le \frac{1}{2}$;
 $f$ continuous on $[a,b] \land f(a)f(b)<0 \Rightarrow \exists x \in (a,b) : f(x)=0$.
-
-\subsubsection{Derivatives}
-$f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)} {h}$;
-
-$\frac{d}{dx} \tan(f(x)) = f'(x)\sec^2(f(x))$;
-$\frac{d}{dx} \csc(f(x)) = f'(x)\csc(f(x))\cot(f(x))$;
-$\frac{d}{dx} \sec(f(x)) = f'(x)\sec(f(x))\tan(f(x))$;
-$\frac{d}{dx} \sin^{-1}(f(x)) = \frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
-$\frac{d}{dx} \cos^{-1}(f(x)) = -\frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
-$\frac{d}{dx} \tan^{-1}(f(x)) = \frac{f'(x)} {1+(f(x))^2}$;
-
-$\frac{d}{dx} (f(x))^{g(x)} = (f(x))^{g(x)} \frac{d}{dx} (g(x) \ln f(x))$;
-Quotient Rule: $\frac{d}{dx} \frac{f(x)}{g(x)} = \frac{f'(x)g(x)-g'(x)f(x)}{(g(x))^2}$;
-
 For injective and differentiable $f$ on open interval $I$, $f^{-1}$ is
 differentiable on its domain and $(f^{-1}(y))' = \frac{1} {f'(f^{-1}(y))}$;
 L'Hopital's Rule: for $\frac{0}{0}$ or $\frac{\infty}{\infty}$, for $c=\infty$ or $c=a^+/a^-$
 $\lim_{x\to c} \frac{f(x)}{g(x)} = \lim_{x\to c} \frac{f'(x)}{g'(x)}$;
 Taylor's Theorem: $f(b) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (b-a)^k +
-\frac{f^{(n+1)}(c)}{(n+1)!} (b-a)^{n+1}$ for some $c \in (a,x)$; %THIS MIGHT BE WRONG
+\frac{f^{(n+1)}(c)}{(n+1)!} (b-a)^{n+1}$ for some $c \in (a,x)$;
 Mean Value Theorem: for continuous $f$ on $[a,b]$, $\exists c \in (a,b) : 
 f'(c) = \frac{f(b)-f(a)}{b-a}$;
 $f$ is increasing if $a<b \Rightarrow f(a)<f(b)$ or $f'(x)>0\ \forall x \in (a,b)$;
@@ -121,6 +108,17 @@ $f$ is convex at $c$ if it is differentiable and its graph lies below the tangen
 Jensen's Inequalities: for convex(concave) $f$ over $(a,b)$, $(x_n) \in (a,b)$
 and $(\alpha_n) \in [0,1] : \sum_i \alpha_i = 1$, 
 $f\left( \sum_{i=1}^n \alpha_i x_i \right) \le (\ge)\ f \sum_{i=1}^n \alpha_i f(x_i)$;
+
+\subsubsection{Derivatives}
+$f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)} {h}$;
+$\frac{d}{dx} \tan(f(x)) = f'(x)\sec^2(f(x))$;
+$\frac{d}{dx} \csc(f(x)) = f'(x)\csc(f(x))\cot(f(x))$;
+$\frac{d}{dx} \sec(f(x)) = f'(x)\sec(f(x))\tan(f(x))$;
+$\frac{d}{dx} \sin^{-1}(f(x)) = \frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
+$\frac{d}{dx} \cos^{-1}(f(x)) = -\frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
+$\frac{d}{dx} \tan^{-1}(f(x)) = \frac{f'(x)} {1+(f(x))^2}$;
+$\frac{d}{dx} (f(x))^{g(x)} = (f(x))^{g(x)} \frac{d}{dx} (g(x) \ln f(x))$;
+Quotient Rule: $\frac{d}{dx} \frac{f(x)}{g(x)} = \frac{f'(x)g(x)-g'(x)f(x)}{(g(x))^2}$;
 
 \subsubsection{Integrals}
 $\int \frac{1} {a^2+(x+b)^2} dx = \frac{1}{a} \tan^{-1} \left( \frac{x+b}{a} \right)$;
@@ -181,7 +179,7 @@ $a(p,q) = \frac{a(q)}{a(p)} = \text{exp} \int_p^q \delta(t) dt$;
 For $R$ = redemption value, $m$ = \#coupons/yr, $n$ = \#payments, $\lambda$ =
 	nominal yield, $c$ = nominal coupon rate, $P = \frac{R}{1 + \lambda/m)^n} +
 	\sum_{i=1}^n \frac{(c/m)F}{(1+\lambda/m)^i}$.
-When $F = R$, $P = F + F(\frac{c - \lambda}{\lambda} \left[ 1 -
+When $F = R$, $P = F + F(\frac{c - \lambda}{\lambda}) \left[ 1 -
 	\frac{1}{(1+\lambda/m)^n} \right]$;
 $P = F \Leftrightarrow c = \lambda$;
 $P < F \Leftrightarrow c < \lambda$;
@@ -231,8 +229,8 @@ Given a zero coupon bond: $s_n = \left( \frac{F}{P} \right)^{1/n} - 1$;
 $(1+s_k)^k = (1+s_j)^j(1+f_{j,k})^{k-j}$;
 $(1+s_n)^n = (1+s_1)(1+f_{1,2})\ldots(1+f_{n-1,n})$;
 Given $(s_1, \ldots, s_n)$, $\text{PV}(C) = \sum_{i=1}^n \frac{c_i}{(1+s_i)^i}$;
-To find $s_n$ given $(s_1, \ldots, s_n)$ and $n$-year coupon bond, solve
-	$P = \frac{c_1}{1+s_i} + \ldots + \frac{c_1}{1+s_i}$.
+Bootstrap Method: To find $s_n$ given $(s_1, \ldots, s_n)$ and $n$-year coupon
+	bond, solve $P = \frac{c_1}{1+s_1} + \ldots + \frac{c_n}{1+s_n}$.
 
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
