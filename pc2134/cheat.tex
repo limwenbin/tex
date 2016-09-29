@@ -120,8 +120,8 @@ $\frac{d}{dx} \cot(f(x)) = f'(x)\csc^2(f(x))$;
 % hyperbolic trigo
 $\frac{d}{dx} \cosh(f(x)) = f'(x)\sinh(f(x))$;
 $\frac{d}{dx} \tanh(f(x)) = f'(x)\text{sech}^2(f(x))$;
-$\frac{d}{dx} \csch(f(x)) = -f'(x)\csch(f(x))\coth(f(x))$;
-$\frac{d}{dx} \sech(f(x)) = -f'(x)\text{sech}(f(x))\tanh(f(x))$;
+$\frac{d}{dx} \text{csch}(f(x)) = -f'(x)\csch(f(x))\coth(f(x))$;
+$\frac{d}{dx} \text{sech}(f(x)) = -f'(x)\text{sech}(f(x))\tanh(f(x))$;
 $\frac{d}{dx} \coth(f(x)) = -f'(x)\csch^2(f(x))$;
 % inverse trigo
 $\frac{d}{dx} \sin^{-1}(f(x)) = \frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
@@ -132,7 +132,6 @@ Quotient Rule: $\frac{d}{dx} \frac{f(x)}{g(x)} = \frac{f'(x)g(x)-g'(x)f(x)}{(g(x
 
 \subsubsection{Integrals}
 FTC: $\int_{a}^{b} F'(x) dx = F(b) - F(a)$, $\frac{d}{dx}\int_a^x f(u)du = f(x)$;
-
 $\int \frac{1} {a^2+(x+b)^2} dx = \frac{1}{a} \tan^{-1} \left( \frac{x+b}{a} \right)$;
 $\int \frac{1} {\sqrt{a^2+(x+b)^2}} dx = \sin^{-1} \left( \frac{x+b}{a} \right)$;
 $\int -\frac{1} {\sqrt{a^2+(x+b)^2}} dx = \cos^{-1} \left( \frac{x+b}{a} \right)$;
@@ -153,9 +152,9 @@ Washer method: $\int_a^b \pi f(x)^2 dx$;
 Cylindrical shell method ($y$-axis): $\int_a^b 2\pi xf(x) dx$;
 Integrating powers of $\sin$ and $\cos$: $\cos x = \frac{e^{ix} + e^{-ix}}{2}$, 
 $\sin x = \frac{e^{ix} - e^{-ix}}{2}$; 
-Weierstrass substitution: $x = \tan(\theta/2)$, $\sin\theta = \frac{2x}{1+t^}$,
-	$\cos\theta = \frac{1-t^2}{1+t^2}$, $\tan\theta = \frac{2t}{1-t^2}$,
-	$dx = \frac{2}{1+t^2}dt$,
+Weierstrass substitution: $x = \tan(\theta/2)$, $\sin\theta = \frac{2x}{1+x^2}$,
+	$\cos\theta = \frac{1-x^2}{1+x^2}$, $\tan\theta = \frac{2x}{1-x^2}$,
+	$d\theta = \frac{2}{1+x^2}dx$,
 
 \subsubsection{Matrices}
 $(AB)_{ij} = \sum_{k=1}^R A_{ik} B_{kj}$; 

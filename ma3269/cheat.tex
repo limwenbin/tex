@@ -85,8 +85,8 @@ Lim Wen Bin A0140764H
 \subsubsection{Series}
 $\sum_{i=0}^n y^i = \frac{1-y^{n+1}} {1-y}$;
 $\sum_{i=0}^\infty y^i = \frac{1} {1-y}$ for $|y|<1$;
-$\sum_{i=1}^n iy^i = \frac{1-y^n (1+-ny)} {(1-y)^2}$;
-$\sum_{i=1}^\infty iy^i = \frac{1} {(1-y)^2}$ for $|y|<1$;
+$\sum_{i=1}^n iy^{i-1} = \frac{1-y^n (1+n-ny)} {(1-y)^2}$;
+$\sum_{i=1}^\infty iy^{i-1} = \frac{1} {(1-y)^2}$ for $|y|<1$;
 $\sum_{i=1}^n i = \frac{1}{2} n(n+1)$;
 $\sum_{i=1}^n i^2 = \frac{1}{6} n(n+1)(2n+1)$;
 $\sum_{i=1}^n i^3 = \frac{1}{4} n^2(n+1)^2$;
@@ -125,7 +125,8 @@ $\int \frac{1} {a^2+(x+b)^2} dx = \frac{1}{a} \tan^{-1} \left( \frac{x+b}{a} \ri
 $\int \frac{1} {\sqrt{a^2+(x+b)^2}} dx = \sin^{-1} \left( \frac{x+b}{a} \right)$;
 $\int -\frac{1} {\sqrt{a^2+(x+b)^2}} dx = \cos^{-1} \left( \frac{x+b}{a} \right)$;
 $\int \frac{1} {a^2-(x+b)^2} dx = \frac{1}{2a} \ln \left| \frac{x+b+a}{x+b-a} \right|$;
-$\int \frac{1} {(x+b)^2-a^2} dx = \frac{1}{2a} \ln \left| \frac{x+b-a}{x+b+a} \right|$; \\
+$\int \frac{1} {(x+b)^2-a^2} dx = \frac{1}{2a} \ln \left| \frac{x+b-a}{x+b+a} \right|$; 
+\\
 Substitution I: $u=g(x), \int f(g(x))g'(x) dx = \int f(u)du$;
 Substitution II: $x=g(t), \int f(x)dx = \int f(g(t))g'(t)dt$;
 Integration by parts: $\int fg' dx = fg - \int f'g dx$;
