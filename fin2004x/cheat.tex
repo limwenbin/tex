@@ -166,13 +166,17 @@ Income statement, Statement of retained earning, Statement of cash flows.
 Assets = Liailities + Equity: Lists item from decreasing liquidity, valued
 at original cost (except for marketable securities and inventories). \\
 
+\textbf{Market value of shareholders' equity} = Share price * Number of
+outstanding shares;
 \textbf{Enterprise value} = Market value of assets + Debt - Excess cash
 (and other non-operating assets); 
 \textbf{Market to book ratio} = Market value of X / Book value of X;
 
 The \textbf{Income Statement} shows revenues and expenses and taxes
 associated. 
-\textbf{EBIT} = Earnings before interest and tax.
+\textbf{EBIT} = Earnings before interest and tax = Net sales - COGS -
+Depreciation;
+\textbf{Net income} = Net sales (revenue) - COGS - Expense;
 
 \textbf{Statement of Retained Earning}: EOY RE = Initial RE + NI
 - Dividends. \\
@@ -186,17 +190,22 @@ NWC = Cash + Other CA - CL (CL = non-interest CL + interest CL);
 $\Rightarrow$ $\Delta$Cash = $\Delta$RE + $\Delta$CL - $\Delta$Non-cash CA
 - $\Delta$Net fixed assets + $\Delta$LT-debt + $\Delta$Common stock; \\
 
+\textbf{After tax cash flow} = Net income after tax + depreciation +
+amortisation + other non-cash changes;
+
 \textbf{Operating working capital} stems from operations and is removed
-from financing decisions (excludes interest bearing CL). \\
+from financing decisions (excludes interest bearing CL i.e. notes payable). \\
 
 \textbf{Cash flow from assets (CFFA/FCF)} = Operating cash flow (OCF)
 - Net capital spending (NCS) - $\Delta$Net operating working capital
 (NOWC);
+Alternatively, CFFA = NI + depreciation - AP - AR + Inventory - NCS;
 
 \textbf{OCF} = EBIT + Depreciation - (EBIT * Tax rate);
 \textbf{NCS} = Ending fixed assets - Beginning fixed assets + Depreciation;
+\textbf{NOWC} = CA - CL (Excluding notes payable);
 $\Delta$\textbf{NOWC} = Ending NOWC - Beginning NOWC;
-\textbf{Interest tax shield} = Cash saved from reduction in tases due to
+\textbf{Interest tax shield} = Cash saved from reduction in taxes due to
 tax-free interest = Interest * Tax rate;
 \textbf{Cash flow to creditors} = Interest paid - Net new borrowing (LT-Debt
 and Note payable);
@@ -210,7 +219,8 @@ and Note payable);
 \textbf{Quick ratio} = $\frac{\text{CA - Inventory}}{\text{CL}}$;
 \textbf{Cash ratio} = $\frac{\text{Cash}}{\text{CL}}$;
 \textbf{NWC to total assets} = $\frac{\text{NWC}}{\text{TA}}$;
-\textbf{Interval measure} = $\frac{\text{CA}}{\text{Average daily operating cost}}$;
+\textbf{Interval measure} = $\frac{\text{CA}}{\text{Average daily operating cost}} =
+\frac{\text{CA}}{\text{(COGS + Other expenses)/365}}$;
 \\
 
 2. LT solvency: 
@@ -246,7 +256,8 @@ and Note payable);
 \textbf{M/B} = $\frac{\text{Market share price}}{\text{Book share price}}$;
 \\
 
-\textbf{Dupont Identity}: ROE = Profit margin * TA turnover * Equity multiplier;
+\textbf{Dupont Identity}: ROE = Profit margin * TA turnover * Equity multiplier
+= ROA * EM;
 
 \subsection{Lecture 3: Time Value of Money}
 
@@ -259,7 +270,9 @@ grow at a constant rate each period.
 \\
 
 \textbf{Simple Interest}: FV = PV$(1 + rt)$;
-\textbf{Compound Interest}: FV = PV$(1 + r)^t$;
+\textbf{Compound Interest}: FV = PV$(1 + r)^t$,
+$r = (\frac{\text{FV}}{\text{PV}})^{1/t} - 1$,
+$t = \ln(\frac{\text{FV}}{\text{PV}}) / \ln(1+r)$;
 % TODO: derive this
 \textbf{PV(Annuity)} = PMT * $\frac{1 - (1/(1 + r)^t)}{r}$;
 \textbf{PV(Annuity due)} = PV(Annuity) * (1+r);
@@ -267,6 +280,7 @@ grow at a constant rate each period.
 \textbf{FV(Growing annuity)} = PMT1 * $\frac{(1+r)^n - (1+g)^n}{r-g}$;
 \textbf{FV(Annuity due)} = FV(Annuity) * (1+r);
 \textbf{PV(Perpetuity)} = $\frac{\text{PMT}}{r}$;
+\textbf{PV(Growing perpetuity)} = $\frac{\text{C}_1}{r-g}$;
 \textbf{EAR} = $\left(1 + \frac{\text{APR}}{m}\right)^m -1$;
 
 \subsubsection{Different Types of Loans}
@@ -279,12 +293,14 @@ beginning balance and then is contributed to repaying the principal.
 \subsection{Lecture 4 \& 5: Risk \& Return}
 
 \textbf{\% Return} = Dvd yield + Capital gain yield = 
-$\frac{\text{Dvd}}{\text{Initial share price}} + \frac{\text{Capital gain
-yield}}{\text{Initial share price}}$;
+$\frac{\text{Dvd}}{\text{Initial share price}} + \frac{\text{Capital gain}}
+{\text{Initial share price}}$;
 \textbf{Real return} = $\frac{\text{1 + nominal}}{\text{1 + inflation}}-1$;
 \textbf{Expected return}: $\hat{r} = \sum_i r_i P_i$;
-When given probabilites, $\sigma = \sqrt{\sum_i (r_i - \hat{r}) P_i}$;
-When given data, $\sigma = \sqrt{\frac{\sum_i (r_i - \hat{r})}{n-1}}$;
+Arithmetic mean of returns = $\frac{1}{N}\sum_i^N r_i$;
+Geometric mean of returns = $[\prod_i^N (1+r_i)]^{1/n} - 1$;
+When given probabilites, $\sigma = \sqrt{\sum_i (r_i - \hat{r})^2 P_i}$;
+When given data, $\sigma = \sqrt{\frac{\sum_i (r_i - \hat{r})^2}{n-1}}$;
 \textbf{Coeffficient of variation (CV)} = $\frac{\sigma}{\hat{r}}$;
 \textbf{Risk premium} = Excess return over risk-free rate = $r - r_{rf}$;
 % TODO: revisit
@@ -297,12 +313,17 @@ $\sigma_p = \sum_i ((r_p)_i - \hat{r_p})P_i$;
 Cov(X,Y) = $\rho_{XY} \sigma_X \sigma_Y$;
 $\sigma(ax+by) = \sqrt{a^2 \sigma(x)^2 + b^2\sigma(y)^2 +
 	2ab\sigma(x)\sigma(y)\rho_{xy}}$;
-\textbf{Total risk} = Coy-specific risk + Market risk;
+\textbf{Total risk} = Coy-specific risk + Market risk, and is measured by $\sigma$.
 \textbf{Market risk} $\beta_i = \frac{\text{Cov}(r_i, r_M)}{\sigma_M^2}
 = \frac{\rho_{iM} \sigma_i \sigma_M}{\sigma_M^2}
 = \frac{\sigma_i}{\sigma_M}\rho_{iM}$;
-\textbf{Required rate of return}: $r = r_{rf} + RP_i = r_{rf} + (r_M
-- r_{rf})\beta_i$;
+\textbf{Required rate of return} (Security Market Line): $r = r_{rf} + RP_i =
+	r_{rf} + (r_M - r_{rf})\beta_i$;
+\textbf{Reward-to-risk ratio} = Slope of SML $= r_m - r_f$;
+Portfolio beta: $\beta_p = \sum w_j \beta_j$;
+Efficient Frontier extends towards the positive return direction from the
+	minimum variance portfolio.
+\textbf{Capital Market Line}: $r_p = r_f + \frac{r_m - r_f}{\sigma_m} \sigma_p$;
 
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
