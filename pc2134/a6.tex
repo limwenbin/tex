@@ -1,0 +1,367 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 6}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1.a.i}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\frac{\partial \Psi}{\partial t} = \frac{1}{i\hbar}
+	\left(-\frac{\hbar^2}{2m} \nabla^2 \Psi + V\Psi \right) \\
+	\rho(\mathbf{r},t) = \Psi^*(\mathbf{r}, t) \Psi(\mathbf{r}, t)\\
+	\frac{\partial \rho(\mathbf{r},t)}{\partial t} = 
+		\Psi^* \frac{\partial \Psi}{\partial t} +
+		\frac{\partial \Psi^*}{\partial t} \Psi \\
+	-\nabla \cdot \mathbf{j} = 
+		\Psi^* \frac{\partial \Psi}{\partial t} +
+		\frac{\partial \Psi^*}{\partial t} \Psi \\
+	\begin{aligned}
+		\nabla \cdot \mathbf{j} &= 
+			\frac{\Psi^*}{i\hbar} \left(\frac{\hbar^2}{2m} \nabla^2 \Psi -
+			V\Psi \right)
+			+ \frac{\Psi}{i\hbar} \left(- \frac{\hbar^2}{2m} \nabla^2 \Psi^* +
+			V\Psi^* \right) \\
+		&= \frac{\hbar}{2im} ( \Psi^* \nabla^2 \Psi - \Psi \nabla^2 \Psi^*) \\
+		&= \frac{\hbar}{2im} ( \Psi^* \nabla \cdot (\nabla \Psi) - \Psi \nabla
+			\cdot (\nabla \Psi^*)) \\
+		&= \frac{\hbar}{2im} [ \Psi^* \nabla \cdot (\nabla \Psi) 
+			+ (\nabla \Psi^*) \cdot (\nabla \Psi)
+			- (\nabla \Psi^*) \cdot (\nabla \Psi)
+			- \Psi \nabla \cdot (\nabla \Psi^*)]
+			\\
+		&= \frac{\hbar}{2im} [ \nabla \cdot (\Psi^* (\nabla \Psi))
+			- \nabla \cdot (\Psi (\nabla \Psi^*))]
+			\\
+		&= \frac{\hbar}{2im} \nabla \cdot [ \Psi^* (\nabla \Psi)
+			- \Psi (\nabla \Psi^*)]
+			\\
+		\therefore \mathbf{j} &= 
+			\frac{\hbar}{2im} [ \Psi^* (\nabla \Psi)
+			- \Psi (\nabla \Psi^*)]
+			\\
+	\end{aligned}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.a.ii}
+\end{problem}
+\begin{proof}
+Let $\mathcal{R}$ represent the whole space.
+\begin{align*}
+	\frac{d}{dt} \iiint_{\mathcal{R}} \rho\ dV &= 
+		\frac{d}{dt} \iiint_{\mathcal{R}} \Psi^* \Psi \ dV \\
+	&= \iiint_{\mathcal{R}} \frac{\partial}{\partial t} (\Psi^* \Psi) \ dV
+		\quad (\text{by Leibniz's rule}) \\
+	&= \iiint_{\mathcal{R}} \Psi^* \frac{\partial \Psi}{\partial t} +
+		\frac{\partial \Psi^*}{\partial t} \Psi \ dV \\
+	&= \iiint_{\mathcal{R}} - \nabla \cdot \mathbf{j}
+		 \ dV \quad (\text{from (a.i)}) \\
+	&= -\iiint_{\mathcal{R}} \frac{\partial j_x}{\partial x}
+		+ \frac{\partial j_y}{\partial y}
+		+ \frac{\partial j_z}{\partial z}
+		\ dV \\
+	\iiint_{\mathcal{R}} \frac{\partial j_x}{\partial x} \ dV &=
+		\int^\infty_{-\infty} \int^\infty_{-\infty} \int^\infty_{-\infty}
+		\frac{\partial j_x}{\partial x} \ dxdydz \\
+	&= \int^\infty_{-\infty} \int^\infty_{-\infty} [j_x]^\infty_{-\infty} \
+		dydz \\
+	&= \int^\infty_{-\infty} \int^\infty_{-\infty}
+		 0 \ dydz \quad (\because \Psi \text{ is square integrable}) \\	&= 0
+	\intertext{Similarly, $\iiint_{\mathcal{R}} \frac{\partial j_y}{\partial y}
+		\ dV = 0$ and $\iiint_{\mathcal{R}} \frac{\partial j_z}{\partial z} \ dV =
+		0$. Therefore,}
+	\frac{d}{dt} \iiint_{\mathcal{R}} \rho\ dV &= 
+		-\iiint_{\mathcal{R}} \frac{\partial j_x}{\partial x}
+		+ \frac{\partial j_y}{\partial y}
+		+ \frac{\partial j_z}{\partial z}
+		\ dV = 0
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.a.iii}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{If $V(\mathbf{r}, t)$ is complex,}
+		-\frac{\partial \rho}{\partial t} &= 
+			\frac{\Psi^*}{i\hbar} \left(\frac{\hbar^2}{2m} \nabla^2 \Psi -
+			V\Psi \right)
+			+ \frac{\Psi}{i\hbar} \left(- \frac{\hbar^2}{2m} \nabla^2 \Psi^* +
+			V^*\Psi^* \right) \\
+		&= \nabla \cdot \mathbf{j} + \frac{|\Psi|^2}{i\hbar} (V^* - V) \\
+		&= \nabla \cdot \mathbf{j} + \frac{|\Psi|^2}{i\hbar} (-2i\text{Im}[V]) \\
+		&= \nabla \cdot \mathbf{j} - \frac{2}{\hbar} \text{Im}[V] \rho \\
+	\therefore \frac{\partial \rho}{\partial t} &+ \nabla \cdot \mathbf{j} = 
+		\frac{2}{i\hbar} \text{Im}[V] \rho
+	\shortintertext{Similarly,}
+	\frac{d}{dt} \iiint_{\mathcal{R}} \rho\ dV &= 
+		\iiint_{\mathcal{R}} - \nabla \cdot \mathbf{j} \ dV
+		+ \iiint_{\mathcal{R}} \frac{2}{\hbar} \text{Im}[V] \rho \ dV \\
+	&= \frac{2}{\hbar} \iiint_{\mathcal{R}} \text{Im}[V] \rho \ dV \\
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+	\frac{\partial \rho}{\partial t} &= - \nabla \cdot \mathbf{j} \\
+	&= \nabla \cdot \left[ \frac{i\hbar}{2m} ] \Psi^* (\nabla \Psi)
+		- \Psi (\nabla \Psi^*)) \right] \\
+	&= \frac{i\hbar}{2m} ( \Psi^* \nabla^2 \Psi
+		- \Psi \nabla^2 \Psi^*)
+	\intertext{From the Klein-Gordon equation,}
+	\nabla^2 \Psi &= \frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} +
+		\frac{mc^2}{\hbar^2}\Psi. \\
+	\frac{\partial \rho}{\partial t} &=
+		\frac{i\hbar}{2m} \left[ \Psi^* \left(
+		\frac{1}{c^2} \frac{\partial^2 \Psi}{\partial t^2} +
+		\frac{mc^2}{\hbar^2}\Psi
+		\right)
+		- \Psi  \left(
+		\frac{1}{c^2} \frac{\partial^2 \Psi^*}{\partial t^2} +
+		\frac{mc^2}{\hbar^2}\Psi^*
+		\right) \right] \\
+	&= \frac{i\hbar}{2mc^2} \left[ 
+		\Psi^* \frac{\partial^2 \Psi}{\partial t^2} 
+		- \Psi \frac{\partial^2 \Psi^*}{\partial t^2}
+		\right] \\
+	&= \frac{i\hbar}{2mc^2} \frac{\partial}{\partial t} \left[ 
+		\Psi^* \frac{\partial \Psi}{\partial t} 
+		- \Psi \frac{\partial \Psi^*}{\partial t}
+		\right] \\
+	\therefore \rho &= \frac{i\hbar}{2mc^2} \left[ 
+		\Psi^* \frac{\partial \Psi}{\partial t} 
+		- \Psi \frac{\partial \Psi^*}{\partial t}
+		\right] \\
+	\intertext{It would not be appropriate to intepret $\rho$ as the probability
+	density as square integrability of the wave function does not imply the
+	normalisation of $\rho$.}
+\end{align*}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\text{Let } \nabla \Phi = \left( \sum_{i=1}^3 \hat{\mathbf{e}}_i' A_i
+		\frac{\partial}{\partial u_i} \right) \Phi. \\
+	d\Phi = \nabla \Phi \cdot d\mathbf{r} \\
+	\sum_{i=1}^3 \frac{\partial \Phi}{\partial u_i} du_i = \left( \sum_{i=1}^3
+		\hat{\mathbf{e}}_i' A_i \frac{\partial \Phi}{\partial u_i} \right) \cdot
+		\left( \sum_{i=1}^3 h_i du_i \hat{\mathbf{e}}_i' \right) \\
+	\Rightarrow A_i = \frac{1}{h_i} \\
+	\therefore \nabla \Phi = \left( \sum_{i=1}^3 \hat{\mathbf{e}}_i' \frac{1}{h_i}
+		\frac{\partial}{\partial u_i} \right) \Phi. \\
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\nabla u_i = \sum_{j=1}^3 \hat{\mathbf{e}}_j' \frac{1}{h_j} \frac{\partial
+		u_i}{\partial u_j}
+		= \sum_{j=1}^3 \hat{\mathbf{e}}_j' \frac{1}{h_j} \delta_{ij} 
+		= \hat{\mathbf{e}}_i' \frac{1}{h_i} \\
+	\Rightarrow \hat{\mathbf{e}}_i' = h_i \nabla u_i \\
+	\begin{aligned}
+		\nabla \cdot (a_1 \hat{\mathbf{e}}_1') &= \nabla \cdot [a_1 (\hat{\mathbf{e}}_2'
+			\times \hat{\mathbf{e}}_2')] \\
+		&= \nabla \cdot [a_1h_2h_3 (\nabla u_2 \times \nabla u_3)] \\
+		&= a_1h_2h_3 [\nabla \cdot (\nabla u_2 \times \nabla u_3)] + (\nabla
+			a_1h_2h_3) \cdot (\nabla u_2 \times \nabla u_3) \\
+		&= a_1h_2h_3 [\nabla u_3 \cdot (\nabla \times \nabla u_2)] + (\nabla
+			a_1h_2h_3) \cdot (\nabla u_2 \times \nabla u_3) \\
+		&= 0 + (\nabla a_1h_2h_3) \cdot (\nabla u_2 \times \nabla u_3) \\
+		&= (\nabla a_1h_2h_3) \cdot \left( \frac{1}{h_2} \hat{\mathbf{e}}_2'
+			\times \frac{1}{h_3} \hat{\mathbf{e}}_3' \right) \\
+		&= \left[ \left( \sum_{i=1}^3 \hat{\mathbf{e}}_i' \frac{1}{h_i}
+			\frac{\partial}{\partial u_i} \right) (a_1h_2h_3) \right] \cdot
+			\left( \frac{\hat{\mathbf{e}}_1'}{h_2h_3} \right) \\
+		&= \left[ \left( \hat{\mathbf{e}}_1' \frac{1}{h_1}
+			\frac{\partial}{\partial u_1} \right) (a_1h_2h_3) \right] \cdot
+			\left( \frac{\hat{\mathbf{e}}_1'}{h_2h_3} \right) \\
+		&=  \frac{1}{h_1h_2h_3} \frac{\partial}{\partial u_1} \right) (a_1h_2h_3)
+	\end{aligned}
+	\intertext{Similarly, $\nabla \cdot (a_2 \hat{\mathbf{e}}_2') = 
+		\frac{1}{h_1h_2h_3} \frac{\partial}{\partial u_2} \right) (a_2h_1h_3)$
+		and $\nabla \cdot (a_3 \hat{\mathbf{e}}_3') = 
+		\frac{1}{h_1h_2h_3} \frac{\partial}{\partial u_3} \right) (a_3h_1h_2)$.}
+	\therefore \nabla \cdot \mathbf{a} = \sum_{i=1}^3 \nabla \cdot (a_i
+		\hat{\mathbf{e}}_i') = \frac{1}{h_1h_2h_3} \left[ 
+		\frac{\partial}{\partial u_1} (a_1h_2h_3)
+		+ \frac{\partial}{\partial u_2} (a_2h_1h_3)
+		+ \frac{\partial}{\partial u_3} (a_3h_1h_2) \right]
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\nabla^2 \Phi &= \nabla \cdot (\nabla \Phi) \\
+	&= \nabla \cdot \left( \sum_{i=1}^3 \hat{\mathbf{e}}_i' \frac{1}{h_i}
+		\frac{\partial \Phi}{\partial u_i} \right) \\
+	&= \frac{1}{h_1h_2h_3} \left[
+		\frac{\partial}{\partial u_1} \left( \frac{h_2h_3}{h_1} \frac{\partial
+		\Phi}{\partial u_1} \right)
+		+ \frac{\partial}{\partial u_2} \left( \frac{h_1h_3}{h_2} \frac{\partial
+		\Phi}{\partial u_2} \right)
+		+ \frac{\partial}{\partial u_3} \left( \frac{h_1h_2}{h_3} \frac{\partial
+		\Phi}{\partial u_3} \right) \right]
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\nabla \times (a_1 \hat{\mathbf{e}}_1) &= \nabla \times (a_1 h_1 \nabla u_1) \\
+	&= \nabla \times (a_1 h_1 \nabla u_1) \\
+	&= (\nabla a_1 h_1) \times (\nabla u_1) 
+		+ a_1 h_1 \cdot [\nabla \times (\nabla u_1)] \\
+	&= (\nabla a_1 h_1) \times \frac{\hat{\mathbf{e}}_1'}{h_1} + 0 \\
+	&= \left( 
+			\hat{\mathbf{e}}_2' \frac{1}{h_2} \frac{\partial(a_1h_1)}{\partial u_2} 
+			+ \hat{\mathbf{e}}_3' \frac{1}{h_3} \frac{\partial(a_1h_1)}{\partial u_3} 
+		\right) 
+		\times \frac{\hat{\mathbf{e}}_1'}{h_1} \\
+	&=  - \frac{1}{h_1h_2} \frac{\partial(a_1h_1)}{\partial u_2} \hat{\mathbf{e}}_3'
+		+ \frac{1}{h_1h_3} \frac{\partial(a_1h_1)}{\partial u_3} \hat{\mathbf{e}}_2' \\
+	&=  - \frac{1}{h_1h_2h_3} \frac{\partial(a_1h_1)}{\partial u_2}
+		\hat{\mathbf{e}}_3'h_3
+		+ \frac{1}{h_1h_2h_3} \frac{\partial(a_1h_1)}{\partial u_3}
+		\hat{\mathbf{e}}_2'h_2 
+	\shortintertext{Similarly,}
+	\nabla \times (a_2 \hat{\mathbf{e}}_2) &= \left( 
+			\hat{\mathbf{e}}_1' \frac{1}{h_1} \frac{\partial(a_2h_2)}{\partial u_1} 
+			+ \hat{\mathbf{e}}_3' \frac{1}{h_3} \frac{\partial(a_2h_2)}{\partial u_3} 
+		\right) 
+		\times \frac{\hat{\mathbf{e}}_2'}{h_2} \\
+	&=  \frac{1}{h_1h_2h_3} \frac{\partial(a_2h_2)}{\partial u_1}
+		\hat{\mathbf{e}}_3'h_3
+		+ \frac{1}{h_1h_2h_3} \frac{\partial(a_2h_2)}{\partial u_3}
+		\hat{\mathbf{e}}_1'h_1 \\
+	\nabla \times (a_3 \hat{\mathbf{e}}_3) &= \left( 
+			\hat{\mathbf{e}}_1' \frac{1}{h_1} \frac{\partial(a_3h_3)}{\partial u_1} 
+			+ \hat{\mathbf{e}}_2' \frac{1}{h_2} \frac{\partial(a_3h_3)}{\partial u_2} 
+		\right) 
+		\times \frac{\hat{\mathbf{e}}_3'}{h_3} \\
+	&=  - \frac{1}{h_1h_2h_3} \frac{\partial(a_3h_3)}{\partial u_1}
+		\hat{\mathbf{e}}_2'h_2
+		- \frac{1}{h_1h_2h_3} \frac{\partial(a_3h_3)}{\partial u_2}
+		\hat{\mathbf{e}}_1'h_1 \\
+	\nabla \times \mathbf{a} &= \sum_{i=1}^3 \nabla \times (a_i \hat{\mathbf{e}}_i)
+	\intertext{Rewriting, this yields}
+	\nabla \times \mathbf{a} &= \frac{1}{h_1h_2h_3} \left| \begin{array}{ccc}
+		\hat{\mathbf{e}}_1'h_1 &
+		\hat{\mathbf{e}}_2'h_2 &
+		\hat{\mathbf{e}}_3'h_3 \\
+		\frac{\partial}{\partial h_1} &
+		\frac{\partial}{\partial h_2} &
+		\frac{\partial}{\partial h_3} \\
+		a_1h_1 &
+		a_2h_2 &
+		a_3h_3 \\
+	\end{array} \right|
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{2.e.i}
+\end{problem}
+\begin{align*}
+	\frac{\partial \mathbf{r}}{\partial u} &= \frac{\partial}{\partial u}
+		[ (uv\cos\phi) \hat{\mathbf{e}}_x + (uv\sin\phi) \hat{\mathbf{e}}_y
+		+ (\frac{1}{2}(u^2 - v^2)) \hat{\mathbf{e}}_z ] \\
+	&= (v\cos\phi) \hat{\mathbf{e}}_x + (v\sin\phi) \hat{\mathbf{e}}_y
+		+ (u) \hat{\mathbf{e}}_z \\
+	\left| \frac{\partial \mathbf{r}}{\partial u} \right| &= \sqrt{u^2 + v^2} \\
+	\hat{\mathbf{e}}_u &= \frac{1}{\sqrt{u^2 + v^2}} [ (v\cos\phi)
+		\hat{\mathbf{e}}_x + (v\sin\phi) \hat{\mathbf{e}}_y + (u)
+		\hat{\mathbf{e}}_z ] \\
+	\frac{\partial \mathbf{r}}{\partial v} &= \frac{\partial}{\partial v}
+		[ (uv\cos\phi) \hat{\mathbf{e}}_x + (uv\sin\phi) \hat{\mathbf{e}}_y
+		+ (\frac{1}{2}(u^2 - v^2)) \hat{\mathbf{e}}_z ] \\
+	&= (u\cos\phi) \hat{\mathbf{e}}_x + (u\sin\phi) \hat{\mathbf{e}}_y
+		- (v) \hat{\mathbf{e}}_z \\
+	\left| \frac{\partial \mathbf{r}}{\partial v} \right| &= \sqrt{u^2 + v^2} \\
+	\hat{\mathbf{e}}_v &= \frac{1}{\sqrt{u^2 + v^2}} [ (u\cos\phi)
+		\hat{\mathbf{e}}_x + (u\sin\phi) \hat{\mathbf{e}}_y - (v)
+		\hat{\mathbf{e}}_z ] \\
+	\frac{\partial \mathbf{r}}{\partial \phi} &= \frac{\partial}{\partial \phi}
+		[ (uv\cos\phi) \hat{\mathbf{e}}_x + (uv\sin\phi) \hat{\mathbf{e}}_y
+		+ (\frac{1}{2}(u^2 - v^2)) \hat{\mathbf{e}}_z ] \\
+	&= -(uv\sin\phi) \hat{\mathbf{e}}_x + (uv\cos\phi) \hat{\mathbf{e}}_y \\
+	\left| \frac{\partial \mathbf{r}}{\partial \phi} \right| &= uv \\
+	\hat{\mathbf{e}}_\phi &= -(\sin\phi) \hat{\mathbf{e}}_x + (\cos\phi)
+		\hat{\mathbf{e}}_y \\
+	\hat{\mathbf{e}}_u \cdot \hat{\mathbf{e}}_v &= \frac{1}{u^2 + v^2}
+		(uv\cos^2\phi + uv\sin^2\phi - uv) = 0 \\
+	\hat{\mathbf{e}}_u \cdot \hat{\mathbf{e}}_\phi &= \frac{1}{\sqrt{u^2 +
+		v^2}} (-v\cos\phi\sin\phi + v\sin\phi\cos\phi) = 0 \\
+	\hat{\mathbf{e}}_v \cdot \hat{\mathbf{e}}_\phi &= \frac{1}{\sqrt{u^2 +
+		v^2}} (-u\cos\phi\sin\phi + u\sin\phi\cos\phi) = 0 \\
+	\intertext{$\therefore$ The coordinate system is orthogonal.}
+	\hat{\mathbf{e}}_u \times \hat{\mathbf{e}}_v &= \frac{1}{u^2 + v^2}
+		(-(v^2+u^2)\sin\phi\ \hat{\mathbf{e}}_x + (u^2 + v^2)\cos\phi\
+		\hat{\mathbf{e}}_y \\
+	&\phantom{=} + (uv\cos\phi\sin\phi - uv\sin\phi\cos\phi)
+		\hat{\mathbf{e}}_z = \hat{\mathbf{e}}_\phi \\
+	\hat{\mathbf{e}}_\phi \times \hat{\mathbf{e}}_u &= \frac{1}{\sqrt{u^2 + v^2}}
+		(u\cos\phi\ \hat{\mathbf{e}}_x + u\sin\phi\ \hat{\mathbf{e}}_y
+		- (v\sin^2\phi + v\cos^2\phi) \hat{\mathbf{e}}_z = \hat{\mathbf{e}}_v \\
+	\hat{\mathbf{e}}_v \times \hat{\mathbf{e}}_\phi &= \frac{1}{\sqrt{u^2 + v^2}}
+		(v\cos\phi\ \hat{\mathbf{e}}_x + v\sin\phi\ \hat{\mathbf{e}}_y
+		+ (u\sin^2\phi + u\cos^2\phi) \hat{\mathbf{e}}_z = \hat{\mathbf{e}}_u \\
+	\intertext{$\therefore$ The coordinate system is right-handed.}
+\end{align*}
+\filbreak
+
+\begin{problem}{2.e.ii}
+\end{problem}
+\begin{gather*}
+	\shortintertext{From (i),}
+	h_u = \left| \frac{\partial \mathbf{r}}{\partial u} \right| = \sqrt{u^2 + v^2},\
+	h_v =\left| \frac{\partial \mathbf{r}}{\partial v} \right| = \sqrt{u^2 + v^2},\
+	h_\phi =\left| \frac{\partial \mathbf{r}}{\partial \phi} \right| = uv \\
+\end{gather*}
+\filbreak
+
+\begin{problem}{2.e.iii}
+\end{problem}
+\begin{align*}
+	[\nabla \times \mathbf{a}]_u &= \frac{1}{h_vh_\phi} \left( \frac{\partial
+		(a_\phi h_\phi)} {\partial v} - \frac{\partial (a_vh_v)}{\partial \phi}
+		\right) \\
+	&= \frac{1}{h_vh_\phi} \left( \frac{\partial (uva_\phi)} {\partial v}
+		- \frac{\partial (\sqrt{u^2+v^2}a_v)}{\partial \phi} \right) \\
+	&= \frac{1}{uv\sqrt{u^2+v^2}} \left( ua_\phi + uv\frac{\partial a_\phi}
+		{\partial v} - \sqrt{u^2+v^2} \frac{\partial a_v}{\partial \phi} \right) \\
+	&= \frac{a^3}{v\sqrt{u^2+v^2}} + \frac{1}{\sqrt{u^2+v^2}} \frac{\partial
+		a_\phi} {\partial v} - \frac{1}{uv} \frac{\partial a_v}{\partial \phi} \\
+\end{align*}
+\filbreak
+
+\end{document}

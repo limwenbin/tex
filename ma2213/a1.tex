@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{MA2213 Assignment 1}
+\author{Lim Wen Bin \\
+A0140764H\\
+T05}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+\shortintertext{Given}
+	a \le x_0 < \ldots < x_k \le b,\ f(x_0) = \ldots = f(x_k) = 0
+	\shortintertext{and that}
+	f(x), \ldots, f^{(k)} (x)
+	\intertext{are all continuous on $[a,b]$, Let $p_i$ denote the following
+		proposition for $i \in \{1, \ldots, k\}$.}
+	\exists \text{ pairwise distinct } \xi_{i,j} \in [a,b] \text{ for } j \in
+		\{0, \ldots, k-i\} \\
+	\text{ s.t. } f^{(i)} (\xi_{i,j}) = 0
+	\intertext{As $f(x)$ continuous on $[x_0, x_1]$, $\ldots$, $[x_{k-1}, x_k]$,
+		by the Mean Value Theorem,}
+	\exists \xi_{1,0} \in (x_0, x_1), \ldots, \xi_{1,k-1} \in (x_{k-1},x_k) \\
+	\text{ s.t. } f^{(1)} (\xi_{1,0}) = \ldots = f^{(1)} (\xi_{1,k-1}) = 0. \\
+	\therefore p_1 \text{ is true}
+	\intertext{Next, assume $p_n$ is true for some $n \in \{1, \ldots, k-1\}$, i.e.}
+	\exists \xi_{n,0} \in (\xi_{n-1,0}, \xi_{n-1,1}),
+		\ldots, \xi_{n,k-n} \in (x_{n-1,k-n}, x_{n-1,k-n+1}) \\
+	\text{ s.t. } f^{(n)} (\xi_{n,0}) = \ldots = f^{(n)} (\xi_{n,k-n}) = 0. \\
+	\intertext{Then, to prove that $p_{n+1}$ is true, by the Mean
+		Value Theorem,}
+	\exists \xi_{n+1,0} \in (\xi_{n,0}, \xi_{n,1}),
+		\ldots, \xi_{n+1,k-n-1} \in (x_{n,k-n-1}, x_{n,k-n}) \\
+	\text{ s.t. } f^{(n+1)} (\xi_{n,0}) = \ldots = f^{(n+1)} (\xi_{n,k-n}) = 0. \\
+	\intertext{Therefore, by mathematical induction, $p_i$ is true for all $i
+	\in \{1, \ldots, k\}$ and }
+	\exists \xi = \xi_{k, 0} \in [a,b] \text{ s.t. } f^{(k)} (\xi) = 0.
+\end{gather*}
+\end{proof}
+
+\end{document}
