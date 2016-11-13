@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+\usepackage{braket}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 11}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{gather*}
+	\braket{1|1} = \int_0^\infty e^{-x} \diff x 
+		= [ -e^{-x} ]_0^\infty = 1 
+	\\
+	\hat{\phi}_0 = 1 \qed \\
+	\braket{x|\hat{\phi}_0} = \int_0^\infty xe^{-x} \diff x 
+		= \int_0^\infty e^{-x} \diff x 
+		= [ -e^{-x} ]_0^\infty = 1 
+	\\
+	\phi_1 = x - 1 \\
+	\begin{aligned}
+		\braket{\phi_1|\phi_1} &= \int_0^\infty (x-1)^2 e^{-x} \diff x \\
+		&= \int_0^\infty (x^2 - 2x + 1) e^{-x} \diff x \\
+		&= \int_0^\infty 2 x e^{-x} \diff x - 1 \\
+		&= 2 - 1 = 1
+	\end{aligned} \\
+	\hat{\phi}_1 = x-1 \qed \\
+	\braket{x^2|\hat{\phi}_0} = \int_0^\infty x^2 e^{-x} \diff x = 2 \\
+	\braket{x^2|\hat{\phi}_1} = \int_0^\infty x^2 (x-1) e^{-x} \diff x 
+		= 6 - 2  = 4 \\
+	\phi_2 = x^2 - 4(x-1) - 2 = x^2 - 4x + 2 \\
+	\begin{aligned}
+		\braket{\phi_2|\phi_2} &= \int_0^\infty (x^2 - 4x + 2)^2 e^{-x} \diff x \\
+		&= \int_0^\infty (x^4 - 8x^3 + 20x^2 - 16x + 4) e^{-x} \diff x \\
+		&= 24 - 8(6) + 20(2) - 16 + 4 = 4 \\
+	\end{aligned} \\
+	\hat{\phi}_2 = \frac{1}{2}(x^2 - 4x + 2) \qed
+\end{gather*}
+
+\begin{problem}{2}
+\end{problem}
+For $w(x) = 1$,
+\begin{gather*}
+	\mathcal{L} = \frac{\diff}{\diff x^2} + \kappa \\
+	\mathcal{L}\phi(x) = \lambda \phi(x) \\
+	\frac{\diff^2 \phi}{\diff x^2} + \kappa \phi = \lambda \phi
+		\Rightarrow \frac{\diff^2 \phi}{\diff x^2} + (\kappa - \lambda) \phi = 0 \\
+	\phi(x) = c_1 \cos(x \sqrt{\kappa - \lambda}) 
+		+ c_2 \sin(x \sqrt{\kappa - \lambda}) \\
+	\phi(0) = 0 \Rightarrow c_1 = 0 \\
+	\phi(\pi) = 0 \Rightarrow \sin(\pi \sqrt{\kappa - \lambda}) = 0 \\
+	\lambda_n = \kappa - n^2,\quad n \in \mathbb{Z}^+ \cup \{0\} \\
+	\phi_n(x) = c_2 \sin (nx) \\
+	\braket{\phi_n|\phi_n} = \int_0^\pi \phi_n^* (x) \phi_n \diff x = c_2^2
+		\frac{\pi}{2} \\
+	\hat{\phi}_n (x) = \sqrt{\frac{2}{\pi}} \sin(nx) \\
+	G(x, x') 
+		= \sum_{n=0}^\infty 
+			\frac{1}{\lambda_n} 
+			\hat{\phi}_n^* (x') \hat{\phi}_n (x)
+		= \frac{2}{\pi}
+			\sum_{n=0}^\infty 
+			\frac{\sin(nx') \sin(nx)}
+			{\kappa - n^2} 
+	\\
+	\begin{aligned}
+		y(x) &= \int_0^\pi G(x, x') f(x') \diff x' \\
+		\frac{\pi}{2} y(x) &= \int_0^{\frac{\pi}{2}} 
+				\sum_{n=0}^\infty 
+				\frac{\sin(nx') \sin(nx)}
+				{\kappa - n^2} 
+				x'
+			\diff x'
+			+ \int_{\frac{\pi}{2}}^\pi 
+				\sum_{n=0}^\infty 
+				\frac{\sin(nx') \sin(nx)}
+				{\kappa - n^2} 
+				(\pi - x')
+			\diff x'
+		\\
+		&= 
+			\sum_{n=0}^\infty 
+			\frac{\sin(nx)}
+			{n(\kappa - n^2)} 
+			\left\{
+				\left[ - \cos(nx') x' \right]_0^{\frac{\pi}{2}}
+				+
+				\int_0^{\frac{\pi}{2}} 
+					\cos(nx')
+				\diff x'
+			\right\}
+			\\
+			&\phantom{=}+
+			\sum_{n=0}^\infty 
+			\frac{\sin(nx)}
+			{n(\kappa - n^2)} 
+			\left\{
+				\left[ - \cos(nx') (\pi - x') \right]_{\frac{\pi}{2}}^\pi
+				+
+				\int_{\frac{\pi}{2}}^\pi
+					\cos(nx')
+				\diff x'
+			\right\}
+		\\
+		&= 
+			\sum_{n=0}^\infty 
+			\frac{\sin(nx)}
+			{n(\kappa - n^2)} 
+			\left[
+				\left( \frac{\pi}{2} -1 \right)
+				\cos \left( \frac{n\pi}{2} \right)
+			\right]
+		\\
+		y(x) &= 
+			\left( 1- \frac{2}{\pi} \right)
+			\sum_{n=0}^\infty 
+			\frac{\sin(nx)}
+			{n(\kappa - n^2)} 
+			\left[
+				\cos \left( \frac{n\pi}{2} \right)
+			\right]
+		\\
+		&= 
+			\left( 1- \frac{2}{\pi} \right)
+			\sum_{n=0}^\infty 
+			\frac{\sin(2nx)}
+			{2n(\kappa - 4n^2)} 
+			(-1)^n
+		\\
+	\end{aligned}
+	\\
+\end{gather*}
+\filbreak
+
+\begin{problem}{3}
+\end{problem}
+The two dimension wave equation is given by
+\begin{gather*}
+	\frac{1}{v^2} \frac{\partial^2 \psi(x,y,t)}{\partial t^2}
+		- \frac{\partial^2 \psi(x,y,t)}{\partial x^2}
+		- \frac{\partial^2 \psi(x,y,t)}{\partial y^2}
+		= 0. \\
+	\intertext{Substituting the seperable form, $\psi(x,y,t) = X(x)Y(y)T(t)$, into the
+	equation,}
+	\frac{1}{v^2} \frac{1}{T(t)} \frac{\diff^2 T(t)}{\diff t^2}
+		- \frac{1}{X(x)} \frac{\diff^2 X(x)}{\diff x^2}
+		- \frac{1}{Y(x)} \frac{\diff^2 Y(y)}{\diff y^2}
+		= 0. \\
+	\intertext{For constants $-u^2$, $-v^2$ and $-w^2 = -u^2 - v^2$,}
+	\frac{1}{X(x)} \frac{\diff^2 X(x)}{\diff x^2} = -u^2,\
+	\frac{1}{Y(x)} \frac{\diff^2 Y(y)}{\diff y^2} = -v^2,\
+	\frac{1}{v^2} \frac{1}{T(t)} \frac{\diff^2 T(t)}{\diff t^2} = -w^2. \\
+	X(x) = U_1 \cos (ux) + U_2 \sin(ux),\
+	Y(x) = V_1 \cos (vy) + V_2 \sin(vy),\
+	T(x) = W_1 \cos (wvt) + W_2 \sin(wvt) \\
+	\intertext{The boundary conditions are given as follows}
+	\begin{cases}
+		BC1: & \psi(0,y,t) = 0, \\
+		BC2: & \psi(a,y,t) = 0, \\
+		BC3: & \psi(x,0,t) = 0, \\
+		BC4: & \psi(x,b,t) = 0, \\
+		BC5: & \psi(x,y,0) = 
+			\sin\left( \frac{\pi x}{a} \right)
+			\sin\left( \frac{\pi y}{b} \right). \\
+	\end{cases} \\
+	\intertext{For $m, n \in \mathbb{Z}^+$,}
+	(BC1) \land (BC2) \Rightarrow A_1 = 0,\ u_n = \frac{n\pi}{a}, \\
+	(BC3) \land (BC4) \Rightarrow B_1 = 0,\ v_n = \frac{m\pi}{b}. \\
+	w_{n,m} = \sqrt{
+		\left( \frac{n\pi x}{a} \right)^2
+		+ \left( \frac{m\pi y}{b} \right)^2
+	} \\
+	\begin{aligned}
+		\psi(x,y,t) &= 
+			\sum_{n,m} \left( 
+				U_{n,m} \sin \left( \frac{n\pi x}{a} \right)
+			\right) 
+			\left( 
+				V_{n,m} \sin \left( \frac{m\pi y}{b} \right)
+			\right) 
+			\left( 
+				W_{n,m} \cos (w_{n,m}vt) + W_{n,m}' \sin(w_{n,m}vt)
+			\right) \\
+		&= \sum_{n,m} 
+			\sin \left( \frac{n\pi x}{a} \right)
+			\sin \left( \frac{m\pi y}{b} \right)
+			\left[ 
+				S_{n,m} \cos (w_{n,m}vt) + T_{n,m} \sin(w_{n,m}vt)
+			\right] \\
+	\end{aligned}
+	\\
+	\intertext{For $i, j > 1$,}
+	(BC5) \Rightarrow S_{1,1} = 1,\ S_{i,j} = 0. \\
+	\therefore \psi(x,y,t) = 
+			\sum_{n=1}^\infty \sum_{m=1}^\infty
+			\sin \left( \frac{n\pi x}{a} \right)
+			\sin \left( \frac{m\pi y}{b} \right)
+			\left( 
+				\delta_{n,1} \delta_{m,1} \cos (w_{n,m}vt) + T_{n,m} \sin(w_{n,m}vt)
+			\right) \\
+\end{gather*}
+
+\end{document}

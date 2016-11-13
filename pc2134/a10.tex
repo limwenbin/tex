@@ -1,0 +1,246 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 10}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{align*}
+	\mathcal{L} \{ \cosh(at) \cos(at) \}
+	&= \mathcal{L} \left\{ 
+		\frac{e^{at} + e^{-at}}{2}
+		\cdot
+		\frac{e^{iat} + e^{-iat}}{2}
+	\right\} \\
+	&= \frac{1}{4} \mathcal{L} \{ 
+		e^{(1+i)at} + e^{(i-1)at}
+		+ e^{(1-i)at} + e^{(-1-i)at}
+	\} \\
+	&= \frac{1}{4} \left[
+		\frac{1}{s-(1+i)a}
+		+ \frac{1}{s-(i-1)a}
+		+ \frac{1}{s-(1-i)a}
+		+ \frac{1}{s+(i+1)a}
+	\right]
+\end{align*}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{align*}
+	\mathcal{L} \{ \cosh(at) \cos(at) \}
+	&= \mathcal{L} \left\{ 
+		\frac{e^{at} - e^{-at}}{2}
+		\cdot
+		\frac{e^{iat} - e^{-iat}}{2}
+	\right\} \\
+	&= \frac{1}{4} \mathcal{L} \{ 
+		e^{(1+i)at} - e^{(i-1)at}
+		- e^{(1-i)at} + e^{(-1-i)at}
+	\} \\
+	&= \frac{1}{4} \left[
+		\frac{1}{s-(1+i)a}
+		- \frac{1}{s-(i-1)a}
+		- \frac{1}{s-(1-i)a}
+		+ \frac{1}{s+(i+1)a}
+	\right]
+\end{align*}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{align*}
+	\mathcal{L}^{-1} \left\{ \frac{k^2}{s(s^2+k^2)} \right\}
+	&= k \mathcal{L}^{-1} \left\{ \frac{1}{s} \left( \frac{k^2}{s^2+k^2}
+		\right) \right\} \\
+	&= k \int_0^t \sin(ku) \diff u
+\end{align*}
+\filbreak
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{gather*}
+	\frac{s}{(s^2+a^2)(s^2+b^2)} 
+		=
+		\frac{As + B}{s^2+a^2}
+		+ \frac{Cs + D}{s^2+b^2}
+	\\
+	(As+B) (s^2+b^2) + (Cs+D) (s^2+a^2) = s \\
+	Bb^2 + Da^2 = 0 \\
+	\intertext{Set $B = D = 0$.}
+	As^3 + Cs^3 = 0 \Rightarrow A = -C \\
+	Ab^2 + Ca^2 = 1 \\
+	A = \frac{1}{b^2-a^2},\ B = \frac{1}{a^2-b^2} \\
+	\begin{aligned}
+		\therefore \mathcal{L}^{-1} \left\{ \frac{s}{(s^2+a^2)(s^2+b^2)} \right\}
+		&= \mathcal{L}^{-1} \left\{ 
+			\frac{s}{(b^2-a^2)(s^2+a^2)} 
+			+
+			\frac{s}{(a^2-b^2)(s^2+b^2)} 
+		\right\} \\
+		&= 
+			\frac{1}{b^2-a^2} 
+			\mathcal{L}^{-1} \left\{ 
+				\frac{s}{s^2+a^2} 
+			\right\} 
+			+
+			\frac{1}{a^2-b^2} 
+			\mathcal{L}^{-1} \left\{ 
+				\frac{s}{s^2+b^2} 
+			\right\} 
+		\\
+		&= 
+			\frac{1}{b^2-a^2} 
+			\cos(at)
+			+
+			\frac{1}{a^2-b^2} 
+			\cos(bt)
+	\end{aligned}
+\end{gather*}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{gather*}
+	m \frac{\diff^2 x(t)}{\diff t^2} + b \frac{\diff x(t)}{\diff t} + kx(t) = 0 \\
+	\intertext{Taking the Laplace transform,}
+	m \mathcal{L} \left\{ \frac{\diff^2 x}{\diff t^2} \right\}
+		+ b \mathcal{L} \left\{ \frac{\diff x}{\diff t} \right\}
+		+ k\bar{x}(s) = 0 .
+	\\
+	m \left[ 
+			s^2\bar{x}(s) - sx(t) - \frac{\diff x(t)}{\diff t} 
+		\right]_{t=0}
+		+ b \left[ 
+			s\bar{x}(s) - sx(t)
+		\right]_{t=0}
+		+ k\bar{x}(s) = 0
+	\\
+	m s^2\bar{x}(s) - m v_0 
+		+ b s\bar{x}(s)
+		+ k\bar{x}(s) = 0
+	\\
+	\bar{x}(s) = \frac{m v_0}{
+		ms^2 + bs + k
+	}
+	\intertext{Completing the square,}
+	\bar{x}(s) = \frac{v_0}{
+		\left( s + \frac{b}{2m} \right)^2
+		+
+		\left( \frac{k}{m} - \frac{b^2}{4m^2} \right)
+	}.
+	\intertext{(i) For the underdamped system, $\frac{k}{m} - \frac{b^2}{4m^2}
+	> 0$.}
+	\mathcal{L}^{-1} \{ \bar{x}(s) \} 
+		= 
+		v_0
+		\text{exp} \left(
+			-\frac{b}{2m} t
+		\right)
+		\left( 
+			\frac{k}{m} - \frac{b^2}{4m^2}
+		\right)^{-1/2}
+		\sin \left(
+			t\sqrt{\frac{k}{m} - \frac{b^2}{4m^2}}
+		\right)
+	\intertext{(iii) For the overdamped system, $\frac{k}{m} - \frac{b^2}{4m^2}
+	< 0$.}
+	\mathcal{L}^{-1} \{ \bar{x}(s) \} 
+		= 
+		v_0
+		\text{exp} \left(
+			-\frac{b}{2m} t
+		\right)
+		\left( 
+			\frac{b^2}{4m^2} - \frac{k}{m} 
+		\right)^{-1/2}
+		\sinh \left(
+			t\sqrt{\frac{b^2}{4m^2} - \frac{k}{m}}
+		\right)
+\end{gather*}
+\filbreak
+\begin{gather*}
+	\intertext{(ii) For the critically damped system, $\frac{k}{m} - \frac{b^2}{4m^2}
+	= 0$.}
+	\mathcal{L}^{-1} \{ \bar{x}(s) \} 
+		= 
+		\text{exp} \left(
+			-\frac{b}{2m} t
+		\right)
+		\frac{v_0t}{2}
+\end{gather*}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{gather*}
+	m \frac{\diff^2 x(t)}{\diff t^2} + b \frac{\diff x(t)}{\diff t} + kx(t)
+		+ k\bar{x}(s) = 0 \\
+	\intertext{Taking the Laplace transform,}
+	m s^2\bar{x}(s) - m v_0 
+		+ b s\bar{x}(s)
+		+ k\bar{x}(s) 
+		=
+		\frac{F_0 \omega}{s^2 + \omega^2}.
+	\\
+	\bar{x}(s) = \frac{m v_0}{
+			ms^2 + bs + k
+		}
+		+
+		\frac{F_0 \omega}{(s^2 + \omega^2)(ms^2 + bs + k)}
+	\\
+	\begin{aligned}
+	g(t) &:= 
+		\mathcal{L}^{-1} \left\{
+			\frac{m v_0}{ ms^2 + bs + k }
+		\right\}
+	\\
+	&= 
+		v_0
+		\text{exp} \left(
+			-\frac{b}{2m} t
+		\right)
+		\left( 
+			\frac{k}{m} - \frac{b^2}{4m^2}
+		\right)^{-1/2}
+		\sin \left(
+			t\sqrt{\frac{k}{m} - \frac{b^2}{4m^2}}
+		\right)
+	\end{aligned}
+	\\
+	x(t) = 
+		g(t)
+		+
+		\mathcal{L}^{-1} \left\{ 
+			\frac{F_0 \omega}{(s^2 + \omega^2)(ms^2 + bs + k)}
+		\right\}
+	\\
+	\intertext{By the Laplace convolution theorem,}
+	\mathcal{L}^{-1} \left\{
+			F_0
+			\frac{\omega}{s^2 + \omega^2}
+			\cdot
+			\frac{1}{ms^2 + bs + k}
+		\right\}
+		= 
+		\frac{F_0}{mv_0} \sin(\omega t) \ast g(t).
+	\\
+	\therefore x(t) = 
+		g(t)
+		+
+		\frac{F_0}{mv_0} \sin(\omega t) \ast g(t)
+	\\
+\end{gather*}
+
+\end{document}

@@ -6,6 +6,7 @@
 \usepackage{mathtools,amsmath,amsthm,amsfonts,amssymb}
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
+\usepackage{bm} % for \bm
 
 
 \pdfinfo{
@@ -207,9 +208,9 @@ $\lim_{n\to\infty} D = \frac{1+\mu}{m\mu} = \frac{1+\lambda/m}{\lambda}$;
 $D_m = \frac{1}{1+\lambda/m}$;
 $\frac{dP}{d\lambda} = \left(- \frac{1}{1+\lambda/m} D \right) P = -D_m P$;
 $P(\lambda + \Delta\lambda) \approx P(\lambda) - (D_mP)\Delta\lambda$;
-$\Delta P \approx (-D_mP)\Delta\lambda$;
+$\Delta P \approx (-D_mP)\Delta \lambda$;
 \% change in price: $\frac{\Delta P}{P} \times 100\% \approx
-	(-D_m)\Delta\lambda \times 100\%$;
+	(-D_m)\Delta \lambda \times 100\%$;
 
 \subsubsection{Duration of Bond Portfolio}
 $D_p = \sum_{i=1}^n \alpha_i D_i$ where $\alpha_i =$ fraction invested in bond $i$.
@@ -218,7 +219,7 @@ $D_p = \sum_{i=1}^n \alpha_i D_i$ where $\alpha_i =$ fraction invested in bond $
 $P(\lambda + \Delta\lambda) \approx P(\lambda) + \frac{dP}{d\lambda} \Delta\lambda 
 	+ \frac{1}{2} \frac{d^2P}{d\lambda^2}(\Delta\lambda)^2$;
 Convexity: $C = \frac{1}{P} \cdot \frac{d^2P}{d\lambda^2}$;
-$\Delta P = P(\lambda + \Delta\labda) - P(\lambda) \approx P \left[ 
+$\Delta P = P(\lambda + \Delta\lambda) - P(\lambda) \approx P \left[ 
 	-D_m \Delta\lambda + \frac{C}{2}(\Delta\lambda)^2 \right]$;
 $C = \frac{F}{P} \left[ \frac{2c}{\lambda^3} \left( 1 -
 	\frac{1}{(1+\lambda/m)^n} \right) - \frac{2nc}{m\lambda^2 (1+\lambda/m)^{n+1}}
@@ -232,6 +233,181 @@ $(1+s_n)^n = (1+s_1)(1+f_{1,2})\ldots(1+f_{n-1,n})$;
 Given $(s_1, \ldots, s_n)$, $\text{PV}(C) = \sum_{i=1}^n \frac{c_i}{(1+s_i)^i}$;
 Bootstrap Method: To find $s_n$ given $(s_1, \ldots, s_n)$ and $n$-year coupon
 	bond, solve $P = \frac{c_1}{1+s_1} + \ldots + \frac{c_n}{1+s_n}$.
+
+\subsection{Chapter 3: Expected Utility Theory}
+$E[U(W)] = E[U(X+w_0)] = \sum_{i=1}^n p_i U(x_i + w_0)$;
+Accept risky prospect if: $E[U(X+w_o)] > U(w_0)$;
+Risk adverse: $U$ is strictly concave $\Leftrightarrow U'' < 0 \Leftrightarrow
+	E[U(X)] < U(E[X])$ (Jensen's inequality);
+Risk neutral: $U$ is linear $\Leftrightarrow U'' = 0 \Leftrightarrow
+	E[U(X)] = U(E[X])$;
+Risk seeking: $U$ is strictly convex $\Leftrightarrow U'' > 0 \Leftrightarrow
+	E[U(X)] > U(E[X])$;
+Positive affine transformations: For $\alpha > 0, \beta \in \mathbb{R}$,
+	$U \sim V \Leftrightarrow U = \alpha V + \beta$;
+
+\subsubsection{Certainty Equivalent and Risk Premium}
+Certainty equivalent: $U(CE) = E[U(w_0 + X))$, $CE > w_0
+	\Rightarrow$ invest in $X$;
+$U \sim V \Rightarrow CE(X, V) = CE(X, U)$;
+Risk premium: $U(w_0 - RP) = E[U(w_0 + X)], RP = w_0 - CE$, $RP > w_0
+	\Rightarrow$ invest in $X$;
+
+\subsubsection{Arrow-Pratt Measures of Risk Aversion}
+Absolute risk aversion function:
+	$U_{\text{ARA}}(w) = -\frac{U''(w)}{U'(w)} = -[\ln(U')]'$;
+Relative risk aversion function:
+	$U_{\text{RRA}}(w) = - w\frac{U''(w)}{U'(w)}$;
+$U_{\text{ARA}} > V_{\text{ARA}} \forall w \Leftrightarrow \exists g, g'' < 0 \text{
+	s.t. } U = g(V)\Leftrightarrow U$ is globally more risk
+	averse than $V$;
+$U_{\text{ARA}} = V_{\text{ARA}} \Leftrightarrow U \sim V$;
+
+Portfolio Selection: For random rate of return r, maximize $E[U(w_x(1 + \alpha r))]$ 
+using closed interval method;
+For $U(x) = a-be^{-\lambda x}$, two investments with normally distributed returns, 
+	maximize $f(\alpha) = \alpha \mu_1 + (1-\alpha) \mu_2 - \frac{\lambda w_0}{2}
+	(\alpha^2 \sigma_1^2 + (1-\alpha)^2 \sigma_2^2)$;
+
+\subsection{Chapter 4: Mean-Variance Analysis}
+Rate of return: $r = \frac{W_1 - W_0}{W_0}$;
+Correlation: $\rho_{i,j} = \frac{\sigma_{i,j}}{\sigma_i \sigma_j}$;
+
+\subsubsection{Portfolio Mean and Variance}
+$\mu_p = \bm{w}^T \bm{u} = \sum_{i=1}^n w_i \mu_i$;
+$\sigma_p^2 = \bm{w}^T\bm{C}\bm{w} 
+	= \sum_{j=1}^n \sum_{i=1}^n w_i w_j \sigma_{i,j} 
+	= \sum_{i=1}^n w_i^2 \sigma_{i}^2
+	+ \sum_{j=1}^n \sum_{\substack{i=1,\\i\ne j}}^n w_i w_j \sigma_{i,j}$;
+$\bm{C}$ is symmetric, invertible and positive definite.
+Cov$(r_1,r_2) = \bm{w}_1^T\bm{C}\bm{w}_2$;
+$\frac{\partial}{\partial\bm{w}} (\bm{w}^T\bm{C}\bm{w})
+	= 2\bm{C}\bm{w}$;
+$\frac{\partial}{\partial\bm{w}} (\bm{a}^T\bm{w}) = \bm{a}$;
+
+\subsubsection{Portfolios of Two Assets}
+$\sigma_p^2 = \alpha^2 \sigma_1^2 + (1-\alpha)^2 \sigma_2^2 +
+	2\alpha(1-\alpha)\rho_{1,2}\sigma_1\sigma_2$;
+$\alpha_{\text{GMVP}} = \alpha^* = \frac{\sigma_2(\sigma_2 - \rho_{1,2}\sigma_1)}
+	{\sigma_1^2 + \sigma_2^2 - 2\rho_{1,2}\sigma_1\sigma_2}$;
+$(\sigma^2)_{\text{GMVP}} = \frac{\sigma_1^2\sigma_2^2 (1 - \rho_{1,2}^2)}
+	{\sigma_1^2 + \sigma_2^2 - 2\rho_{1,2}\sigma_1\sigma_2}$;
+$\mu_{\text{GMVP}} = \alpha^* \mu_1 + (1-\alpha^*)\mu_2$;
+Completing the square: $ax^2 + bx + c = a\left( x+\frac{b}{2a}
+	\right)^2 + c - \frac{b^2}{4a}$;
+Shortselling not allowed $\Rightarrow 0 \le \alpha \le 1$;
+Feasible set $F$: $\rho = 1 \Rightarrow F$ is a line, $\rho = -1 \Rightarrow F$
+	is V-shaped graph of two straight lines meeting at the GMVP, $|\rho| < 1
+	\Rightarrow F$ is a curve connecting the two points.
+
+Feasible set of portfolio with $n > 2$ assets: $F$ is convex; $\forall \mu \in
+	\mathbb{R}, \exists \sigma^* : (\sigma^*, \mu) \in F, (\sigma,\mu) \in F \Rightarrow
+	\sigma^* \le \sigma$;
+
+\subsection{Chapter 5: Portfolio Theory \& CAPM}
+\subsubsection{Lagrange Multiplier Derivation}
+Solve $\frac{\partial L}{\partial w_i} = 0$ i.e.
+	$\bm{C} \bm{w} = \lambda_1 \bm{1} + \lambda_2 \bm{\mu}$,
+	$\bm{1}^T \bm{w} = 1$,
+	and $\bm{\mu}^T \bm{w} = \mu$.
+\[
+	A 
+	= \left( \begin{array}{cc}
+		a & b\\
+		b & c\\
+	\end{array} \right)
+	=
+	\left( \begin{array}{cc}
+		\bm{1}^T \bm{C}^{-1} \bm{1} & \bm{1}^T \bm{C}^{-1} \bm{\mu}\\
+		\bm{1}^T \bm{C}^{-1} \bm{\mu} & \bm{\mu}^T \bm{C}^{-1} \bm{\mu}\\
+	\end{array} \right),\
+	A
+	\bm{\lambda}
+	=
+	\left( \begin{array}{c}
+		1\\
+		\mu\\
+	\end{array} \right)
+\]
+$A^{-1}$ yields $\lambda_1 = \frac{c-b\mu}{ac-b^2},\ 
+	\lambda_2 = \frac{a\mu-b}{ac-b^2}$;
+$ac-b^2 = \Delta > 0$;
+
+\subsubsection{Minimum Variance Frontier}
+$\bm{w}_{\mu}^* = \lambda_1 \bm{C}^{-1} \bm{1} + \lambda_2 \bm{C}^{-1} \bm{\mu}$;
+$\sigma_p^2 = \frac{a\mu_p^2 - 2b\mu_p + c}{ac - b^2}$;
+Completing the square, minimum-variance frontiers curve: $\sigma_p^2 =
+	\frac{a}{\Delta} \left( \mu - \frac{b}{a} \right)^2 + \frac{1}{a}$;
+Equivalently, $a\sigma^2 - \frac{a^2}{\Delta} \left( \mu - \frac{b}{a}
+	\right)^2 = 1$;
+$\sigma_{GMVP} = \sqrt{\frac{1}{a}}$;
+$\mu_{\text{GMVP}} = \frac{b}{a}$;
+$\bm{w}_{\text{GMVP}} = \frac{\bm{C}^{-1} \bm{1}}{\bm{1}^T \bm{C}^{-1} \bm{1}}$;
+Asymptotes: $\sigma = \sqrt{\frac{a}{\Delta}} \left| \mu - \frac{b}{a} \right|$;
+$\forall$ portfolio $p$, Cov$(r_p, r_{\text{GMVP}}) = \sigma^2_{\text{GMVP}}$;
+The upper half of the minimum variance frontier is the efficient frontier 
+$\mu_p > \frac{b}{a}$.
+
+\subsubsection{Two Fund Theorem}
+$w_{f1} = \frac{\bm{C}^{-1} \bm{1}}{\bm{1}^T \bm{C}^{-1} \bm{1}} (\text{GMVP}),\ 
+	w_{f2} = \frac{\bm{C}^{-1} \bm{\mu}}{\bm{1}^T \bm{C}^{-1} \bm{\mu}}$;
+$\mu_{f1} = \frac{b}{a},\ \mu_{f2} = \frac{c}{b}$;
+$\sigma_{f1} = \frac{1}{a},\ \sigma_{f2} = \frac{c}{b^2}$;
+$b > 0 \Rightarrow \frac{c}{b} > \frac{b}{a} (\because \Delta > 0) \Rightarrow$ 
+	fund 2 is efficient;
+For $\bm{w}_1 \ne \bm{w}_2$ on the MVF, $\bm{w}$ is on the MVF $\Leftrightarrow
+	\exists \alpha \in \mathbb{R} \text{ s.t. } \bm{w} = \alpha \bm{w}_1 +
+	(1-\alpha) \bm{w}_2$;
+If $\{\bm{w}_1, \bm{w}_2\}$ are efficient and $\bm{w} \in
+	\text{span}\{\bm{w}_1, \bm{w}_2\}$, $\bm{w}$ is efficient.
+A portfolio on the MVF is efficient if $\mu > \frac{b}{a}$;
+
+\subsubsection{Portfolios with a Risk-free Asset}
+$\mu_p = (1 - \bm{1}^T \bm{w}) r_f + \bm{w}^T \bm{\mu}$;
+$\sigma_p^2 = \bm{w}^T \bm{C} \bm{w}$;
+MVP with mean $\mu$:
+	$\bm{w} = \frac{ (\mu-r_f) \bm{C}^{-1} (\bm{\mu} - r_f\bm{1}) }
+		{(\bm{\mu}-r_f\bm{1})^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})}$,
+	$\sigma^2 = \frac{(\mu - r_f)^2}{c - 2br_f + ar_f^2}$;
+Tangency portfolio (only portfolio that lies on MVF and CML):
+	$\bm{w}_{\tan} = \frac{ \bm{C}^{-1} (\bm{\mu} - r_f\bm{1}) }
+		{\bm{1}^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})}$,
+	$\mu_{\tan} = \frac{\bm{\mu}^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})}
+		{\bm{1}^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})}$
+		$= \frac{c-r_f b}{b-r_f a}$,
+	$\sigma_{\tan} = \frac{(\bm{\mu}-r_f\bm{1})^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})}
+		{[\bm{1}^T \bm{C}^{-1} (\bm{\mu} - r_f\bm{1})]^2}
+		= \frac{c-2r_f b+ar_f^2}{(b-r_f a)^2}$;
+In equilibrium, market portfolio = tangency portfolio.
+
+\subsubsection{Capital Market Line}
+CML is tangent to MVF and is the efficient frontier for portfolio involving
+	both risky and risk-free assets.
+Equation for MVF of $(n+1)$ assets:
+	$\sigma = (c-2br_f+ar_f^2)^{-1/2} |\mu-r_f|$;
+Equation of CML:
+	$\mu_p = r_f + \frac{\sigma_p}{\sigma_{\tan}}(\mu_{\tan}-r_f)$;
+Sharpe ratio: $SR_p = \frac{\mu_p - r_f}{\sigma_p}$, portfolios on the CML have the highest $SR$.
+One fund theorem: Investors only hold portfolios on the CML, differing only in
+	the portion $\alpha$ invested in the tangency portfolio.
+
+\subsubsection{Capital Asset Pricing Model}
+Market portfolio: $w_i = \frac{u_i p_i}{\sum_{i=1}^n u_i p_i}$, in equilibrium its equal to the tangency portfolio; \\
+CML: $\mu_p - r_f = \frac{\sigma_p}{\sigma_m}(\mu_m - r_f)
+	= \frac{\sigma_p}{\sigma_m} RP$; \\
+CAPM: $\mu_i - r_f = \frac{\sigma_{i,m}}{\sigma_m^2}(\mu_m - r_f)
+	= \beta(\mu_m - r_f)$;
+$\beta_p = \sum_{i=1}^n w_i \beta_i = \bm{w}^T \bm{\beta}$;
+$\forall p$ on the CML, $r_p = \alpha r_m + (1-\alpha)r_f,\ \alpha > 0$,
+$\beta_p = \alpha,\ \sigma_p = \alpha \sigma_m$;
+$\mu_i = \mu_j \Leftrightarrow \beta_i = \beta_j$;
+An asset if undervalued (underpriced) if estimated return $>$ CAPM return.
+SML: For all assets $i$, $\mu_i r_f + \beta_i(\mu_m - r_f)$;
+Systematic risk:
+	Var$(r_i) = \beta_i^2 \sigma_m^2 + \text{Var}(\epsilon_i)$,
+	$\epsilon_i = r_i - [r_f + \beta_i (r_m - r_f)]$, $E[\epsilon_i] = 0$, 
+	Cov$(\epsilon_i,r_m) = 0$;
+An asset has systematic risk $\Leftrightarrow$ it lies on the CML;
 
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}

@@ -1,0 +1,220 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{mathtools,amsmath,amsthm,amssymb,amsfonts}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+
+\title{PC2134 Assignment 8}
+\author{Lim Wen Bin \\
+A0140764H\\
+Group 1}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+\begin{align*}
+	\intertext{With respect to $\mathbf{r}$,}
+	\mathcal{F} \{ \Psi(\mathbf{r}, t) \} &= \left(\frac{1}{2\pi}\right)^{3/2}
+		\iiint \text{exp} (-i \mathbf{k} \cdot \mathbf{r}) \Psi(\mathbf{r}, t)
+		\Diff{3}\mathbf{r} \\
+	\mathcal{F} \{ \Psi(\mathbf{\hbar r}, t) \} &= \frac{1}{\hbar}
+		\left(\frac{1}{2\pi}\right)^{3/2} \iiint \text{exp} \left( -\frac{i}{\hbar}
+		\mathbf{k} \cdot \mathbf{r} \right) \Psi(\mathbf{r}, t) \Diff{3}\mathbf{r} \\
+	&=  \sqrt{\hbar} \left(\frac{1}{2\pi\hbar}\right)^{3/2} \iiint \text{exp} \left(
+		-\frac{i}{\hbar} \mathbf{k} \cdot \mathbf{r} \right) \Psi(\mathbf{r}, t)
+		\Diff{3}\mathbf{r}
+	\shortintertext{Rewriting,}
+	\Phi (\mathbf{p}, t) &= \frac{1}{\sqrt{\hbar}} \mathcal{F} \{
+		\Psi(\hbar \mathbf{u}, t) \}. \\
+	\iiint |\Phi(\mathbf{p}, t)|^2 \Diff{3}\mathbf{p}
+		&= \frac{1}{\hbar} \iiint |\widetilde{\Psi}(\hbar \mathbf{u}, t)|^2
+		\Diff{3}\mathbf{p} 
+		\\
+		&= \frac{1}{\hbar} \iiint |\Psi(\hbar \mathbf{u}, t)|^2
+		\Diff{3}(\mathbf{\hbar u})
+		\\
+		&= \frac{1}{\hbar} \iiint |\Psi(\hbar \mathbf{u}, t)|^2
+		\Diff{3}(\mathbf{\hbar u})
+		\\
+		&= \iiint |\Psi(\hbar \mathbf{r}, t)|^2
+		\Diff{3}\mathbf{r}
+		\\
+		&= 1
+\end{align*}
+\end{proof}
+\filbreak
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+\begin{gather*}
+	\intertext{By Leibniz's rule,}
+	\frac{\partial \Phi}{\partial t} = 
+		\left( \frac{1}{2\pi\hbar} \right)^{3/2} 
+		\iiint
+			\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+			\frac{\partial \Psi}{\partial t}
+		\Diff{3}\mathbf{r}.
+	\intertext{From Schrodinger's equation,}
+	i\hbar \frac{\partial \Psi}{\partial t} = 
+		\frac{-\hbar^2}{2m} \nabla^2 \Psi + V\Psi.
+	\\
+	\begin{aligned}
+		i\hbar \frac{\partial \Phi}{\partial t} &= 
+			\left( \frac{1}{2\pi\hbar} \right)^{3/2} 
+			\iiint
+				\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+				\left(
+					\frac{-\hbar^2}{2m} \nabla^2 \Psi + V\Psi
+				\right)
+			\Diff{3}\mathbf{r}
+		\\
+		&= 
+			-\frac{\hbar^2}{2m}
+			\left( \frac{1}{2\pi\hbar} \right)^{3/2} 
+			\iiint
+				\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+				\left(
+					\nabla^2 \Psi
+				\right)
+			\Diff{3}\mathbf{r}
+		\\
+		&\phantom{=}
+			+
+			\left( \frac{1}{2\pi\hbar} \right)^{3/2} 
+			\iiint
+				\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+				\left(
+					V\Psi
+				\right)
+			\Diff{3}\mathbf{r}
+		\\
+		&= 
+			-\frac{i\sqrt{\hbar} \mathbf{p}}{2m\hbar}
+			\left( \frac{1}{2\pi} \right)^{3/2} 
+			\iiint
+				\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+				\left(
+					\nabla \Psi
+				\right)
+			\Diff{3}\mathbf{r}
+		\\
+		&\phantom{=}
+			+
+			\frac{1}{\sqrt{\hbar}}
+			\mathcal{F}\{  V(\hbar \mathbf{r}, t) \Psi(\hbar \mathbf{r}, t) \}
+		\\
+		&= 
+			\frac{\mathbf{p}^2}{2m}
+			\left( \frac{1}{2\pi\hbar} \right)^{3/2} 
+			\iiint
+				\text{exp} \left( -\frac{i}{\hbar} \mathbf{p} \cdot \mathbf{r} \right)
+				\Psi
+			\Diff{3}\mathbf{r}
+		\\
+		&\phantom{=}
+			+
+			% the hbar is bullshit
+			\left( \frac{1}{\sqrt{2\pi\hbar}} \right)^{3/2}
+			\mathcal{F} \{ V(\hbar \mathbf{r}, t) \}
+			*
+			\left(
+				\frac{1}{\sqrt{\hbar}}
+				\mathcal{F} \{ \Psi(\hbar \mathbf{r}, t) \}
+			\right)
+		\\
+		&= 
+			\frac{\mathbf{p}^2}{2m}
+			\Phi
+			+
+			\widetilde{V} (\mathbf{p}, t)
+			*
+			\Phi(\mathbf{p}, t)
+		\\
+		&= 
+			\frac{\mathbf{p}^2}{2m}
+			\Phi
+			+
+			\iiint
+			\widetilde{V} (\mathbf{p} - \mathbf{p'}, t)
+			\Phi(\mathbf{p'}, t)
+			\Diff{3} \mathbf{p'}
+		\\
+	\end{aligned}
+	\shortintertext{where}
+	\widetilde{V} (\mathbf{p} - \mathbf{p}', t) =
+		\left( \frac{1}{2\pi\hbar} \right)^2 
+		\iiint
+			\text{exp} \left( 
+				-\frac{1}{\hbar} (\mathbf{p} - \mathbf{p}') \cdot \mathbf{r} 
+			\right) 
+			V(\mathbf{r}, t) 
+		\Diff{3} \mathbf{r}
+\end{gather*}
+\end{proof}
+\filbreak
+
+\begin{problem}{2}
+\end{problem}
+\begin{align*}
+	\widetilde{f}(k) &=
+		\frac{1}{\sqrt{2\pi}}
+		\int_{-\infty}^\infty e^{-ikx} f(x) \diff x
+	\\
+	&=
+		\frac{1}{\sqrt{2\pi}}
+		\int_{-1}^1 e^{-ikx} \pi \diff x
+	\\
+	&=
+		\sqrt{2\pi}
+		% \left| why do we need these?
+			\frac{\sin k}{k}
+		% \right|
+	\\
+	I_1 &= 
+		\frac{1}{\sqrt{2\pi}}
+		\int_{-\infty}^\infty 
+			\widetilde{f}(k)
+		\diff k
+	\\
+	&= 
+		\frac{1}{2}
+		\int_{-\infty}^\infty 
+			\int_{-1}^1 e^{-ikx} \diff x
+		\diff k
+	\\
+	&=
+		\frac{1}{2} (2\pi)
+	\\
+	&= \pi \\
+	I_2 &= 
+		\frac{1}{\sqrt{2\pi}}
+		\int_{-\infty}^\infty 
+			|\widetilde{f}(k)|^2
+		\diff k
+	\\
+	&= 
+		\frac{1}{\sqrt{2\pi}}
+		\int_{-\infty}^\infty 
+			|f(x)|^2
+		\diff x
+	\\
+	&= \frac{1}{\sqrt{2\pi}}
+		\int_{-1}^1
+			\pi^2
+		\diff x
+	\\
+	&= \pi\sqrt{2\pi}
+\end{align*}
+\filbreak
+
+\end{document}

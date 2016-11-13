@@ -166,7 +166,7 @@ Income statement, Statement of retained earning, Statement of cash flows.
 Assets = Liailities + Equity: Lists item from decreasing liquidity, valued
 at original cost (except for marketable securities and inventories). \\
 
-\textbf{Market value of shareholders' equity} = Share price * Number of
+\textbf{Market value of shareholders' equity} = Share price $\times$ Number of
 outstanding shares;
 \textbf{Enterprise value} = Market value of assets + Debt - Excess cash
 (and other non-operating assets); 
@@ -201,12 +201,12 @@ from financing decisions (excludes interest bearing CL i.e. notes payable). \\
 (NOWC);
 Alternatively, CFFA = NI + depreciation - AP - AR + Inventory - NCS;
 
-\textbf{OCF} = EBIT + Depreciation - (EBIT * Tax rate);
+\textbf{OCF} = EBIT + Depreciation - (EBIT $\times$ Tax rate);
 \textbf{NCS} = Ending fixed assets - Beginning fixed assets + Depreciation;
 \textbf{NOWC} = CA - CL (Excluding notes payable);
 $\Delta$\textbf{NOWC} = Ending NOWC - Beginning NOWC;
 \textbf{Interest tax shield} = Cash saved from reduction in taxes due to
-tax-free interest = Interest * Tax rate;
+tax-free interest = Interest $\times$ Tax rate;
 \textbf{Cash flow to creditors} = Interest paid - Net new borrowing (LT-Debt
 and Note payable);
 \textbf{Cash flow to stockholders} = Dividends - Net new equity raised;
@@ -256,12 +256,12 @@ and Note payable);
 \textbf{M/B} = $\frac{\text{Market share price}}{\text{Book share price}}$;
 \\
 
-\textbf{Dupont Identity}: ROE = Profit margin * TA turnover * Equity multiplier
-= ROA * EM;
+\textbf{Dupont Identity}: ROE = Profit margin $\times$ TA turnover $\times$ Equity multiplier
+= ROA $\times$ EM;
 
 \subsection{Lecture 3: Time Value of Money}
 
-\subsubsection{Annuities & Perpetuities}
+\subsubsection{Annuities \& Perpetuities}
 
 \textbf{Ordinary annuities} have cash flows at the end of each period.
 \textbf{Annuity dues} have cash flows at the beginning of each period.
@@ -273,12 +273,11 @@ grow at a constant rate each period.
 \textbf{Compound Interest}: FV = PV$(1 + r)^t$,
 $r = (\frac{\text{FV}}{\text{PV}})^{1/t} - 1$,
 $t = \ln(\frac{\text{FV}}{\text{PV}}) / \ln(1+r)$;
-% TODO: derive this
-\textbf{PV(Annuity)} = PMT * $\frac{1 - (1/(1 + r)^t)}{r}$;
-\textbf{PV(Annuity due)} = PV(Annuity) * (1+r);
-\textbf{FV(Annuity)} = PMT * $\frac{(1+r)^n - 1}{r}$;
-\textbf{FV(Growing annuity)} = PMT1 * $\frac{(1+r)^n - (1+g)^n}{r-g}$;
-\textbf{FV(Annuity due)} = FV(Annuity) * (1+r);
+\textbf{PV(Annuity)} = PMT $\times \frac{1 - (1/(1 + r)^t)}{r}$;
+\textbf{PV(Annuity due)} = PV(Annuity) $\times$ (1+r);
+\textbf{FV(Annuity)} = PMT $\times$ $\frac{(1+r)^n - 1}{r}$;
+\textbf{FV(Growing annuity)} = PMT1 $\times \frac{(1+r)^n - (1+g)^n}{r-g}$;
+\textbf{FV(Annuity due)} = FV(Annuity) $\times$ (1+r);
 \textbf{PV(Perpetuity)} = $\frac{\text{PMT}}{r}$;
 \textbf{PV(Growing perpetuity)} = $\frac{\text{C}_1}{r-g}$;
 \textbf{EAR} = $\left(1 + \frac{\text{APR}}{m}\right)^m -1$;
@@ -324,6 +323,161 @@ Portfolio beta: $\beta_p = \sum w_j \beta_j$;
 Efficient Frontier extends towards the positive return direction from the
 	minimum variance portfolio.
 \textbf{Capital Market Line}: $r_p = r_f + \frac{r_m - r_f}{\sigma_m} \sigma_p$;
+
+\subsection{Lecture 6: Bond Valuation}
+Coupon payment $= \frac{\text{Coupon rate} \times \text{Par value}}{\text{No.
+	of coupon pmts}}$;
+Callable bonds can be redeemed before maturity.
+Convertible bonds can be exchanged for a specified amount of stock of the
+	issuing company.
+Some debts are more senior or junior i.e. are subordinated.
+\textbf{Debentures} are back by the issuer's general credit instead of a
+	collateral (in the case of secured bonds).
+One \textbf{basis point} = 0.001\% = 0.0001.
+The \textbf{bond indenture} contract lays out the details of the issuance of the bond by
+	the company, specifying the sinking fund which helps repay the bond, and the
+	protective covenants that limits risky actions.
+\textbf{Bond Value} = PV of coupons + PV of par $= \text{Coupon} \left(
+	\frac{1-(1+r_d)^{-N}}{r_d}\right) + \frac{\text{Face value}}{(1+r_d)^N}$;
+\textbf{Current yield} = Coupon/Price;
+\textbf{Yield to maturity (YTM)} is the discount rate that relates the payment
+	to the price.
+\textbf{Discount bonds}: Coupon $<$ Current Yield $<$ YTM;
+\textbf{Premium bonds}: Coupon $>$ Current Yield $>$ YTM;
+\textbf{Par bonds}: Coupon = Current Yield = YTM;
+Bonds of similar risk have the same YTM.
+Duration: Bills $<$ Notes $<$ Bonds;
+
+\subsection{Lecture 7: Stock Valuation}
+Stock price = PV of expected cash flows (dividends + sale price);
+\textbf{Constant dividends}: $P_0 = \frac{D_1}{r_E}$;
+\textbf{Constant dividends growth}: $P_0 = \frac{D_1}{r_E-g},\ r_E > g$;
+\textbf{Corporate value method}: Market value = PV of future CFFAs;
+Capital gain yield + Dvd yield = Required return;
+MV of equity = MV of firm - MV of debt;
+Value per share = MV of equity / No. of shares;
+
+\subsection{Lecture 8: Capital Budgeting I}
+\textbf{NPV criterion}: Accept if NPV $> 0$;
+\textbf{(Discounted) Payback criterion}: Payback $=
+	(N-1)\frac{\text{Bal}_{N-1}}{\text{CF}_N}$, accept if (discounted) payback
+	$<$ threshold;
+\textbf{Average accounting return}: Accept if AAR = Ave. NI / Ave. book value
+	$>$ target cutoff rate;
+\textbf{Internal rate of return}: Accept if IRR, the discount rate that sets
+	NPV = 0, $>$ required rate of return;
+NPV and IRR generally yield the same results except for mutually exclusive
+	projects and non-conventional cash flows.
+Crossover rate for two projects = IRR for difference of cash flows.
+\textbf{Modified internal rate of return}: MIRR sets PV of TV = PV of costs, TV
+	is the total of positive CFs compounded to maturity.
+\textbf{Profitability index}: Accept if PI = PV of CFs / Initial investment $>$ 1;
+
+\subsection{Lecture 9: Capital Budgeting II}
+\textbf{WACC} $= \text{ROD} \times (1- T) \times \frac{D}{D+E} + \text{ROE}
+	\frac{E}{D+E}$;
+Depreciation tax shield = D $\times$ T;
+\textbf{Straight-line depreciation}: D = (Initial cost - Salvage) / Years;
+Book Value = Initial cost - Acc. deps;
+\textbf{After-tax salvage value} $= S - T(S-B)$;
+
+\subsubsection{Replacement Projects}
+Initial cost = Cost of new machine - Net salvage of old machine;
+\textbf{Periodic cash flow, OCF} = $(\Delta \text{Costs} - \Delta
+	\text{Deps})(1-T) + \Delta \text{Deps}$;
+Terminal cash flow = Net salvage of new machine - Net salvage of old machine
+	(opp. cost);
+
+\subsubsection{Alternative Methods For Computing OCF}
+\textbf{Bottom-up approach} (no interest expense): OCF = NI + Deps, NI = Sales
+	- Costs - Deps - Taxes; 
+\textbf{Top-down approach} (no interest expense): OCF = Sales - Costs - Taxes,
+	Taxes = Tax rate $\times$ (Sales - Cost - Deps), disregard non-cash
+	deductions or I/E; 
+\textbf{Tax shield approach}: OCF = (Sales - Cost)(1 - T) + Deps $\times$ T;
+
+\textbf{Equivalent Annual Annuities (EAA)}: Given NPVs, find equivalent annuity payments to compare projects that are likely to be renewed indefinitely.
+
+\subsection{Lecture 10: Financial Planning \& Forecasting}
+\textbf{\% of sales approach}: Balance sheet items generally scale with sales.
+	Exceptions are notes payable, LT-debt and equity. Change in retained earnings
+	come from retention ratio.
+\textbf{Additional funds needed}: $\text{AFN} = (A_{\text{var}}/S_0)\Delta S -
+	(L_{\text{var}}/S_0)\Delta S - \text{PM}(S_1)(\text{RR})$, asumming full
+	capacity, constant PM and RR;
+At less than full capacity, fixed assets would remain constant until sales
+reach \textbf{Full capacity} = Current sale / Current capacity;
+\textbf{Internal growth rate} $= \frac{\text{ROA} \times \text{RR}}{1 -
+\text{ROA} \times \text{RR}}$,
+\textbf{Sustainable growth rate} $= \frac{\text{ROE} \times \text{RR}}{1 -
+\text{ROE} \times \text{RR}}$, assuming $L_{\text{var}} = 0$, constant debt ratio;
+\textbf{Determinant of growth: ROE \& RR}: Profit margin - operating efficiency,
+	TA turnover - asset use efficiency, Financial leverage - choice of debt
+	ratio, Dividend policy - choice of paying shareholders vs reinvesting.
+
+\subsection{Lecture 11: Working Capital Management}
+Gross working captial: total current assets;
+Net working capital: CA - CL;
+\textbf{Net operating working capital}: Current assets - Non-interest bearing CL, 
+	NWOC = Op. CA - Op. CL = (Cash + Invent. + A/R) - (Accruals + A/P);
+Working capital policy: Deciding levels of each type of CA to hold and how to
+	finance CA.
+\textbf{Cash} = Equity + LT-Debt + CL - Non-cash CA - FA;
+Cash sources: Increase LT-debt, equity or CL, Decreasing FA or Non-cash CA;
+Cash uses: Decrease LT-debt, equity or CL, Increasing FA or Non-cash CA;
+
+\subsubsection{Operating and Cash Cycle}
+\textbf{Operating cycle} = Invent. period + A/R period;
+\textbf{Invent. period} = 365 / Invent. turnover = Ave invent. / (COGS / 365);
+\textbf{A/R period} = 365 / A/R turnover (DSO) = Ave A/R / (Sales / 365);
+\textbf{A/P period} = 365 / Payables turnover;
+\textbf{Payables turnover} = COGS + $\Delta$Invent. / Ave A/P;
+\textbf{Cash (conversion) cycle} = Op. cycle - A/P period;
+
+\subsubsection{Cash Management}
+Carrying costs increase with CA (e.g. costs to store and finance assets),
+	shortage costs decrease with CA (e.g. trading, order costs, safety
+	reserves).
+Reasons for holding cash: transaction, precaution, compensating balances, speculation.
+\textbf{Lockboxes}: Reduce check processing time by engaging banks to collect and
+	deposit checks, accept if NPV = Reduction in collection time $\times$ Daily deposits -
+	$\frac{\text{Daily fees}}{\text{Discount rate}} > 0$;
+
+\textbf{Disbursement float} (check writing) = T $\times$ (Available bank balance - book
+	balance) $>$ 0;
+\textbf{Collection float} (check collecting) = T $\times$ (Available bank balance - book
+	balance) $<$ 0; \\
+\textbf{Net float} = Disbursement float + Collection float; \\
+\textbf{Ave. daily float} = (Float duration $\times$ Payment amount) / 30;
+
+\subsubsection{Credit Management}
+\textbf{Terms of sale}: "2/10 net 45", 2\% discount if paid in 10 days,
+	total amount due in 45.
+EAR = $(1 + 2/98)^{(365 / (45-10))} - 1$;
+Evaluating proposed policy: accept if NPV = $\frac{\text{Incremental period
+	cash flow}}{\text{Period interest rate}} - \text{Increase in collection dur.}
+	\times \text{Current period cost} - \text{Increase in variable cost}$;
+
+\subsection{Lecture 12: Options}
+Standaridized contracts are exchange-traded while customized contracts are
+	traded OTC.
+\textbf{Call/put options} gives its owner the right to buy/sell an asset at a
+	given price and date.
+Notation: Price of underlying (today/at expiration) $S (S_0 / S_T)$, 
+	Strike price $X$, Interest rate $r$, Price of call today/at expiration $C_0/C_T$;
+\textbf{Call option payoff}: $C_T = \max\{S_T - X, 0\}$;
+\textbf{Put option payoff}: $P_T = \max\{X - S_T, 0\}$;
+Payoff description: In the money $\Leftrightarrow S > X$ for call options;
+\textbf{Put call parity}: Put + Asset = Call + T-bills (with face value = strike),
+	$C + \frac{X}{(1+r_f)^T} = S_0 + P$;
+Option values: Intrinsic value for call = Stock price - Exercise price, intrinsic 
+	value $\ge$ 0, Time value (mostly volatility value) = Price - intrinsic value;
+\textbf{Value bounds}: $\max\{S - X, 0\} \ge$ Call price $\le X$; \\
+$\Delta$\textbf{Option value} (C/P): Increase in $S$ (+/-), 
+	Exercise price (-/+), 
+	$r$ (+/-), 
+	Volatility (+/+), 
+	Expiration (+/+); 
 
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}

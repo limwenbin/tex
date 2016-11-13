@@ -6,7 +6,7 @@
 \usepackage{mathtools,amsmath,amsthm,amsfonts,amssymb}
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
-
+\usepackage{esint} % cyclic integrals
 
 \pdfinfo{
   /Title (example.pdf)
@@ -120,9 +120,9 @@ $\frac{d}{dx} \cot(f(x)) = f'(x)\csc^2(f(x))$;
 % hyperbolic trigo
 $\frac{d}{dx} \cosh(f(x)) = f'(x)\sinh(f(x))$;
 $\frac{d}{dx} \tanh(f(x)) = f'(x)\text{sech}^2(f(x))$;
-$\frac{d}{dx} \text{csch}(f(x)) = -f'(x)\csch(f(x))\coth(f(x))$;
+$\frac{d}{dx} \text{csch}(f(x)) = -f'(x)\text{csch}(f(x))\coth(f(x))$;
 $\frac{d}{dx} \text{sech}(f(x)) = -f'(x)\text{sech}(f(x))\tanh(f(x))$;
-$\frac{d}{dx} \coth(f(x)) = -f'(x)\csch^2(f(x))$;
+$\frac{d}{dx} \coth(f(x)) = -f'(x)\text{csch}^2(f(x))$;
 % inverse trigo
 $\frac{d}{dx} \sin^{-1}(f(x)) = \frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
 $\frac{d}{dx} \cos^{-1}(f(x)) = -\frac{f'(x)} {\sqrt{1-(f(x))^2}}$;
@@ -180,10 +180,10 @@ $\sum |a_n|$ diverges but $\sum a_n$ converges $\Rightarrow$ conditional converg
 
 \subsubsection{Convegence tests}
 \textbf{Preliminary test}: $\lim_{n\to\infty} \ne 0 \Rightarrow$ divergence;
-\textbf{Comparison test}: $(u_i) \text{ converges } \Land \forall n > N, 0 \le
+\textbf{Comparison test}: $(u_i) \text{ converges } \land \forall n > N, 0 \le
 	a_n \le u_n
 \Rightarrow \sum_n a_n$ converges.
-Conversely, $(u_i) \text{ diverges } \Land \forall n > N, 0 \le u_n \le a_n
+Conversely, $(u_i) \text{ diverges } \land \forall n > N, 0 \le u_n \le a_n
 \Rightarrow \sum_n a_n$ diverges.
 \textbf{Ratio test}: For $p = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|, 
 p < 1 \Rightarrow \text{convergence},\
@@ -239,7 +239,7 @@ Complex logarithm: $\ln z = \ln r + i(\theta + 2n\pi)$;
 Complex power: $z_1^{z_2} = e^{z_2\ln z_1}$;
 
 \subsubsection{Complex trigonometric and hyperbolic functions}
-$\sin z = \frac{e^{iz} - e^{-iz}}{2}$; 
+$\sin z = \frac{e^{iz} - e^{-iz}}{2i}$; 
 $\cos z = \frac{e^{iz} + e^{-iz}}{2}$; 
 $\sinh z = \frac{e^{z} - e^{-z}}{2}$; 
 $\cosh z = \frac{e^{z} + e^{-z}}{2}$; 
@@ -249,8 +249,8 @@ $\cos(iz) = \cosh(z)$;
 $\cosh(iz) = \cos(z)$;
 $\sin^{-1} z = -i\ln(iz + \sqrt{1-z^2}) = \csc^{-1} (\frac{1}{z})$;
 $\cos^{-1} z = -i\ln(z + \sqrt{z^2-1}) = \sec^{-1} (\frac{1}{z})$;
-$\sinh^{-1} z = \ln(z + \sqrt{z^2+1}) = \csch^{-1} (\frac{1}{z})$;
-$\cosh^{-1} z = \ln(z + \sqrt{z^2-1}) = \sech^{-1} (\frac{1}{z})$;
+$\sinh^{-1} z = \ln(z + \sqrt{z^2+1}) = \text{csch}^{-1} (\frac{1}{z})$;
+$\cosh^{-1} z = \ln(z + \sqrt{z^2-1}) = \text{sech}^{-1} (\frac{1}{z})$;
 
 \subsection{Lecture 4: Vector Algebra}
 Magnitude: $A^2 = |\mathbf{A}|^2 = \sum_{i=1}^3 A_i^2$;
@@ -303,8 +303,9 @@ Change of variables: For $x=x(u,v),\ y=y(u,v)$, $\frac{\partial}{\partial x} =
 Leibniz's rule: $\frac{d}{d x} \int_u^v f(x,t) dt = \int_u^v \frac{\partial
 	f(x,t)}{\partial x} dt$;
 $\frac{d}{d x} \int_{u(x)}^{v(x)} f(x,t) dt = 
-	f[x,v(x)] \frac{dv(x)}{dx} - f[x,u(x)] \frac{du(x)}{dx} \\
+	f[x,v(x)] \frac{dv(x)}{dx} - f[x,u(x)] \frac{du(x)}{dx}
 	+ \int_{u(x)}^{v(x)} \frac{\partial f(x,t)}{\partial x} dt$;
+
 \textbf{Taylor's theorem for multi-variable function}: 
 	$f(x) = \sum_{n=0}^N \frac{1}{n!} \left[ \sum_{i=1}^M (x_i - x_{i_0}) 
 	\frac{\partial}{\partial x_i} \right]^n f(x) \biggl|_{x=x_0} + R_N(x)$,
@@ -383,7 +384,7 @@ $\nabla\Phi$ is normal to the surface $\Phi(x,y,z)=c$ i.e. it is the normal
 $\nabla \cdot \mathbf{a} = 0 \Rightarrow \mathbf{a}$ is solenoidal.
 \textbf{Curl} of vector field: $\nabla \times \mathbf{a} = \sum_{i,j,k}
 	\epsilon \frac{\partial}{\partial x_i} a_j \hat{\mathbf{e}}_k$;
-$\nabla \times \mathbf{a} = 0 \Rightarrow \mathbf{a}$ is irrotational.
+$\nabla \times \mathbf{a} = 0 \Rightarrow \mathbf{a}$ is irrotational / conservative.
 
 \subsubsection{Identities of vector differential operators}
 Grad, div and curl are distributive over addition and scalar multiplication.
@@ -412,8 +413,37 @@ $\nabla \cdot (\nabla \Phi) = \nabla^2 \Phi = \sum_{i=1}^3
 	\frac{\partial^2 \Phi}{\partial x_i^2}$;
 $\nabla \times (\nabla \times \mathbf{a}) = \nabla (\nabla \cdot \mathbf{a}) 
 	- \nabla^2 \mathbf{a}$;
-$\nabla^2 \Phi = \sum_{i,j} \frac{\partial^2 a_j}{\partial x_i^2}
-	\hat{\mathbf{e}}_j$;
+In cartesian coordinates,
+	$\nabla^2 \mathbf{a} = \sum_{i,j} \frac{\partial^2 a_j}{\partial x_i^2}
+	\hat{\mathbf{e}}_j
+	= \sum_{i=1}^3 \nabla^2 a_i \hat{\mathbf{e}}_i$;
+
+\subsubsection{Curvilinear Coordinates}
+$\hat{\mathbf{e}}_i = \frac{1}{h_i} \frac{\partial \mathbf{r}}{\partial u_i}$,
+$h_i = \left| \frac{\partial \mathbf{r}}{\partial u_i} \right|$;
+$\nabla \Phi = \sum_{i=1}^3 \hat{\mathbf{e}}_i' \frac{1}{h_1} \frac{\partial
+	\Phi}{\partial u_i}$;
+$\nabla \mathbf{a} = \frac{1}{h_1h_2h_3} \sum_{i=1}^3 
+	\frac{\partial} {\partial u_i} \left( \frac{a_1h_1h_2h_3}{h_i} \right)$;
+$\nabla^2 \Phi = \frac{1}{h_1h_2h_3} \sum_{i=1}^3 
+	\frac{\partial \Phi}{\partial u_i}
+	\left( \frac{h_1h_2h_3}{h_i^2} \frac{\partial \Phi}{\partial u_i} \right)$;
+\begin{flushleft}
+	\nabla \time \mathbf{a} = \frac{1}{h_1h_2h_3} \left| \begin{array}{ccc}
+		h_1 \hat{\mathbf{e}}_1' 
+		& h_2 \hat{\mathbf{e}}_2' 
+		& h_3 \hat{\mathbf{e}}_3' \\
+		\frac{\partial}{\partial u_1}
+		& \frac{\partial}{\partial u_2}
+		& \frac{\partial}{\partial u_3} \\
+		a_1h_1
+		& a_2h_2
+		& a_3h_3 \\
+\end{array} \right|;
+\end{flushleft}
+
+Cylindrical coordinates: $(\rho, \phi, z), h_1 = 1, h_2 = \rho, h_3 = 1$;
+Spherical coordinates: $(r, \theta, \phi), h_1 = 1, h_2 = r, h_3 = r\sin\theta$;
 
 \subsection{Lecture 8: Line, Surface and Volume Integrals}
 
@@ -461,6 +491,369 @@ Ellipse: $\mathbf{r}(\theta) = (a\cos\theta, b\sin\theta)$;
 Ellipsoid: $\mathbf{r}(\theta, \phi) = (a\sin\theta\cos\phi, b\sin\theta\sin\phi, 
 	c\cos\theta)$;
 
+\subsection{Lecture 8: Line, Surface and Volume Integrals}
+Fundamental theorem for gradient: $\int_a^b (\nabla \Phi) \cdot dr = \Phi(b) -
+	\Phi(a)$;
+Divergence / Gauss' theorem: $\iiint_{\mathcal{V}} \nabla \cdot \mathbf{a} dV
+	= \oiint_{\mathcal{S}} \mathbf{a} \cdot d\mathbf{S}$;
+Stoke's theorem: $\iint_{\mathcal{S}} (\nabla \times \mathbf{a}) \cdot d\mathbf{S}
+	= \oint_{\mathcal{C}} \mathbf{a} \cdot d\mathbf{r}$;
+
+\subsubsection{Green's theorem}
+$\oint [f(x,y)dx + g(x,y) dy] = \iint (\frac{\partial g}{\partial x}
+	- \frac{\partial f}{\partial y} dxdy$;
+Two-dimensional divergence theorem: $\iint_{\mathcal{S}} \left[
+	\frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} \right] dxdy
+	= \oint_{\mathcal{C}} [a_xdy - a_ydx]$;
+Two-dimensional Stoke's theorem: $\iint_{\mathcal{S}} \left[
+	\frac{\partial a_y}{\partial x} - \frac{\partial a_x}{\partial y} \right] dxdy
+	= \oint_{\mathcal{C}} [a_xdx + a_ydy]$;
+
+Green's first identity:
+	$\iiint_{\mathcal{V}} (\nabla \Psi \cdot \nabla \Phi + \Psi \nabla^2 \Phi) dV
+	= \oiint_{\mathcal{S}} \Psi \nabla \Phi \cdot d\mathbf{S}$;
+Green's second identity:
+	$\iiint_{\mathcal{V}} (\Psi \nabla^2 \Phi - \Phi \nabla^2 \Psi) dV
+	= \oiint (\Psi \nabla \Phi - \Phi \nabla \Psi) \cdot d\mathbf{S}$;
+Divergence-related theorems: 
+	$\mathbf{a} = \Phi\mathbf{c} \Rightarrow \iiint_{\mathcal{V}} \nabla \Phi dV
+	= \oiint_{\mathcal{S}} \Phi d\mathbf{S}$,
+	$\mathbf{a} = \mathbf{b} \times \mathbf{c} \Rightarrow \iiint_{\mathcal{V}}
+	\nabla \times \mathbf{b} dV
+	= \oiint_{\mathcal{S}} d\mathbf{S} \times \mathbf{b}$;
+Stoke's-related theorems: 
+	$\mathbf{a} = \Phi\mathbf{c} \Rightarrow \iint_{\mathcal{V}} d\mathbf{S}
+	\times \nabla \Phi
+	= \oint_{\mathcal{C}} \Phi d\mathbf{r}$,
+	$\mathbf{a} = \mathbf{b} \times \mathbf{c} \Rightarrow \iint_{\mathcal{S}}
+	(d\mathbf{S} \times \nabla) \times \mathbf{b}
+	= \oint_{\mathcal{S}} d\mathbf{r} \times \mathbf{b}$;
+
+\subsubsection{Irrotational and solenoidal fields}
+
+For irrotational $F$, $\nabla \times \mathbf{F} = 0$,
+	$\oint_{\mathcal{C}} \mathbf{F} \cdot d\mathbf{r} =
+	\iint_{\mathcal{S}} (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = 0$;
+$\int_{\mathcal{C}_1} \mathbf{F} \cdot d\mathbf{r} = \int_{\mathcal{C}_2}
+	\mathbf{F} \cdot d\mathbf{r}$;
+$\exists \text{ scalar potential } \Phi, C \text{ s.t. } \mathbf{F} = \pm
+	\nabla (\Phi + C)$;
+
+For solenoidal field, $G$, $\nabla \cdot \mathbf{G} = 0$,
+	$\oiint_{\mathcal{S}} \mathbf{G} \cdot d\mathbf{S} =
+	\iiint_{\mathcal{V}} \nabla \cdot \mathbf{G} dV = 0$;
+$\int_{\mathcal{S}_1} \mathbf{G} \cdot d\mathbf{S} = \int_{\mathcal{S}_2}
+	\mathbf{G} \cdot d\mathbf{S}$;
+$\exists \text{ vector potential } \mathbf{A}, \nabla\Phi \text{ s.t. }
+	\mathbf{G} = \nabla \times (\mathbf{A} + \nabla \Phi)$;
+
+Helmholtz's theorem: $\forall \mathbf{A},\ \exists \Phi, \mathbf{A} \text{ s.t. }
+	\mathbf{F} = -\nabla \Phi + \nabla \times \mathbf{A}$;
+Assuming $\mathbf{F}$ goes to zero sufficient rapidly at $\infty$,
+	$\Phi(\mathbf{r}) \frac{1}{4\pi} \iiint
+	\frac{\nabla' \cdot \mathbf{F}(\mathbf{r}')}
+	{|\mathbf{r} - \mathbf{r}'|} dx'dy'dz'$,
+	$\mathbf{A}(\mathbf{r}) \frac{1}{4\pi} \iiint
+	\frac{\nabla' \times \mathbf{F}(\mathbf{r}')}
+	{|\mathbf{r} - \mathbf{r}'|} dx'dy'dz'$;
+
+\subsection{Lecture 10: Fourier Series}
+Dirichlet conditions: 
+	(i) periodic, 
+	(ii) single-valued and continuous except at finitely many points of finite
+		discontinuities, 
+	(iii) finite number of maxima and minima within period, 
+	(iv) integral of $|f(x)|$ over period converges.
+Dirichlet conditions satified $\Rightarrow$ Fourier series converges where
+$f(x)$ is continuous.
+At discontinuity $x = x_0$, $f_{\text{FS}}(x_0) = \lim_{\epsilon\to0}
+	\left[ \frac{(x_0 + \epsilon) + (x_0 - \epsilon)}{2} \right]$;
+
+Average of $f(x)$ over $(a,b)$: $\langle f(x) \rangle = \frac{1}{b-a} \int_a^b
+	f(x) dx$;
+
+\subsubsection{Useful trigonometric identities}
+$\cos A \cos B = \frac{1}{2} [\cos(A-B) + \cos(A+B)]$;
+$\sin A \sin B = \frac{1}{2} [\cos(A-B) - \cos(A+B)]$;
+$\sin A \cos B = \frac{1}{2} [\sin(A-B) + \sin(A+B)]$;
+$\langle \cos(nx) \rangle = \langle \sin(nx) \rangle = 0$;
+$\langle \cos^2(nx) \rangle = \langle \sin^2(nx) \rangle = \frac{1}{2}$;
+
+\textbf{$2\pi$-periodic function}: $f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty a_n \cos(nx)
+	+ \sum_{n=1}^\infty b_n \sin(nx)$,
+$a_n = \frac{1}{\pi} \int_{-\pi}^\pi \cos(nx) f(x) dx,\ 
+	b_n = \frac{1}{\pi} \int_{-\pi}^\pi \sin(nx) f(x) dx$;
+\textbf{$2L$-periodic function}: $f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty a_n
+	\cos \left( \frac{n\pi x}{L} \right) + \sum_{n=1}^\infty b_n 
+	\sin \left( \frac{n\pi x}{L} \right)$,
+$a_n = \frac{1}{L} \int_{-\pi}^\pi \cos \left( \frac{n\pi x}{L} \right) f(x) dx,\ 
+	b_n = \frac{1}{L} \int_{-\pi}^\pi \sin \left( \frac{n\pi x}{L} \right) f(x) dx$;
+\textbf{Even function cosine series}:
+$f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty a_n
+	\cos \left( \frac{n\pi x}{L} \right) + \sum_{n=1}^\infty b_n$,
+$a_n = \frac{2}{L} \int_0^L \cos \left( \frac{n\pi x}{L} \right) f(x) dx$;
+\textbf{Odd function sine series}:
+$f(x) = \sum_{n=1}^\infty b_n \sin \left( \frac{n\pi x}{L} \right)$,
+$b_n = \frac{2}{L} \int_0^L \sin \left( \frac{n\pi x}{L} \right) f(x) dx$;
+Integral of $f_{\text{FS}}(x)$ is a Fourier representation of $F(x)$ iff 
+	$\langle f(x) \rangle = 0$.
+Derivative of $f_{\text{FS}}(x)$ is a Fourier representation of $f'(x)$ iff 
+	$f'(x)$ satisfies Dirichlet conditions.
+
+\textbf{Complex Fourier series}:
+$f(x) = \sum_{n=-\infty}^\infty c_n \exp \left( i\frac{n\pi x}{L} \right)$;
+$c_n = \frac{1}{2L} \int_{-L}^L \exp \left( -i\frac{n\pi x}{L} \right) f(x) dx$;
+Parseval's theorem:
+	$\left\langle [f(x)]^2 \right\rangle
+	= \left( \frac{a_0}{2} \right)^2 + \frac{1}{2} \sum_{n=1}^\infty (a_n^2 + b_n^2)
+	= \sum_{n=-\infty}^\infty |c_n|^2$;
+
+\subsubsection{Common Fourier Series}
+For $-\pi < x < \pi$,
+$x = 2 \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} \sin (nx)$;
+$|x| = \frac{\pi}{2} - \frac{4}{\pi} \sum_{n=1}^\infty \frac{1}{(2n-1)^2} \cos
+	[(2n-1)x]$; 
+$0, x = \frac{\pi}{4} - \frac{2}{\pi} \sum_{n=1}^\infty \frac{1}{(2n-1)^2} \cos
+	[(2n-1)x] + \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} \sin (nx)$;
+$-1, 1 = \frac{4}{\pi} \sum_{n=1}^\infty \frac{1}{2n-1} \sin [(2n-1)x]$;
+$0, 1 = \frac{1}{2} + \frac{2}{\pi} \sum_{n=1}^\infty \frac{1}{2n-1} \sin [(2n-1)x]$;
+$|\sin x| = \frac{2}{\pi} - \frac{4}{\pi} \sum_{n=1}^\infty \frac{1}{4n^2-1}
+	\cos (2nx)$;
+$|\cos x| = \frac{2}{\pi} - \frac{4}{\pi} \sum_{n=1}^\infty
+	\frac{(-1)^n}{4n^2-1} \cos (2nx)$;
+$0, \sin x = \frac{1}{\pi} + \frac{1}{2} \sin x- \frac{2}{\pi}
+	\sum_{n=1}^\infty \frac{1}{4n^2-1} \cos (2nx)$;
+
+\subsection{Lecture 11: Fourier Transform}
+Wavelength: $\lambda_n = \frac{2L}{n}$, 
+	wave number: $\frac{2\pi}{\lambda_n} = \frac{n\pi}{L}$,
+	$\Delta k_n = k_{n+1} - k_n = \frac{\pi}{L}$;
+Taking $L \to \infty, \Delta k_n \to 0$ yields
+\textbf{Fourier's inversion theorem}: 
+	$f(x) = \frac{1}{2\pi} \int_{-\infty}^\infty e^{ikx} \left[
+	\int_{-\infty}^\infty e^{-iku} f(u) du \right] dk$
+	$= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{ikx} \tilde{f}(k) dk$;
+	$\tilde{f}(k) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty e^{-ikx} f(x) dx$;
+
+\subsubsection{Properties of Fourier Transform}
+$\mathcal{F}\{f(x)\} = \tilde{f}(k)$;
+$\mathcal{F}$ is linear and invertible;
+$\mathcal{F}\{ f(-x) \} = \tilde{f}(-k)$;
+$\mathcal{F}\{ f^*(x) \} = \tilde{f}^*(k)$;
+$\mathcal{F}\{ f^{(n)}(x) \} = (ik)^n \tilde{f}(k)$;
+$\mathcal{F}\{ \int_{-\infty}^x f(u) du \} = \frac{1}{ik} \tilde{f}(k)$;
+$\mathcal{F}\{ \tilde{f}(x) \} = f(-k)$;
+$\mathcal{F}\{ f(x+a) \} = e^{ika} \tilde{f}(k)$;
+$\mathcal{F}^{-1}\{ \tilde{f}(k+a) \} = e^{-ika} f(x)$;
+$\mathcal{F}\{ f(ax) \} = \frac{1}{|a|} \tilde{f}\left( \frac{k}{a} \right)$;
+$\mathcal{F}^{1}\{ \tilde{f}(ak) \} = \frac{1}{|a|} f\left( \frac{x}{a} \right)$;
+$\tilde{f}(0) = \int_{\infty}^\infty f(x) dx$;
+$\mathcal{F}\{ xf(x) \} = i\tilde{f}'(k)$;
+$\mathcal{F}\{ x^nf(x) \} = (i)^n \tilde{f}^{(n)}(k)$;
+
+Parseval's identity:
+	$\int_{-\infty}^\infty f(x)g(x) dx = \int_{-\infty}^\infty
+	\tilde{f}(k)\tilde{g}(k) dk$
+Parseval's theorem:
+	$\int_{-\infty}^\infty |f(x)|^2 dx = \int_{-\infty}^\infty
+	|\tilde{f}(k)|^2 dk$
+Convolution: $f(x) \ast g(x) = \int_{-\infty}^\infty f(y) g(x-y) dy$;
+$f \ast g = g \ast f$;
+$(f \ast g) \ast h = f \ast (g \ast f)$;
+$f \ast (g + h) = f \ast g + f \ast h$;
+
+Convolution theorem for Fourier transforms:
+	$\mathcal{F}\{ f(x) \ast g(x) \} = \sqrt{2\pi} \tilde{f}(k) \tilde{g}(k)$;
+	$\mathcal{F}\{ f(x) g(x) \} = \frac{1}{\sqrt{2\pi}} \tilde{f}(k) \ast
+		\tilde{g}(k)$;
+	$\mathcal{F}^{-1}\{ \tilde{f}(x) \ast \tilde{g}(x) \} = \sqrt{2\pi} f(k) g(k)$;
+	$\mathcal{F}^{-1}\{ \tilde{f}(x) \tilde{g}(x) \} = \frac{1}{\sqrt{2\pi}}
+		f(k) \ast g(k)$;
+	
+Three-dimensional Fourier transform:
+$\tilde{f}(\mathbf{k}) = \frac{1}{(2\pi)^{3/2}} \iiint 
+	e^{-i \mathbf{k} \cdot \mathbf{r}} f(\mathbf{r}) d^3\mathbf{r}$;
+$f(\mathbf{r}) = \frac{1}{(2\pi)^{3/2}} \iiint 
+	e^{-i \mathbf{k} \cdot \mathbf{r}} \tilde{f}(\mathbf{k}) d^3\mathbf{k}$;
+
+Common Fourier Transfroms:
+$\mathcal{F}\{ e^{-a|x|} \} = 2a (k^2 + a^2)^{-1}$;
+$\mathcal{F}\{ (x^2 + a^2)^{-1} \} = \frac{1}{2a} e^{-a|k|}$;
+$\mathcal{F}\{ \frac{\exp(-ax)}{x} \} = \frac{4\pi}{k^2 + \alpha^2}$;
+
+\subsection{Lecture 12: Dirac Delta Distribution}
+From Fourier's inversion theorem, $f(x) = \frac{1}{2\pi} \int_{-\infty}^\infty 
+	e^{ikx} \left[ \int_{-\infty}^\infty e^{-ikx'} f(x') dx' \right] dk$
+	$\Rightarrow f(x) = \int_{-\infty}^\infty f(x')
+	\left[ \frac{1}{2\pi} \int_{-\infty}^\infty e^{ik(x-x')} dk \right] dx'$
+$\delta(x-x') := \frac{1}{2\pi} \int_{-\infty}^\infty e^{ik(x-x')} dk$;
+
+\subsubsection{Properties of $\delta$-distribution}
+$\delta(x-x') = \delta(x'-x)$;
+$\int_{-\infty}^\infty f(x) \delta^{(n)}(x-x') dx = (-1)^n f^{(n)} (x')$;
+$g(a_k) = 0,\ g'(a_k) \ne 0,\ \delta[g(x)] = \sum_k \frac{\delta(x-a_k)}{|g'(a_k)|}$;
+
+\subsubsection{Heaviside Step Function}
+$H(x-x') = 1,\ x > x',\ = 0,\ x < x'$;
+$|x-y| = (x-y)[ H(x-y) - H(y-x)]$;
+$g(x) = g_1(x) H(x) H(k-x) + g_2(x) H(x-k)$;
+$H'(x-x') = \delta(x-x')$;
+
+\subsubsection{Fourier transforms involving $\delta$-distribution}
+$\mathcal{F}\{e^{ik'x}\} = \sqrt{2\pi} \delta(k-k')$;
+$\mathcal{F}\{ \cos x \} = \sqrt{\frac{\pi}{2}} [\delta(k-1) + \delta(k+1)]$;
+$\mathcal{F}\{ \sin x \} = i\sqrt{\frac{\pi}{2}} [-\delta(k-1) + \delta(k+1)]$;
+$\mathcal{F}\{ \delta(x-x') \} = \frac{1}{\sqrt{2\pi}} e^{ikx'}$;
+
+\subsubsection{Three dimensional $\delta$-distribution}
+$\iiint_{\varepsilon} \delta^3(\mathbf{r}-\mathbf{r}') d^3 \mathbf{r} = 1$;
+$\delta^3(\mathbf{r}-\mathbf{r}') = \delta(x-x')\delta(y-y')\delta(z-z')$;
+Curvilinear orthogonal coordinates:
+$h_i = \sqrt{ 
+	\left( \frac{\partial x}{\partial u_i} \right)^2
+	+ \left( \frac{\partial y}{\partial u_i} \right)^2
+	+ \left( \frac{\partial z}{\partial u_i} \right)^2
+}$;
+$\delta^3(\mathbf{r}-\mathbf{r}') = 
+	\frac{\delta(u-u')}{h_1}
+	\frac{\delta(v-v')}{h_2}
+	\frac{\delta(z-z')}{h_3}$;
+Cylindrical coordinates:
+$\delta^3(\mathbf{r}-\mathbf{r}') = 
+	\frac{1}{\rho}\delta(\rho-\rho')\delta(\phi-\phi')\delta(z-z')$;
+Spherical coordinates:
+$\delta^3(\mathbf{r}-\mathbf{r}') = 
+	\frac{1}{r^2\sin\theta}\delta(r-r')\delta(\theta-\theta')\delta(\phi-\phi')$;
+
+\subsubsection{Applications}
+A collection of point charge $Q-K$ located at $\mathbf{r}_k$:
+	$\rho_q(x,y,z) = \sum_k Q_k \delta(x-x_k)\delta(y-y_k)\delta(z-z_k)$; \\
+A collection of point charge $Q-K$ located at $\mathbf{r}_k$ on a sphere of radius $a$:
+	$\rho_q(r,\theta,\phi) = \frac{\delta(r-a)}{a^2} \sum_k
+	\frac{Q_k}{\sin\theta_k} \delta(\theta-\theta_k)\delta(\phi-\phi_k)$; \\
+A uniformly charged shell with total charge $Q$ and radius $a$:
+	$\rho_q(r,\theta,\phi) = \frac{Q}{4\pi a^2} \delta(r-a)$; \\
+An origin-centered uniformly charged ring with total charge $Q$ and radius $a$
+	on the $xy$-plane :
+	$\rho_q(\rho,\phi,z) = \frac{Q}{2\pi a} \delta(\rho-a) \delta(z)$;
+
+\subsection{Lecture 13 \& 14: Second-Order Linear ODEs}
+$\mathcal{L}y(x) := \frac{d^2y}{dx^2} + P\frac{dy}{dx} + Qy = F$;
+General solution: $y(x) = Y_c + Y_p = c_1y_1 + c_2y_2 + Y_p$, where
+	complementary function: $\mathcal{L}Y_c = 0$, particular integral:
+	$\mathcal{L}Y_p = F$,
+	known as a particular solution once $c_1, c_2$ are fixed.
+At most two linearly independent solutions, Wronskian $W(x) = y_1y_2' - y_2y_1'
+	= C\exp\left[-\int^x P(u)du \right] \ne 0$;
+
+\subsubsection{Ordinary and singular points}
+Ordinary points: $P, Q$ finite as $x \to x_0$;
+Regular singular points: $P \lor Q$ diverges as $x \to x_0$ but $(x-x_0)P$ and
+$(x-x_0)^2Q$ remains finite;
+Irregular singular points: $(x-x_0)P \lor (x-x_0)^2Q$ diverges;
+Checking for $|x|=\infty$: Let $u=x^{-1}$, $\frac{dy}{dx} = -u^2\frac{dy}{du}$,
+	$\frac{d^2y}{dx^2} = u^3 \left( 2\frac{dy}{du} + u \frac{d^2y}{du^2} \right)$;
+
+\subsubsection{Series solutions}
+Frobenius series: $y(x) = (x-x_0)^\sigma \sum_{n=0}^\infty a_n (x-x_0)^n,\ a_0 \ne 0$,
+	practically expanded about $x_0=x$ with substitution $u=x-x_0$;
+Fuch's theorem: $\exists$ series solution if $x=x_0$ is ordinary or regular singular;
+Radius of convergence is generally equal to neary singularity.
+$\frac{d^2y}{dx^2} + \frac{s}{x}\frac{dy}{dx} + \frac{t}{x^2}y = 0$,
+	$s = xP, t = x^2Q$;
+After substitution, $\sum_{n=0}^\infty [(n+\sigma)(n+\sigma-1) + s(n+\sigma) 
+	+ t]a_nx^n = 0$;
+\textbf{Indicial equation}:
+	$\sigma(\sigma-1) + s(0)\sigma + t(0) = 0$;
+Substitute $\sigma_1, \sigma_2$ and obtain a recurrence to yield a series solution. 
+If $x=0$ is ordinary, $\sigma_1 = 1, \sigma_2 = 0$;
+$\sigma_1 = \sigma_2 \Rightarrow$ one solution;
+$|\sigma_1 - \sigma_2| \not\in \mathbb{Z} \Rightarrow$ two solutions;
+$|\sigma_1 - \sigma_2| \in \mathbb{Z} \Rightarrow$ max$\{\sigma_1, \sigma_2\}$ is guaranteed to yield a solution.
+
+\subsubsection{Obtaining a second solution}
+First-order linear ODE: $y' + Py = Q$, integrating factor: $\mu = \exp \left[ 
+	\int^x P(\xi)d\xi \right]$, $y = \frac{1}{\mu} \int^x \mu(\xi) Q(\xi) d\xi$;
+
+Second solution found by solving $y_2' - \frac{1}{y_1} y_1' y_2 = \frac{W}{y_1}$, \\
+\textbf{second solution}: $y_2 = y_1 \int^x \frac{1}{[y_1(\xi)]^2}
+	\exp \left[ - \int^\xi P(u) du \right] d\xi$;
+Special case: $y'' = Qy \Rightarrow y_2 = y_1 \int^x \frac{d\xi}{[y_1(\xi)]^2}$;
+
+Series forms of $P, Q$, $P = \sum_{i=-1}^\infty p_ix^i,\ Q =
+	\sum_{j=-2}^\infty q_jx^j$,
+	$p_{-1} = q_{-2} = q_{-1} = 0$ if $x=0$ is ordinary; \\
+Indicial equation yields: $\sigma^2 + (p_{-1} -1)\sigma + q_{-2} = 0$; \\
+For $\sigma_1 = \alpha,\ \sigma_2 = \alpha - N,\ N \in \mathbb{Z}^+\cup\{0\}$,
+	$p_{-1} = N-2\alpha + 1, q_{-2} = \alpha(\alpha - N)$;
+$\int^\xi P(u) du = \xi^{-p_{-1}} \sum_{m=0}^\infty p_m' \xi^m$,
+$\frac{1}{[y_1(\xi)]^2} = \xi^{-2\alpha} \sum_{n=0}^\infty a_n'\xi^n$,
+$\frac{1}{[y_1(\xi)]^2} \int^\xi P(u) du = \xi^{-N-1} \sum_{k=0}^\infty c_k \xi^k$;
+\textbf{Series form of second solution}, $y_2 = c y_1 \ln|x| + x^{\sigma_2}
+	\sum_{n=0}^\infty b_n x^n$;
+
+\text{Particular integral}: $Y_p = -\int^x \frac{f(u)[y_2(u)y_1(x) - y_1(u)y_2(x)]}
+	{y_1(u)y_2'(u) - y_2(u)y_1'(u)} du$;
+
+\textbf{Constant coefficients}: $\lambda = \frac{-P_0 \pm \sqrt{P_0^2 - 4Q_0}}{2}$;
+$\lambda_+ \ne \lambda_- \Rightarrow 
+	Y_c = c_1 \exp (\lambda_+ x) + c_2 \exp(\lambda_- x)$,
+	$Y_p = \int^x \frac{\exp[\lambda_+(x-u) - \exp[\lambda_-(x-u)]}
+		{\lambda_+ - \lambda_-} f(u) du$;
+$\lambda_+ = \lambda_- = \lambda \Rightarrow 
+	Y_c = c_1 \exp (\lambda x) + c_2 x\exp(\lambda x)$,
+	$Y_p = \int^x (x-u) \exp [\lambda(x-u)] f(u) du$;
+
+\subsection{Lecture 15: Laplace Transform}
+$\mathcal{L}\{f(t)\} = \bar{f}(s) = \int_0^\infty e^{-st} f(t) d t$,
+	$\bar{f}(x) \to 0$ as $s \to \infty$,
+	$s$ can be chosen sufficiently large s.t. $e^{-st}f(t)$ converges even if
+	$f(t) \not\to 0$ as $t \to \infty$; \\
+$\mathcal{L}$ is linear;
+
+\subsubsection{Common Laplace Transforms}
+$\mathcal{L} \{ c \} = \frac{c}{s}$;
+$\mathcal{L} \{ ct^n \} = \frac{cn!}{s^{n+1}}$;
+$\mathcal{L} \{ \sin (bt) \} = \frac{b}{s^2 + b^2}$;
+$\mathcal{L} \{ \cos (bt) \} = \frac{s}{s^2 + b^2}$;
+$\mathcal{L} \{ \sinh (at) \} = \frac{a}{s^2 - a^2}$;
+$\mathcal{L} \{ \cosh (at) \} = \frac{s}{s^2 - a^2}$;
+$\mathcal{L} \{ e^{at} \} = \frac{1}{s - a}$;
+$\mathcal{L} \{ t^n e^{at} \} = \frac{n!}{(s - a)^{n+1}}$;
+
+\subsubsection{Properties of Laplace Transform}
+$\mathcal{L} \left\{ \frac{d^n f(t)}{d t^n} \right\} 
+	= s^n \bar{f}(x) - \sum_{r=0}^{n-1} s^{n-1-r} f^{(r)} (0)$,
+	e.g.  $\mathcal{L} \left\{ \frac{d^2 f(t)}{d t^n} \right\} 
+	= s^2 \bar{f}(s) - sf(0) - f'(0)$;
+$\mathcal{L} \left\{ \int_0^t f(u) du \right\} = \frac{1}{s} \bar{f}(s)$;
+
+$\mathcal{L} \{ f(at) \} = \frac{1}{a} \bar{f} \left( \frac{s}{a} \right)$;
+$\mathcal{L} \{ e^{a} f(t) \} = \bar{f} (s-a)$;
+$\mathcal{L} \{ t f(t) \} = -\bar{f}' (s)$;
+$\mathcal{L} \{ t^n f(t) \} = (-1)^n \bar{f}^{(n)} (s)$;
+$\mathcal{L} \{ H(t-a) f(t-a) \} = e^{-sa}\bar{f} (s)$;
+
+$\frac{d^n}{d t^n} \mathcal{L} \left\{ f(t) \right\} = \mathcal{L} \{ (-t)^n f(t) \}$;
+$\int_s^\infty \mathcal{L} \left\{ f(t) \right\} ds' 
+	= \mathcal{L} \left\{ \frac{f(t)}{t} \right\}$;
+
+\textbf{Laplace convolution theorem}: $\mathcal{L} \{ f(t) \ast g(t) \} 
+	= \bar{f}(s) \bar{g}(s)$;
+$\mathcal{L}^{-1} \{ \bar{f}(s) \bar{g}(s) \} = f(t) \ast g(t)$;
+
+\textbf{Evaluating improper integrals}: Direct substitution i.e. $\int_0^\infty
+	e^{-at} f(t) dt = \left[ \int_0^\infty e^{-st} f(t) dt \right]_{s=a}
+	= [ \mathcal{L} \{ f(t) \} ]_{s=a}$,
+	Integral of transform i.e.
+	$\int_0^\infty \frac{f(t)}{t} dt = \left[ \int_0^\infty e^{-st} 
+	\frac{f(t)}{t} dt \right]_{s=0} = \left[ \mathcal{L} \left\{ 
+	\frac{f(t)}{t} \right\} \right]_{s=0} = \left[ \int_s^\infty 
+	\mathcal{L} \{ f(t) \} ds' \right]_{s=0}$;
+	Find Laplace transform and take inverse i.e. $I = \mathcal{L}^{-1} 
+	(\mathcal{L} I )$;
+Solving linear ODEs: take Laplace transform of ODE, solve algebraic equation
+	for $\bar{f}(s)$ and take $\mathcal{L}^{-1}$;
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
 %\scriptsize
